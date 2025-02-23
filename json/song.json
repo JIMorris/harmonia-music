@@ -1,0 +1,77 @@
+ [
+  {
+    "uuid": "57e7ddb0-3224-426a-adb2-5a3db7b77ce9",
+    "title": "Monster",
+    "author": "4d3d7236-807b-41c3-84f1-c780c2f58b25",
+    "description": "Forlorn and Hopeful",
+    "genres": ["POP"],
+    "difficulty": 4,
+    "reactions": [
+      {
+        "rating": 4,
+        "comment": "Lovely song. Brings back nostalgia.",
+        "commentor": "293dd7e6-dab3-4b84-a1fc-2e86dbf1b75e"
+      }
+    ],
+    "published": true,
+    "tempo": 180,
+    "keySignature": {
+      "name": "Eb Major",
+      "notes": ["Eb", "F", "G", "Ab", "Bb", "C", "D"]
+    },
+    "timeSignatureNum": 4,
+    "timeSignatureDen": 4,
+    "measures": [
+      {
+        "length": 4,
+        "chord": {
+          "name": "Eb Major",
+          "abbreviation": "Eb",
+          "notes": ["Eb", "F", "G", "Ab", "Bb", "C", "D"]
+        },
+        "instruments": {
+            "music": ["Eb", "F", "G", "Ab", "Bb", "C", "D"],
+            "text": "Ever since I could remember"
+        }
+      }
+    ]
+  }
+,
+  {
+    "uuid": "316cd42c-834b-4e7e-8e64-1effb8226f30",
+    "title": "Bohemian Rhapsody",
+    "author": "3d6cd9b2-e688-4fb8-8768-dbdf2d298596",
+    "description": "A classic song.",
+    "genres": ["ROCK", "CLASSICAL"],
+    "difficulty": 5,
+    "reactions": [
+      {
+        "rating": 5,
+        "comment": "Amazing song!",
+        "commentor": "e2bf3af0-94ff-4820-8ee9-46a3dc331ff3"
+      }
+    ],
+    "published": true,
+    "tempo": 141,
+    "keySignature": {
+      "name": "Bb Major",
+      "notes": ["Bb", "C", "D", "Eb", "F", "G", "A"]
+    },
+    "timeSignatureNum": 4,
+    "timeSignatureDen": 4,
+    "measures": [
+      {
+        "length": 4,
+        "chord": {
+          "name": "Bb Major",
+          "abbreviation": "Bb",
+          "notes": ["Bb", "C", "D", "Eb", "F", "G", "A"]
+        },
+        "instruments": {
+            "music": ["Bb", "C", "D", "Eb", "F", "G", "A"],
+            "text": "Is this the real life?"
+        }
+      }
+    ]
+  }
+]
