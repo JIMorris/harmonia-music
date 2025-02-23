@@ -1,8 +1,4 @@
-<<<<<<< HEAD
- [
-=======
 [
->>>>>>> json-branch
   {
     "uuid": "57e7ddb0-3224-426a-adb2-5a3db7b77ce9",
     "title": "Monster",
@@ -39,12 +35,7 @@
         }
       }
     ]
-<<<<<<< HEAD
-  }
-,
-=======
   },
->>>>>>> json-branch
   {
     "uuid": "316cd42c-834b-4e7e-8e64-1effb8226f30",
     "title": "Bohemian Rhapsody",
