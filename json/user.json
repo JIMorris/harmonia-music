@@ -5,19 +5,17 @@
     "password": "SillyBilly247",
     "firstName": "Keith",
     "lastName": "Crase",
-    "email": "kcrase@email.sc.edu",
-    "favSongs": [ "1" ],
-    "favAuthors": [ "76a33d4f-cf56-4d8e-b56f-670d25454253" ]
+    "favSongs": [ "57e7ddb0-3224-426a-adb2-5a3db7b77ce9", "316cd42c-834b-4e7e-8e64-1effb8226f30" ],
+    "favAuthors": [ "76a33d4f-cf56-4d8e-b56f-670d25454253", "3d6cd9b2-e688-4fb8-8768-dbdf2d298596" ]
   },
   {
-    "uuid": "76a33d4f-cf56-4d8e-b56f-670d25454253",
+    "uuid": "3d6cd9b2-e688-4fb8-8768-dbdf2d298596",
     "username": "QueenFan99",
     "password": "QueenIsTheBest",
     "firstName": "Mark",
     "lastName": "Jones",
-    "email": "MJ1987@gmail.com",
-    "favSongs": [ "1" ],
-    "favAuthors": [ ]
+    "favSongs": [ "316cd42c-834b-4e7e-8e64-1effb8226f30" ],
+    "favAuthors": [ "4d3d7236-807b-41c3-84f1-c780c2f58b25" ]
   },
   {
     "uuid": "e2bf3af0-94ff-4820-8ee9-46a3dc331ff3",
@@ -25,28 +23,25 @@
     "password": "SymphonyNo3aClassic",
     "firstName": "Sarah",
     "lastName": "Lee",
-    "email": "SarahLee217@gmail.com",
-    "favSongs": [ ],
-    "favAuthors": [ ]
+    "favSongs": [ "57e7ddb0-3224-426a-adb2-5a3db7b77ce9" ],
+    "favAuthors": [ "3d6cd9b2-e688-4fb8-8768-dbdf2d298596" ]
   },
   {
-    "uuid": "324214a6-2137-4945-8ba9-5b17564c9b27",
-    "username": "ACDCPunk",
-    "password": "YouveBeenThunderStruck",
+    "uuid": "4d3d7236-807b-41c3-84f1-c780c2f58b25",
+    "username": "ImagineWagons",
+    "password": "WagonWheel420_@",
     "firstName": "John",
-    "lastName": "Deer",
-    "email": "ACDCfan101@gmail.com",
-    "favSongs": [ ],
-    "favAuthors": [ ]
+    "lastName": "Doe",
+    "favSongs": [ "57e7ddb0-3224-426a-adb2-5a3db7b77ce9" ],
+    "favAuthors": [ "3d6cd9b2-e688-4fb8-8768-dbdf2d298596" ]
   },
   {
-    "uuid": "74c168f4-3524-4f33-8b8d-55ba358ec8c1",
-    "username": "bross",
+    "uuid": "293dd7e6-dab3-4b84-a1fc-2e86dbf1b75e",
+    "username": "SereneEventide",
     "password": "LightHouseAtNight",
-    "firstName": "Bobby",
-    "lastName": "Williams",
-    "email": "bross987@gmail.com",
-    "favSongs": [ ],
-    "favAuthors": [ ]
+    "firstName": "Serene",
+    "lastName": "Eventide",
+    "favSongs": [ "316cd42c-834b-4e7e-8e64-1effb8226f30" ],
+    "favAuthors": [ "4d3d7236-807b-41c3-84f1-c780c2f58b25" ]
   }
 ]
