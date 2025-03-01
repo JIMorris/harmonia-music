@@ -9,7 +9,7 @@ public class Song {
     private User author;
     private String description;
     private ArrayList<Genre> genres;
-    private boolean published;
+    private boolean published; //should songs have an arraylist of ratings? (with add and remove options) -Simion
 
     private int tempo;
     private Key keySignature;
