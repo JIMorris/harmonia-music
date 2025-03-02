@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.ArrayList;
+
 public class Part {
     private Instrument instrument;
     private ArrayList<Note> music;
@@ -11,9 +13,11 @@ public class Part {
 
     public boolean insertNote(Note note, int position){
         //TODO
+        return false;
     }
 
     public boolean removeNote(int position){
         //TODO
+        return false;
     }
 }
