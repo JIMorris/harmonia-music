@@ -1,6 +1,6 @@
 package com.model;
 
-public class FileReader {
+public class FileReader extends DataConstants {
     private static FileReader instance;
     private UserList userList;
     private SongList songList;
