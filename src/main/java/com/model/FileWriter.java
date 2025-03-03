@@ -11,7 +11,9 @@ public class FileWriter extends DataConstants {
     private SongList songList;
     private InstrumentList instrumentList;
 
-
+    /**
+     * Makes a new FileWriter
+     */
     private FileWriter(){
         //TODO
     }
