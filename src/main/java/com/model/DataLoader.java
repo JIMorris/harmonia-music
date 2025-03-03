@@ -67,7 +67,7 @@ public class DataLoader extends DataConstants {
      * Loads in Songs from json
      * @return Whether the file reading succeeded
      */
-    public ArrayList<Song> loadSongs(){
+    public ArrayList<Song> loadSongs() throws Exception{
         //TODO
         return null;
     }
@@ -76,11 +76,11 @@ public class DataLoader extends DataConstants {
      * Loads in Instruments from json
      * @return Whether the file reading succeeded
      */
-    public ArrayList<Instrument> loadInstruments(){
+    public ArrayList<Instrument> loadInstruments() throws Exception{
         ArrayList<Insturment> instruments = new ArrayList<>();
 
         try {
-            FileReader reader = new FileReader(USER_FILE_NAME);
+            FileReader reader = new FileReader(INSTRUMENT_FILE_NAME);
             JSONArray instrumentsJSON = (JSONArray)new JSONParser().parse(reader);
 
             for(int i=0; i < instrumentsJSON.size(); i++){
