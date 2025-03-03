@@ -3,12 +3,12 @@ package com.model;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Song {
+public class Instrument {
     private UUID instrumentID;
     private String name;
     private String imageFile;
 
-    public Song(UUID instrumentID, String name, User imageFile) {
+    public Instrument(UUID instrumentID, String name, User imageFile) {
         
     }
 }
