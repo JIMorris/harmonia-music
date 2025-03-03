@@ -17,7 +17,7 @@ public class InstrumentList {
      * object
      */
     private InstrumentList() {
-
+        //TODO
     }
 
     /**
@@ -25,6 +25,7 @@ public class InstrumentList {
      * returns the instance of InstrumentList
      */
     public InstrumentList getInstance() {
+        //TODO
         return null;
     }
 
@@ -32,6 +33,7 @@ public class InstrumentList {
      * public method which adds a new instrument to the arraylist
      */
     public addInstrument(Instrument instrument) {
+        //TODO
         return null;
     }
     
@@ -39,6 +41,7 @@ public class InstrumentList {
      * public method which removes an instrument from the arraylist
      */
     public removeInstrument(Instrument instrument) {
+        //TODO
         return null;
     }
 
@@ -46,6 +49,7 @@ public class InstrumentList {
      * public method which saves/updates the arraylist of instruments
      */
     public save() {
+        //TODO
         return null;
     }
 
