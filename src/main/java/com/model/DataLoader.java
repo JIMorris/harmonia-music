@@ -4,8 +4,6 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import javax.sound.midi.Instrument;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -15,7 +13,7 @@ import org.json.simple.parser.JSONParser;
  * A file reader to load in info from json files
  */
 public class DataLoader extends DataConstants {
-    private static FileReader instance;
+    private static DataLoader instance;
     private UserList userList;
     private SongList songList;
     private InstrumentList instrumentList;
