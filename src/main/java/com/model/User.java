@@ -26,40 +26,61 @@ public class User {
     }
 
     public boolean passwordMatch(String password) {
-        return this.password == password; //TODO, NOT IN UML
+        return this.password == password; // TODO, NOT IN UML
     }
 
     public boolean usernameMatch(String username) {
-        return this.username == username; //TODO, NOT IN UML
+        return this.username == username; // TODO, NOT IN UML
     }
 
     public void addFavoriteSong(Song song) {
-        favSongs.add(song);
+        if (!favSongsExists(song))
+            favSongs.add(song);
+        System.out.println("song already exists in Favorite Songs");
     }
 
     public void addFavoriteAuthor(User author) {
-        favAuthors.add(author);
+        if (!favAuthorExists(author))
+            favAuthors.add(author);
+        System.out.println("song already exists in Favorite Author");
+    }
+
+    public boolean favAuthorExists(User author) { // TODO UML
+        for (User authorInList : favAuthors) {
+            if (authorInList.getUserID() == author.getUserID()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean favSongsExists(Song song) { // TODO UML
+        for (Song songInList : favSongs) {
+            if (songInList.getSongID() == song.getSongID()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void removeFavoriteSong(Song song) {
-        for (int i = 0; i < favSongs.size(); ++i) {
-            if (favSongs.get(i) == song) {
-                favSongs.remove(i);
-                break;
-            } // can this be simplified and improved by just doing favSongs.remove(song)?
-              // .remove() seems to have an overriden method which removes by object (will also
-              // remove any duplicate objects I presume) - Simion
-        }// TODO, PROBABLY NEED A METHOD TO CHECK IF A FAV SONG/AUTHOR EXISTS IN THE LIST ALREADY
+        // for (int i = 0; i < favSongs.size(); ++i) {
+        // if (favSongs.get(i) == song) {
+        // favSongs.remove(i);
+        // break;
+        // }
+        // }
+        favSongs.remove(song);
     }
 
     public void removeFavoriteAuthor(User author) {
         // for (int i = 0; i < favAuthors.size(); ++i) {
-        //     if (favAuthors.get(i) == author) {
-        //         favSongs.remove(i);
-        //         break;
-        //     }
+        // if (favAuthors.get(i) == author) {
+        // favSongs.remove(i);
+        // break;
         // }
-        favAuthors.remove(author); //like this I guess (see previous comment) - simion
+        // }
+        favAuthors.remove(author);
     }
 
     public ArrayList<Song> getAuthoredSongs() {
@@ -78,7 +99,7 @@ public class User {
         return this.password;
     }
 
-    public UUID getUserID () {
-        return this.userID; //these get methods are not in UML, but don't think they need to be?
+    public UUID getUserID() {
+        return this.userID;
     }
 }

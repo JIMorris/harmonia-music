@@ -130,4 +130,8 @@ public class Song {
 
     }
 
+    public UUID getSongID () { //NEED JAVA DOC
+        return this.songID;
+    }
+
 }

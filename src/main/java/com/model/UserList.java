@@ -52,11 +52,12 @@ public class UserList {
         return null;
     }
 
-    public User signup(String username, String password, String firstName, String lastName, UUID userID) { //this method seems to need
-        User user = new User(username, password, firstName, lastName, userID );// a UUID for the parameter to create a new user
+    public User signup(String username, String password, String firstName, String lastName) {
+        UUID userID = UUID.randomUUID();
+        User user = new User(username, password, firstName, lastName, userID);
         addUsers(user); //?????
-        return user; //TODO DIDN'T ORIGINALLY HAVE UUID PARAM, NOT IN THE UML - simion (all of these comments)
-    }
+        return user;
+    } 
 
     public User login(String username, String password) {
         for (User user : users) {
