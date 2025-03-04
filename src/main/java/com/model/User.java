@@ -49,7 +49,7 @@ public class User {
             } // can this be simplified and improved by just doing favSongs.remove(song)?
               // .remove() seems to have an overriden method which removes by object (will also
               // remove any duplicate objects I presume) - Simion
-        }
+        }// TODO, PROBABLY NEED A METHOD TO CHECK IF A FAV SONG/AUTHOR EXISTS IN THE LIST ALREADY
     }
 
     public void removeFavoriteAuthor(User author) {
