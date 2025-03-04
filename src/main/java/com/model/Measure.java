@@ -28,4 +28,14 @@ public class Measure {
     public void addPart(Instrument instrument){
         // TODO
     }
+
+    /***
+     * Gets the part of the specified instrument
+     * @param instrument Instrument to get part of
+     * @return Part of the given instrument
+     */
+    public Part getPart(Instrument instrument){
+        //TODO
+        return null;
+    }
 }
