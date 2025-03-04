@@ -86,7 +86,7 @@ public class SongList {
     // why
 
     /**
-     * filters the arraylist of Songs by a desired title
+     * filters the arraylist of Songs by a desired title (way in which it is sorted)
      * 
      * @param title takes in a title (String) that will be used to retrieve the
      *              desied songs
