@@ -35,7 +35,7 @@ public class InstrumentList {
     public addInstrument(Instrument instrument) {
         //TODO
         return null;
-    }
+    } //TODO, THERE IS NO RETURN TYPE GIVEN FOR THIS IN THE UML EITHER. NEED TO FIGURE OUT A RETURN TYPE
     
     /**
      * public method which removes an instrument from the arraylist
