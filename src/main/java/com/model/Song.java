@@ -96,6 +96,32 @@ public class Song {
     }
 
     /**
+     * Moves the specified note up one scale tone
+     * 
+     * @param measure Measure where note is
+     * @param instrument Instrument that note is played by
+     * @param note Note to move
+     * @return Whether the new note is in range
+     */
+    public boolean noteUp(Measure measure, Instrument instrument, Note note){
+        //TODO
+        return false;
+    }
+
+    /**
+     * Moves the specified note down one scale tone
+     * 
+     * @param measure Measure where note is
+     * @param instrument Instrument that note is played by
+     * @param note Note to move
+     * @return Whether the new note is in range
+     */
+    public boolean noteDown(Measure measure, Instrument instrument, Note note){
+        //TODO
+        return false;
+    }
+
+    /**
      * adds an instrument to a song's arraylist of instruments
      * 
      * @param instrument takes in an instrument of type Instrument
@@ -128,6 +154,10 @@ public class Song {
      */
     public void removeMeasure(int measureNumber) {
 
+    }
+
+    public UUID getSongID () { //NEED JAVA DOC
+        return this.songID;
     }
 
 }
