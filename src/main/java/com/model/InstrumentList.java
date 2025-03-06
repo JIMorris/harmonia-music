@@ -1,7 +1,6 @@
 package com.model;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 /**
  * class that creates an instance which has an arraylist of instruments
@@ -17,40 +16,51 @@ public class InstrumentList {
      * object
      */
     private InstrumentList() {
-        //TODO
-    }
+        instruments = new ArrayList<>();
+        }
 
     /**
      * public method which calls the private InstrumentList constructor, 
      * returns the instance of InstrumentList
      */
-    public InstrumentList getInstance() {
-        //TODO
-        return null;
+    public static InstrumentList getInstance() {
+        if (instance == null) {
+            instance = new InstrumentList();
+        }
+        return instance;
     }
+
 
     /**
      * public method which adds a new instrument to the arraylist
      */
-    public addInstrument(Instrument instrument) {
-        //TODO
-        return null;
-    } //TODO, THERE IS NO RETURN TYPE GIVEN FOR THIS IN THE UML EITHER. NEED TO FIGURE OUT A RETURN TYPE
+    public void addInstrument(Instrument instrument) {
+        instruments.add(instrument);
+    }
     
     /**
      * public method which removes an instrument from the arraylist
      */
-    public removeInstrument(Instrument instrument) {
-        //TODO
-        return null;
+    public void removeInstrument(Instrument instrument) {
+        instruments.remove(instrument);
     }
 
     /**
      * public method which saves/updates the arraylist of instruments
      */
-    public save() {
-        //TODO
-        return null;
+    public void save() {
+        // ------------------------------------------------This is a placeholder until we actually make a database -CF
+        System.out.println("Saving instrument list...");
     }
 
+     public ArrayList<Instrument> getInstruments() {
+        return instruments;
+    }
+
+    @Override
+    public String toString() {
+        return "InstrumentList{" +
+                "instruments=" + instruments +
+                '}';
+    }
 }
