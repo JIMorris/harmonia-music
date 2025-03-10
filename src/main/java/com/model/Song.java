@@ -53,6 +53,31 @@ public class Song {
     }
 
     /**
+     * Constructor for loading from JSON
+     * 
+     * @param id UUID of this song
+     * @param title String title of this song
+     * @param author User that authored this song
+     * @param description String description of this song
+     * @param genres List of genres this song matches
+     * @param difficulty int difficulty of this song from 1-5
+     * @param reactions List of reactions to this song
+     * @param published Boolean of whether this song is public
+     * @param tempo int tempo of this song from 30-400
+     * @param keySignature Key of this song
+     * @param timeSignatureNum Top number of the key signature of this song
+     * @param timeSignatureDen Bottom number of the key signature of this song
+     * @param measures List of the measures of this song
+     * @param instruments List of instruments in this song
+     */
+    public Song(UUID id, String title, User author, String description, ArrayList<Genre> genres,
+            int difficulty, ArrayList<Reaction> reactions, boolean published, int tempo,
+            Key keySignature, int timeSignatureNum, int timeSignatureDen, ArrayList<MeasureGroup> measures, ArrayList<Instrument> instruments){
+        //TODO
+    }
+
+
+    /**
      * checks if a song's UUID is the same as another UUID
      * 
      * @param songID takes in a UUID of another song
