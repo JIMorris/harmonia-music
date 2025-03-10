@@ -30,7 +30,7 @@ public class Song {
     private Key keySignature;
     private int timeSignatureNum;
     private int timeSignatureDen;
-    private ArrayList<Measure> measures;
+    private ArrayList<MeasureGroup> measures;
     private ArrayList<Instrument> instruments;
 
     /**
@@ -91,7 +91,7 @@ public class Song {
      *               measure to be returned
      * @return returns the desired measure
      */
-    public Measure getMeasure(int number) {
+    public MeasureGroup getMeasure(int number) {
         return null;
     }
 
@@ -103,7 +103,7 @@ public class Song {
      * @param note Note to move
      * @return Whether the new note is in range
      */
-    public boolean noteUp(Measure measure, Instrument instrument, Note note){
+    public boolean noteUp(MeasureGroup measure, Instrument instrument, Note note){
         //TODO
         return false;
     }
@@ -116,7 +116,7 @@ public class Song {
      * @param note Note to move
      * @return Whether the new note is in range
      */
-    public boolean noteDown(Measure measure, Instrument instrument, Note note){
+    public boolean noteDown(MeasureGroup measure, Instrument instrument, Note note){
         //TODO
         return false;
     }
