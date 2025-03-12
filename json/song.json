@@ -33,10 +33,10 @@
             "ff79cdfd-424c-4026-9a5b-43b9a4653228":
               {
                 "music": [
-                  [12, "Eb", 4],
-                  [12, "F", 4],
-                  [12, "G", 4],
-                  [12, "F", 4]
+                  {"length": 12, "pitch": "Eb", "octave": 4},
+                  {"length": 12, "pitch": "F", "octave": 4},
+                  {"length": 12, "pitch": "G", "octave": 4},
+                  {"length": 12, "pitch": "F", "octave": 4}
                 ],
                 "text": "La la la la"
               }
@@ -52,10 +52,10 @@
             "ff79cdfd-424c-4026-9a5b-43b9a4653228":
               {
                 "music": [
-                  [12, "C", 4],
-                  [12, "D", 4],
-                  [12, "Eb", 4],
-                  [12, "D", 4]
+                  {"length": 12, "pitch": "C", "octave": 4},
+                  {"length": 12, "pitch": "D", "octave": 4},
+                  {"length": 12, "pitch": "Eb", "octave": 4},
+                  {"length": 12, "pitch": "D", "octave": 4}
                 ],
                 "text": "La la la la"
               }
@@ -94,12 +94,12 @@
             "30c429e7-0956-4930-9eeb-9562e7810636":
             {
               "music": [
-                [6, "rest", 4],
-                [6, "Bb", 4],
-                [6, "Bb", 4],
-                [6, "Bb", 4],
-                [12, "Bb", 4],
-                [12, "Bb", 4]
+                {"length": 6, "pitch": "rest", "octave": 4},
+                {"length": 6, "pitch": "Bb", "octave": 4},
+                {"length": 6, "pitch": "Bb", "octave": 4},
+                {"length": 6, "pitch": "Bb", "octave": 4},
+                {"length": 12, "pitch": "Bb", "octave": 4},
+                {"length": 12, "pitch": "Bb", "octave": 4}
               ],
               "text": "Is this the real life?"
             }
@@ -108,7 +108,7 @@
             "ff79cdfd-424c-4026-9a5b-43b9a4653228":
             {
               "music": [
-                [48, "rest", 4]
+                {"length": 48, "pitch": "rest", "octave": 4}
               ],
               "text": ""
             }
@@ -124,13 +124,13 @@
             "30c429e7-0956-4930-9eeb-9562e7810636":
               {
                 "music": [
-                  [6, "rest", 4],
-                  [6, "Ab", 4],
-                  [6, "Ab", 4],
-                  [6, "Bb", 4],
-                  [6, "Ab", 4],
-                  [3, "G", 4],
-                  [15, "F", 4]
+                  {"length": 6, "pitch": "rest", "octave": 4},
+                  {"length": 6, "pitch": "Ab", "octave": 4},
+                  {"length": 6, "pitch": "Ab", "octave": 4},
+                  {"length": 6, "pitch": "Bb", "octave": 4},
+                  {"length": 6, "pitch": "Ab", "octave": 4},
+                  {"length": 3, "pitch": "G", "octave": 4},
+                  {"length": 15, "pitch": "F", "octave": 4}
                 ],
                 "text": "Is this just fantasy?"
               }
@@ -139,7 +139,7 @@
             "ff79cdfd-424c-4026-9a5b-43b9a4653228":
             {
               "music": [
-                [48, "rest", 4]
+                {"length": 48, "pitch": "rest", "octave": 4}
               ],
               "text": ""
             }
