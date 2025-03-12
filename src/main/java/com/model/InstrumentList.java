@@ -30,6 +30,18 @@ public class InstrumentList {
         return instance;
     }
 
+    /**
+     * Gets the instrument that has the matching UUID
+     * @param id UUID of the instrument to get
+     * @return Instrument with given UUID
+     */
+    public Instrument getInstrument(UUID id){
+        for(Instrument instrument : instruments){
+            if(instrument.getInstrumentID() == id)
+                return instrument;
+        }
+        return null;
+    }
 
     /**
      * public method which adds a new instrument to the arraylist
