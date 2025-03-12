@@ -23,6 +23,9 @@ public class DataConstants {
     public static final String SONG_INSTRUMENTS = "instruments";
     public static final String SONG_MUSIC = "music";
     public static final String SONG_TEXT = "text";
+    public static final String SONG_NOTE_LENGTH = "length";
+    public static final String SONG_NOTE_PITCH = "pitch";
+    public static final String SONG_NOTE_OCTAVE = "octave";
 
     public static final String USER_FILE_NAME = "json/user.json";
     public static final String USER_ID = "uuid";
