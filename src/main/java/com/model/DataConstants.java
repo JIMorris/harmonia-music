@@ -18,7 +18,7 @@ public class DataConstants {
     public static final String SONG_TIME_SIGNATURE_NUMERATOR = "timeSignatureNum";
     public static final String SONG_TIME_SIGNATURE_DENOMINATOR = "timeSignatureDen";
     public static final String SONG_MEASURES = "measures";
-    public static final String SONG_LENGTH = "song";
+    public static final String SONG_LENGTH = "length";
     public static final String SONG_CHORD = "chord";
     public static final String SONG_INSTRUMENTS = "instruments";
     public static final String SONG_MUSIC = "music";
