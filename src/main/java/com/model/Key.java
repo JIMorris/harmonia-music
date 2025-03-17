@@ -43,4 +43,13 @@ public enum Key {
         this.label = label;
     }
 
+    /**
+     * TODO
+     * @param key
+     * @return
+     */
+    public static Key fromString(String key){
+        //TODO
+        return null;
+    }
 }
