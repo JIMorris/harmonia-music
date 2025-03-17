@@ -15,9 +15,6 @@ import org.json.simple.parser.JSONParser;
  */
 public class DataLoader extends DataConstants {
     private static DataLoader instance;
-    private UserList userList;
-    private SongList songList;
-    private InstrumentList instrumentList;
 
     /**
      * Makes a new FileReader
@@ -30,9 +27,11 @@ public class DataLoader extends DataConstants {
      * Gets an instance of FileReader
      * @return The instance of FileReader
      */
-    public static FileReader getInstance(){
-        //TODO
-        return null;
+    public static DataLoader getInstance(){
+        if(instance==null){
+            instance = new DataLoader();
+        }
+        return instance;
     }
 
     /**
@@ -118,19 +117,19 @@ public class DataLoader extends DataConstants {
 
                 ArrayList<Genre> genres = getGenres((JSONArray)songJSON.get(SONG_GENRES));
 
-                int difficulty = (int)songJSON.get(SONG_DIFFICULTY);
+                int difficulty = Math.toIntExact((long)songJSON.get(SONG_DIFFICULTY));
 
                 ArrayList<Reaction> reactions = getReactions((JSONArray)songJSON.get(SONG_REACTIONS));
 
                 boolean test = (boolean)songJSON.get(SONG_PUBLISHED);
 
-                int tempo = (int)songJSON.get(SONG_TEMPO);
+                int tempo = Math.toIntExact((long)songJSON.get(SONG_TEMPO));
 
                 String keyString = (String)songJSON.get(SONG_KEY_SIGNATURE);
                 Key key = Key.fromString(keyString);
 
-                int timeSigNum = (int)songJSON.get(SONG_TIME_SIGNATURE_NUMERATOR);
-                int timeSigDen = (int)songJSON.get(SONG_TIME_SIGNATURE_DENOMINATOR);
+                int timeSigNum = Math.toIntExact((long)songJSON.get(SONG_TIME_SIGNATURE_NUMERATOR));
+                int timeSigDen = Math.toIntExact((long)songJSON.get(SONG_TIME_SIGNATURE_DENOMINATOR));
 
                 ArrayList<Instrument> instruments = getInstruments((JSONArray)songJSON.get(SONG_INSTRUMENTS));
 
@@ -139,6 +138,7 @@ public class DataLoader extends DataConstants {
                 
 
                 Song newSong = new Song(id, title, author, description, genres, difficulty, reactions, test, tempo, key, timeSigNum, timeSigDen, measures, instruments);
+                songs.add(newSong);
             }
         } catch (Exception e) {
             throw e;
@@ -166,7 +166,7 @@ public class DataLoader extends DataConstants {
         for(int i=0; i < reactionsJSON.size(); i++){
             JSONObject reactionJSON = (JSONObject)reactionsJSON.get(i);
 
-            int rating = (int)reactionJSON.get(SONG_RATING);
+            int rating = Math.toIntExact((long)reactionJSON.get(SONG_RATING));
             String comment = (String)reactionJSON.get(SONG_COMMENT);
             
             String idString = (String)reactionJSON.get(SONG_COMMENTOR);
@@ -181,6 +181,18 @@ public class DataLoader extends DataConstants {
     private ArrayList<Instrument> getInstruments(JSONArray instrumentsJSON){
         ArrayList<Instrument> instruments = new ArrayList<>();
         InstrumentList instrumentList = InstrumentList.getInstance();
+
+        //TODO remove
+        try {
+            ArrayList<Instrument> temp = loadInstruments();
+            for(Instrument instrument : temp){
+                instrumentList.addInstrument(instrument);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //TODO finsh remove
+       
 
         for(int i=0; i<instrumentsJSON.size(); i++){
             String idString = (String)instrumentsJSON.get(i);
@@ -197,17 +209,19 @@ public class DataLoader extends DataConstants {
         for(int i=0; i<measureGroupsJSON.size(); i++){
             JSONObject measureGroupJSON = (JSONObject)measureGroupsJSON.get(i);
 
-            int length = (int)measureGroupJSON.get(SONG_LENGTH);
+            int length = Math.toIntExact((long)measureGroupJSON.get(SONG_LENGTH));
             
             String chordString = (String)measureGroupJSON.get(SONG_CHORD);
             Chord chord = Chord.fromString(chordString);
            
             HashMap<Instrument, Measure> measures = new HashMap<>();
             for(int j=0; j<instruments.size(); j++){
+                JSONObject measuresJSON = (JSONObject)measureGroupJSON.get(SONG_INSTRUMENTS);
+
                 Instrument instrument = instruments.get(j);
                 UUID instrumentID = instrument.getInstrumentID();
-                
-                JSONObject measureJSON = (JSONObject)measureGroupJSON.get(instrumentID.toString());
+
+                JSONObject measureJSON = (JSONObject)measuresJSON.get(instrumentID.toString());
                 Measure measure = getMeasure(measureJSON);
                 
                 measures.put(instrument, measure);
@@ -224,12 +238,12 @@ public class DataLoader extends DataConstants {
         for(int i=0; i<notesJSON.size(); i++){
             JSONObject noteJSON = (JSONObject)notesJSON.get(i);
             
-            int duration = (int)noteJSON.get(SONG_NOTE_LENGTH);
+            int duration = Math.toIntExact((long)noteJSON.get(SONG_NOTE_LENGTH));
             
             String pitchString = (String)noteJSON.get(SONG_NOTE_PITCH);
             Pitch pitch = Pitch.fromString(pitchString);
 
-            int octave = (int)noteJSON.get(SONG_NOTE_OCTAVE);
+            int octave = Math.toIntExact((long)noteJSON.get(SONG_NOTE_OCTAVE));
 
             Note note = new Note(duration, pitch, octave);
             notes.add(note);
@@ -239,6 +253,4 @@ public class DataLoader extends DataConstants {
         
         return new Measure(notes, text);
     }
-
-
 }
