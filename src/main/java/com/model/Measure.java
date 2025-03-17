@@ -22,6 +22,16 @@ public class Measure {
 
     /**
      * TODO
+     * @param notes
+     * @param text
+     */
+    public Measure(ArrayList<Note> notes, String text){
+        this.notes = notes;
+        this.text = text;
+    }
+
+    /**
+     * TODO
      * @param instrument
      * @param notes
      * @param text

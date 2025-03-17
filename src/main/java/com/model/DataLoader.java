@@ -127,7 +127,7 @@ public class DataLoader extends DataConstants {
                 int tempo = (int)songJSON.get(SONG_TEMPO);
 
                 String keyString = (String)songJSON.get(SONG_KEY_SIGNATURE);
-                Key key = Key.getKey(keyString); //TODO Add method to Key
+                Key key = Key.fromString(keyString);
 
                 int timeSigNum = (int)songJSON.get(SONG_TIME_SIGNATURE_NUMERATOR);
                 int timeSigDen = (int)songJSON.get(SONG_TIME_SIGNATURE_DENOMINATOR);
@@ -152,7 +152,7 @@ public class DataLoader extends DataConstants {
 
         for(int i=0; i < genresJSON.size(); i++){
             String genreString = (String)genresJSON.get(i);
-            Genre genre = Genre.getGenre(genreString); //TODO Add method to Genre
+            Genre genre = Genre.fromString(genreString);
             genres.add(genre);
         }
 
@@ -184,7 +184,8 @@ public class DataLoader extends DataConstants {
 
         for(int i=0; i<instrumentsJSON.size(); i++){
             String idString = (String)instrumentsJSON.get(i);
-            Instrument instrument = instrumentList.getInstrument(); //TODO Add Instrument method
+            UUID id = UUID.fromString(idString);
+            Instrument instrument = instrumentList.getInstrument(id);
             instruments.add(instrument);
         }
         return instruments;
@@ -199,7 +200,7 @@ public class DataLoader extends DataConstants {
             int length = (int)measureGroupJSON.get(SONG_LENGTH);
             
             String chordString = (String)measureGroupJSON.get(SONG_CHORD);
-            Chord chord = Chord.fromString(chordString); //TODO Add Chord method
+            Chord chord = Chord.fromString(chordString);
            
             HashMap<Instrument, Measure> measures = new HashMap<>();
             for(int j=0; j<instruments.size(); j++){
@@ -211,7 +212,7 @@ public class DataLoader extends DataConstants {
                 
                 measures.put(instrument, measure);
             }
-            measureGroups.add(new MeasureGroup(length, chord, measures)); //TODO Add MeasureGroup Constructor
+            measureGroups.add(new MeasureGroup(length, chord, measures));
         }
         return measureGroups;
     }
@@ -223,12 +224,12 @@ public class DataLoader extends DataConstants {
         for(int i=0; i<notesJSON.size(); i++){
             JSONObject noteJSON = (JSONObject)notesJSON.get(i);
             
-            int duration = (int)noteJSON.get(SONG_NOTE_DURATION); //Add Constant
+            int duration = (int)noteJSON.get(SONG_NOTE_LENGTH);
             
-            String pitchString = (String)noteJSON.get(SONG_NOTE_PITCH); //Add Constant
-            Pitch pitch = Pitch.fromString(pitchString); //Add Pitch method
+            String pitchString = (String)noteJSON.get(SONG_NOTE_PITCH);
+            Pitch pitch = Pitch.fromString(pitchString);
 
-            int octave = (int)noteJSON.get(SONG_NOTE_OVTAVE);
+            int octave = (int)noteJSON.get(SONG_NOTE_OCTAVE);
 
             Note note = new Note(duration, pitch, octave);
             notes.add(note);
@@ -236,6 +237,8 @@ public class DataLoader extends DataConstants {
 
         String text = (String)measureJSON.get(SONG_TEXT);
         
-        return new Measure(notes, text); //Add Measure constructor
+        return new Measure(notes, text);
     }
+
+
 }

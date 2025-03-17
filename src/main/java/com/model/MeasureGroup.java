@@ -27,6 +27,18 @@ public class MeasureGroup {
 
     /**
      * TODO
+     * @param length
+     * @param chord
+     * @param measures
+     */
+    public MeasureGroup(int length, Chord chord, HashMap<Instrument, Measure> measures){
+        this.length = length;
+        this.chord = chord;
+        this.measures = measures;
+    }
+
+    /**
+     * TODO
      * @param measureGroup
      */
     public MeasureGroup(MeasureGroup measureGroup){
