@@ -20,4 +20,14 @@ public enum Genre {
     private Genre(String label) {
         this.label = label;
     }
+
+    /**
+     * TODO
+     * @param genre
+     * @return
+     */
+    public static Genre fromString(String genre){
+        //TODO
+        return null;
+    }
 }

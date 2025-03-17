@@ -26,5 +26,14 @@ public enum Pitch {
         this.label = label;
     }
     
+    /**
+     * TODO
+     * @param pitch
+     * @return
+     */
+    public static Pitch fromString(String pitch){
+        //TODO
+        return null;
+    }
 
 }
