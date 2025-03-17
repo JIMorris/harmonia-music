@@ -7,19 +7,33 @@ import java.util.ArrayList;
  */
 public class Measure {
     private Instrument instrument;
-    private ArrayList<Note> music;
-    private String test;
+    private ArrayList<Note> notes;
+    private String text;
 
     /**
      * Makes a new part
      * @param instrument Instrument of this part
      */
     public Measure(Instrument instrument){
-        //TODO
+        this.instrument = instrument;
+        this.notes = new ArrayList<>();
+        this.text = "";
     }
 
     /**
-     * Inserts or changes a note at the given position
+     * TODO
+     * @param instrument
+     * @param notes
+     * @param text
+     */
+    public Measure(Instrument instrument, ArrayList<Note> notes, String text){
+        this.instrument = instrument;
+        this.notes = notes;
+        this.text = text;
+    }
+
+    /**
+     * Inserts a note at the given position
      * @param note Note to insert
      * @param position Where to insert the note
      * @return Whether the provided position is valid
