@@ -170,7 +170,7 @@ public class MusicFacade {
      * @param instrument Instrument selected
      * @return The list of measures of this song
      */
-    public ArrayList<Part> selectInstrument(Instrument instrument){
+    public ArrayList<Measure> selectInstrument(Instrument instrument){
         //TODO
         return null;
     }
@@ -180,7 +180,7 @@ public class MusicFacade {
      * @param part Measure to get notes of
      * @return A list of the notes of the given measure
      */
-    public ArrayList<Note> getNotes(Part part){
+    public ArrayList<Note> getNotes(Measure part){
         //TODO
         return null;
     }
@@ -212,7 +212,7 @@ public class MusicFacade {
      * Selects a measure 
      * @param measure Measure to select
      */
-    public void selectMeasure(Measure measure){
+    public void selectMeasure(MeasureGroup measure){
         //TODO
     }
 

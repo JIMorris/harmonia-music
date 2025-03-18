@@ -30,17 +30,37 @@ public class Song {
     private Key keySignature;
     private int timeSignatureNum;
     private int timeSignatureDen;
-    private ArrayList<Measure> measures;
+    private ArrayList<MeasureGroup> measureGroups;
     private ArrayList<Instrument> instruments;
 
     /**
-     * constructure that creates a new song.
+     * Creates a new empty song
      * 
-     * @param title  takes in a string for the title of the new song
-     * @param author takes in a User for the author of the new song
+     * @param title String for the title of the song
+     * @param author User that authored the song
+     * @param description String for the description of the song
+     * @param genres List of Genres for this song
+     * @param difficulty int difficulty of the song (1-5)
+     * @param tempo int tempo of the song (30-400)
+     * @param keySignature Key of the song
+     * @param timeSignatureNum Top number of the time signature
+     * @param timeSignatureDen Bottom number of the time signature
      */
-    public Song(String title, User author) {
-
+    public Song(String title, User author, String description, ArrayList<Genre> genres, int difficulty, int tempo, Key keySignature, int timeSignatureNum, int timeSignatureDen) {
+        this.songID = UUID.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.genres = genres;
+        this.difficulty = difficulty;
+        this.reactions = new ArrayList<>();
+        this.published = false;
+        this.tempo = tempo;
+        this.keySignature = keySignature;
+        this.timeSignatureNum = timeSignatureNum;
+        this.timeSignatureDen = timeSignatureDen;
+        this.measureGroups = new ArrayList<>();
+        this.instruments = new ArrayList<>();
     }
 
     /**
@@ -48,8 +68,128 @@ public class Song {
      * 
      * @param song takes in a song to be copied
      */
-    public Song(Song song) {
+    public Song(Song song, User author) {
+        this.songID = UUID.randomUUID();
+        this.title = song.getTitle();
+        this.author = author;
+        this.description = song.getDescription();
+        this.genres = (ArrayList<Genre>)song.getGenres().clone();
+        this.difficulty = song.getDifficulty();
+        this.reactions = new ArrayList<>();
+        this.published = false;
+        this.tempo = song.getTempo();
+        this.keySignature = song.getKeySignature();
+        this.timeSignatureNum = song.getTimeSignatureNum();
+        this.timeSignatureDen = song.getTimeSignatureDen();
+        this.measureGroups = copyMeasureGroups(song.getMeasureGroups());
+        this.instruments = (ArrayList<Instrument>)song.getInstruments().clone();
+    }
 
+    /**
+     * Constructor for loading from JSON
+     * 
+     * @param id UUID of this song
+     * @param title String title of this song
+     * @param author User that authored this song
+     * @param description String description of this song
+     * @param genres List of genres this song matches
+     * @param difficulty int difficulty of this song from 1-5
+     * @param reactions List of reactions to this song
+     * @param published Boolean of whether this song is public
+     * @param tempo int tempo of this song from 30-400
+     * @param keySignature Key of this song
+     * @param timeSignatureNum Top number of the key signature of this song
+     * @param timeSignatureDen Bottom number of the key signature of this song
+     * @param measures List of the measures of this song
+     * @param instruments List of instruments in this song
+     */
+    public Song(UUID id, String title, User author, String description, ArrayList<Genre> genres,
+            int difficulty, ArrayList<Reaction> reactions, boolean published, int tempo,
+            Key keySignature, int timeSignatureNum, int timeSignatureDen, ArrayList<MeasureGroup> measures, ArrayList<Instrument> instruments){
+        this.songID = id;
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.genres = genres;
+        this.difficulty = difficulty;
+        this.reactions = reactions;
+        this.published = published;
+        this.tempo = tempo;
+        this.keySignature = keySignature;
+        this.timeSignatureNum = timeSignatureNum;
+        this. timeSignatureDen = timeSignatureDen;
+        this.measureGroups = measures;
+        this.instruments = instruments;
+    }
+
+    //TODO
+    public UUID getSongID () {
+        return this.songID;
+    }
+
+    //TODO
+    public String getTitle() {
+        return title;
+    }
+
+    //TODO
+    public User getAuthor() {
+        return author;
+    }
+
+    //TODO
+    public String getDescription() {
+        return description;
+    }
+
+    //TODO
+    public ArrayList<Genre> getGenres() {
+        return genres;
+    }
+
+    //TODO
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    //TODO
+    public ArrayList<Reaction> getReactions() {
+        return reactions;
+    }
+
+    //TODO
+    public boolean isPublished() {
+        return published;
+    }
+
+    //TODO
+    public int getTempo() {
+        return tempo;
+    }
+
+    //TODO
+    public Key getKeySignature() {
+        return keySignature;
+    }
+
+    //TODO
+    public int getTimeSignatureNum() {
+        return timeSignatureNum;
+    }
+
+    //TODO
+    public int getTimeSignatureDen() {
+        return timeSignatureDen;
+    }
+
+    //TODO
+    public ArrayList<MeasureGroup> getMeasureGroups() {
+        return measureGroups;
+    }
+
+    //TODO
+    public ArrayList<Instrument> getInstruments() {
+        return instruments;
     }
 
     /**
@@ -71,7 +211,9 @@ public class Song {
      * @return returns the reaction that has been created
      */
     public Reaction addReaction(int rating, String comment, User author) {
-        return null;
+        Reaction reaction = new Reaction(rating, comment, author);
+        this.reactions.add(reaction);
+        return reaction;
     }
 
     /**
@@ -81,7 +223,7 @@ public class Song {
      *                 to be removed from the arraylist
      */
     public void removeReaction(Reaction reaction) {
-
+        this.reactions.remove(reaction);
     }
 
     /**
@@ -91,21 +233,18 @@ public class Song {
      *               measure to be returned
      * @return returns the desired measure
      */
-    public Measure getMeasure(int number) {
-        return null;
+    public MeasureGroup getMeasure(int number) {
+        return measureGroups.get(number);
     }
 
     /**
      * Moves the specified note up one scale tone
      * 
-     * @param measure Measure where note is
-     * @param instrument Instrument that note is played by
      * @param note Note to move
      * @return Whether the new note is in range
      */
-    public boolean noteUp(Measure measure, Instrument instrument, Note note){
-        //TODO
-        return false;
+    public boolean noteUp(Note note){
+        return note.up(this.keySignature);//TODO
     }
 
     /**
@@ -116,9 +255,8 @@ public class Song {
      * @param note Note to move
      * @return Whether the new note is in range
      */
-    public boolean noteDown(Measure measure, Instrument instrument, Note note){
-        //TODO
-        return false;
+    public boolean noteDown(Note note){
+        return note.down(this.keySignature); //TODO
     }
 
     /**
@@ -127,7 +265,9 @@ public class Song {
      * @param instrument takes in an instrument of type Instrument
      */
     public void addInstrument(Instrument instrument) {
-
+        for(MeasureGroup measureGroup : measureGroups){
+            measureGroup.addPart(instrument);
+        }
     }
 
     /**
@@ -136,14 +276,16 @@ public class Song {
      * @param instrument takes in an instrument of type instrument to be removed
      */
     public void removeInstrument(Instrument instrument) {
-
+        for(MeasureGroup measureGroup : measureGroups){
+            measureGroup.removePart(instrument); //TODO
+        }
     }
 
     /**
      * adds a measure to a song's arraylist of measures
      */
     public void addMeasure() {
-
+        measureGroups.add(new MeasureGroup(timeSignatureNum, instruments)); //TODO
     }
 
     /**
@@ -153,11 +295,20 @@ public class Song {
      *                      measure to be removed
      */
     public void removeMeasure(int measureNumber) {
-
+        measureGroups.remove(measureNumber);
     }
 
-    public UUID getSongID () { //NEED JAVA DOC
-        return this.songID;
+
+
+    //TODO
+    public ArrayList<MeasureGroup> copyMeasureGroups(ArrayList<MeasureGroup> measureGroups){
+        ArrayList<MeasureGroup> copy = new ArrayList<>();
+        for(MeasureGroup measureGroup : measureGroups){
+            copy.add((MeasureGroup)measureGroup.copy()); //TODO
+        }
+        return copy;
     }
+
+    
 
 }

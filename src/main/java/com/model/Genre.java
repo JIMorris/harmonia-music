@@ -5,10 +5,10 @@ package com.model;
  * JAZZ, ROCK
  */
 public enum Genre {
-    POP(""),
-    CLASSICAL(""),
-    JAZZ(""),
-    ROCK("");
+    POP("Pop"),
+    CLASSICAL("Clasical"),
+    JAZZ("Jazz"),
+    ROCK("Rock");
 
     public final String label;
 
@@ -19,5 +19,19 @@ public enum Genre {
      */
     private Genre(String label) {
         this.label = label;
+    }
+
+    /**
+     * TODO
+     * 
+     * @param genre
+     * @return
+     */
+    public static Genre fromString(String genre) {
+        for (Genre g : values()) {
+            if (g.label.equalsIgnoreCase(genre))
+                return g;
+        }
+        return null;
     }
 }

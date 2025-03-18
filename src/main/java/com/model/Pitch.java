@@ -1,24 +1,28 @@
 package com.model;
 
 public enum Pitch {
-    REST(""),
-    A_FLAT(""),
-    A(""),
-    A_SHARP(""),
-    B_FLAT(""),
-    B(""),
-    C(""),
-    C_SHARP(""),
-    D_FLAT(""),
-    D(""),
-    D_SHARP(""),
-    E_FLAT(""),
-    E(""),
-    F(""),
-    F_SHARP(""),
-    G_FLAT(""),
-    G(""),
-    G_SHARP("");
+    REST("R"),
+    A_FLAT("Ab"),
+    A("A"),
+    A_SHARP("A#"),
+    B_FLAT("Bb"),
+    B("B"),
+    B_SHARP("B#"),
+    C_FLAT("Cb"),
+    C("C"),
+    C_SHARP("C#"),
+    D_FLAT("Db"),
+    D("D"),
+    D_SHARP("D#"),
+    E_FLAT("Eb"),
+    E("E"),
+    E_SHARP("E#"),
+    F_FLAT("Fb"),
+    F("F"),
+    F_SHARP("F#"),
+    G_FLAT("Gb"),
+    G("G"),
+    G_SHARP("G#");
 
     public final String label;
 
@@ -26,5 +30,17 @@ public enum Pitch {
         this.label = label;
     }
     
+    /**
+     * TODO
+     * @param pitch
+     * @return
+     */
+    public static Pitch fromString(String pitch){
+        for (Pitch p : values()) {
+            if (p.label.equalsIgnoreCase(pitch))
+                return p;
+        }
+        return null;
+    }
 
 }

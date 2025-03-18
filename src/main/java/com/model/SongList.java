@@ -16,7 +16,7 @@ public class SongList {
      * private constructor that creates a single instance of the SongList object
      */
     private SongList() {
-
+        songs = DataLoader.getInstance().loadSongs();
     }
 
     /**
@@ -25,8 +25,10 @@ public class SongList {
      * 
      * @return returns the singular instance of SongList
      */
-    public SongList getInstance() {
-        return null;
+    public static SongList getInstance() {
+        if(instance == null)
+            instance = new SongList();
+        return instance;
     }
 
     /**
@@ -36,16 +38,34 @@ public class SongList {
      * @return returns the desired song
      */
     public Song getSong(UUID songID) {
+        for(Song song : songs){
+            if(song.getSongID().equals(songID))
+                return song;
+        }
         return null;
     }
 
     /**
-     * adds a new Song to the arraylist of Songs
+     * Creates a new empty song, adds it the song list, and returns it
      * 
-     * @return returns the new Song that is created
+     * @param title String for the title of the song
+     * @param author User that authored the song
+     * @param description String for the description of the song
+     * @param genres List of Genres for this song
+     * @param difficulty int difficulty of the song (1-5)
+     * @param tempo int tempo of the song (30-400)
+     * @param keySignature Key of the song
+     * @param timeSignatureNum Top number of the time signature
+     * @param timeSignatureDen Bottom number of the time signature
+     * 
+     * @return The new blank song
      */
-    public Song newSong() {
-        return null;
+    public Song newSong(String title, User author, String description, 
+                ArrayList<Genre> genres, int difficulty, int tempo, 
+                Key keySignature, int timeSignatureNum, int timeSignatureDen) {
+        Song newSong = new Song(title, author, description, genres, difficulty, tempo, keySignature, timeSignatureNum, timeSignatureDen);
+        songs.add(newSong);
+        return newSong;
     }
 
     /**
@@ -54,8 +74,10 @@ public class SongList {
      * @param song takes in a song (of type Song) to be copied
      * @return returns the Song's copy
      */
-    public Song copySong(Song song) {
-        return null;
+    public Song copySong(Song song, User author) {
+        Song copy = new Song(song, author);
+        songs.add(copy);
+        return copy;
     }
 
     /**
@@ -64,26 +86,8 @@ public class SongList {
      * @param song takes in a song (of type Song) to be removed
      */
     public void removeSong(Song song) {
-
+        songs.remove(song);
     }
-
-    /**
-     * sorts the arrayList of songs in a specified manner
-     * 
-     * @param type  takes in a String named type (determines how the arraylist will
-     *              be sorted)
-     * @param up    takes in a boolean named up to determine whether or not the
-     *              arraylist should be sorted up or down (ex: lowest to highest bpm
-     *              or vice versa)
-     * @param songs takes in an arraylist of type Song to be sorted
-     * @return returns the newly sorted arraylist of type Song
-     */
-    public static ArrayList<Song> sort(String type, boolean up, ArrayList<Song> songs) {
-        return null;
-    }
-
-    // (BPM, Length, Difficulty) -added this here because its in the UML, not sure
-    // why
 
     /**
      * filters the arraylist of Songs by a desired title (way in which it is sorted)
@@ -93,7 +97,14 @@ public class SongList {
      * @return returns the newly filtered arraylist of Songs
      */
     public ArrayList<Song> filterByTitle(String title) {
-        return null;
+        ArrayList<Song> filteredSongs = new ArrayList<>();
+        
+        for(Song song : songs){
+            if(song.getTitle().equals(title)) //TODO Add Getter to Song
+                filteredSongs.add(song);
+        }
+
+        return filteredSongs;
     }
 
     /**
@@ -104,7 +115,14 @@ public class SongList {
      * @return returns the newly filtered arraylist of Songs
      */
     public ArrayList<Song> filterByGenre(Genre genre) {
-        return null;
+        ArrayList<Song> filteredSongs = new ArrayList<>();
+
+        for(Song song : songs){
+            if(song.getGenres().contains(genre)) //TODO Add getter to Song
+                filteredSongs.add(song);
+        }
+
+        return filteredSongs;
     }
 
     /**
@@ -117,20 +135,15 @@ public class SongList {
      * @return returns the newly filtered arraylist of Songs
      */
     public ArrayList<Song> filterByBPM(int minBPM, int maxBPM) {
-        return null;
-    }
+        ArrayList<Song> filteredSongs = new ArrayList<>();
 
-    /**
-     * filters the arraylist of Songs by their length
-     * 
-     * @param minLength takes in the minimum BPM (int) desired for the filtered
-     *                  arraylist of Songs
-     * @param maxLength takes in the maximum BPM (int) desired for the filtered
-     *                  arraylist of Songs
-     * @return returns the newly filtered arraylist of Songs
-     */
-    public ArrayList<Song> filterBylength(int minLength, int maxLength) {
-        return null;
+        for(Song song : songs){
+            int tempo = song.getTempo(); //TODO Add getter to Song
+            if(tempo>=minBPM && tempo<=maxBPM)
+                filteredSongs.add(song);
+        }
+
+        return filteredSongs;
     }
 
     /**
@@ -141,7 +154,14 @@ public class SongList {
      * @return returns the newly filtered arraylist of Songs
      */
     public ArrayList<Song> filterByDifficulty(int difficulty) {
-        return null;
+        ArrayList<Song> filteredSongs = new ArrayList<>();
+
+        for(Song song : songs){
+            if(song.getDifficulty() == difficulty) //TODO Add getter to Song
+                songs.add(song);
+        }
+
+        return filteredSongs;
     }
     /**
      * saves the chnages made to the instance of SongList
