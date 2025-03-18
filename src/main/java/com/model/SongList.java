@@ -167,6 +167,6 @@ public class SongList {
      * saves the chnages made to the instance of SongList
      */
     public void save() {
-
+        DataWriter.getInstance().saveSongs();
     }
 }

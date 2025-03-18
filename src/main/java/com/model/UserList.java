@@ -70,6 +70,6 @@ public class UserList {
     }
 
     public void save() {
-        FileWriter.getInstance().saveUsers(); // ????? - simion
+        DataWriter.getInstance().saveUsers(); // ????? - simion
     }
 }
