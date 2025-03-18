@@ -25,7 +25,7 @@ public class SongList {
      * 
      * @return returns the singular instance of SongList
      */
-    public SongList getInstance() {
+    public static SongList getInstance() {
         if(instance == null)
             instance = new SongList();
         return instance;
