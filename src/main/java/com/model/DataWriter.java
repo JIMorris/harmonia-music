@@ -3,6 +3,8 @@ package com.model;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -13,9 +15,6 @@ import org.json.simple.JSONObject;
  */
 public class DataWriter extends DataConstants {
     private static DataWriter instance;
-    private UserList userList;
-    private SongList songList;
-    private InstrumentList instrumentList;
 
     /**
      * Makes a new DataWriter
@@ -29,17 +28,66 @@ public class DataWriter extends DataConstants {
      * @return The instance of DataReader
      */
     public static DataWriter getInstance(){
-        //TODO
-        return null;
+        if(instance==null){
+            instance = new DataWriter();
+        }
+        return instance;
     }
 
     /**
      * Saves Users to user json file
      * @return Whether the file saving was successful
      */
-    public boolean saveUsers(){
-        //TODO
-        return false;
+    public ArrayList<User> saveUsers() throws Exception{
+        //Hardcoding a User object
+        
+        //UserList userList = UserList.getInstance();
+        //ArrayList<User> users = userList.getUsers();
+        JSONArray usersJSON = new JSONArray();
+
+        //Creating all the json user objects
+        for(int i=0; i < users.size(); i++) {
+            usersJSON.add(getUserJSON(users.get(i)));
+        }
+    }
+
+    /**
+     * Saves Instruments to instrument json file
+     * @return Whether the file saving was successful
+     */
+    public ArrayList<Instrument> saveInstruments() throws Exception{
+        //Hardcoded Instrument
+        ArrayList<Instrument> instruments = new ArrayList<>();
+        instruments.add(new Instrument(UUID.fromString("ff79cdfd-424c-4026-9a5b-43b9a4653228"), "Piano", "piano.png"));
+        
+        //Implementation with InstrumentList
+        //InstrumentList instrumentList = InstrumentList.getInstance();
+        //ArrayList<Instrument> instruments = instrumentList.getInstruments();
+        JSONArray instrumentsJSON = new JSONArray();
+        //I am not loading instruments from the InstrumentList class
+        //I think the logic is not added so I cannot write the current information from instrumentjson
+
+        //Creating all the json instrument objects
+        for(int i=0; i < instruments.size(); i++) {
+            instrumentsJSON.add(getInstrumentJSON(instruments.get(i)));
+        }
+
+        //Writing instrument JSON file
+        try (FileWriter file = new FileWriter(INSTRUMENT_TEMP_FILE_NAME)) {
+            file.write(instrumentsJSON.toJSONString());
+            file.flush();
+            return instruments;
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+
+    public static JSONObject getInstrumentJSON(Instrument instrument) {
+        JSONObject instrumentDetails = new JSONObject();
+        instrumentDetails.put(INSTRUMENT_ID, instrument.getInstrumentID().toString());
+        instrumentDetails.put(INSTRUMENT_NAME, instrument.getName());
+        instrumentDetails.put(INSTRUMENT_IMAGE_FILE, instrument.getImageFile());
+        return instrumentDetails;
     }
 
     /**
@@ -51,44 +99,12 @@ public class DataWriter extends DataConstants {
         return false;
     }
 
-    /**
-     * Saves Instruments to instrument json file
-     * @return Whether the file saving was successful
-     */
-    public ArrayList<Instrument> saveInstruments() throws Exception{
-        //Instrument instrument = Instrument
-        //ArrayList<Instrument> instruments = new ArrayList<>();
-        //Hardcoded Instruments
-        ArrayList<Instrument> instrumentList = new ArrayList();
-		instrumentList.add(new Instrument("2309553344", "Piano", "piano.png",));
-
-        JSONArray jsonInstruments = new JSONArray();
-        for(int i=0; i < instruments.size(); i++) {
-            jsonInstruments.add(getInstrumentJSON(instruments.get(i)));
-        }
-
-        try (FileWriter file = new FileWriter(INSTRUMENT_TEMP_FILE_NAME)) {
-
-            file.write(jsonInstruments.toJSONString());
-            file.flush();
-
-            return instruments;
+    public static void main(String[] args) {
+        DataWriter writer = DataWriter.getInstance();
+        try {
+            writer.saveInstruments();
         } catch (Exception e) {
-            throw e;
+            e.printStackTrace();
         }
-
-        public static JSONObject getInstrumentJSON(Instrument instrument) {
-            JSONObject instrumentDetails = new JSONObject();
-            instrumentDetails.put(INSTRUMENT_ID, instrument.getUuid());
-            instrumentDetails.put(INSTRUMENT_NAME, instrument.getName());
-            instrumentDetails.put(INSTRUMENT_IMAGE_FILE, instrument.getImageFile());
-            
-            return instrumentDetails;
-        }
-
-        public static void main(String[] args) {
-            DataWriter.saveInstruments();
-        }
-
     }
 }
