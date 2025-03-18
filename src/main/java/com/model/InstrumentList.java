@@ -17,8 +17,13 @@ public class InstrumentList {
      * object
      */
     private InstrumentList() {
-        instruments = new ArrayList<>();
+        try {
+            instruments = DataLoader.getInstance().loadInstruments();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        
+    }
 
     /**
      * public method which calls the private InstrumentList constructor, 
@@ -32,19 +37,17 @@ public class InstrumentList {
     }
 
     /**
-     * Retrieves an instrument with the matching uuid
-     * 
-     * @param id UUID of requested instrument
-     * @return Instrument with matching UUID
+     * Gets the instrument that has the matching UUID
+     * @param id UUID of the instrument to get
+     * @return Instrument with given UUID
      */
     public Instrument getInstrument(UUID id){
         for(Instrument instrument : instruments){
-            if(instrument.getInstrumentID().equals(id))
+            if(instrument.getInstrumentID() == id)
                 return instrument;
         }
         return null;
     }
-
 
     /**
      * public method which adds a new instrument to the arraylist
