@@ -68,6 +68,7 @@ public class InstrumentList {
      */
     public void save() {
         // ------------------------------------------------This is a placeholder until we actually make a database -CF
+        // datawriter.getInstance.saveInstruments
         System.out.println("Saving instrument list...");
     }
 
