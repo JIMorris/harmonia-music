@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * class that creates an instance which has an arraylist of instruments
@@ -28,6 +29,20 @@ public class InstrumentList {
             instance = new InstrumentList();
         }
         return instance;
+    }
+
+    /**
+     * Retrieves an instrument with the matching uuid
+     * 
+     * @param id UUID of requested instrument
+     * @return Instrument with matching UUID
+     */
+    public Instrument getInstrument(UUID id){
+        for(Instrument instrument : instruments){
+            if(instrument.getInstrumentID().equals(id))
+                return instrument;
+        }
+        return null;
     }
 
 

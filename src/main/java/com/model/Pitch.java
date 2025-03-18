@@ -7,6 +7,8 @@ public enum Pitch {
     A_SHARP(""),
     B_FLAT(""),
     B(""),
+    B_SHARP(""),
+    C_FLAT(""),
     C(""),
     C_SHARP(""),
     D_FLAT(""),
@@ -14,6 +16,8 @@ public enum Pitch {
     D_SHARP(""),
     E_FLAT(""),
     E(""),
+    E_SHARP(""),
+    F_FLAT(""),
     F(""),
     F_SHARP(""),
     G_FLAT(""),
@@ -26,5 +30,14 @@ public enum Pitch {
         this.label = label;
     }
     
+    /**
+     * TODO
+     * @param pitch
+     * @return
+     */
+    public static Pitch fromString(String pitch){
+        //TODO
+        return null;
+    }
 
 }
