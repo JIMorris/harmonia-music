@@ -1,41 +1,65 @@
 package com.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
- * A measure of a song
+ * An instrument part of a measure
  */
 public class Measure {
-    private int length;
-    private Chord chord;
-    private HashMap<Instrument, Part> instruments;
+    private Instrument instrument;
+    private ArrayList<Note> notes;
+    private String text;
 
     /**
-     * Makes a new measure
-     * @param length The length of this measure
-     * @param chord The chord of this measure
-     * @param currentInstruments The instruments that will play in this measure
+     * Makes a new part
+     * @param instrument Instrument of this part
      */
-    public Measure(int length, Chord chord, ArrayList<Instrument> currentInstruments){
-        // TODO
+    public Measure(Instrument instrument){
+        this.instrument = instrument;
+        this.notes = new ArrayList<>();
+        this.text = "";
     }
 
     /**
-     * Adds an instrument to this measure
-     * @param instrument Instrument to add
+     * TODO
+     * @param notes
+     * @param text
      */
-    public void addPart(Instrument instrument){
-        // TODO
+    public Measure(ArrayList<Note> notes, String text){
+        this.notes = notes;
+        this.text = text;
     }
 
-    /***
-     * Gets the part of the specified instrument
-     * @param instrument Instrument to get part of
-     * @return Part of the given instrument
+    /**
+     * TODO
+     * @param instrument
+     * @param notes
+     * @param text
      */
-    public Part getPart(Instrument instrument){
+    public Measure(Instrument instrument, ArrayList<Note> notes, String text){
+        this.instrument = instrument;
+        this.notes = notes;
+        this.text = text;
+    }
+
+    /**
+     * Inserts a note at the given position
+     * @param note Note to insert
+     * @param position Where to insert the note
+     * @return Whether the provided position is valid
+     */
+    public boolean insertNote(Note note, int position){
         //TODO
-        return null;
+        return false;
+    }
+
+    /**
+     * Replaces a note with a rest
+     * @param position The position to insert the rest
+     * @return Whether the given position is valid
+     */
+    public boolean removeNote(int position){
+        //TODO
+        return false;
     }
 }
