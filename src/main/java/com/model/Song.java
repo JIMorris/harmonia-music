@@ -199,7 +199,7 @@ public class Song {
      * @return returns true if the UUID is the same as a songs, false if not
      */
     public boolean idMatch(UUID songID) {
-        return this.songID == songID;
+        return this.songID.equals(songID);
     }
 
     /**

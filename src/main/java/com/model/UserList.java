@@ -30,7 +30,7 @@ public class UserList {
     public boolean usernameCheck(String username) {
         // Code logic here
         for (User user : users) {
-            if (user.getUsername() == username) {
+            if (user.getUsername().equals(username)) {
                 return true;
             }
         }
@@ -39,7 +39,7 @@ public class UserList {
 
     public boolean passwordCheck(String password) {
         for (User user : users) {
-            if (user.getPassword() == password) {
+            if (user.getPassword().equals(password)) {
                 return true;
             }
         }
@@ -48,7 +48,7 @@ public class UserList {
 
     public User getUser(UUID userID) {
         for (User user : users) {
-            if (user.getUserID() == userID) {
+            if (user.getUserID().equals(userID)) {
                 return user;
             }
         }

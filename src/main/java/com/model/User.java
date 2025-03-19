@@ -31,6 +31,8 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userID = userID;
+        this.favSongs = new ArrayList<>();
+        this.favAuthors = new ArrayList<>();
     }
 
     /**
@@ -47,6 +49,8 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userID = UUID.randomUUID();
+        this.favSongs = new ArrayList<>();
+        this.favAuthors = new ArrayList<>();
     }
 
     /**
@@ -56,7 +60,7 @@ public class User {
      * @return true if the ID's match, otherwise it is false
      */
     public boolean idMatch(UUID userID) {
-        return this.userID == userID;
+        return this.userID.equals(userID);
     }
 
     /**
@@ -66,7 +70,7 @@ public class User {
      * @return true if the provided password matches the user's username, otherwise it is false
      */
     public boolean passwordMatch(String password) {
-        return this.password == password; // TODO, NOT IN UML
+        return this.password.equals(password); // TODO, NOT IN UML
     }
 
     /**
@@ -76,7 +80,7 @@ public class User {
      * @return true if the usernames are a match, otherwise it is false
      */
     public boolean usernameMatch(String username) {
-        return this.username == username; // TODO, NOT IN UML
+        return this.username.equals(username); // TODO, NOT IN UML
     }
 
     /**
