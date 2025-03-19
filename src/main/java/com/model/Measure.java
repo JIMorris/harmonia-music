@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * An instrument part of a measure
+ * @author Simion Cartis
  */
 public class Measure {
     private Instrument instrument;
@@ -11,7 +12,7 @@ public class Measure {
     private String text;
 
     /**
-     * Makes a new part
+     * Constructsa new measure with specified instrument.
      * @param instrument Instrument of this part
      */
     public Measure(Instrument instrument){
@@ -21,7 +22,7 @@ public class Measure {
     }
 
     /**
-     * TODO
+     * Constructs a new measure with a list of notes and text.
      * @param notes
      * @param text
      */
@@ -31,7 +32,7 @@ public class Measure {
     }
 
     /**
-     * TODO
+     * Constructs a new measure with an instrument, list of notes, and text
      * @param instrument
      * @param notes
      * @param text
@@ -49,8 +50,11 @@ public class Measure {
      * @return Whether the provided position is valid
      */
     public boolean insertNote(Note note, int position){
-        //TODO
-        return false;
+        if (position < 0 || position > notes.size()) {
+            return false;
+        }
+        notes.add(position, note);
+        return true;
     }
 
     /**
@@ -59,7 +63,10 @@ public class Measure {
      * @return Whether the given position is valid
      */
     public boolean removeNote(int position){
-        //TODO
-        return false;
+        if (position < 0 || position >= notes.size()) {
+            return false;
+        }
+        notes.set(position, new Note(0, "rest")); // Assuming "rest" represents a silent note
+        return true;
     }
 }
