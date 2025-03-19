@@ -3,6 +3,10 @@ package com.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * The Key enum represents musical keys. Each key consists of a lavel and corresponding list of pitches.
+ * @author Simion Cartis
+ */
 public enum Key {
     A_FLAT_MAJOR("Ab",
             new ArrayList<Pitch>(
@@ -81,14 +85,18 @@ public enum Key {
     public final String label;
     public final ArrayList<Pitch> pitchs;
 
+        /**
+         * Constructs a key with a label and pitch.
+         * @param label
+         * @param pitchs
+         */
     private Key(String label, ArrayList<Pitch> pitchs) {
         this.label = label;
         this.pitchs = pitchs;
     }
 
     /**
-     * TODO
-     * 
+     * Converts a string representation of a key into its corresponding enum value
      * @param key
      * @return
      */
