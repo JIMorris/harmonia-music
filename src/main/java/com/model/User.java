@@ -34,6 +34,22 @@ public class User {
     }
 
     /**
+     * Constructor for a new User
+     * 
+     * @param username Username of user
+     * @param password Password of user
+     * @param firstName First Name of user
+     * @param lastName Last Name of user
+     */
+    public User(String username, String password, String firstName, String lastName){
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userID = UUID.randomUUID();
+    }
+
+    /**
      * Checks if the userID matches the user's unique ID
      * 
      * @param userID the UUID that needs to be checked
@@ -143,6 +159,15 @@ public class User {
         // }
         // }
         favAuthors.remove(author);
+    }
+
+    /**
+     * Set favAuthors to the parameter provided
+     * 
+     * @param favAuthors What to set favAuthors to
+     */
+    public void setFavoriteAuthors(ArrayList<User> favAuthors){
+        this.favAuthors = favAuthors;
     }
 
     /**
