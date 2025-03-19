@@ -60,9 +60,9 @@ public class MusicFacade {
      * Logs out user and saves all data
      */
     public void logout(){
+        instrumentList.save();
         userList.save();
         songList.save();
-        instrumentList.save();
     }
 
     /**
