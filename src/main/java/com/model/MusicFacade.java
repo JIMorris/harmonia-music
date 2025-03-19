@@ -1,22 +1,26 @@
 package com.model;
 
+import java.util.ArrayList;
+
 /**
  * Facade for the music app
  */
 public class MusicFacade {
     private static MusicFacade instance;
+    private InstrumentList instrumentList;
     private UserList userList;
     private SongList songList;
-    private InstrumentList instrumentList;
-    private User currentUser;
-    private ArrayList<Song> currentSongs;
-    private AudioPlayer currentPlayer;
+    private AudioPlayer audioPlayer;
+
 
     /**
      * Makes the facade
      */
     private MusicFacade(){
-        //TODO
+        this.instrumentList = InstrumentList.getInstance();
+        this.userList = UserList.getInstance();
+        this.songList = SongList.getInstance();
+        this.audioPlayer = AudioPlayer.getInstance();
     }
 
     /**
@@ -24,8 +28,10 @@ public class MusicFacade {
      * @return instance of MusicFacade
      */
     public static MusicFacade getInstance(){
-        //TODO
-        return null;
+        if(instance==null){
+            instance = new MusicFacade();
+        }
+        return instance;
     }
 
     /**
@@ -37,8 +43,7 @@ public class MusicFacade {
      * @return Whether the username and password are allowed
      */
     public boolean signup(String username, String password, String firstName, String lastName){
-        //TODO
-        return false;
+        return userList.signup(username, password, firstName, lastName);
     }
 
     /**
@@ -48,15 +53,16 @@ public class MusicFacade {
      * @return Whether login was successful
      */
     public boolean login(String username, String password){
-        //TODO
-        return false;
+        return userList.login(username, password);
     }
 
     /**
      * Logs out user and saves all data
      */
     public void logout(){
-        //TODO
+        userList.save();
+        songList.save();
+        instrumentList.save();
     }
 
     /**
@@ -64,17 +70,14 @@ public class MusicFacade {
      * @return List of public songs
      */
     public ArrayList<Song> openPublicSongs(){
-        //TODO
-        return null;
-    }
+        return songList.getPublicSongs();
 
     /**
      * Opens user created songs
      * @return List of crteated songs
      */
     public ArrayList<Song> openMySongs(){
-        //TODO
-        return null;
+        return songList.getMySongs();
     }
 
     /**
@@ -82,8 +85,7 @@ public class MusicFacade {
      * @return List of favorite songs
      */
     public ArrayList<Song> openFavorites(){
-        //TODO
-        return null;
+        return songList.getMyFavorites();
     }
 
     /**
@@ -93,53 +95,23 @@ public class MusicFacade {
      * @return Filtered song list
      */
     public ArrayList<Song> filterSongs(String category, String filter){
-        //TODO
-        return null;
-    }
-
-    /**
-     * Sorts song list
-     * @param sort What to sort by
-     * @param up Direction to sort
-     * @return Sorted list
-     */
-    public ArrayList<Song> sortSongs(String sort, boolean up){
-        //TODO
-        return null;
-    }
-
-    /**
-     * Clears the filter on songs
-     * @return Unfiltered song list
-     */
-    public ArrayList<Song> clearFilter(){
-        //TODO
-        return null;
-    }
-
-    /**
-     * Clears the sort on songs
-     * @return Unsorted song list
-     */
-    public ArrayList<Song> clearSort(){
-        //TODO
-        return null;
+        return songList.filterSongs(String category, String filter);
     }
 
     /**
      * Toggles favorite on a song
      * @param song Song to toggle favorite status of
      */
-    public void favoriteSong(Song song){
-        //TODO
+    public void toggleFavorite(Song song){
+        userList.toggleFavorite(song);
     }
 
     /**
      * Opens a song
      * @param song Song to open
      */
-    public void openSong(Song song){
-        //TODO
+    public ArrayList<Instrument> openSong(Song song){
+        return audioPlayer.openSong(song);
     }
 
     /**
@@ -147,7 +119,7 @@ public class MusicFacade {
      * @param song Song to copy
      */
     public void copySong(Song song){
-        //TODO
+        songList.copySong(song);
     }
 
     /**
@@ -161,8 +133,7 @@ public class MusicFacade {
      * @return The created song
      */
     public Song newSong(String title, String description, ArrayList<Genre> genres, int difficulty, Key keySignature, int[] timeSignature){
-        //TODO
-        return null;
+        return songList.newSong(title, description, genres, difficulty, difficulty, keySignature, difficulty, difficulty);  
     }
 
     /**
@@ -171,25 +142,40 @@ public class MusicFacade {
      * @return The list of measures of this song
      */
     public ArrayList<Measure> selectInstrument(Instrument instrument){
-        //TODO
-        return null;
+        return audioPlayer.selectInstrument();
     }
-
+    
     /**
      * Get the notes of a measure
      * @param part Measure to get notes of
      * @return A list of the notes of the given measure
      */
-    public ArrayList<Note> getNotes(Measure part){
-        //TODO
-        return null;
+    public ArrayList<Note> getNotes(Measure measure){
+        return audioPlayer.getNotes(measure);
     }
+
+    /**
+     * Selects a measure 
+     * @param measure Measure to select
+     */
+    public void selectMeasure(Measure measure){
+        audioPlayer.selectMeasure(measure);
+    }
+
+    /**
+     * Selects a note
+     * @param note Note to select
+     */
+    public void selectNote(Note note){
+        audioPlayer.selectNote(note);
+    }
+
 
     /**
      * Plays the current song
      */
     public void playSong(){
-        //TODO
+        audioPlayer.play();
     }
 
     /**
@@ -197,85 +183,78 @@ public class MusicFacade {
      * @return Measure that was paused on
      */
     public int pauseSong(){
-        //TODO
-        return -1;
+        return audioPlayer.pause();
     }
 
     /**
      * Stops the current measure, keeping the selected measure the same as when play was hit
      */
     public void stopSong(){
-        //TODO
-    }
-
-    /**
-     * Selects a measure 
-     * @param measure Measure to select
-     */
-    public void selectMeasure(MeasureGroup measure){
-        //TODO
-    }
-
-    /**
-     * Moves the selected measure forward one
-     * @return New selected measure
-     */
-    public int forwardMeasure(){
-        //TODO
-        return -1;
-    }
-
-    /**
-     * Moves selected measure backward one
-     * @return New selected measure
-     */
-    public int backwardMeasure(){
-        //TODO
-        return -1;
+        audioPlayer.stop();
     }
 
     /**
      * Adds a measure after the current selected measure
-     * @param measure Measure to insert after
      */
-    public void insertMeasure(int measure){
-        //TODO
+    public void insertMeasure(){
+        audioPlayer.insertMeasure();
     }
 
     /**
      * Deletes selected measure
-     * @param measure Measure to delete
      */
-    public void deleteMeasure(int measure){
-        //TODO
+    public void deleteMeasure(){
+        audioPlayer.deleteMeasure();
     }
+
+
      
     /**
-     * Moves note up one pitch
-     * @param note Note to move up
+     * Moves selected note up one pitch
      * @return Whether the note can move up
      */
-    public boolean noteUp(Note note){
-        //TODO
-        return false;
+    public boolean noteUp(){
+        return audioPlayer.noteUp();
     }    
 
     /**
-     * Moves note down one pitch
+     * Moves selected note down one pitch
      * @param note Note to move down
      * @return Whether the note can move down
      */
-    public boolean noteDown(Note note){
-        //TODO
-        return false;
+    public boolean noteDown(){
+        return audioPlayer.noteDown();
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public boolean splitNote(int division){
+        return audioPlayer.splitNote(int division);
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public boolean combineNotes(){
+        return audioPlayer.combineNotes();
+    }
+
+    /**
+     * Todo
+     */
+    public void insertNote(){
+        audioPlayer.insertNote();
     }
 
     /**
      * Deletes note, replacing it with a rest
      * @param note Note to delete
      */
-    public void deleteNote(Note note){
-        //TODO
+    public void deleteNote(){
+        audioPlayer.deleteNote();
     }
 
     /**
@@ -284,16 +263,7 @@ public class MusicFacade {
      * @return Whether that BPM is allowed
      */
     public boolean setBPM(int BPM){
-        //TODO
-        return false;
-    }
-
-    /**
-     * Sets playback speed of song
-     * @param speed Speed to set playback to
-     */
-    public void setPlaybackSpeed(double speed){
-        //TODO
+        return audioPlayer.setBPM(BPM);
     }
 
     /**
@@ -301,6 +271,6 @@ public class MusicFacade {
      * @param chord Chord to set measure to
      */
     public void setChord(Chord chord){
-        //TODO
+        audioPlayer.setChord(chord);
     }
 }
