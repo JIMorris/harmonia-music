@@ -6,6 +6,7 @@ import java.util.Set;
 
 /**
  * A measure of a song
+ * @author Simion Cartis
  */
 public class MeasureGroup {
     private final int length;
@@ -26,7 +27,7 @@ public class MeasureGroup {
     }
 
     /**
-     * TODO
+     * Constructs a new measure with a specified length, chord, and existing measures.
      * @param length
      * @param chord
      * @param measures
@@ -38,7 +39,7 @@ public class MeasureGroup {
     }
 
     /**
-     * TODO
+     * Copy constructor for creating a copy of existing measure
      * @param measureGroup
      */
     public MeasureGroup(MeasureGroup measureGroup){
@@ -48,7 +49,7 @@ public class MeasureGroup {
     }
     
     /**
-     * TODO
+     * Retrieves the length of the measure
      * @return
      */
     public int getLength() {
@@ -56,7 +57,7 @@ public class MeasureGroup {
     }
 
     /**
-     * TODO
+     * Retrieves the chord of the measure
      * @return
      */
     public Chord getChord() {
@@ -64,7 +65,7 @@ public class MeasureGroup {
     }
 
     /**
-     * TODO
+     * Retrieves the map of instruments to their corresponding measure
      * @return
      */
     public HashMap<Instrument, Measure> getMeasures(){
@@ -72,7 +73,7 @@ public class MeasureGroup {
     }
 
     /**
-     * TODO
+     * Sets the chord for this measure
      * @param chord
      */
     public void setChord(Chord chord){
@@ -88,14 +89,14 @@ public class MeasureGroup {
     }
 
     /**
-     * TODO
+     * Removes measure associated with the specified instrument
      * @param instrument
      */
     public void removeMeasure(Instrument instrument){
         measures.remove(instrument);
     }
 
-    /***
+    /**
      * Gets the part of the specified instrument
      * @param instrument Instrument to get part of
      * @return Part of the given instrument
@@ -105,7 +106,7 @@ public class MeasureGroup {
     }
 
     /**
-     * TODO
+     * Creates a copy of the given measures map
      * @param measures
      * @return
      */

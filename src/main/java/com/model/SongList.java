@@ -16,7 +16,11 @@ public class SongList {
      * private constructor that creates a single instance of the SongList object
      */
     private SongList() {
-        songs = DataLoader.getInstance().loadSongs();
+        try {
+            songs = DataLoader.getInstance().loadSongs();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -26,7 +30,7 @@ public class SongList {
      * @return returns the singular instance of SongList
      */
     public static SongList getInstance() {
-        if(instance == null)
+        if (instance == null)
             instance = new SongList();
         return instance;
     }
@@ -38,8 +42,8 @@ public class SongList {
      * @return returns the desired song
      */
     public Song getSong(UUID songID) {
-        for(Song song : songs){
-            if(song.getSongID().equals(songID))
+        for (Song song : songs) {
+            if (song.getSongID().equals(songID))
                 return song;
         }
         return null;
@@ -48,22 +52,23 @@ public class SongList {
     /**
      * Creates a new empty song, adds it the song list, and returns it
      * 
-     * @param title String for the title of the song
-     * @param author User that authored the song
-     * @param description String for the description of the song
-     * @param genres List of Genres for this song
-     * @param difficulty int difficulty of the song (1-5)
-     * @param tempo int tempo of the song (30-400)
-     * @param keySignature Key of the song
+     * @param title            String for the title of the song
+     * @param author           User that authored the song
+     * @param description      String for the description of the song
+     * @param genres           List of Genres for this song
+     * @param difficulty       int difficulty of the song (1-5)
+     * @param tempo            int tempo of the song (30-400)
+     * @param keySignature     Key of the song
      * @param timeSignatureNum Top number of the time signature
      * @param timeSignatureDen Bottom number of the time signature
      * 
      * @return The new blank song
      */
-    public Song newSong(String title, User author, String description, 
-                ArrayList<Genre> genres, int difficulty, int tempo, 
-                Key keySignature, int timeSignatureNum, int timeSignatureDen) {
-        Song newSong = new Song(title, author, description, genres, difficulty, tempo, keySignature, timeSignatureNum, timeSignatureDen);
+    public Song newSong(String title, User author, String description,
+            ArrayList<Genre> genres, int difficulty, int tempo,
+            Key keySignature, int timeSignatureNum, int timeSignatureDen) {
+        Song newSong = new Song(title, author, description, genres, difficulty, tempo, keySignature, timeSignatureNum,
+                timeSignatureDen);
         songs.add(newSong);
         return newSong;
     }
@@ -98,9 +103,9 @@ public class SongList {
      */
     public ArrayList<Song> filterByTitle(String title) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
-        
-        for(Song song : songs){
-            if(song.getTitle().equals(title)) //TODO Add Getter to Song
+
+        for (Song song : songs) {
+            if (song.getTitle().equals(title)) // TODO Add Getter to Song
                 filteredSongs.add(song);
         }
 
@@ -117,8 +122,8 @@ public class SongList {
     public ArrayList<Song> filterByGenre(Genre genre) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for(Song song : songs){
-            if(song.getGenres().contains(genre)) //TODO Add getter to Song
+        for (Song song : songs) {
+            if (song.getGenres().contains(genre)) // TODO Add getter to Song
                 filteredSongs.add(song);
         }
 
@@ -137,9 +142,9 @@ public class SongList {
     public ArrayList<Song> filterByBPM(int minBPM, int maxBPM) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for(Song song : songs){
-            int tempo = song.getTempo(); //TODO Add getter to Song
-            if(tempo>=minBPM && tempo<=maxBPM)
+        for (Song song : songs) {
+            int tempo = song.getTempo(); // TODO Add getter to Song
+            if (tempo >= minBPM && tempo <= maxBPM)
                 filteredSongs.add(song);
         }
 
@@ -156,17 +161,18 @@ public class SongList {
     public ArrayList<Song> filterByDifficulty(int difficulty) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for(Song song : songs){
-            if(song.getDifficulty() == difficulty) //TODO Add getter to Song
+        for (Song song : songs) {
+            if (song.getDifficulty() == difficulty) // TODO Add getter to Song
                 songs.add(song);
         }
 
         return filteredSongs;
     }
+
     /**
      * saves the chnages made to the instance of SongList
      */
     public void save() {
-
+        DataWriter.getInstance().saveSongs();
     }
 }

@@ -9,18 +9,22 @@ public class UserList {
     private ArrayList<User> users;
 
     private UserList() {
-        users = new ArrayList<User>();
+        try {
+        users = DataLoader.getInstance().loadUsers();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-    public void addUsers(User user) {
-        users.add(user); //TODO NOT IN UML, ALSO MAY NOT BE CORRECT - simion
-    }
-
+    
     public static UserList getInstance() {
         if (instance == null) {
             instance = new UserList();
         }
         return instance;
+    }
+    
+    public void addUsers(User user) {
+        users.add(user); //TODO NOT IN UML, ALSO MAY NOT BE CORRECT - simion
     }
 
     public boolean usernameCheck(String username) {
@@ -70,6 +74,6 @@ public class UserList {
     }
 
     public void save() {
-        FileWriter.getInstance().saveUsers(); // ????? - simion
+        DataWriter.getInstance().saveUsers(); // ????? - simion
     }
 }

@@ -37,6 +37,7 @@ public class DataConstants {
     public static final String USER_FAV_AUTHS = "favAuthors";
 
     public static final String INSTRUMENT_FILE_NAME = "json/instrument.json";
+    public static final String INSTRUMENT_TEMP_FILE_NAME = "json/instrument.json";
     public static final String INSTRUMENT_ID = "uuid";
     public static final String INSTRUMENT_NAME = "name";
     public static final String INSTRUMENT_IMAGE_FILE = "imageFile";

@@ -21,7 +21,9 @@ public class Reaction {
      * @param author  takes in an author (User)
      */
     public Reaction(int rating, String comment, User author) {
-
+      this.rating = rating;
+      this.comment = comment;
+      this.author = author;
     }
 
     /**
