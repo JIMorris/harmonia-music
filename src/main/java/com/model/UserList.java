@@ -7,24 +7,25 @@ public class UserList {
     private static UserList instance;
 
     private ArrayList<User> users;
+    private User currentUser; // should this be private? - Simion
 
     private UserList() {
         try {
-        users = DataLoader.getInstance().loadUsers();
+            users = DataLoader.getInstance().loadUsers();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     public static UserList getInstance() {
         if (instance == null) {
             instance = new UserList();
         }
         return instance;
     }
-    
+
     public void addUsers(User user) {
-        users.add(user); //TODO NOT IN UML, ALSO MAY NOT BE CORRECT - simion
+        users.add(user); // TODO NOT IN UML, ALSO MAY NOT BE CORRECT - simion
     }
 
     public boolean usernameCheck(String username) {
@@ -56,21 +57,38 @@ public class UserList {
         return null;
     }
 
-    public User signup(String username, String password, String firstName, String lastName) {
+    public boolean signup(String username, String password, String firstName, String lastName) {
         UUID userID = UUID.randomUUID();
         User user = new User(username, password, firstName, lastName, userID);
-        addUsers(user); //?????
-        return user;
-    } 
+        if(usernameCheck(username)) {
+            System.out.println("invalid username"); // temp error message
+            return false;
+        }
+        addUsers(user); // ?????
+        currentUser = user;
+        return true;
+    }
 
-    public User login(String username, String password) {
+    public boolean login(String username, String password) {
         for (User user : users) {
             if (user.passwordMatch(password) && user.usernameMatch(username)) {
-                return user;
+                currentUser = user;
+                return true;
             }
         }
-        System.out.println("no such user found"); //TEMP MESSAGE
-        return null;
+        System.out.println("no such user found"); // TEMP MESSAGE
+        return false;
+    }
+
+    public void toggleFavoriteSong(Song song) {
+        if (currentUser.favSongsExists(song)) {
+            currentUser.addFavoriteSong(song);
+        }
+        currentUser.removeFavoriteSong(song);
+    } //do we want to add a toggle fav authors method? -Simion
+
+    public User getCurrentUser() {
+        return currentUser;
     }
 
     public void save() {
