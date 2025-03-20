@@ -8,7 +8,14 @@ public enum Genre {
     POP("Pop"),
     CLASSICAL("Clasical"),
     JAZZ("Jazz"),
-    ROCK("Rock");
+    ROCK("Rock"),
+    METAL("Metal"),
+    COUNTRY("Country"),
+    FUNK("Funk"),
+    BLUES("Blues"),
+    HIPHOP("HipHop"),
+    EDM("EDM"),
+    RNB("RNB");
 
     public final String label;
 
@@ -24,7 +31,7 @@ public enum Genre {
     /**
      * TODO
      * 
-     * @param genre
+     * @param genre 
      * @return
      */
     public static Genre fromString(String genre) {
