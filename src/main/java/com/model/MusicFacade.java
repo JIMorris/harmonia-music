@@ -114,6 +114,14 @@ public class MusicFacade {
         return audioPlayer.openSong(song);
     }
 
+    public ArrayList<Instrument> getInstruments(){
+        return audioPlayer.getInstruments();
+    }
+
+    public void addInstrument(Instrument instrument){
+        audioPlayer.addInstrument();
+    }
+
     /**
      * Creates a copy of a song, only changing the author to the current user
      * @param song Song to copy
@@ -132,8 +140,8 @@ public class MusicFacade {
      * @param timeSignature Time signature of song
      * @return The created song
      */
-    public Song newSong(String title, String description, ArrayList<Genre> genres, int difficulty, Key keySignature, int[] timeSignature){
-        return songList.newSong(title, description, genres, difficulty, difficulty, keySignature, difficulty, difficulty);  
+    public Song newSong(String title, String description, ArrayList<Genre> genres, int difficulty, Key keySignature){
+        return songList.newSong(title, description, genres, difficulty, keySignature, new int[] {4, 4});  
     }
 
     /**
@@ -158,8 +166,9 @@ public class MusicFacade {
      * Selects a measure 
      * @param measure Measure to select
      */
-    public void selectMeasure(Measure measure){
+    public ArrayList<Note> selectMeasure(Measure measure){
         audioPlayer.selectMeasure(measure);
+        return getNotes(measure);
     }
 
     /**
