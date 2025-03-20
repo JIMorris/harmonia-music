@@ -41,14 +41,36 @@ public class DataWriter extends DataConstants {
     public ArrayList<User> saveUsers() throws Exception{
         //Hardcoding a User object
         
-        //UserList userList = UserList.getInstance();
-        //ArrayList<User> users = userList.getUsers();
+        //Implementation with UserList
+        UserList userList = UserList.getInstance();
+        ArrayList<User> users = userList.getUsers();
         JSONArray usersJSON = new JSONArray();
 
         //Creating all the json user objects
         for(int i=0; i < users.size(); i++) {
             usersJSON.add(getUserJSON(users.get(i)));
         }
+
+        //Writing user JSON file
+        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
+            file.write(usersJSON.toJSONString());
+            file.flush();
+            return users;
+        } catch (IOException e) {
+            throw e;
+        }
+    }
+
+    public static JSONObject getUserJSON(User user) {
+        JSONObject userDetails = new JSONObject();
+        userDetails.put(USER_ID, user.getUserID().toString());
+        userDetails.put(USER_USERNAME, user.getUsername());
+        userDetails.put(USER_PASSWORD, user.getPassword());
+        userDetails.put(USER_FIRST_NAME, user.getFirstName());
+        userDetails.put(USER_LAST_NAME, user.getLastName());
+        userDetails.put(USER_FAV_SONGS, user.getFavSongs());
+        userDetails.put(USER_FAV_AUTHS, user.getFavAuthors());
+        return userDetails;
     }
 
     /**
@@ -57,12 +79,12 @@ public class DataWriter extends DataConstants {
      */
     public ArrayList<Instrument> saveInstruments() throws Exception{
         //Hardcoded Instrument
-        ArrayList<Instrument> instruments = new ArrayList<>();
-        instruments.add(new Instrument(UUID.fromString("ff79cdfd-424c-4026-9a5b-43b9a4653228"), "Piano", "piano.png"));
+        //ArrayList<Instrument> instruments = new ArrayList<>();
+        //instruments.add(new Instrument(UUID.fromString("ff79cdfd-424c-4026-9a5b-43b9a4653228"), "Piano", "piano.png"));
         
         //Implementation with InstrumentList
-        //InstrumentList instrumentList = InstrumentList.getInstance();
-        //ArrayList<Instrument> instruments = instrumentList.getInstruments();
+        InstrumentList instrumentList = InstrumentList.getInstance();
+        ArrayList<Instrument> instruments = instrumentList.getInstruments();
         JSONArray instrumentsJSON = new JSONArray();
         //I am not loading instruments from the InstrumentList class
         //I think the logic is not added so I cannot write the current information from instrumentjson
