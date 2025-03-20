@@ -220,4 +220,8 @@ public class User {
     public UUID getUserID() {
         return this.userID;
     }
+
+    public ArrayList<Song> getFavSongs() {
+        return this.favSongs;
+    }
 }
