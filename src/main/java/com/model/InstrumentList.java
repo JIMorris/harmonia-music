@@ -43,7 +43,7 @@ public class InstrumentList {
      */
     public Instrument getInstrument(UUID id){
         for(Instrument instrument : instruments){
-            if(instrument.getInstrumentID() == id)
+            if(instrument.getInstrumentID().equals(id))
                 return instrument;
         }
         return null;

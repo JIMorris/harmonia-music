@@ -2,7 +2,8 @@ package com.model;
 
 /**
  * Represents a musical note with a duration, pitch, and octave
- * @author 
+ * 
+ * @author
  */
 public class Note {
     public static int QUARTER_LENGTH;
@@ -10,9 +11,9 @@ public class Note {
     private Pitch pitch;
     private int octave;
 
-
     /**
      * Constructs a note object with a duration, pitch, and octave
+     * 
      * @param duration
      * @param pitch
      * @param octave
@@ -25,12 +26,25 @@ public class Note {
 
     /**
      * Constructs a note with the given duration and note name.
+     * 
      * @param duration
      * @param noteName
      */
-    public Note (int duration, String noteName) {
+    public Note(int duration, String noteName) {
         this.duration = duration;
         this.pitch = Pitch.fromString(noteName);
-        this.octave = 4; //default octave, can be modified later
+        this.octave = 4; // default octave, can be modified later
+    }
+
+    public int getDuration() {
+        return this.duration;
+    }
+
+    public void changeDuration(int change) {
+            this.duration *= change;
+    }
+
+    public void changeDuration() {
+        this.duration = QUARTER_LENGTH;
     }
 }
