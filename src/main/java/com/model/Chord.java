@@ -1,5 +1,9 @@
 package com.model;
 
+/**
+ * Represents musical chords with their corresponding notation.
+ * @author Simion Cartis
+ */
 public enum Chord {
     A_FLAT_MAJ("Abmaj"),
     A_FLAT_MIN("Abmin"),
@@ -46,10 +50,19 @@ public enum Chord {
 
     public final String label;
 
+    /**
+     * Constructs a chord enum with the given label
+     * @param label
+     */
     private Chord (String label) {
         this.label = label;
     }
 
+    /**
+     * Returns the corresponding chord enum
+     * @param chord
+     * @return
+     */
     public static Chord fromString(String chord) {
         for (Chord c : values()) {
             if (c.label.equalsIgnoreCase(chord))

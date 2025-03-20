@@ -3,6 +3,9 @@ package com.model;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * Represents a User with personal details and favorite songs and authors
+ */
 public class User {
     private String username;
     private String password;
@@ -13,6 +16,15 @@ public class User {
     private ArrayList<Song> favSongs;
     private ArrayList<User> favAuthors;
 
+    /**
+     * Constructor for User class with parameters
+     * 
+     * @param username the username provided by the user
+     * @param password the password provided by the user
+     * @param firstName the first name provided of the user
+     * @param lastName the last name provided by the user
+     * @param userID a unique ID code used to indentify each individual user
+     */
     public User(String username, String password, String firstName, String lastName, UUID userID) {
         this.username = username;
         this.password = password;
@@ -21,30 +33,64 @@ public class User {
         this.userID = userID;
     }
 
+    /**
+     * Checks if the userID matches the user's unique ID
+     * 
+     * @param userID the UUID that needs to be checked
+     * @return true if the ID's match, otherwise it is false
+     */
     public boolean idMatch(UUID userID) {
         return this.userID == userID;
     }
 
+    /**
+     * Checks if the password provided by the user matches the user's provided username
+     * 
+     * @param password the password that needs to be checked
+     * @return true if the provided password matches the user's username, otherwise it is false
+     */
     public boolean passwordMatch(String password) {
         return this.password == password; // TODO, NOT IN UML
     }
 
+    /**
+     * Checks if the password provided by the user matches the user's username
+     * 
+     * @param username the username that needs to be checked
+     * @return true if the usernames are a match, otherwise it is false
+     */
     public boolean usernameMatch(String username) {
         return this.username == username; // TODO, NOT IN UML
     }
 
+    /**
+     * Adds a song to the user's list of their favorite songs given it is not already in the favorite's list 
+     * 
+     * @param song the song the user wishes to add
+     */
     public void addFavoriteSong(Song song) {
         if (!favSongsExists(song))
             favSongs.add(song);
         System.out.println("song already exists in Favorite Songs");
     }
 
+    /**
+     * Adds an author to a list of the user's favorite authors provided it is not already present within the favortie author's list
+     * 
+     * @param author the author the user wishes to add 
+     */
     public void addFavoriteAuthor(User author) {
         if (!favAuthorExists(author))
             favAuthors.add(author);
         System.out.println("song already exists in Favorite Author");
     }
 
+    /**
+     * Checks if the author the user wished to add to the favorite authors list is not already present
+     * 
+     * @param author the author that needs to be checked
+     * @return true if the author is in the favorite authors list, otherwise it is false 
+     */
     public boolean favAuthorExists(User author) { // TODO UML
         for (User authorInList : favAuthors) {
             if (authorInList.getUserID() == author.getUserID()) {
@@ -54,6 +100,12 @@ public class User {
         return false;
     }
 
+    /**
+     * Checks if the provided song is already in the favorite songs list
+     * 
+     * @param song the song that needs to be checked
+     * @return true if the song is present in the list, otherwise it is false 
+     */
     public boolean favSongsExists(Song song) { // TODO UML
         for (Song songInList : favSongs) {
             if (songInList.getSongID() == song.getSongID()) {
@@ -63,6 +115,11 @@ public class User {
         return false;
     }
 
+    /**
+     * Removes a song from the user's list of favorite songs 
+     * 
+     * @param song the song the user wishes to remove
+     */
     public void removeFavoriteSong(Song song) {
         // for (int i = 0; i < favSongs.size(); ++i) {
         // if (favSongs.get(i) == song) {
@@ -73,6 +130,11 @@ public class User {
         favSongs.remove(song);
     }
 
+    /**
+     * Removes the author from the user's list of favorite authors
+     * 
+     * @param author the author the user wishes to remove 
+     */
     public void removeFavoriteAuthor(User author) {
         // for (int i = 0; i < favAuthors.size(); ++i) {
         // if (favAuthors.get(i) == author) {
@@ -83,22 +145,49 @@ public class User {
         favAuthors.remove(author);
     }
 
+    /**
+     * Gets the list of songs that have been authored by the user
+     * 
+     * @return a list of songs that have been authored by the user
+     */
     public ArrayList<Song> getAuthoredSongs() {
         return null;
     }
 
+    /**
+     * Checks both the username and password to see if it matches the user's credentials 
+     * 
+     * @param username the username that needs to be checked
+     * @param password the password that needs to be checked 
+     * @return true if both the username and password are a match, otherwise it is false
+     */
     public boolean isMatch(String username, String password) {
         return username == this.username && password == this.password;
     }
 
+    /**
+     * Retrieves the username of the user
+     *
+     * @return the username 
+     */
     public String getUsername() {
         return this.username;
     }
 
+    /**
+     * Retrieves the password of the user 
+     * 
+     * @return the password 
+     */
     public String getPassword() {
         return this.password;
     }
 
+    /**
+     * Retrieves the unique user ID for the user
+     * 
+     * @return the user's ID
+     */
     public UUID getUserID() {
         return this.userID;
     }
