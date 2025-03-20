@@ -57,21 +57,27 @@ public class UserList {
         return null;
     }
 
-    public User signup(String username, String password, String firstName, String lastName) {
+    public boolean signup(String username, String password, String firstName, String lastName) {
         UUID userID = UUID.randomUUID();
         User user = new User(username, password, firstName, lastName, userID);
+        if(usernameCheck(username)) {
+            System.out.println("invalid username"); // temp error message
+            return false;
+        }
         addUsers(user); // ?????
-        return user;
+        currentUser = user;
+        return true;
     }
 
-    public User login(String username, String password) {
+    public boolean login(String username, String password) {
         for (User user : users) {
             if (user.passwordMatch(password) && user.usernameMatch(username)) {
-                return user;
+                currentUser = user;
+                return true;
             }
         }
         System.out.println("no such user found"); // TEMP MESSAGE
-        return null;
+        return false;
     }
 
     public void toggleFavoriteSong(Song song) {
