@@ -64,11 +64,11 @@ public class SongList {
      * 
      * @return The new blank song
      */
-    public Song newSong(String title, User author, String description,
+    public Song newSong(String title, String description,
             ArrayList<Genre> genres, int difficulty, int tempo,
-            Key keySignature, int timeSignatureNum, int timeSignatureDen) {
-        Song newSong = new Song(title, author, description, genres, difficulty, tempo, keySignature, timeSignatureNum,
-                timeSignatureDen);
+            Key keySignature, int[] timeSignature) {
+        Song newSong = new Song(title, UserList.getInstance().getCurrentUser(), description, genres, difficulty, tempo,
+                keySignature, timeSignature[0], timeSignature[1]);
         songs.add(newSong);
         return newSong;
     }
@@ -79,10 +79,16 @@ public class SongList {
      * @param song takes in a song (of type Song) to be copied
      * @return returns the Song's copy
      */
-    public Song copySong(Song song, User author) {
-        Song copy = new Song(song, author);
-        songs.add(copy);
-        return copy;
+    // public Song copySong(Song song, User author) {
+    // Song copy = new Song(song, author);
+    // songs.add(copy);
+    // return copy;
+    // } // I assume this is an old method that is no longer going to be used -
+    // Simion
+
+    public void copySong(Song song) { //this is the new copySong method
+        song = new Song(song, UserList.getInstance().getCurrentUser());
+        songs.add(song);
     }
 
     /**
@@ -172,7 +178,7 @@ public class SongList {
     public ArrayList<Song> getPublicSongs() {
         ArrayList<Song> publicSongs = new ArrayList<Song>();
         for (Song song : songs) {
-            if(song.isPublished()) {
+            if (song.isPublished()) {
                 publicSongs.add(song);
             }
         }
@@ -181,8 +187,8 @@ public class SongList {
 
     public ArrayList<Song> openMySongs() {
         ArrayList<Song> mySongs = new ArrayList<Song>();
-        for(Song song : songs) {
-            if(song.getAuthor().equals(UserList.getInstance().getCurrentUser())) {
+        for (Song song : songs) {
+            if (song.getAuthor().equals(UserList.getInstance().getCurrentUser())) {
                 mySongs.add(song);
             }
         }
@@ -194,7 +200,20 @@ public class SongList {
     }
 
     public ArrayList<Song> filterSongs(String category, String filter) {
-        
+        if (category.equalsIgnoreCase("title")) {
+            return filterByTitle(filter);
+        } else if (category.equalsIgnoreCase("genre")) {
+            return filterByGenre(Genre.fromString(filter));
+        } else if (category.equalsIgnoreCase("BPM")) {
+            String[] splitString = filter.split(" ");
+            int lowestBPM = Integer.parseInt(splitString[0]);
+            int highestBPM = Integer.parseInt(splitString[1]);
+            return filterByBPM(lowestBPM, highestBPM);
+        } else if (category.equalsIgnoreCase("difficulty")) {
+            return filterByDifficulty(Integer.parseInt(filter));
+        } else {
+            return new ArrayList<>();
+        }
     }
 
     /**
