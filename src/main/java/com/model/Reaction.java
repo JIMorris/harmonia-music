@@ -9,41 +9,66 @@ package com.model;
  * @author Simoin Cartis
  */
 public class Reaction {
-    private int rating;
-    private String comment;
-    private User author;
+  private int rating;
+  private String comment;
+  private User author;
 
-    /**
-     * constructor that creates a Reaction
-     * 
-     * @param rating  takes in a rating (int)
-     * @param comment takes in a comment (String)
-     * @param author  takes in an author (User)
-     */
-    public Reaction(int rating, String comment, User author) {
-      this.rating = rating;
-      this.comment = comment;
-      this.author = author;
-    }
+  /**
+   * constructor that creates a Reaction
+   * 
+   * @param rating  takes in a rating (int)
+   * @param comment takes in a comment (String)
+   * @param author  takes in an author (User)
+   */
+  public Reaction(int rating, String comment, User author) {
+    this.rating = rating;
+    this.comment = comment;
+    this.author = author;
+  }
 
-    /**
-     * allows the user to edit a pre-existing reaction's rating
-     * 
-     * @param rating takes in a new rating (int)
-     */
-    public void editRating(int rating) {
+  /**
+   * allows the user to edit a pre-existing reaction's rating
+   * 
+   * @param rating takes in a new rating (int)
+   */
+  public void setRating(int rating) {
+    this.rating = rating;
+  }
 
-    }
+  /**
+   * allows the user to edit a pre-existing reaction's comment
+   * 
+   * @param comment takes in a new String (comment)
+   */
+  public void setComment(String comment) {
+    this.comment = comment;
+  }
 
-    /**
-     * allows the user to edit a pre-existing reaction's comment 
-     * 
-     * @param comment takes in a new String (comment)
-     */
-    public void editComment(String comment) {
+  /**
+   * Retrieves the rating provided by the user
+   * 
+   * @return the user's rating
+   */
+  public int getRating() {
+    return this.rating;
+  }
 
-    } // THESE METHODS ARE NOT CURRENTLY IN THE UML, PROBABLY WANT TO ADD THESE
-      // FEATURES THOUGH
-      // WHERE WOULD THE EDIT RATING FEATURE BE THOUGH? IN THE SONG CLASS, USER CLASS,
-      // OR BOTH?- SIMION
+  /**
+   * Retrieves the comment provided by the user
+   * 
+   * @return the user's comment
+   */
+  public String getComment() {
+    return this.comment;
+  }
+
+  /**
+   * Retrieves the author the reaction
+   * 
+   * @return the author of the reaction
+   */
+  public User getAuthor() {
+    return author;
+  }
+
 }
