@@ -31,6 +31,26 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userID = userID;
+        this.favSongs = new ArrayList<>();
+        this.favAuthors = new ArrayList<>();
+    }
+
+    /**
+     * Constructor for a new User
+     * 
+     * @param username Username of user
+     * @param password Password of user
+     * @param firstName First Name of user
+     * @param lastName Last Name of user
+     */
+    public User(String username, String password, String firstName, String lastName){
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userID = UUID.randomUUID();
+        this.favSongs = new ArrayList<>();
+        this.favAuthors = new ArrayList<>();
     }
 
     /**
@@ -40,7 +60,7 @@ public class User {
      * @return true if the ID's match, otherwise it is false
      */
     public boolean idMatch(UUID userID) {
-        return this.userID == userID;
+        return this.userID.equals(userID);
     }
 
     /**
@@ -50,7 +70,7 @@ public class User {
      * @return true if the provided password matches the user's username, otherwise it is false
      */
     public boolean passwordMatch(String password) {
-        return this.password == password; // TODO, NOT IN UML
+        return this.password.equals(password); // TODO, NOT IN UML
     }
 
     /**
@@ -60,7 +80,7 @@ public class User {
      * @return true if the usernames are a match, otherwise it is false
      */
     public boolean usernameMatch(String username) {
-        return this.username == username; // TODO, NOT IN UML
+        return this.username.equals(username); // TODO, NOT IN UML
     }
 
     /**
@@ -143,6 +163,15 @@ public class User {
         // }
         // }
         favAuthors.remove(author);
+    }
+
+    /**
+     * Set favAuthors to the parameter provided
+     * 
+     * @param favAuthors What to set favAuthors to
+     */
+    public void setFavoriteAuthors(ArrayList<User> favAuthors){
+        this.favAuthors = favAuthors;
     }
 
     /**

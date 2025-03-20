@@ -35,34 +35,6 @@ public class DataLoader extends DataConstants {
     }
 
     /**
-     * Loads in Users from json
-     * @return Whether the file reading succeeded
-     */
-    public ArrayList<User> loadUsers() throws Exception{
-        ArrayList<User> users = new ArrayList<>();
-
-        try {
-            FileReader reader = new FileReader(USER_FILE_NAME);
-            JSONArray usersJSON = (JSONArray)new JSONParser().parse(reader);
-
-            for(int i=0; i < usersJSON.size(); i++){
-                JSONObject userJSON = (JSONObject)usersJSON.get(i);
-                UUID id = UUID.fromString((String)userJSON.get(USER_ID));
-                String username = (String)userJSON.get(USER_USERNAME);
-                String password = (String)userJSON.get(USER_PASSWORD);
-                String firstName = (String)userJSON.get(USER_FIRST_NAME);
-                String lastName = (String)userJSON.get(USER_LAST_NAME);
-                
-                users.add(new User(username, password, firstName, lastName, id));
-            }
-
-            return users;
-        } catch (Exception e) {
-            throw e;
-        }
-    }
-
-    /**
      * Loads in Instruments from json
      * @return Whether the file reading succeeded
      */
@@ -88,8 +60,71 @@ public class DataLoader extends DataConstants {
         }
     }
 
+    /**
+     * Loads in Users from json
+     * @return Whether the file reading succeeded
+     */
+    public ArrayList<User> loadUsers() throws Exception{
+        ArrayList<User> users = new ArrayList<>();
 
-        /**
+        try {
+            FileReader reader = new FileReader(USER_FILE_NAME);
+            JSONArray usersJSON = (JSONArray)new JSONParser().parse(reader);
+
+            for(int i=0; i < usersJSON.size(); i++){
+                JSONObject userJSON = (JSONObject)usersJSON.get(i);
+                UUID id = UUID.fromString((String)userJSON.get(USER_ID));
+                String username = (String)userJSON.get(USER_USERNAME);
+                String password = (String)userJSON.get(USER_PASSWORD);
+                String firstName = (String)userJSON.get(USER_FIRST_NAME);
+                String lastName = (String)userJSON.get(USER_LAST_NAME);
+                
+                users.add(new User(username, password, firstName, lastName, id));
+            }
+
+            for(int i=0; i < usersJSON.size(); i++){
+                JSONObject userJSON = (JSONObject)usersJSON.get(i);
+                UUID id = UUID.fromString((String)userJSON.get(USER_ID));
+                
+                User currentUser = users.get(0);
+                for(User user : users){
+                    if(user.idMatch(id)){
+                        currentUser = user;
+                        break;
+                    }
+                }
+
+                JSONArray favoriteAuthorsJSON = (JSONArray)userJSON.get(USER_FAV_AUTHS);
+                ArrayList<User> favoriteAuthors = getFavoriteAuthors(favoriteAuthorsJSON, users);
+
+                currentUser.setFavoriteAuthors(favoriteAuthors);
+            }
+
+            return users;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    private ArrayList<User> getFavoriteAuthors(JSONArray favoriteAuthorsJSON, ArrayList<User> users){
+        ArrayList<User> favoriteAuthors = new ArrayList<>();
+
+        for(int i=0; i<favoriteAuthorsJSON.size(); i++){
+            String idString = (String)favoriteAuthorsJSON.get(i);
+            UUID id = UUID.fromString(idString);
+            for(User user : users){
+                if(user.idMatch(id)){
+                    favoriteAuthors.add(user);
+                    break;
+                }
+            }
+        }
+
+        return favoriteAuthors;
+    }
+
+
+    /**
      * Loads in Songs from json
      * @return Whether the file reading succeeded
      */
@@ -144,6 +179,8 @@ public class DataLoader extends DataConstants {
             throw e;
         }
 
+        loadFavoriteSongs(songs);
+
         return songs;
     }
 
@@ -182,16 +219,16 @@ public class DataLoader extends DataConstants {
         ArrayList<Instrument> instruments = new ArrayList<>();
         InstrumentList instrumentList = InstrumentList.getInstance();
 
-        //TODO remove
-        try {
-            ArrayList<Instrument> temp = loadInstruments();
-            for(Instrument instrument : temp){
-                instrumentList.addInstrument(instrument);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        //TODO finsh remove
+        // //TODO remove
+        // try {
+        //     ArrayList<Instrument> temp = loadInstruments();
+        //     for(Instrument instrument : temp){
+        //         instrumentList.addInstrument(instrument);
+        //     }
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
+        // //TODO finsh remove
        
 
         for(int i=0; i<instrumentsJSON.size(); i++){
@@ -252,5 +289,43 @@ public class DataLoader extends DataConstants {
         String text = (String)measureJSON.get(SONG_TEXT);
         
         return new Measure(notes, text);
+    }
+
+    private void loadFavoriteSongs(ArrayList<Song> songs){
+        try {
+            FileReader reader = new FileReader(USER_FILE_NAME);
+            JSONArray usersJSON = (JSONArray)new JSONParser().parse(reader);
+
+            for(int i=0; i<usersJSON.size(); i++){
+                JSONObject userJSON = (JSONObject)usersJSON.get(i);
+                UUID userID = UUID.fromString((String)userJSON.get(USER_ID));
+                User currentUser = UserList.getInstance().getUser(userID);
+
+                JSONArray favoriteSongsJSON = (JSONArray)userJSON.get(USER_FAV_SONGS);
+                for(int j=0; j<favoriteSongsJSON.size(); j++){
+                    UUID songID = UUID.fromString((String)favoriteSongsJSON.get(j));
+                    for(Song song : songs){
+                        if(song.idMatch(songID)){
+                            currentUser.addFavoriteSong(song);
+                            break;
+                        }
+                    }
+                }
+            }
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        DataLoader dataLoader = DataLoader.getInstance();
+        try {
+            InstrumentList instrumentList = InstrumentList.getInstance();
+            UserList userList = UserList.getInstance();
+            SongList songList = SongList.getInstance();
+            System.out.println("test");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
