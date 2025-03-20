@@ -224,4 +224,16 @@ public class User {
     public ArrayList<Song> getFavSongs() {
         return this.favSongs;
     }
+    
+    public ArrayList<User> getFavAuthors() {
+        return this.favAuthors;
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
 }

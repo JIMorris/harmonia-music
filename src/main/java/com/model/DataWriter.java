@@ -3,7 +3,6 @@ package com.model;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -52,7 +51,7 @@ public class DataWriter extends DataConstants {
         }
 
         //Writing user JSON file
-        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)) {
             file.write(usersJSON.toJSONString());
             file.flush();
             return users;
@@ -69,7 +68,10 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_FIRST_NAME, user.getFirstName());
         userDetails.put(USER_LAST_NAME, user.getLastName());
         userDetails.put(USER_FAV_SONGS, user.getFavSongs());
-        userDetails.put(USER_FAV_AUTHS, user.getFavAuthors());
+        ArrayList<User> favAuths = user.getFavAuthors();
+        ArrayList<String> favAuthIDs = new ArrayList<>();
+        
+        userDetails.put(USER_FAV_AUTHS, favAuthIDs);
         return userDetails;
     }
 
@@ -124,7 +126,7 @@ public class DataWriter extends DataConstants {
     public static void main(String[] args) {
         DataWriter writer = DataWriter.getInstance();
         try {
-            writer.saveInstruments();
+            writer.saveUsers();
         } catch (Exception e) {
             e.printStackTrace();
         }

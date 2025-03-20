@@ -86,6 +86,10 @@ public class UserList {
         return null;
     }
 
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
     /**
      * Handles user signup by creating a new user and adding it to the list.
      * @param username The username for the new user.
