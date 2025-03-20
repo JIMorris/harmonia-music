@@ -169,6 +169,34 @@ public class SongList {
         return filteredSongs;
     }
 
+    public ArrayList<Song> getPublicSongs() {
+        ArrayList<Song> publicSongs = new ArrayList<Song>();
+        for (Song song : songs) {
+            if(song.isPublished()) {
+                publicSongs.add(song);
+            }
+        }
+        return publicSongs;
+    }
+
+    public ArrayList<Song> openMySongs() {
+        ArrayList<Song> mySongs = new ArrayList<Song>();
+        for(Song song : songs) {
+            if(song.getAuthor().equals(UserList.getInstance().getCurrentUser())) {
+                mySongs.add(song);
+            }
+        }
+        return mySongs;
+    }
+
+    public ArrayList<Song> openFavorites() {
+        return UserList.getInstance().getCurrentUser().getFavSongs();
+    }
+
+    public ArrayList<Song> filterSongs(String category, String filter) {
+        
+    }
+
     /**
      * saves the chnages made to the instance of SongList
      */
