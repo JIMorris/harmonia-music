@@ -87,8 +87,8 @@ public class SongList {
     // Simion
 
     public void copySong(Song song) { //this is the new copySong method
-        song = new Song(song, UserList.getInstance().getCurrentUser());
-        songs.add(song);
+        Song newSong = new Song(song, UserList.getInstance().getCurrentUser());
+        songs.add(newSong);
     }
 
     /**
