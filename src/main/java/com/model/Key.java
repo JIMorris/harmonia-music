@@ -83,16 +83,20 @@ public enum Key {
                     Pitch.C_SHARP, Pitch.D_SHARP, Pitch.E, Pitch.F_SHARP)));
 
     public final String label;
-    public final ArrayList<Pitch> pitchs;
+    public final ArrayList<Pitch> pitches;
 
         /**
          * Constructs a key with a label and pitch.
          * @param label
-         * @param pitchs
+         * @param pitches
          */
-    private Key(String label, ArrayList<Pitch> pitchs) {
+    private Key(String label, ArrayList<Pitch> pitches) {
         this.label = label;
-        this.pitchs = pitchs;
+        this.pitches = pitches;
+    }
+
+    public Pitch getRoot(){
+        return this.pitches.get(0);
     }
 
     /**

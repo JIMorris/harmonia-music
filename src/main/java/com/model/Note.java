@@ -36,6 +36,18 @@ public class Note {
         this.octave = 4; // default octave, can be modified later
     }
 
+    public void setPitch(Pitch pitch){
+        this.pitch = pitch;
+    }
+
+    public void setOctave(int octave){
+        this.octave = octave;
+    }
+
+    public Pitch getPitch(){
+        return this.pitch;
+    }
+
     public int getDuration() {
         return this.duration;
     }

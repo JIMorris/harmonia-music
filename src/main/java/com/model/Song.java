@@ -122,6 +122,14 @@ public class Song {
         this.instruments = instruments;
     }
 
+    /**
+     * 
+     * @param tempo
+     */
+    public void setTempo(int tempo){
+        this.tempo = tempo;
+    }
+
     //TODO
     public UUID getSongID () {
         return this.songID;
@@ -192,6 +200,30 @@ public class Song {
         return instruments;
     }
 
+    //TODO
+    public ArrayList<Measure> getMeasures(Instrument instrument){
+        ArrayList<Measure> measures = new ArrayList<>();
+        for(MeasureGroup measureGroup : measureGroups){
+            measures.add(measureGroup.getMeasure(instrument));
+        }
+        return measures;
+    }
+
+    /**
+     * TODO
+     * @param measure
+     * @return
+     */
+    public MeasureGroup getMeasureGroup(Measure measure){
+        for(MeasureGroup measureGroup : measureGroups){
+            for(Instrument instrument : instruments){
+                if(measureGroup.getMeasure(instrument) == measure)
+                    return measureGroup;
+            }
+        }
+        return null;
+    }
+
     /**
      * checks if a song's UUID is the same as another UUID
      * 
@@ -238,6 +270,36 @@ public class Song {
     }
 
     /**
+     * TODO
+     * @param measureGroup
+     */
+    public void insertMeasure(MeasureGroup measureGroup){
+        int index = measureGroups.indexOf(measureGroup);
+        measureGroups.add(index, new MeasureGroup(timeSignatureNum, instruments));
+    }
+
+    /**
+     * TODO
+     * @param measureGroup
+     */
+    public void deleteMeasure(MeasureGroup measureGroup){
+        measureGroups.remove(measureGroup);
+    }
+
+    /**
+     * TODO
+     * @param note
+     * @return
+     */
+    public boolean insertNote(Note note){
+        if(note.getPitch()!=Pitch.REST)
+            return false;
+        note.setPitch(keySignature.getRoot());
+        note.setOctave(4);
+        return true;
+    }
+
+    /**
      * Moves the specified note up one scale tone
      * 
      * @param note Note to move
@@ -266,7 +328,7 @@ public class Song {
      */
     public void addInstrument(Instrument instrument) {
         for(MeasureGroup measureGroup : measureGroups){
-            measureGroup.addPart(instrument);
+            measureGroup.addMeasure(instrument);
         }
     }
 
@@ -277,7 +339,7 @@ public class Song {
      */
     public void removeInstrument(Instrument instrument) {
         for(MeasureGroup measureGroup : measureGroups){
-            measureGroup.removePart(instrument); //TODO
+            measureGroup.removeMeasure(instrument); //TODO
         }
     }
 
