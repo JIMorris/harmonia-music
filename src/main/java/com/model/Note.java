@@ -6,7 +6,7 @@ package com.model;
  * @author
  */
 public class Note {
-    public static int QUARTER_LENGTH;
+    public static final int QUARTER_LENGTH = 12;
     private int duration;
     private Pitch pitch;
     private int octave;
@@ -46,5 +46,29 @@ public class Note {
 
     public void changeDuration() {
         this.duration = QUARTER_LENGTH;
+    }
+
+    public String getJFugue(){
+        String jFugue = "";
+        jFugue += pitch.label;
+        jFugue += octave;
+        jFugue += getJFugueDuration();
+
+        return jFugue;
+    }
+
+    private String getJFugueDuration(){
+        switch (duration) {
+            case 12:
+                return "q";
+            case 6:
+                return "i";
+            case 4:
+                return "i*";
+            case 3:
+                return "s";
+            default:
+                throw new AssertionError();
+        }
     }
 }

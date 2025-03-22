@@ -1,121 +1,155 @@
-import org.jfugue.player.Player;
+package com.model;
+
+import java.util.ArrayList;
+
 import org.jfugue.pattern.Pattern;
-import java.util.List;
+import org.jfugue.player.Player;
 
 public class AudioPlayer {
-    private Song song;
-    private Instrument instrument;
-    private int currentMeasureIndex;
-    private double playbackSpeed = 1.0;
-    private int bpm = 120;
-    private boolean isPlaying;
+    private static AudioPlayer instance;
+    private Song currentSong;
+    private Instrument currentInstrument;
+    private MeasureGroup currentMeasureGroup;
+    private Note currentNote;
     private Player player;
 
     //Constructor
-    public AudioPlayer(Song song, Instrument instrument) {
-        this.song = song;
-        this.instrument = instrument;
-        this.currentMeasureIndex = 0;
+    public AudioPlayer() {
         this.player = new Player();
-        this.isPlaying = false;
+    }
+
+    public static AudioPlayer getInstance(){
+        if(instance==null){
+            instance = new AudioPlayer();
+        }
+        return instance;
     }
 
     //Starts the playback speed of the song
     public void play() {
-        if(song == null) {
-            System.out.println("No song loaded.");
-            return;
-        }
-
-        isPlaying = true;
-        Pattern musicPattern = generatePattern();
-        player.play(musicPattern);
-    }
-
-    // Pause playback (JFugue does not have a built in pause method, so we stop instead. This instead need to be hard-coded.)
-    public void pause() {
-        if(isPlaying) {
-            player.getManagedPlayer().finish();
-            isPlaying = false;
-        }
+        player = new Player();
+        Pattern pattern = generatePattern();
+        player.delayPlay(500, pattern);
     }
 
     // Stop playback entirely
     public void stop() {
         player.getManagedPlayer().finish();
-        isPlaying = false;
-        currentMeasureIndex = 0;
     }
 
-    // Move to the next measure
-    public void nextMeasure() {
-        if (currentMeasureIndex < song.getMeasures().size() -1) {
-            currentMeasureIndex++;
-            playCurrentMeasure();
+    // Generate a full song pattern for JFugue
+    private Pattern generatePattern() {
+        Pattern pattern = new Pattern();
+        pattern.add("T" + currentSong.getTempo()); // Sets the tempo
+
+        ArrayList<Instrument> instruments = currentSong.getInstruments();
+        for(int i=0; i<instruments.size(); i++){
+            Instrument instrument = instruments.get(i);
+            pattern.add("V" + i);
+            pattern.add(generateInstrumentPattern(instrument));
         }
+
+        return pattern;
     }
 
-    // Move to the previous measure
-    public void previousMeasure() {
-        if (currentMeasureIndex > 0) {
-            currentMeasureIndex--;
-            playCurrentMeasure();
+    private Pattern generateInstrumentPattern(Instrument instrument){
+        Pattern pattern = new Pattern();
+        pattern.add(" I[" + instrument.getName() + "] ");
+
+        ArrayList<MeasureGroup> measureGroups = currentSong.getMeasureGroups();
+        for(int i=measureGroups.indexOf(currentMeasureGroup); i<measureGroups.size(); i++){
+            MeasureGroup measureGroup = measureGroups.get(i);
+            Measure measure = measureGroup.getMeasure(instrument);
+            pattern.add(generateMeasurePattern(measure) + "| ");
         }
+
+        return pattern;
     }
 
-    // Set playback speed
-    public void setPlaybackSpeed(double speed) {
-        if (speed > 0) {
-            this.playbackSpeed = speed;
+
+    private Pattern generateMeasurePattern(Measure measure){
+        Pattern pattern = new Pattern();
+        ArrayList<Note> notes = measure.getNotes();
+        for(Note note : notes){
+            pattern.add(generateNotePattern(note) + " ");
         }
+
+        return pattern;
     }
 
-    // Set BPM (beats per minute in case you didn't know that already) 
-    public void setBPM(int bpm) {
-        if (bpm > 0) {
-            this.bpm = bpm;
-        }
+    private Pattern generateNotePattern(Note note){
+        Pattern pattern = new Pattern();
+        pattern.add(note.getJFugue());
+
+        return pattern;
     }
 
-    // Play the current measure only
-    private void playCurrentMeasure() {
-        Pattern measurePattern = generateMeasurePattern(song.getMeasures().get(currentMeasureIndex)) {
-            player.play(measurePattern);
-        }
 
-        // Generate a full song pattern for JFugue
-        private Pattern generatePattern() {
-            Pattern pattern = new Pattern();
-            pattern.add("T" + bpm); // Sets the tempo
 
-            for (Measure measure : song.getMeasures()) {
-                pattern.add(generateMeasurePattern(measure));
-            }
+    //--- EDITING/SELECTING ---//
 
-            return pattern;
-        }
+    public ArrayList<Instrument> openSong(Song song){
+        this.currentSong = song;
+        this.currentInstrument = song.getInstruments().get(0);
+        this.currentMeasureGroup = song.getMeasureGroups().get(0);
+        this.currentNote = currentMeasureGroup.getMeasure(currentInstrument).getNotes().get(0); //TODO
+        return song.getInstruments();
+    }
 
-        // Generate a pattern for a single measure
-        private Pattern generateMeasurePattern(Measure measure) {
-            Pattern measurePattern  = new Pattern();
-            measurePattern.add("T" + bpm); // Sets the tempo
+    public ArrayList<Measure> selectInstrument(Instrument instrument){
+        this.currentInstrument = instrument;
+        return currentSong.getMeasures(instrument); //TODO
+    }
 
-            for (Part part : measure.getParts()) {
-                measurePattern.add(generatePartPattern(part));
-            }
+    public void selectMeasure(Measure measure){
+        this.currentMeasureGroup = currentSong.getMeasureGroup(measure); //TODO
+    }
 
-            return measurePattern;
-        }
+    public void selectNote(Note note){
+        this.currentNote = note;
+    }
 
-        // Generate a pattern for an individual part within a measure
-        private Pattern generatePrtPattern(Part part) {
-            Pattern partPattern = new Pattern();
+    public ArrayList<Note> getNotes(Measure measure){
+        return measure.getNotes(); //TODO
+    }
 
-            for (Note note : part.getMusic()) {
-                partPattern.add(note.toString() + " "); // Note objects should have a proper 'toString()'
-            }
+    public boolean setBPM(int BPM){
+        return currentSong.setBPM(BPM); //TODO
+    }
 
-            return partPattern;
-        }
+    public void setChord(Chord chord){
+        currentMeasureGroup.setChord(chord);
+    }
+
+    public void insertMeasure(){
+        currentSong.insertMeasure(currentMeasureGroup); //TODO
+    }
+
+    public void deleteMeasure(){
+        currentSong.deleteMeasure(currentMeasureGroup);
+    }
+
+    public void insertNote(){
+        currentSong.insertNote(currentNote); //TODO
+    }
+
+    public void deleteNote(){
+        currentNote.setPitch(Pitch.REST); //TODO
+    }
+
+    public boolean noteUp(){
+        return currentSong.noteUp(currentNote);
+    }
+
+    public boolean noteDown(){
+        return currentSong.noteDown(currentNote);
+    }
+
+    public boolean splitNote(int division){
+        return currentMeasureGroup.getMeasure(currentInstrument).splitNote(currentNote, division); //TODO
+    }
+
+    public boolean combineNotes(){
+        return currentMeasureGroup.getMeasure(currentInstrument).combineNotes(currentNote); //TODO
     }
 }
