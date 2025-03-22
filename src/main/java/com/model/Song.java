@@ -126,8 +126,11 @@ public class Song {
      * 
      * @param tempo
      */
-    public void setTempo(int tempo){
+    public boolean setTempo(int tempo){
+        if(tempo<30 || tempo>400)
+            return false;
         this.tempo = tempo;
+        return true;
     }
 
     //TODO
@@ -306,7 +309,7 @@ public class Song {
      * @return Whether the new note is in range
      */
     public boolean noteUp(Note note){
-        return note.up(this.keySignature);//TODO
+        return note.up(this.keySignature);
     }
 
     /**
@@ -318,7 +321,7 @@ public class Song {
      * @return Whether the new note is in range
      */
     public boolean noteDown(Note note){
-        return note.down(this.keySignature); //TODO
+        return note.down(this.keySignature);
     }
 
     /**
@@ -362,11 +365,15 @@ public class Song {
 
 
 
-    //TODO
+    /**
+     * TODO
+     * @param measureGroups
+     * @return
+     */
     public ArrayList<MeasureGroup> copyMeasureGroups(ArrayList<MeasureGroup> measureGroups){
         ArrayList<MeasureGroup> copy = new ArrayList<>();
         for(MeasureGroup measureGroup : measureGroups){
-            copy.add((MeasureGroup)measureGroup.copy()); //TODO
+            copy.add(new MeasureGroup(measureGroup)); //TODO
         }
         return copy;
     }

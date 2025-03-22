@@ -128,11 +128,12 @@ public class UserList {
      * @param song The song to toggle.
      */
     public void toggleFavoriteSong(Song song) {
-        if (currentUser.favSongsExists(song)) {
-            currentUser.addFavoriteSong(song);
-        }
-        currentUser.removeFavoriteSong(song);
-    } // Do we want to add a toggle favorite authors method? - Simion
+        currentUser.toggleFavoriteSong(song);
+    }
+
+    public void toggleFavoriteAuthor(User author){
+        currentUser.toggleFavoriteAuthor(author);
+    }
 
     /**
      * Retrieves the current logged-in user.
@@ -142,10 +143,14 @@ public class UserList {
         return currentUser;
     }
 
+    public void toggleFavorite(Song song){
+        currentUser.toggleFavoriteSong(song);
+    }
+
     /**
      * Saves the current user data using DataWriter.
      */
-    public void save() {
-        DataWriter.getInstance().saveUsers(); // ????? - Simion
+    public void save() throws Exception{
+        DataWriter.getInstance().saveUsers();
     }
 }

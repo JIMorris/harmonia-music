@@ -88,81 +88,22 @@ public class User {
      * 
      * @param song the song the user wishes to add
      */
-    public void addFavoriteSong(Song song) {
-        if (!favSongsExists(song))
+    public void toggleFavoriteSong(Song song) {
+        if(this.favSongs.contains(song))
+            favSongs.remove(song);
+        else
             favSongs.add(song);
-        System.out.println("song already exists in Favorite Songs");
     }
 
     /**
-     * Adds an author to a list of the user's favorite authors provided it is not already present within the favortie author's list
-     * 
-     * @param author the author the user wishes to add 
+     * TODO
+     * @param author
      */
-    public void addFavoriteAuthor(User author) {
-        if (!favAuthorExists(author))
+    public void toggleFavoriteAuthor(User author){
+        if(this.favAuthors.contains(author))
+            favAuthors.remove(author);
+        else
             favAuthors.add(author);
-        System.out.println("song already exists in Favorite Author");
-    }
-
-    /**
-     * Checks if the author the user wished to add to the favorite authors list is not already present
-     * 
-     * @param author the author that needs to be checked
-     * @return true if the author is in the favorite authors list, otherwise it is false 
-     */
-    public boolean favAuthorExists(User author) { // TODO UML
-        for (User authorInList : favAuthors) {
-            if (authorInList.getUserID() == author.getUserID()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Checks if the provided song is already in the favorite songs list
-     * 
-     * @param song the song that needs to be checked
-     * @return true if the song is present in the list, otherwise it is false 
-     */
-    public boolean favSongsExists(Song song) { // TODO UML
-        for (Song songInList : favSongs) {
-            if (songInList.getSongID() == song.getSongID()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Removes a song from the user's list of favorite songs 
-     * 
-     * @param song the song the user wishes to remove
-     */
-    public void removeFavoriteSong(Song song) {
-        // for (int i = 0; i < favSongs.size(); ++i) {
-        // if (favSongs.get(i) == song) {
-        // favSongs.remove(i);
-        // break;
-        // }
-        // }
-        favSongs.remove(song);
-    }
-
-    /**
-     * Removes the author from the user's list of favorite authors
-     * 
-     * @param author the author the user wishes to remove 
-     */
-    public void removeFavoriteAuthor(User author) {
-        // for (int i = 0; i < favAuthors.size(); ++i) {
-        // if (favAuthors.get(i) == author) {
-        // favSongs.remove(i);
-        // break;
-        // }
-        // }
-        favAuthors.remove(author);
     }
 
     /**

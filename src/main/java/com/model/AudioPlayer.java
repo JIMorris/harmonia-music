@@ -92,29 +92,41 @@ public class AudioPlayer {
         this.currentSong = song;
         this.currentInstrument = song.getInstruments().get(0);
         this.currentMeasureGroup = song.getMeasureGroups().get(0);
-        this.currentNote = currentMeasureGroup.getMeasure(currentInstrument).getNotes().get(0); //TODO
+        this.currentNote = currentMeasureGroup.getMeasure(currentInstrument).getNotes().get(0);
         return song.getInstruments();
     }
 
     public ArrayList<Measure> selectInstrument(Instrument instrument){
         this.currentInstrument = instrument;
-        return currentSong.getMeasures(instrument); //TODO
+        return currentSong.getMeasures(instrument);
     }
 
     public void selectMeasure(Measure measure){
-        this.currentMeasureGroup = currentSong.getMeasureGroup(measure); //TODO
+        this.currentMeasureGroup = currentSong.getMeasureGroup(measure);
     }
 
     public void selectNote(Note note){
         this.currentNote = note;
     }
 
+    public ArrayList<Instrument> getInstruments(){
+        return this.currentSong.getInstruments();
+    }
+
+    public void addInstrument(Instrument instrument){
+        currentSong.addInstrument(instrument);
+    }
+
+    public void removeInstrument(Instrument instrument){
+        currentSong.removeInstrument(instrument);
+    }
+
     public ArrayList<Note> getNotes(Measure measure){
-        return measure.getNotes(); //TODO
+        return measure.getNotes();
     }
 
     public boolean setBPM(int BPM){
-        return currentSong.setBPM(BPM); //TODO
+        return currentSong.setTempo(BPM);
     }
 
     public void setChord(Chord chord){
@@ -122,7 +134,7 @@ public class AudioPlayer {
     }
 
     public void insertMeasure(){
-        currentSong.insertMeasure(currentMeasureGroup); //TODO
+        currentSong.insertMeasure(currentMeasureGroup);
     }
 
     public void deleteMeasure(){
@@ -130,11 +142,11 @@ public class AudioPlayer {
     }
 
     public void insertNote(){
-        currentSong.insertNote(currentNote); //TODO
+        currentSong.insertNote(currentNote);
     }
 
     public void deleteNote(){
-        currentNote.setPitch(Pitch.REST); //TODO
+        currentNote.setPitch(Pitch.REST);
     }
 
     public boolean noteUp(){
@@ -146,10 +158,10 @@ public class AudioPlayer {
     }
 
     public boolean splitNote(int division){
-        return currentMeasureGroup.getMeasure(currentInstrument).splitNote(currentNote, division); //TODO
+        return currentMeasureGroup.getMeasure(currentInstrument).splitNote(currentNote, division);
     }
 
     public boolean combineNotes(){
-        return currentMeasureGroup.getMeasure(currentInstrument).combineNotes(currentNote); //TODO
+        return currentMeasureGroup.getMeasure(currentInstrument).combineNotes(currentNote);
     }
 }

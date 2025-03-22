@@ -57,7 +57,8 @@ public class ExampleUI {
         measures = facade.selectInstrument(instruments.get(0));
         facade.playSong();
         Thread.sleep(3000);
-        facade.pauseSong();
+        // facade.pauseSong();
+        facade.stopSong();
         facade.selectMeasure(measures.get(2));
         facade.playSong();
         Thread.sleep(3000);
@@ -79,7 +80,7 @@ public class ExampleUI {
         genres.add(Genre.JAZZ);
         facade.login("TestUser", "securePassword");
         songs = facade.openMySongs();
-        song = facade.newSong("The Lick", "A popular jazz phrase", genres, 1, Key.A_MINOR);
+        song = facade.newSong("The Lick", "A popular jazz phrase", genres, 1, 120, Key.A_MINOR);
         facade.openSong(song);
         facade.addInstrument(InstrumentList.getInstance().getInstruments().get(0));
         instruments = facade.getInstruments();

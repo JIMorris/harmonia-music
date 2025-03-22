@@ -8,18 +8,17 @@ import java.util.ArrayList;
  * @author Simion Cartis
  */
 public class Measure {
-    private Instrument instrument;
+    private int length;
     private ArrayList<Note> notes;
     private String text;
 
     /**
-     * Constructsa new measure with specified instrument.
-     * 
-     * @param instrument Instrument of this part
+     * Constructsa new blank measure
      */
-    public Measure(Instrument instrument) {
-        this.instrument = instrument;
+    public Measure() {
+        this.length = 4;
         this.notes = new ArrayList<>();
+        fillNotes();
         this.text = "";
     }
 
@@ -30,21 +29,37 @@ public class Measure {
      * @param text
      */
     public Measure(ArrayList<Note> notes, String text) {
+        this.length=4;
         this.notes = notes;
         this.text = text;
     }
 
     /**
-     * Constructs a new measure with an instrument, list of notes, and text
-     * 
-     * @param instrument
-     * @param notes
-     * @param text
+     * TODO
+     * @param original
      */
-    public Measure(Instrument instrument, ArrayList<Note> notes, String text) {
-        this.instrument = instrument;
-        this.notes = notes;
-        this.text = text;
+    public Measure(Measure original){
+        this.length = original.getLength();
+        this.text = original.getText();
+        this.notes = cloneNotes(notes);
+    }
+
+    /**
+     * TODO
+     */
+    private void fillNotes(){
+        for(int i=0; i<this.length; i++){
+            notes.add(new Note(Note.QUARTER_LENGTH, Pitch.REST, 4));
+        }
+    }
+
+    private ArrayList<Note> cloneNotes(ArrayList<Note> originalNotes){
+        ArrayList<Note> newNotes = new ArrayList<>();
+        for(Note note : originalNotes){
+            newNotes.add(new Note(note));
+        }
+
+        return null;
     }
 
     /**
@@ -103,5 +118,17 @@ public class Measure {
 
     public ArrayList<Note> getNotes() {
         return notes;
+    }
+
+    public int getLength(){
+        return length;
+    }
+
+    public String getText(){
+        return text;
+    }
+
+    public void setText(String text){
+        this.text = text;
     }
 }

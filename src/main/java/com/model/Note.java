@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.ArrayList;
+
 /**
  * Represents a musical note with a duration, pitch, and octave
  * 
@@ -36,6 +38,16 @@ public class Note {
         this.octave = 4; // default octave, can be modified later
     }
 
+    /**
+     * TODO
+     * @param originalNote
+     */
+    public Note(Note originalNote){
+        this.duration = originalNote.getDuration();
+        this.pitch = originalNote.getPitch();
+        this.octave = originalNote.getOctave();
+    }
+
     public void setPitch(Pitch pitch){
         this.pitch = pitch;
     }
@@ -52,6 +64,10 @@ public class Note {
         return this.duration;
     }
 
+    public int getOctave(){
+        return this.octave;
+    }
+
     public void changeDuration(int change) {
             this.duration *= change;
     }
@@ -59,6 +75,50 @@ public class Note {
     public void changeDuration() {
         this.duration = QUARTER_LENGTH;
     }
+
+    public boolean up(Key keySignature){
+        if(octave>=7)
+            return false;
+        ArrayList<Pitch> keyPitches = keySignature.getPitches();
+        Pitch currentPitch = this.pitch;
+        int index = keyPitches.indexOf(currentPitch);
+        Pitch newPitch;
+        
+        if(index==keyPitches.size()-1)
+            newPitch = keyPitches.get(0);
+        else
+            newPitch = keyPitches.get(index+1);
+
+        if((currentPitch==Pitch.B || currentPitch==Pitch.C_FLAT || currentPitch==Pitch.B_FLAT || currentPitch==Pitch.A_SHARP)
+                && (newPitch==Pitch.C || newPitch==Pitch.B_SHARP || newPitch==Pitch.C_SHARP || newPitch==Pitch.D_FLAT))
+            this.octave++;
+
+        this.pitch = newPitch;
+        return true;
+    }
+
+    public boolean down(Key keySignature){
+        if(octave<=0)
+            return false;
+        ArrayList<Pitch> keyPitches = keySignature.getPitches();
+        Pitch currentPitch = this.pitch;
+        int index = keyPitches.indexOf(currentPitch);
+        Pitch newPitch;
+
+        if(index==0)
+            newPitch = keyPitches.get(keyPitches.size()-1);
+        else
+            newPitch = keyPitches.get(index-1);
+
+
+        if((currentPitch==Pitch.C || currentPitch==Pitch.B_SHARP || currentPitch==Pitch.C_SHARP || currentPitch==Pitch.D_FLAT)
+                && (newPitch==Pitch.B || newPitch==Pitch.C_FLAT || newPitch==Pitch.B_FLAT || newPitch==Pitch.A_SHARP))
+            this.octave--;
+
+        this.pitch = newPitch;
+        return true;
+    }
+
 
     public String getJFugue(){
         String jFugue = "";
@@ -83,4 +143,5 @@ public class Note {
                 throw new AssertionError();
         }
     }
+
 }

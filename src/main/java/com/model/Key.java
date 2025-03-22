@@ -99,6 +99,10 @@ public enum Key {
         return this.pitches.get(0);
     }
 
+    public ArrayList<Pitch> getPitches(){
+        return this.pitches;
+    }
+
     /**
      * Converts a string representation of a key into its corresponding enum value
      * @param key

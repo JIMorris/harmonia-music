@@ -85,7 +85,7 @@ public class MeasureGroup {
      * @param instrument Instrument to add
      */
     public final void addMeasure(Instrument instrument){
-        measures.put(instrument, new Measure(instrument));
+        measures.put(instrument, new Measure());
     }
 
     /**
@@ -110,14 +110,14 @@ public class MeasureGroup {
      * @param measures
      * @return
      */
-    public HashMap<Instrument, Measure> copyMeasures(HashMap<Instrument, Measure> measures){
+    private HashMap<Instrument, Measure> copyMeasures(HashMap<Instrument, Measure> measures){
         HashMap<Instrument, Measure> copy = new HashMap<>();
         Set<Instrument> instrumentSet = measures.keySet();
         ArrayList<Instrument> instruments = new ArrayList<>(instrumentSet);
         
         for(Instrument instrument : instruments){
             Measure currentMeasure = measures.get(instrument);
-            Measure measureCopy = new Measure(currentMeasure); //TODO
+            Measure measureCopy = new Measure(currentMeasure);
             copy.put(instrument, measureCopy);
         }
 

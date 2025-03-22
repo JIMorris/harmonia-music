@@ -60,9 +60,14 @@ public class MusicFacade {
      * Logs out user and saves all data
      */
     public void logout(){
-        instrumentList.save();
-        userList.save();
-        songList.save();
+        try {
+            instrumentList.save();
+            userList.save();
+            songList.save();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
     /**
@@ -78,7 +83,7 @@ public class MusicFacade {
      * @return List of crteated songs
      */
     public ArrayList<Song> openMySongs(){
-        return songList.getMySongs();
+        return songList.openMySongs();
     }
 
     /**
@@ -86,7 +91,7 @@ public class MusicFacade {
      * @return List of favorite songs
      */
     public ArrayList<Song> openFavorites(){
-        return songList.getMyFavorites();
+        return songList.openFavorites();
     }
 
     /**
@@ -96,7 +101,7 @@ public class MusicFacade {
      * @return Filtered song list
      */
     public ArrayList<Song> filterSongs(String category, String filter){
-        return songList.filterSongs(String category, String filter);
+        return songList.filterSongs(category, filter);
     }
 
     /**
@@ -120,7 +125,11 @@ public class MusicFacade {
     }
 
     public void addInstrument(Instrument instrument){
-        audioPlayer.addInstrument();
+        audioPlayer.addInstrument(instrument);
+    }
+    
+    public void removeInstrument(Instrument instrument){
+        audioPlayer.removeInstrument(instrument);
     }
 
     /**
@@ -141,8 +150,8 @@ public class MusicFacade {
      * @param timeSignature Time signature of song
      * @return The created song
      */
-    public Song newSong(String title, String description, ArrayList<Genre> genres, int difficulty, Key keySignature){
-        return songList.newSong(title, description, genres, difficulty, keySignature, new int[] {4, 4});  
+    public Song newSong(String title, String description, ArrayList<Genre> genres, int difficulty, int tempo, Key keySignature){
+        return songList.newSong(title, description, genres, difficulty, tempo, keySignature, new int[] {4, 4});  
     }
 
     /**
@@ -151,7 +160,7 @@ public class MusicFacade {
      * @return The list of measures of this song
      */
     public ArrayList<Measure> selectInstrument(Instrument instrument){
-        return audioPlayer.selectInstrument();
+        return audioPlayer.selectInstrument(instrument);
     }
     
     /**
@@ -188,13 +197,13 @@ public class MusicFacade {
         audioPlayer.play();
     }
 
-    /**
-     * Pauses the current song, stopping on the current measure
-     * @return Measure that was paused on
-     */
-    public int pauseSong(){
-        return audioPlayer.pause();
-    }
+    // /**
+    //  * Pauses the current song, stopping on the current measure
+    //  * @return Measure that was paused on
+    //  */
+    // public int pauseSong(){
+    //     return audioPlayer.pause();
+    // }
 
     /**
      * Stops the current measure, keeping the selected measure the same as when play was hit
@@ -241,7 +250,7 @@ public class MusicFacade {
      * @return
      */
     public boolean splitNote(int division){
-        return audioPlayer.splitNote(int division);
+        return audioPlayer.splitNote(division);
     }
 
     /**
