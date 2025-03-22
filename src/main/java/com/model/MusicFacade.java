@@ -71,6 +71,7 @@ public class MusicFacade {
      */
     public ArrayList<Song> openPublicSongs(){
         return songList.getPublicSongs();
+    }
 
     /**
      * Opens user created songs
