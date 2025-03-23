@@ -49,6 +49,10 @@ public class SongList {
         return null;
     }
 
+    public ArrayList<Song> getSongs() {
+        return songs;
+    }
+
     /**
      * Creates a new empty song, adds it the song list, and returns it
      * 
