@@ -70,9 +70,9 @@ public class SongList {
      */
     public Song newSong(String title, String description,
             ArrayList<Genre> genres, int difficulty, int tempo,
-            Key keySignature, int[] timeSignature) {
+            Key keySignature, int[] timeSignature, Instrument defaultInstrument) {
         Song newSong = new Song(title, UserList.getInstance().getCurrentUser(), description, genres, difficulty, tempo,
-                keySignature, timeSignature[0], timeSignature[1]);
+                keySignature, timeSignature[0], timeSignature[1], defaultInstrument);
         songs.add(newSong);
         return newSong;
     }
@@ -173,7 +173,7 @@ public class SongList {
 
         for (Song song : songs) {
             if (song.getDifficulty() == difficulty)
-                songs.add(song);
+                filteredSongs.add(song);
         }
 
         return filteredSongs;
