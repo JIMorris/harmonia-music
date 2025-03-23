@@ -89,9 +89,11 @@ public class User {
      * @param song the song the user wishes to add
      */
     public void addFavoriteSong(Song song) {
-        if (!favSongsExists(song))
+        if (!favSongsExists(song)) {
             favSongs.add(song);
-        System.out.println("song already exists in Favorite Songs");
+        } else {
+            System.out.println("song already exists in Favorite Songs");
+        }
     }
 
     /**
@@ -128,7 +130,7 @@ public class User {
      */
     public boolean favSongsExists(Song song) { // TODO UML
         for (Song songInList : favSongs) {
-            if (songInList.getSongID() == song.getSongID()) {
+            if (songInList.getSongID().equals(song.getSongID())) {
                 return true;
             }
         }

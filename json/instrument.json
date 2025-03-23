@@ -1,17 +1,17 @@
 [
-  {
-    "uuid": "ff79cdfd-424c-4026-9a5b-43b9a4653228",
-    "name": "Piano",
-    "imageFile": "piano.png"
-  },
-  {
-    "uuid": "30c429e7-0956-4930-9eeb-9562e7810636",
-    "name": "Guitar",
-    "imageFile": "guitar.png"
-  },
-  {
-    "uuid": "cf47a2ee-1dfc-4d15-abc9-e0b578a785a3",
-    "name": "Ukulele",
-    "imageFile": "ukulele.png"
-  }
+    {
+        "imageFile": "piano.png",
+        "name": "Piano",
+        "uuid": "ff79cdfd-424c-4026-9a5b-43b9a4653228"
+    },
+    {
+        "imageFile": "guitar.png",
+        "name": "Guitar",
+        "uuid": "30c429e7-0956-4930-9eeb-9562e7810636"
+    },
+    {
+        "imageFile": "ukulele.png",
+        "name": "Ukulele",
+        "uuid": "cf47a2ee-1dfc-4d15-abc9-e0b578a785a3"
+    }
 ]

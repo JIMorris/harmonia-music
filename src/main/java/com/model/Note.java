@@ -48,7 +48,11 @@ public class Note {
         this.duration = QUARTER_LENGTH;
     }
 
-    public String getPitch() {
+    public Pitch getPitch() {
+        return pitch;
+    }
+
+    public String getPitchString() {
         return pitch.toString();
     }
 
@@ -58,5 +62,9 @@ public class Note {
 
     public int getOctave() {
         return octave;
+    }
+
+    public String getLabel() {
+        return pitch.label;
     }
 }

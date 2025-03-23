@@ -98,6 +98,10 @@ public class SongList {
         songs.remove(song);
     }
 
+    public void setSongs(ArrayList<Song> songs) {
+        this.songs = songs;
+    }
+
     /**
      * filters the arraylist of Songs by a desired title (way in which it is sorted)
      * 
