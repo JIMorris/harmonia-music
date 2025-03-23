@@ -46,7 +46,7 @@ public class Song {
      * @param timeSignatureNum Top number of the time signature
      * @param timeSignatureDen Bottom number of the time signature
      */
-    public Song(String title, User author, String description, ArrayList<Genre> genres, int difficulty, int tempo, Key keySignature, int timeSignatureNum, int timeSignatureDen) {
+    public Song(String title, User author, String description, ArrayList<Genre> genres, int difficulty, int tempo, Key keySignature, int timeSignatureNum, int timeSignatureDen, Instrument defaultInstrument) {
         this.songID = UUID.randomUUID();
         this.title = title;
         this.author = author;
@@ -59,8 +59,10 @@ public class Song {
         this.keySignature = keySignature;
         this.timeSignatureNum = timeSignatureNum;
         this.timeSignatureDen = timeSignatureDen;
-        this.measureGroups = new ArrayList<>();
         this.instruments = new ArrayList<>();
+        instruments.add(defaultInstrument);
+        this.measureGroups = new ArrayList<>();
+        this.measureGroups.add(new MeasureGroup(timeSignatureDen, instruments));
     }
 
     /**
@@ -117,7 +119,7 @@ public class Song {
         this.tempo = tempo;
         this.keySignature = keySignature;
         this.timeSignatureNum = timeSignatureNum;
-        this. timeSignatureDen = timeSignatureDen;
+        this.timeSignatureDen = timeSignatureDen;
         this.measureGroups = measures;
         this.instruments = instruments;
     }
@@ -293,8 +295,11 @@ public class Song {
      * TODO
      * @param measureGroup
      */
-    public void deleteMeasure(MeasureGroup measureGroup){
+    public boolean deleteMeasure(MeasureGroup measureGroup){
+        if(measureGroups.size()<=1)
+            return false;
         measureGroups.remove(measureGroup);
+        return true;
     }
 
     /**

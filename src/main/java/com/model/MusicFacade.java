@@ -150,8 +150,8 @@ public class MusicFacade {
      * @param timeSignature Time signature of song
      * @return The created song
      */
-    public Song newSong(String title, String description, ArrayList<Genre> genres, int difficulty, int tempo, Key keySignature){
-        return songList.newSong(title, description, genres, difficulty, tempo, keySignature, new int[] {4, 4});  
+    public Song newSong(String title, String description, ArrayList<Genre> genres, int difficulty, int tempo, Key keySignature, Instrument defaultInstrument){
+        return songList.newSong(title, description, genres, difficulty, tempo, keySignature, new int[] {4, 4}, defaultInstrument);  
     }
 
     /**

@@ -42,7 +42,7 @@ public class Measure {
     public Measure(Measure original){
         this.length = original.getLength();
         this.text = original.getText();
-        this.notes = cloneNotes(notes);
+        this.notes = cloneNotes(original.getNotes());
     }
 
     /**

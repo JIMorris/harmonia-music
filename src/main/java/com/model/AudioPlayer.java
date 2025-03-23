@@ -214,7 +214,16 @@ public class AudioPlayer {
      * TODO
      */
     public void deleteMeasure(){
-        currentSong.deleteMeasure(currentMeasureGroup);
+        ArrayList<MeasureGroup> measureGroups = currentSong.getMeasureGroups();
+        MeasureGroup deletedMeasureGroup = currentMeasureGroup;
+        
+        int index = measureGroups.indexOf(deletedMeasureGroup);
+        if(index>=measureGroups.size()-1)
+            currentMeasureGroup = measureGroups.get(measureGroups.size()-2);
+        else
+            currentMeasureGroup = measureGroups.get(index-1);
+
+        currentSong.deleteMeasure(deletedMeasureGroup);
     }
 
     /**
