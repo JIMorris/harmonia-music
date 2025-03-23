@@ -74,6 +74,10 @@ public class InstrumentList {
         return instruments;
     }
 
+    public void setInstruments(ArrayList<Instrument> instruments) {
+        this.instruments = instruments;
+    }
+
     @Override
     public String toString() {
         return "InstrumentList{" +

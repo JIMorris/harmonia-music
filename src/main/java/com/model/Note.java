@@ -135,4 +135,8 @@ public class Note {
     public int getLength() {
         return duration;
     }
+
+    public String getLabel() {
+        return pitch.label;
+    }
 }

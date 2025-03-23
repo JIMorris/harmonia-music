@@ -106,7 +106,7 @@ public class DataWriter extends DataConstants {
         }
 
         //Writing instrument JSON file
-        try (FileWriter file = new FileWriter(INSTRUMENT_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(INSTRUMENT_TEMP_FILE_NAME)) {
             file.write(instrumentsJSON.toJSONString());
             file.flush();
             return instruments;
@@ -208,7 +208,7 @@ public class DataWriter extends DataConstants {
             for (Note note : measure.getNotes()) {
                 JSONObject noteDetails = new JSONObject();
                 noteDetails.put("length", note.getLength());
-                noteDetails.put("pitch", note.getPitch());
+                noteDetails.put("pitch", note.getLabel());
                 noteDetails.put("octave", note.getOctave());
                 musicJSON.add(noteDetails);
             }
@@ -225,7 +225,18 @@ public class DataWriter extends DataConstants {
 
     public static void main(String[] args) {
         DataWriter writer = DataWriter.getInstance();
+        DataLoader loader = DataLoader.getInstance();
         try {
+            // Load existing data
+            InstrumentList instrumentList = InstrumentList.getInstance();
+            UserList userList = UserList.getInstance();
+            SongList songList = SongList.getInstance();
+
+            instrumentList.setInstruments(loader.loadInstruments());
+            userList.setUsers(loader.loadUsers());
+            songList.setSongs(loader.loadSongs());
+            writer.saveInstruments();
+            writer.saveUsers();
             writer.saveSongs();
         } catch (Exception e) {
             e.printStackTrace();
