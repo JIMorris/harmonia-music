@@ -226,6 +226,14 @@ public class Song {
         }
         return null;
     }
+    public ArrayList<UUID> getInstrumentIDs() {
+        ArrayList<UUID> instrumentIDs = new ArrayList<>();
+        for (Instrument instrument : instruments) {
+            instrumentIDs.add(instrument.getInstrumentID());
+        }
+        return instrumentIDs;
+    }
+    
 
     /**
      * checks if a song's UUID is the same as another UUID

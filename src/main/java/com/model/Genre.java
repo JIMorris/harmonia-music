@@ -6,7 +6,7 @@ package com.model;
  */
 public enum Genre {
     POP("Pop"),
-    CLASSICAL("Clasical"),
+    CLASSICAL("Classical"),
     JAZZ("Jazz"),
     ROCK("Rock"),
     METAL("Metal"),

@@ -144,4 +144,15 @@ public class Note {
         }
     }
 
+    public String getPitch() {
+        return pitch.toString();
+    }
+
+    public int getLength() {
+        return duration;
+    }
+
+    public int getOctave() {
+        return octave;
+    }
 }

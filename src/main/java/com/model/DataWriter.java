@@ -3,6 +3,7 @@ package com.model;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -105,7 +106,7 @@ public class DataWriter extends DataConstants {
         }
 
         //Writing instrument JSON file
-        try (FileWriter file = new FileWriter(INSTRUMENT_TEMP_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(INSTRUMENT_FILE_NAME)) {
             file.write(instrumentsJSON.toJSONString());
             file.flush();
             return instruments;
@@ -142,7 +143,7 @@ public class DataWriter extends DataConstants {
         }
 
         //Writing song JSON file
-        try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(SONG_TEMP_FILE_NAME)) {
             file.write(songsJSON.toJSONString());
             file.flush();
             return songs;
@@ -157,59 +158,69 @@ public class DataWriter extends DataConstants {
         songDetails.put(SONG_TITLE, song.getTitle());
         songDetails.put(SONG_AUTHOR, song.getAuthor().getUserID().toString());
         songDetails.put(SONG_DESCRIPTION, song.getDescription());
-        
-        // Convert genres to a list of strings
-        ArrayList<String> genres = new ArrayList<>();
-        for (Genre genre : song.getGenres()) {
-            genres.add(genre.toString());
-        }
-        songDetails.put(SONG_GENRES, genres);
-        
         songDetails.put(SONG_DIFFICULTY, song.getDifficulty());
-        songDetails.put(SONG_REACTIONS, song.getReactions());
-        songDetails.put(SONG_RATING, song.getRating());
-        
-        // Convert comments to a list of strings
-        ArrayList<String> comments = new ArrayList<>();
-        for (Comment comment : song.getComments()) {
-            comments.add(comment.toString());
-        }
-        songDetails.put(SONG_COMMENT, comments);
-        
         songDetails.put(SONG_PUBLISHED, song.isPublished());
         songDetails.put(SONG_TEMPO, song.getTempo());
         songDetails.put(SONG_KEY_SIGNATURE, song.getKeySignature().toString());
         songDetails.put(SONG_TIME_SIGNATURE_NUMERATOR, song.getTimeSignatureNum());
         songDetails.put(SONG_TIME_SIGNATURE_DENOMINATOR, song.getTimeSignatureDen());
 
-        // Convert measures to a list of strings
-        ArrayList<String> measures = new ArrayList<>();
-        for (Measure measure : song.getMeasures()) {
-            measures.add(measure.toString());
+        // Convert genres to a list of strings
+        ArrayList<String> genres = new ArrayList<>();
+        for (Genre genre : song.getGenres()) {
+            if (genre != null) {
+                genres.add(genre.toString());
+            }
         }
-        songDetails.put(SONG_MEASURES, measures);
+        songDetails.put(SONG_GENRES, genres);
         
-        songDetails.put(SONG_LENGTH, song.getLength());
-        
-        // Convert chord to a string representation
-        if (song.getChord() != null) {
-            songDetails.put(SONG_CHORD, song.getChord().toString());
-        }
+    // Convert reactions to a list of JSON objects
+    JSONArray reactionsJSON = new JSONArray();
+    for (Reaction reaction : song.getReactions()) {
+        JSONObject reactionDetails = new JSONObject();
+        reactionDetails.put("rating", reaction.getRating());
+        reactionDetails.put("comment", reaction.getComment());
+        reactionDetails.put("commentor", reaction.getAuthor().getUserID().toString());
+        reactionsJSON.add(reactionDetails);
+    }
+    songDetails.put(SONG_REACTIONS, reactionsJSON);
         
         // Convert instruments to a list of strings
-        ArrayList<String> instruments = new ArrayList<>();
-        for (Instrument instrument : song.getInstruments()) {
-            instruments.add(instrument.toString());
+        ArrayList<String> instrumentsIDs = new ArrayList<>();
+        for (UUID instrumentID : song.getInstrumentIDs()) {
+            instrumentsIDs.add(instrumentID.toString());
         }
-        songDetails.put(SONG_INSTRUMENTS, instruments);
+        songDetails.put(SONG_INSTRUMENTS, instrumentsIDs);
         
-        // Convert music to a list of strings
-        ArrayList<String> music = new ArrayList<>();
-        for (Music musicNote : song.getMusic()) {
-            music.add(musicNote.toString());
+    // Convert measures to a list of JSON objects
+    JSONArray measuresJSON = new JSONArray();
+    for (MeasureGroup measureGroup : song.getMeasureGroups()) {
+        JSONObject measureDetails = new JSONObject();
+        measureDetails.put("length", measureGroup.getLength());
+        measureDetails.put("chord", measureGroup.getChord().label);
+
+        JSONObject instrumentsJSON = new JSONObject();
+        for (Instrument instrument : measureGroup.getMeasures().keySet()) {
+            Measure measure = measureGroup.getMeasures().get(instrument);
+            JSONObject instrumentDetails = new JSONObject();
+
+            JSONArray musicJSON = new JSONArray();
+            for (Note note : measure.getNotes()) {
+                JSONObject noteDetails = new JSONObject();
+                noteDetails.put("length", note.getLength());
+                noteDetails.put("pitch", note.getPitch());
+                noteDetails.put("octave", note.getOctave());
+                musicJSON.add(noteDetails);
+            }
+            instrumentDetails.put("music", musicJSON);
+            instrumentDetails.put("text", measure.getText());
+            instrumentsJSON.put(instrument.getInstrumentID().toString(), instrumentDetails);
         }
-        songDetails.put(SONG_MUSIC, music);
-        return songDetails;
+        measureDetails.put("instruments", instrumentsJSON);
+        measuresJSON.add(measureDetails);
+    }
+    songDetails.put(SONG_MEASURES, measuresJSON);
+    return songDetails;
     }
 
     public static void main(String[] args) {
