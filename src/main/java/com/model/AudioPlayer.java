@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 
+/**
+ * TODO
+ */
 public class AudioPlayer {
     private static AudioPlayer instance;
     private Song currentSong;
@@ -13,7 +16,9 @@ public class AudioPlayer {
     private Note currentNote;
     private Player player;
 
-    //Constructor
+    /**
+     * TODO
+     */
     public AudioPlayer() {
         this.player = new Player();
     }
@@ -25,22 +30,29 @@ public class AudioPlayer {
         return instance;
     }
 
-    //Starts the playback speed of the song
+    /**
+     * TODO
+     */
     public void play() {
         player = new Player();
         Pattern pattern = generatePattern();
         player.delayPlay(500, pattern);
     }
 
-    // Stop playback entirely
+    /*
+     * TODO
+     */
     public void stop() {
         player.getManagedPlayer().finish();
     }
 
-    // Generate a full song pattern for JFugue
+    /**
+     * TODO
+     * @return
+     */
     private Pattern generatePattern() {
         Pattern pattern = new Pattern();
-        pattern.add("T" + currentSong.getTempo()); // Sets the tempo
+        pattern.add("T" + currentSong.getTempo());
 
         ArrayList<Instrument> instruments = currentSong.getInstruments();
         for(int i=0; i<instruments.size(); i++){
@@ -52,6 +64,11 @@ public class AudioPlayer {
         return pattern;
     }
 
+    /**
+     * TODO
+     * @param instrument
+     * @return
+     */
     private Pattern generateInstrumentPattern(Instrument instrument){
         Pattern pattern = new Pattern();
         pattern.add(" I[" + instrument.getName() + "] ");
@@ -66,7 +83,11 @@ public class AudioPlayer {
         return pattern;
     }
 
-
+    /**
+     * TODO
+     * @param measure
+     * @return
+     */
     private Pattern generateMeasurePattern(Measure measure){
         Pattern pattern = new Pattern();
         ArrayList<Note> notes = measure.getNotes();
@@ -77,6 +98,11 @@ public class AudioPlayer {
         return pattern;
     }
 
+    /**
+     * TODO
+     * @param note
+     * @return
+     */
     private Pattern generateNotePattern(Note note){
         Pattern pattern = new Pattern();
         pattern.add(note.getJFugue());
@@ -88,6 +114,11 @@ public class AudioPlayer {
 
     //--- EDITING/SELECTING ---//
 
+    /**
+     * TODO
+     * @param song
+     * @return
+     */
     public ArrayList<Instrument> openSong(Song song){
         this.currentSong = song;
         this.currentInstrument = song.getInstruments().get(0);
@@ -96,71 +127,139 @@ public class AudioPlayer {
         return song.getInstruments();
     }
 
+    /**
+     * 
+     * @param instrument
+     * @return
+     */
     public ArrayList<Measure> selectInstrument(Instrument instrument){
         this.currentInstrument = instrument;
         return currentSong.getMeasures(instrument);
     }
 
+    /**
+     * TODO
+     * @param measure
+     */
     public void selectMeasure(Measure measure){
         this.currentMeasureGroup = currentSong.getMeasureGroup(measure);
     }
 
+    /**
+     * TODO
+     * @param note
+     */
     public void selectNote(Note note){
         this.currentNote = note;
     }
 
+    /**
+     * TODO
+     * @return
+     */
     public ArrayList<Instrument> getInstruments(){
         return this.currentSong.getInstruments();
     }
 
+    /**
+     * TODO
+     * @param instrument
+     */
     public void addInstrument(Instrument instrument){
         currentSong.addInstrument(instrument);
     }
 
+    /**
+     * TODO
+     * @param instrument
+     */
     public void removeInstrument(Instrument instrument){
         currentSong.removeInstrument(instrument);
     }
 
+    /**
+     * TODO
+     * @param measure
+     * @return
+     */
     public ArrayList<Note> getNotes(Measure measure){
         return measure.getNotes();
     }
 
+    /**
+     * TODO
+     * @param BPM
+     * @return
+     */
     public boolean setBPM(int BPM){
         return currentSong.setTempo(BPM);
     }
 
+    /**
+     * TODO
+     * @param chord
+     */
     public void setChord(Chord chord){
         currentMeasureGroup.setChord(chord);
     }
 
+    /**
+     * TODO
+     */
     public void insertMeasure(){
         currentSong.insertMeasure(currentMeasureGroup);
     }
 
+    /**
+     * TODO
+     */
     public void deleteMeasure(){
         currentSong.deleteMeasure(currentMeasureGroup);
     }
 
+    /**
+     * TODO
+     */
     public void insertNote(){
         currentSong.insertNote(currentNote);
     }
 
+    /**
+     * TODO
+     */
     public void deleteNote(){
         currentNote.setPitch(Pitch.REST);
     }
 
+    /**
+     * TODO
+     * @return
+     */
     public boolean noteUp(){
         return currentSong.noteUp(currentNote);
     }
 
+    /**
+     * TODO
+     * @return
+     */
     public boolean noteDown(){
         return currentSong.noteDown(currentNote);
     }
 
+    /**
+     * TODO
+     * @param division
+     * @return
+     */
     public boolean splitNote(int division){
         return currentMeasureGroup.getMeasure(currentInstrument).splitNote(currentNote, division);
     }
 
+    /**
+     * TODO
+     * @return
+     */
     public boolean combineNotes(){
         return currentMeasureGroup.getMeasure(currentInstrument).combineNotes(currentNote);
     }

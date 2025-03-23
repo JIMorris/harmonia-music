@@ -8,6 +8,7 @@ import java.util.ArrayList;
  * @author Simion Cartis
  */
 public class Measure {
+    public static final int DEFAULT_LENGTH = 4;
     private int length;
     private ArrayList<Note> notes;
     private String text;
@@ -16,7 +17,7 @@ public class Measure {
      * Constructsa new blank measure
      */
     public Measure() {
-        this.length = 4;
+        this.length = DEFAULT_LENGTH;
         this.notes = new ArrayList<>();
         fillNotes();
         this.text = "";
@@ -29,7 +30,7 @@ public class Measure {
      * @param text
      */
     public Measure(ArrayList<Note> notes, String text) {
-        this.length=4;
+        this.length = DEFAULT_LENGTH;
         this.notes = notes;
         this.text = text;
     }
@@ -58,8 +59,7 @@ public class Measure {
         for(Note note : originalNotes){
             newNotes.add(new Note(note));
         }
-
-        return null;
+        return newNotes;
     }
 
     /**
@@ -69,7 +69,7 @@ public class Measure {
      * @param position Where to insert the note
      * @return Whether the provided position is valid
      */
-    public boolean insertNote(Note note, int position) {
+    private boolean insertNote(Note note, int position) {
         if (position < 0 || position > notes.size()) {
             return false;
         }
@@ -83,11 +83,11 @@ public class Measure {
      * @param position The position to insert the rest
      * @return Whether the given position is valid
      */
-    public boolean removeNote(int position) {
-        if (position < 0 || position >= notes.size()) {
+    private boolean removeNote(int position) {
+        if (position < 0 || position > notes.size()) {
             return false;
         }
-        notes.set(position, new Note(0, "rest")); // Assuming "rest" represents a silent note
+        notes.remove(position);
         return true;
     }
 
@@ -97,23 +97,43 @@ public class Measure {
             return false;
         }
         note.changeDuration(division);
-        for (int i = 1; i < 2 * (division - 1); ++i) {
-            Note NoteCopy = new Note(note.getDuration(), "copy of note");
+        for (int i = 1; i < division; ++i) {
+            Note NoteCopy = new Note(note);
             insertNote(NoteCopy, notes.indexOf(note) + i);
         }
         return true;
     }
+
 
     public boolean combineNotes(Note note) {
         if(note.getDuration()>= Note.QUARTER_LENGTH) {
             System.out.println("note cannot be further combined"); //temp error message
             return false;
         }
-        for (int i = 1; i < note.getDuration()/Note.QUARTER_LENGTH; ++i) {
-            removeNote(notes.indexOf(note)+i);
+        Note firstNote = getFirstNote(note);
+        for (int i = 1; i < Note.QUARTER_LENGTH/firstNote.getDuration(); ++i) {
+            removeNote(notes.indexOf(firstNote)+i);
         }
-        note.changeDuration();
+        firstNote.changeDuration();
         return true;
+    }
+
+    private Note getFirstNote(Note groupNote){
+        ArrayList<Note> noteGroup = new ArrayList<>();
+        int count = 0;
+        for(Note note : notes){
+            count += note.getDuration();
+            noteGroup.add(note);
+            if(count!=Note.QUARTER_LENGTH)
+                continue;
+            if(noteGroup.contains(groupNote))
+                return noteGroup.get(0);
+            else{
+                count = 0;
+                noteGroup = new ArrayList<>();
+            }
+        }
+        return null;
     }
 
     public ArrayList<Note> getNotes() {

@@ -109,7 +109,7 @@ public class MusicFacade {
      * @param song Song to toggle favorite status of
      */
     public void toggleFavorite(Song song){
-        userList.toggleFavorite(song);
+        userList.toggleFavoriteSong(song);
     }
 
     /**

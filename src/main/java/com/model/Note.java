@@ -27,18 +27,6 @@ public class Note {
     }
 
     /**
-     * Constructs a note with the given duration and note name.
-     * 
-     * @param duration
-     * @param noteName
-     */
-    public Note(int duration, String noteName) {
-        this.duration = duration;
-        this.pitch = Pitch.fromString(noteName);
-        this.octave = 4; // default octave, can be modified later
-    }
-
-    /**
      * TODO
      * @param originalNote
      */
@@ -69,7 +57,7 @@ public class Note {
     }
 
     public void changeDuration(int change) {
-            this.duration *= change;
+            this.duration /= change;
     }
 
     public void changeDuration() {
@@ -79,7 +67,7 @@ public class Note {
     public boolean up(Key keySignature){
         if(octave>=7)
             return false;
-        ArrayList<Pitch> keyPitches = keySignature.getPitches();
+        ArrayList<Pitch> keyPitches = keySignature.pitches;
         Pitch currentPitch = this.pitch;
         int index = keyPitches.indexOf(currentPitch);
         Pitch newPitch;
@@ -100,7 +88,7 @@ public class Note {
     public boolean down(Key keySignature){
         if(octave<=0)
             return false;
-        ArrayList<Pitch> keyPitches = keySignature.getPitches();
+        ArrayList<Pitch> keyPitches = keySignature.pitches;
         Pitch currentPitch = this.pitch;
         int index = keyPitches.indexOf(currentPitch);
         Pitch newPitch;
@@ -144,15 +132,7 @@ public class Note {
         }
     }
 
-    public String getPitch() {
-        return pitch.toString();
-    }
-
     public int getLength() {
         return duration;
-    }
-
-    public int getOctave() {
-        return octave;
     }
 }

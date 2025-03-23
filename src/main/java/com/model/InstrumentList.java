@@ -66,9 +66,8 @@ public class InstrumentList {
     /**
      * public method which saves/updates the arraylist of instruments
      */
-    public void save() {
-        // ------------------------------------------------This is a placeholder until we actually make a database -CF
-        System.out.println("Saving instrument list...");
+    public void save() throws Exception {
+        DataWriter.getInstance().saveInstruments();
     }
 
      public ArrayList<Instrument> getInstruments() {

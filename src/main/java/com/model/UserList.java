@@ -36,14 +36,6 @@ public class UserList {
     }
 
     /**
-     * Adds a new user to the user list.
-     * @param user The user to be added.
-     */
-    public void addUsers(User user) {
-        users.add(user); // TODO: Not in UML, also may not be correct - Simion
-    }
-
-    /**
      * Checks if a given username already exists.
      * @param username The username to check.
      * @return true if the username exists, false otherwise.
@@ -51,10 +43,10 @@ public class UserList {
     public boolean usernameCheck(String username) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     /**
@@ -63,12 +55,7 @@ public class UserList {
      * @return true if the password exists, false otherwise.
      */
     public boolean passwordCheck(String password) {
-        for (User user : users) {
-            if (user.getPassword().equals(password)) {
-                return true;
-            }
-        }
-        return false;
+        return password.length()>=3;
     }
 
     /**
@@ -101,11 +88,11 @@ public class UserList {
     public boolean signup(String username, String password, String firstName, String lastName) {
         UUID userID = UUID.randomUUID();
         User user = new User(username, password, firstName, lastName, userID);
-        if (usernameCheck(username)) {
+        if (!usernameCheck(username)) {
             System.out.println("Invalid username"); // TEMP ERROR MESSAGE
             return false;
         }
-        addUsers(user);
+        users.add(user);
         currentUser = user;
         return true;
     }
@@ -145,10 +132,6 @@ public class UserList {
      */
     public User getCurrentUser() {
         return currentUser;
-    }
-
-    public void toggleFavorite(Song song){
-        currentUser.toggleFavoriteSong(song);
     }
 
     /**

@@ -350,38 +350,19 @@ public class Song {
      */
     public void removeInstrument(Instrument instrument) {
         for(MeasureGroup measureGroup : measureGroups){
-            measureGroup.removeMeasure(instrument); //TODO
+            measureGroup.removeMeasure(instrument);
         }
     }
-
-    /**
-     * adds a measure to a song's arraylist of measures
-     */
-    public void addMeasure() {
-        measureGroups.add(new MeasureGroup(timeSignatureNum, instruments)); //TODO
-    }
-
-    /**
-     * removes a measure from a song's arraylist of measures
-     * 
-     * @param measureNumber takes in an int named measureNumber to help identify the
-     *                      measure to be removed
-     */
-    public void removeMeasure(int measureNumber) {
-        measureGroups.remove(measureNumber);
-    }
-
-
 
     /**
      * TODO
      * @param measureGroups
      * @return
      */
-    public ArrayList<MeasureGroup> copyMeasureGroups(ArrayList<MeasureGroup> measureGroups){
+    private ArrayList<MeasureGroup> copyMeasureGroups(ArrayList<MeasureGroup> measureGroups){
         ArrayList<MeasureGroup> copy = new ArrayList<>();
         for(MeasureGroup measureGroup : measureGroups){
-            copy.add(new MeasureGroup(measureGroup)); //TODO
+            copy.add(new MeasureGroup(measureGroup));
         }
         return copy;
     }

@@ -115,7 +115,7 @@ public class SongList {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
-            if (song.getTitle().equals(title)) // TODO Add Getter to Song
+            if (song.getTitle().equals(title))
                 filteredSongs.add(song);
         }
 
@@ -133,7 +133,7 @@ public class SongList {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
-            if (song.getGenres().contains(genre)) // TODO Add getter to Song
+            if (song.getGenres().contains(genre))
                 filteredSongs.add(song);
         }
 
@@ -153,7 +153,7 @@ public class SongList {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
-            int tempo = song.getTempo(); // TODO Add getter to Song
+            int tempo = song.getTempo();
             if (tempo >= minBPM && tempo <= maxBPM)
                 filteredSongs.add(song);
         }
@@ -172,7 +172,7 @@ public class SongList {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
-            if (song.getDifficulty() == difficulty) // TODO Add getter to Song
+            if (song.getDifficulty() == difficulty)
                 songs.add(song);
         }
 
@@ -223,7 +223,7 @@ public class SongList {
     /**
      * saves the chnages made to the instance of SongList
      */
-    public void save() {
+    public void save() throws Exception{
         DataWriter.getInstance().saveSongs();
     }
 }

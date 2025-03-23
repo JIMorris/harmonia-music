@@ -70,7 +70,7 @@ public class User {
      * @return true if the provided password matches the user's username, otherwise it is false
      */
     public boolean passwordMatch(String password) {
-        return this.password.equals(password); // TODO, NOT IN UML
+        return this.password.equals(password);
     }
 
     /**
@@ -80,7 +80,7 @@ public class User {
      * @return true if the usernames are a match, otherwise it is false
      */
     public boolean usernameMatch(String username) {
-        return this.username.equals(username); // TODO, NOT IN UML
+        return this.username.equals(username);
     }
 
     /**
@@ -121,7 +121,7 @@ public class User {
      * @return a list of songs that have been authored by the user
      */
     public ArrayList<Song> getAuthoredSongs() {
-        return null;
+        return null; //TODO
     }
 
     /**
@@ -132,7 +132,7 @@ public class User {
      * @return true if both the username and password are a match, otherwise it is false
      */
     public boolean isMatch(String username, String password) {
-        return username == this.username && password == this.password;
+        return username.equals(this.username) && password.equals(this.password);
     }
 
     /**
