@@ -104,4 +104,8 @@ public class Measure {
     public ArrayList<Note> getNotes() {
         return notes;
     }
+
+    public String getText() {
+        return text;
+    }
 }
