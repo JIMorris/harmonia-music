@@ -64,9 +64,9 @@ public class Note {
         this.duration = QUARTER_LENGTH;
     }
 
-    public boolean up(Key keySignature){
+    public void up(Key keySignature) throws Exception{
         if(octave>=7)
-            return false;
+            throw new Exception("Highest pitch reached");
         ArrayList<Pitch> keyPitches = keySignature.pitches;
         Pitch currentPitch = this.pitch;
         int index = keyPitches.indexOf(currentPitch);
@@ -82,12 +82,11 @@ public class Note {
             this.octave++;
 
         this.pitch = newPitch;
-        return true;
     }
 
-    public boolean down(Key keySignature){
+    public void down(Key keySignature) throws Exception{
         if(octave<=0)
-            return false;
+            throw new Exception("Lowest pitch reaches");
         ArrayList<Pitch> keyPitches = keySignature.pitches;
         Pitch currentPitch = this.pitch;
         int index = keyPitches.indexOf(currentPitch);
@@ -104,14 +103,18 @@ public class Note {
             this.octave--;
 
         this.pitch = newPitch;
-        return true;
     }
 
 
-    public String getJFugue(){
+    public String getJFugue(Chord chord){
         String jFugue = "";
-        jFugue += pitch.label;
-        jFugue += octave;
+        if(pitch == Pitch.CHORD){
+            jFugue += chord.label;
+        }
+        else{
+            jFugue += pitch.label;
+            jFugue += octave;
+        }      
         jFugue += getJFugueDuration();
 
         return jFugue;

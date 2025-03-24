@@ -91,31 +91,27 @@ public class Measure {
         return true;
     }
 
-    public boolean splitNote(Note note, int division) {
-        if (division < 2 && division > 4) {
-            System.out.println("invalid division size"); // temp error message
-            return false;
-        }
+    public void splitNote(Note note, int division) throws Exception{
+        if (division < 2 && division > 4)
+            throw new Exception("Division size must be 2, 3, or 4");
+
         note.changeDuration(division);
         for (int i = 1; i < division; ++i) {
             Note NoteCopy = new Note(note);
             insertNote(NoteCopy, notes.indexOf(note) + i);
         }
-        return true;
     }
 
 
-    public boolean combineNotes(Note note) {
-        if(note.getDuration()>= Note.QUARTER_LENGTH) {
-            System.out.println("note cannot be further combined"); //temp error message
-            return false;
-        }
+    public void combineNotes(Note note) throws Exception{
+        if(note.getDuration()>= Note.QUARTER_LENGTH)
+            throw new Exception("Note cannot be further combined");
+
         Note firstNote = getFirstNote(note);
         for (int i = 1; i < Note.QUARTER_LENGTH/firstNote.getDuration(); ++i) {
             removeNote(notes.indexOf(firstNote)+i);
         }
         firstNote.changeDuration();
-        return true;
     }
 
     private Note getFirstNote(Note groupNote){

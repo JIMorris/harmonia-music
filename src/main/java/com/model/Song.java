@@ -62,7 +62,7 @@ public class Song {
         this.instruments = new ArrayList<>();
         instruments.add(defaultInstrument);
         this.measureGroups = new ArrayList<>();
-        this.measureGroups.add(new MeasureGroup(timeSignatureDen, instruments));
+        this.measureGroups.add(new MeasureGroup(timeSignatureDen, keySignature.rootChord, instruments));
     }
 
     /**
@@ -128,11 +128,10 @@ public class Song {
      * 
      * @param tempo
      */
-    public boolean setTempo(int tempo){
+    public void setTempo(int tempo) throws Exception{
         if(tempo<30 || tempo>400)
-            return false;
+            throw new Exception("Tempo must be between 30 and 400");
         this.tempo = tempo;
-        return true;
     }
 
     //TODO
@@ -288,18 +287,17 @@ public class Song {
      */
     public void insertMeasure(MeasureGroup measureGroup){
         int index = measureGroups.indexOf(measureGroup);
-        measureGroups.add(index, new MeasureGroup(timeSignatureNum, instruments));
+        measureGroups.add(index, new MeasureGroup(timeSignatureNum, keySignature.rootChord, instruments));
     }
 
     /**
      * TODO
      * @param measureGroup
      */
-    public boolean deleteMeasure(MeasureGroup measureGroup){
+    public void removeMeasure(MeasureGroup measureGroup) throws Exception{
         if(measureGroups.size()<=1)
-            return false;
+            throw new Exception("Song cannot have 0 measures");
         measureGroups.remove(measureGroup);
-        return true;
     }
 
     /**
@@ -307,12 +305,11 @@ public class Song {
      * @param note
      * @return
      */
-    public boolean insertNote(Note note){
+    public void insertNote(Note note){
         if(note.getPitch()!=Pitch.REST)
-            return false;
+            return;
         note.setPitch(keySignature.getRoot());
         note.setOctave(4);
-        return true;
     }
 
     /**
@@ -321,8 +318,8 @@ public class Song {
      * @param note Note to move
      * @return Whether the new note is in range
      */
-    public boolean noteUp(Note note){
-        return note.up(this.keySignature);
+    public void noteUp(Note note) throws Exception{
+        note.up(this.keySignature);
     }
 
     /**
@@ -333,8 +330,8 @@ public class Song {
      * @param note Note to move
      * @return Whether the new note is in range
      */
-    public boolean noteDown(Note note){
-        return note.down(this.keySignature);
+    public void noteDown(Note note) throws Exception{
+        note.down(this.keySignature);
     }
 
     /**
@@ -353,7 +350,9 @@ public class Song {
      * 
      * @param instrument takes in an instrument of type instrument to be removed
      */
-    public void removeInstrument(Instrument instrument) {
+    public void removeInstrument(Instrument instrument) throws Exception {
+        if(instruments.size()<=1)
+            throw new Exception("Song must have at least 1 instrument");
         for(MeasureGroup measureGroup : measureGroups){
             measureGroup.removeMeasure(instrument);
         }
@@ -371,7 +370,4 @@ public class Song {
         }
         return copy;
     }
-
-    
-
 }

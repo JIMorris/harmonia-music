@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Facade for the music app
@@ -42,8 +43,8 @@ public class MusicFacade {
      * @param lastName Last name of new user
      * @return Whether the username and password are allowed
      */
-    public boolean signup(String username, String password, String firstName, String lastName){
-        return userList.signup(username, password, firstName, lastName);
+    public void signup(String username, String password, String firstName, String lastName) throws Exception{
+        userList.signup(username, password, firstName, lastName);
     }
 
     /**
@@ -52,22 +53,17 @@ public class MusicFacade {
      * @param password Password of user
      * @return Whether login was successful
      */
-    public boolean login(String username, String password){
-        return userList.login(username, password);
+    public void login(String username, String password) throws Exception{
+        userList.login(username, password);
     }
 
     /**
      * Logs out user and saves all data
      */
-    public void logout(){
-        try {
-            instrumentList.save();
-            userList.save();
-            songList.save();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
+    public void logout() throws Exception{
+        instrumentList.save();
+        userList.save();
+        songList.save();   
     }
 
     /**
@@ -128,7 +124,7 @@ public class MusicFacade {
         audioPlayer.addInstrument(instrument);
     }
     
-    public void removeInstrument(Instrument instrument){
+    public void removeInstrument(Instrument instrument) throws Exception{
         audioPlayer.removeInstrument(instrument);
     }
 
@@ -197,14 +193,6 @@ public class MusicFacade {
         audioPlayer.play();
     }
 
-    // /**
-    //  * Pauses the current song, stopping on the current measure
-    //  * @return Measure that was paused on
-    //  */
-    // public int pauseSong(){
-    //     return audioPlayer.pause();
-    // }
-
     /**
      * Stops the current measure, keeping the selected measure the same as when play was hit
      */
@@ -222,8 +210,8 @@ public class MusicFacade {
     /**
      * Deletes selected measure
      */
-    public void deleteMeasure(){
-        audioPlayer.deleteMeasure();
+    public void removeMeasure() throws Exception{
+        audioPlayer.removeMeasure();
     }
 
 
@@ -232,8 +220,8 @@ public class MusicFacade {
      * Moves selected note up one pitch
      * @return Whether the note can move up
      */
-    public boolean noteUp(){
-        return audioPlayer.noteUp();
+    public void noteUp() throws Exception{
+        audioPlayer.noteUp();
     }    
 
     /**
@@ -241,28 +229,28 @@ public class MusicFacade {
      * @param note Note to move down
      * @return Whether the note can move down
      */
-    public boolean noteDown(){
-        return audioPlayer.noteDown();
+    public void noteDown() throws Exception{
+        audioPlayer.noteDown();
     }
 
     /**
      * TODO
      * @return
      */
-    public boolean splitNote(int division){
-        return audioPlayer.splitNote(division);
+    public void splitNote(int division) throws Exception{
+        audioPlayer.splitNote(division);
     }
 
     /**
      * TODO
      * @return
      */
-    public boolean combineNotes(){
-        return audioPlayer.combineNotes();
+    public void combineNotes() throws Exception{
+        audioPlayer.combineNotes();
     }
 
     /**
-     * Todo
+     * TODO
      */
     public void insertNote(){
         audioPlayer.insertNote();
@@ -276,13 +264,17 @@ public class MusicFacade {
         audioPlayer.deleteNote();
     }
 
+    public void insertChord(){
+        audioPlayer.insertChord();
+    }
+
     /**
      * Sets the bpm of the current song
      * @param BPM BPM to change to
      * @return Whether that BPM is allowed
      */
-    public boolean setBPM(int BPM){
-        return audioPlayer.setBPM(BPM);
+    public void setBPM(int BPM) throws Exception{
+        audioPlayer.setBPM(BPM);
     }
 
     /**
@@ -291,5 +283,30 @@ public class MusicFacade {
      */
     public void setChord(Chord chord){
         audioPlayer.setChord(chord);
+    }
+
+    /**
+     * 
+     * @param song
+     * @return
+     */
+    public boolean isFavorite(Song song){
+        return userList.isFavorite(song);
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public boolean editPermission(){
+        return audioPlayer.editPermission();
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public ArrayList<Chord> getChords(){
+        return new ArrayList<>(Arrays.asList(Chord.values()));
     }
 }

@@ -76,8 +76,9 @@ public class AudioPlayer {
         ArrayList<MeasureGroup> measureGroups = currentSong.getMeasureGroups();
         for(int i=measureGroups.indexOf(currentMeasureGroup); i<measureGroups.size(); i++){
             MeasureGroup measureGroup = measureGroups.get(i);
+            Chord chord = measureGroup.getChord();
             Measure measure = measureGroup.getMeasure(instrument);
-            pattern.add(generateMeasurePattern(measure) + "| ");
+            pattern.add(generateMeasurePattern(measure, chord) + "| ");
         }
 
         return pattern;
@@ -88,11 +89,11 @@ public class AudioPlayer {
      * @param measure
      * @return
      */
-    private Pattern generateMeasurePattern(Measure measure){
+    private Pattern generateMeasurePattern(Measure measure, Chord chord){
         Pattern pattern = new Pattern();
         ArrayList<Note> notes = measure.getNotes();
         for(Note note : notes){
-            pattern.add(generateNotePattern(note) + " ");
+            pattern.add(generateNotePattern(note, chord) + " ");
         }
 
         return pattern;
@@ -103,9 +104,9 @@ public class AudioPlayer {
      * @param note
      * @return
      */
-    private Pattern generateNotePattern(Note note){
+    private Pattern generateNotePattern(Note note, Chord chord){
         Pattern pattern = new Pattern();
-        pattern.add(note.getJFugue());
+        pattern.add(note.getJFugue(chord));
 
         return pattern;
     }
@@ -173,7 +174,7 @@ public class AudioPlayer {
      * TODO
      * @param instrument
      */
-    public void removeInstrument(Instrument instrument){
+    public void removeInstrument(Instrument instrument) throws Exception{
         currentSong.removeInstrument(instrument);
     }
 
@@ -191,8 +192,8 @@ public class AudioPlayer {
      * @param BPM
      * @return
      */
-    public boolean setBPM(int BPM){
-        return currentSong.setTempo(BPM);
+    public void setBPM(int BPM) throws Exception{
+        currentSong.setTempo(BPM);
     }
 
     /**
@@ -213,17 +214,17 @@ public class AudioPlayer {
     /**
      * TODO
      */
-    public void deleteMeasure(){
+    public void removeMeasure() throws Exception{
         ArrayList<MeasureGroup> measureGroups = currentSong.getMeasureGroups();
         MeasureGroup deletedMeasureGroup = currentMeasureGroup;
-        
         int index = measureGroups.indexOf(deletedMeasureGroup);
+
         if(index>=measureGroups.size()-1)
             currentMeasureGroup = measureGroups.get(measureGroups.size()-2);
         else
             currentMeasureGroup = measureGroups.get(index-1);
 
-        currentSong.deleteMeasure(deletedMeasureGroup);
+        currentSong.removeMeasure(deletedMeasureGroup);
     }
 
     /**
@@ -242,18 +243,27 @@ public class AudioPlayer {
 
     /**
      * TODO
-     * @return
      */
-    public boolean noteUp(){
-        return currentSong.noteUp(currentNote);
+    public void insertChord(){
+        if(currentNote.getPitch()!=Pitch.REST)
+            return;
+        currentNote.setPitch(Pitch.CHORD);
     }
 
     /**
      * TODO
      * @return
      */
-    public boolean noteDown(){
-        return currentSong.noteDown(currentNote);
+    public void noteUp() throws Exception{
+        currentSong.noteUp(currentNote);
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public void noteDown() throws Exception{
+        currentSong.noteDown(currentNote);
     }
 
     /**
@@ -261,15 +271,24 @@ public class AudioPlayer {
      * @param division
      * @return
      */
-    public boolean splitNote(int division){
-        return currentMeasureGroup.getMeasure(currentInstrument).splitNote(currentNote, division);
+    public void splitNote(int division) throws Exception{
+        currentMeasureGroup.getMeasure(currentInstrument).splitNote(currentNote, division);
     }
 
     /**
      * TODO
      * @return
      */
-    public boolean combineNotes(){
-        return currentMeasureGroup.getMeasure(currentInstrument).combineNotes(currentNote);
+    public void combineNotes() throws Exception{
+        currentMeasureGroup.getMeasure(currentInstrument).combineNotes(currentNote);
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public boolean editPermission(){
+        User currentUser = UserList.getInstance().getCurrentUser();
+        return currentSong.getAuthor().equals(currentUser);
     }
 }

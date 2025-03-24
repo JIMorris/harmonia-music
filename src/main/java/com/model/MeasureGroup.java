@@ -18,7 +18,7 @@ public class MeasureGroup {
      * @param length The length of this measure
      * @param currentInstruments The instruments that will play in this measure
      */
-    public MeasureGroup(int length, ArrayList<Instrument> currentInstruments){
+    public MeasureGroup(int length, Chord chord, ArrayList<Instrument> currentInstruments){
         this.length = length;
         this.measures = new HashMap<>();
         for(Instrument instrument : currentInstruments){

@@ -40,13 +40,13 @@ public class UserList {
      * @param username The username to check.
      * @return true if the username exists, false otherwise.
      */
-    public boolean usernameCheck(String username) {
+    public void usernameCheck(String username) throws Exception {
+        if (username.length()<3)
+            throw new Exception("Username must be at least 3 characters");
         for (User user : users) {
-            if (user.getUsername().equals(username)) {
-                return false;
-            }
+            if (user.getUsername().equals(username)) 
+                throw new Exception("The username " + username + " is already taken");
         }
-        return true;
     }
 
     /**
@@ -54,8 +54,9 @@ public class UserList {
      * @param password The password to check.
      * @return true if the password exists, false otherwise.
      */
-    public boolean passwordCheck(String password) {
-        return password.length()>=3;
+    public void passwordCheck(String password) throws Exception{
+        if(password.length()<6)
+            throw new Exception("Password must be at least 6 character");
     }
 
     /**
@@ -89,16 +90,13 @@ public class UserList {
      * @param lastName The last name of the user.
      * @return true if signup is successful, false otherwise.
      */
-    public boolean signup(String username, String password, String firstName, String lastName) {
+    public void signup(String username, String password, String firstName, String lastName) throws Exception{
+        usernameCheck(username);
+        passwordCheck(password);
         UUID userID = UUID.randomUUID();
         User user = new User(username, password, firstName, lastName, userID);
-        if (!usernameCheck(username)) {
-            System.out.println("Invalid username"); // TEMP ERROR MESSAGE
-            return false;
-        }
         users.add(user);
         currentUser = user;
-        return true;
     }
 
     /**
@@ -107,15 +105,14 @@ public class UserList {
      * @param password The password entered.
      * @return true if login is successful, false otherwise.
      */
-    public boolean login(String username, String password) {
+    public void login(String username, String password) throws Exception {
         for (User user : users) {
             if (user.passwordMatch(password) && user.usernameMatch(username)) {
                 currentUser = user;
-                return true;
+                return;
             }
         }
-        System.out.println("No such user found"); // TEMP MESSAGE
-        return false;
+        throw new Exception("Username or password were incorrect");
     }
 
     /**
@@ -136,6 +133,15 @@ public class UserList {
      */
     public User getCurrentUser() {
         return currentUser;
+    }
+
+    /**
+     * TODO
+     * @param song
+     * @return
+     */
+    public boolean isFavorite(Song song){
+        return currentUser.getFavSongs().contains(song);
     }
 
     /**

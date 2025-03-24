@@ -6,6 +6,7 @@ package com.model;
  * @author Simion Cartis
  */
 public enum Pitch {
+    CHORD("CHORD"),
     REST("R"),
     A_FLAT("Ab"),
     A("A"),

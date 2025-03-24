@@ -34,7 +34,7 @@ public class ExampleUI {
 
     // Login, Favorite
     // Login - Open Public Songs - Favorite Songs - Open Favorite Songs - Unfavorite Song - Logout
-    private static void scenario2(MusicFacade facade){
+    private static void scenario2(MusicFacade facade) throws Exception{
         ArrayList<Song> songs;
         facade.login("TestUser", "securePassword");
         songs = facade.openPublicSongs();
@@ -47,8 +47,8 @@ public class ExampleUI {
     }
 
     // Play Song
-    // Login - Open Public Songs - Open Song - Play - Pause - Select Measure - Play - Stop - Play - Logout
-    private static void scenario3(MusicFacade facade) throws InterruptedException{
+    // Login - Open Public Songs - Open Song - Play - Select Measure - Play - Stop - Play - Logout
+    private static void scenario3(MusicFacade facade) throws Exception{
         ArrayList<Song> songs;
         ArrayList<Instrument> instruments;
         ArrayList<Measure> measures;
@@ -58,7 +58,6 @@ public class ExampleUI {
         measures = facade.selectInstrument(instruments.get(0));
         facade.playSong();
         Thread.sleep(5000);
-        // facade.pauseSong();
         facade.stopSong();
         facade.selectMeasure(measures.get(2));
         Thread.sleep(2000);
@@ -182,7 +181,7 @@ public class ExampleUI {
         facade.selectNote(notes.get(1));
         facade.noteUp();
         facade.selectMeasure(measures.get(8));        
-        facade.deleteMeasure();
+        facade.removeMeasure();
         facade.selectMeasure(measures.get(0));
         facade.playSong();
         Thread.sleep(17000);
