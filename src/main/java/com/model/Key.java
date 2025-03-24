@@ -97,7 +97,7 @@ public enum Key {
         this.rootChord = rootChord;
     }
 
-    public Pitch getRoot(){
+    public Pitch getRootPitch(){
         return this.pitches.get(0);
     }
 

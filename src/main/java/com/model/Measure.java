@@ -44,6 +44,22 @@ public class Measure {
         this.text = original.getText();
         this.notes = cloneNotes(original.getNotes());
     }
+    
+    public ArrayList<Note> getNotes() {
+        return notes;
+    }
+
+    public int getLength(){
+        return length;
+    }
+
+    public String getText(){
+        return text;
+    }
+
+    public void setText(String text){
+        this.text = text;
+    }
 
     /**
      * TODO
@@ -62,46 +78,16 @@ public class Measure {
         return newNotes;
     }
 
-    /**
-     * Inserts a note at the given position
-     * 
-     * @param note     Note to insert
-     * @param position Where to insert the note
-     * @return Whether the provided position is valid
-     */
-    private boolean insertNote(Note note, int position) {
-        if (position < 0 || position > notes.size()) {
-            return false;
-        }
-        notes.add(position, note);
-        return true;
-    }
-
-    /**
-     * Replaces a note with a rest
-     * 
-     * @param position The position to insert the rest
-     * @return Whether the given position is valid
-     */
-    private boolean removeNote(int position) {
-        if (position < 0 || position > notes.size()) {
-            return false;
-        }
-        notes.remove(position);
-        return true;
-    }
-
     public void splitNote(Note note, int division) throws Exception{
         if (division < 2 && division > 4)
             throw new Exception("Division size must be 2, 3, or 4");
 
         note.changeDuration(division);
         for (int i = 1; i < division; ++i) {
-            Note NoteCopy = new Note(note);
-            insertNote(NoteCopy, notes.indexOf(note) + i);
+            Note noteCopy = new Note(note);
+            notes.add(notes.indexOf(note) + i, noteCopy);
         }
     }
-
 
     public void combineNotes(Note note) throws Exception{
         if(note.getDuration()>= Note.QUARTER_LENGTH)
@@ -109,7 +95,7 @@ public class Measure {
 
         Note firstNote = getFirstNote(note);
         for (int i = 1; i < Note.QUARTER_LENGTH/firstNote.getDuration(); ++i) {
-            removeNote(notes.indexOf(firstNote)+i);
+            notes.remove(notes.indexOf(firstNote)+i);
         }
         firstNote.changeDuration();
     }
@@ -130,21 +116,5 @@ public class Measure {
             }
         }
         return null;
-    }
-
-    public ArrayList<Note> getNotes() {
-        return notes;
-    }
-
-    public int getLength(){
-        return length;
-    }
-
-    public String getText(){
-        return text;
-    }
-
-    public void setText(String text){
-        this.text = text;
     }
 }

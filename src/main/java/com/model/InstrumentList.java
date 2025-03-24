@@ -22,7 +22,6 @@ public class InstrumentList {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
 
     /**
@@ -34,6 +33,14 @@ public class InstrumentList {
             instance = new InstrumentList();
         }
         return instance;
+    }
+
+    /**
+     * TODO
+     * @return
+     */
+    public ArrayList<Instrument> getInstruments() {
+        return instruments;
     }
 
     /**
@@ -50,38 +57,14 @@ public class InstrumentList {
     }
 
     /**
-     * public method which adds a new instrument to the arraylist
-     */
-    public void addInstrument(Instrument instrument) {
-        instruments.add(instrument);
-    }
-    
-    /**
-     * public method which removes an instrument from the arraylist
-     */
-    public void removeInstrument(Instrument instrument) {
-        instruments.remove(instrument);
-    }
-
-    /**
      * public method which saves/updates the arraylist of instruments
      */
-    public void save() throws Exception {
+    public void logout() throws Exception {
         DataWriter.getInstance().saveInstruments();
     }
 
-     public ArrayList<Instrument> getInstruments() {
-        return instruments;
-    }
-
+    // TODO Delete Method. Unused execpt temporarly in DataWriter
     public void setInstruments(ArrayList<Instrument> instruments) {
         this.instruments = instruments;
-    }
-
-    @Override
-    public String toString() {
-        return "InstrumentList{" +
-                "instruments=" + instruments +
-                '}';
     }
 }

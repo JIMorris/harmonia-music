@@ -11,7 +11,7 @@ import java.util.UUID;
 public class UserList {
     private static UserList instance;
     private ArrayList<User> users;
-    private User currentUser; // Should this be private? - Simion
+    private User currentUser;
 
     /**
      * Private constructor to initialize the user list from stored data.
@@ -33,6 +33,22 @@ public class UserList {
             instance = new UserList();
         }
         return instance;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    /**
+     * Retrieves the current logged-in user.
+     * @return The current User object.
+     */
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setUsers(ArrayList<User> users) {
+        this.users = users;
     }
 
     /**
@@ -72,14 +88,6 @@ public class UserList {
         }
         System.out.println("No such user exists"); // TEMP MESSAGE
         return null;
-    }
-
-    public ArrayList<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
     }
 
     /**
@@ -128,14 +136,6 @@ public class UserList {
     }
 
     /**
-     * Retrieves the current logged-in user.
-     * @return The current User object.
-     */
-    public User getCurrentUser() {
-        return currentUser;
-    }
-
-    /**
      * TODO
      * @param song
      * @return
@@ -145,9 +145,20 @@ public class UserList {
     }
 
     /**
+     * TODO
+     * @param song
+     * @param rating
+     * @param comment
+     */
+    public void addReaction(Song song, int rating, String comment){
+        song.addReaction(rating, comment, currentUser);
+    }
+
+    /**
      * Saves the current user data using DataWriter.
      */
-    public void save() throws Exception{
+    public void logout() throws Exception{
+        currentUser = null;
         DataWriter.getInstance().saveUsers();
     }
 }

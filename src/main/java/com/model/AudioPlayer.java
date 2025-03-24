@@ -291,4 +291,11 @@ public class AudioPlayer {
         User currentUser = UserList.getInstance().getCurrentUser();
         return currentSong.getAuthor().equals(currentUser);
     }
+
+    public void logout(){
+        currentSong = null;
+        currentInstrument = null;
+        currentMeasureGroup = null;
+        currentNote = null;
+    }
 }

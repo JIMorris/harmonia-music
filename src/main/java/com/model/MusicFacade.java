@@ -61,9 +61,10 @@ public class MusicFacade {
      * Logs out user and saves all data
      */
     public void logout() throws Exception{
-        instrumentList.save();
-        userList.save();
-        songList.save();   
+        instrumentList.logout();
+        userList.logout();
+        songList.logout();   
+        audioPlayer.logout();
     }
 
     /**
@@ -132,8 +133,8 @@ public class MusicFacade {
      * Creates a copy of a song, only changing the author to the current user
      * @param song Song to copy
      */
-    public void copySong(Song song){
-        songList.copySong(song);
+    public Song copySong(Song song){
+        return songList.copySong(song);
     }
 
     /**
@@ -148,6 +149,10 @@ public class MusicFacade {
      */
     public Song newSong(String title, String description, ArrayList<Genre> genres, int difficulty, int tempo, Key keySignature, Instrument defaultInstrument){
         return songList.newSong(title, description, genres, difficulty, tempo, keySignature, new int[] {4, 4}, defaultInstrument);  
+    }
+
+    public void removeSong(Song song) throws Exception{
+        songList.removeSong(song);
     }
 
     /**
@@ -308,5 +313,23 @@ public class MusicFacade {
      */
     public ArrayList<Chord> getChords(){
         return new ArrayList<>(Arrays.asList(Chord.values()));
+    }
+
+    /**
+     * TODO
+     * @param song
+     * @param rating
+     * @param comment
+     */
+    public void addReaction(Song song, int rating, String comment){
+        userList.addReaction(song, rating, comment);
+    }
+
+    /**
+     * TODO
+     * @param reaction
+     */
+    public void removeReaction(Song song, Reaction reaction) throws Exception{
+        song.removeReaction(reaction);
     }
 }

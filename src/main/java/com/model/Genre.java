@@ -15,7 +15,7 @@ public enum Genre {
     BLUES("Blues"),
     HIPHOP("HipHop"),
     EDM("EDM"),
-    RNB("RNB");
+    RNB("R&B");
 
     public final String label;
 

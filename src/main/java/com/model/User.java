@@ -17,6 +17,24 @@ public class User {
     private ArrayList<User> favAuthors;
 
     /**
+     * Constructor for a new User
+     * 
+     * @param username Username of user
+     * @param password Password of user
+     * @param firstName First Name of user
+     * @param lastName Last Name of user
+     */
+    public User(String username, String password, String firstName, String lastName){
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userID = UUID.randomUUID();
+        this.favSongs = new ArrayList<>();
+        this.favAuthors = new ArrayList<>();
+    }
+
+    /**
      * Constructor for User class with parameters
      * 
      * @param username the username provided by the user
@@ -36,21 +54,55 @@ public class User {
     }
 
     /**
-     * Constructor for a new User
-     * 
-     * @param username Username of user
-     * @param password Password of user
-     * @param firstName First Name of user
-     * @param lastName Last Name of user
+     * Retrieves the username of the user
+     *
+     * @return the username 
      */
-    public User(String username, String password, String firstName, String lastName){
-        this.username = username;
-        this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userID = UUID.randomUUID();
-        this.favSongs = new ArrayList<>();
-        this.favAuthors = new ArrayList<>();
+    public String getUsername() {
+        return this.username;
+    }
+
+    /**
+     * Retrieves the password of the user 
+     * 
+     * @return the password 
+     */
+    public String getPassword() {
+        return this.password;
+    }
+
+    /**
+     * Retrieves the unique user ID for the user
+     * 
+     * @return the user's ID
+     */
+    public UUID getUserID() {
+        return this.userID;
+    }
+
+    public ArrayList<Song> getFavSongs() {
+        return this.favSongs;
+    }
+    
+    public ArrayList<User> getFavAuthors() {
+        return this.favAuthors;
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public String getLastName() {
+        return this.lastName;
+    }
+
+    /**
+     * Set favAuthors to the parameter provided
+     * 
+     * @param favAuthors What to set favAuthors to
+     */
+    public void setFavoriteAuthors(ArrayList<User> favAuthors){
+        this.favAuthors = favAuthors;
     }
 
     /**
@@ -104,137 +156,5 @@ public class User {
             favAuthors.remove(author);
         else
             favAuthors.add(author);
-    }
-
-    /**
-     * Checks if the author the user wished to add to the favorite authors list is not already present
-     * 
-     * @param author the author that needs to be checked
-     * @return true if the author is in the favorite authors list, otherwise it is false 
-     */
-    public boolean favAuthorExists(User author) { // TODO UML
-        for (User authorInList : favAuthors) {
-            if (authorInList.getUserID() == author.getUserID()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Checks if the provided song is already in the favorite songs list
-     * 
-     * @param song the song that needs to be checked
-     * @return true if the song is present in the list, otherwise it is false 
-     */
-    public boolean favSongsExists(Song song) { // TODO UML
-        for (Song songInList : favSongs) {
-            if (songInList.getSongID() == song.getSongID()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Removes a song from the user's list of favorite songs 
-     * 
-     * @param song the song the user wishes to remove
-     */
-    public void removeFavoriteSong(Song song) {
-        // for (int i = 0; i < favSongs.size(); ++i) {
-        // if (favSongs.get(i) == song) {
-        // favSongs.remove(i);
-        // break;
-        // }
-        // }
-        favSongs.remove(song);
-    }
-
-    /**
-     * Removes the author from the user's list of favorite authors
-     * 
-     * @param author the author the user wishes to remove 
-     */
-    public void removeFavoriteAuthor(User author) {
-        // for (int i = 0; i < favAuthors.size(); ++i) {
-        // if (favAuthors.get(i) == author) {
-        // favSongs.remove(i);
-        // break;
-        // }
-        // }
-        favAuthors.remove(author);
-    }
-
-    /**
-     * Set favAuthors to the parameter provided
-     * 
-     * @param favAuthors What to set favAuthors to
-     */
-    public void setFavoriteAuthors(ArrayList<User> favAuthors){
-        this.favAuthors = favAuthors;
-    }
-
-    /**
-     * Gets the list of songs that have been authored by the user
-     * 
-     * @return a list of songs that have been authored by the user
-     */
-    public ArrayList<Song> getAuthoredSongs() {
-        return null; //TODO
-    }
-
-    /**
-     * Checks both the username and password to see if it matches the user's credentials 
-     * 
-     * @param username the username that needs to be checked
-     * @param password the password that needs to be checked 
-     * @return true if both the username and password are a match, otherwise it is false
-     */
-    public boolean isMatch(String username, String password) {
-        return username.equals(this.username) && password.equals(this.password);
-    }
-
-    /**
-     * Retrieves the username of the user
-     *
-     * @return the username 
-     */
-    public String getUsername() {
-        return this.username;
-    }
-
-    /**
-     * Retrieves the password of the user 
-     * 
-     * @return the password 
-     */
-    public String getPassword() {
-        return this.password;
-    }
-
-    /**
-     * Retrieves the unique user ID for the user
-     * 
-     * @return the user's ID
-     */
-    public UUID getUserID() {
-        return this.userID;
-    }
-
-    public ArrayList<Song> getFavSongs() {
-        return this.favSongs;
-    }
-    
-    public ArrayList<User> getFavAuthors() {
-        return this.favAuthors;
-    }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public String getLastName() {
-        return this.lastName;
     }
 }

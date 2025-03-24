@@ -1,6 +1,5 @@
 package com.model;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 /**
@@ -37,24 +36,6 @@ public class Instrument {
 
     public String getImageFile() {
         return imageFile;
-    }
-
-    // Setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setImageFile(String imageFile) {
-        this.imageFile = imageFile;
-    }
-
-    @Override
-    public String toString() {
-        return "Instrument{" +
-                "instrumentID=" + instrumentID +
-                ", name='" + name + '\'' +
-                ", imageFile='" + imageFile + '\'' +
-                '}';
     }
 }
 

@@ -20,6 +20,7 @@ public class MeasureGroup {
      */
     public MeasureGroup(int length, Chord chord, ArrayList<Instrument> currentInstruments){
         this.length = length;
+        this.chord = chord;
         this.measures = new HashMap<>();
         for(Instrument instrument : currentInstruments){
             addMeasure(instrument);

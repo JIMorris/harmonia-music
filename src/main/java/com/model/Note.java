@@ -35,6 +35,26 @@ public class Note {
         this.pitch = originalNote.getPitch();
         this.octave = originalNote.getOctave();
     }
+    
+    public Pitch getPitch(){
+        return this.pitch;
+    }
+
+    //TODO Consolidate these two methods
+    public int getDuration() {
+        return this.duration;
+    }
+    public int getLength() {
+        return duration;
+    }
+
+    public int getOctave(){
+        return this.octave;
+    }
+
+    public String getLabel() {
+        return pitch.label;
+    }
 
     public void setPitch(Pitch pitch){
         this.pitch = pitch;
@@ -44,17 +64,6 @@ public class Note {
         this.octave = octave;
     }
 
-    public Pitch getPitch(){
-        return this.pitch;
-    }
-
-    public int getDuration() {
-        return this.duration;
-    }
-
-    public int getOctave(){
-        return this.octave;
-    }
 
     public void changeDuration(int change) {
             this.duration /= change;
@@ -105,7 +114,6 @@ public class Note {
         this.pitch = newPitch;
     }
 
-
     public String getJFugue(Chord chord){
         String jFugue = "";
         if(pitch == Pitch.CHORD){
@@ -133,13 +141,5 @@ public class Note {
             default:
                 throw new AssertionError();
         }
-    }
-
-    public int getLength() {
-        return duration;
-    }
-
-    public String getLabel() {
-        return pitch.label;
     }
 }
