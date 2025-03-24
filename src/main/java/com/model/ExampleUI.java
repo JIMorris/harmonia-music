@@ -11,7 +11,8 @@ public class ExampleUI {
             // scenario3(facade);
             // scenario4(facade);
             // scenario5(facade);
-            scenario6(facade);
+            // scenario6(facade);
+            printScenario(facade);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -188,5 +189,13 @@ public class ExampleUI {
         facade.stopSong();
         // facade.logout();
         System.out.println("Scenario 6 Done");
+    }
+
+    private static void printScenario(MusicFacade facade) throws Exception{
+        ArrayList<Song> songs;
+        facade.login("TestUser", "securePassword");
+        songs = facade.openMySongs();
+        facade.openSong(songs.get(1));
+        facade.printSong();
     }
 }

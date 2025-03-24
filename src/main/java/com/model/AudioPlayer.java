@@ -298,4 +298,8 @@ public class AudioPlayer {
         currentMeasureGroup = null;
         currentNote = null;
     }
+
+    public void printSong() throws Exception{
+        MusicPrinter.printSong(currentSong, currentInstrument);
+    }
 }
