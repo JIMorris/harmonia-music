@@ -114,6 +114,15 @@ public class Note {
         this.pitch = newPitch;
     }
 
+    public String[] getSheetMusic(){
+        String[] sheetMusic = pitch.sheetMusic.clone();
+        for(int i=0; i<sheetMusic.length; i++){
+            if(sheetMusic[i].equals("x"))
+                sheetMusic[i]=getSheetMusicDuration();
+        }
+        return sheetMusic;
+    }
+
     public String getJFugue(Chord chord){
         String jFugue = "";
         if(pitch == Pitch.CHORD){
@@ -126,6 +135,21 @@ public class Note {
         jFugue += getJFugueDuration();
 
         return jFugue;
+    }
+
+    private String getSheetMusicDuration(){
+        switch (duration) {
+            case 12:
+                return "q";
+            case 6:
+                return "e";
+            case 4:
+                return "t";
+            case 3:
+                return "s";
+            default:
+                throw new AssertionError();
+        }
     }
 
     private String getJFugueDuration(){

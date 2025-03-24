@@ -332,4 +332,8 @@ public class MusicFacade {
     public void removeReaction(Song song, Reaction reaction) throws Exception{
         song.removeReaction(reaction);
     }
+
+    public void printSong() throws Exception{
+        audioPlayer.printSong();
+    }
 }
