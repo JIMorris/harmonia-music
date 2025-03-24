@@ -1,7 +1,8 @@
 package com.model;
 
 /**
- * The pitch enum represents all tones of notes, including natural, sharp, and flat notes.
+ * The pitch enum represents all tones of notes, including natural, sharp, and
+ * flat notes.
  * 
  * @author Simion Cartis
  */
@@ -33,19 +34,23 @@ public enum Pitch {
     public final String label;
 
     /**
-     * Constructs a pitch with the specified string label.
-     * @param label The string repesentation of the pitch
+     *  constructs an instance of the Pitch enumeration
+     * 
+     * @param label takes in a label (String) for the values within the enumeration
      */
     private Pitch(String label) {
         this.label = label;
     }
-    
+
     /**
-     * Converts a string representation of a pitch into its corresponding pitch enum value.
-     * @param pitch
-     * @return
+     * Converts a string representation of a Pitch into its corresponding enum value
+     * 
+     * @param pitch is a String which will be used to match the desired Pitch's
+     *              label
+     * @return returns an enumeration of type Pitch whose label matches the String
+     *         parameter
      */
-    public static Pitch fromString(String pitch){
+    public static Pitch fromString(String pitch) {
         for (Pitch p : values()) {
             if (p.label.equalsIgnoreCase(pitch))
                 return p;
