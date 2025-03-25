@@ -26,18 +26,18 @@ public class Reaction {
   }
 
   /**
-   * allows the user to edit a pre-existing reaction's rating
+   * Allows the user to edit a pre-existing reaction's rating
    * 
-   * @param rating takes in a new rating (int)
+   * @param rating Takes in a new rating (int)
    */
   public void setRating(int rating) {
     this.rating = rating;
   }
 
   /**
-   * allows the user to edit a pre-existing reaction's comment
+   * Allows the user to edit a pre-existing reaction's comment
    * 
-   * @param comment takes in a new String (comment)
+   * @param comment Takes in a new String (comment)
    */
   public void setComment(String comment) {
     this.comment = comment;
@@ -46,7 +46,7 @@ public class Reaction {
   /**
    * Retrieves the rating provided by the user
    * 
-   * @return the user's rating
+   * @return The user's rating
    */
   public int getRating() {
     return this.rating;
@@ -55,7 +55,7 @@ public class Reaction {
   /**
    * Retrieves the comment provided by the user
    * 
-   * @return the user's comment
+   * @return The user's comment
    */
   public String getComment() {
     return this.comment;
@@ -64,7 +64,7 @@ public class Reaction {
   /**
    * Retrieves the author the reaction
    * 
-   * @return the author of the reaction
+   * @return The author of the reaction
    */
   public User getAuthor() {
     return author;
