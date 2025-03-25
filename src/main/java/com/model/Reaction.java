@@ -1,8 +1,7 @@
 package com.model;
 
-//A USER MAY WANT TO HAVE A LIST OF THEIR REACTIONS. ADD AN ARRAYLIST INTO THE USER CLASS? - SIMION
 /**
- * a class that creates an object of type Reaction, with a rating (int), comment
+ * A class that creates an object of type Reaction, with a rating (int), comment
  * (string),
  * and an author (User)
  * 
@@ -14,11 +13,11 @@ public class Reaction {
   private User author;
 
   /**
-   * constructor that creates a Reaction
+   * Constructor that creates a Reaction
    * 
-   * @param rating  takes in a rating (int)
-   * @param comment takes in a comment (String)
-   * @param author  takes in an author (User)
+   * @param rating  Takes in a rating (int)
+   * @param comment Takes in a comment (String)
+   * @param author  Takes in an author (User)
    */
   public Reaction(int rating, String comment, User author) {
     this.rating = rating;
