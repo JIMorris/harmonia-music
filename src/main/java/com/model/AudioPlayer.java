@@ -6,7 +6,9 @@ import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
 
 /**
- * TODO
+ * Class that uses JFugue and combination with the logic of other classes to create sound
+ * 
+ * @author James Morris
  */
 public class AudioPlayer {
     private static AudioPlayer instance;
@@ -17,7 +19,7 @@ public class AudioPlayer {
     private Player player;
 
     /**
-     * TODO
+     * Constructor which creates 
      */
     public AudioPlayer() {
         this.player = new Player();
