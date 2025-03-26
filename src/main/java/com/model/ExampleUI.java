@@ -9,9 +9,11 @@ public class ExampleUI {
             accountScenarioSignup();
             accountScenarioLogin();
             System.out.println("\nAccount Scenario Done\n");
+            Thread.sleep(2500);
             System.out.println("\nStarting Play and Print Scenario\n");
-            // playAndPrintScenario();
+            playAndPrintScenario();
             System.out.println("\nPlay and Print Scenario Done\n");
+            Thread.sleep(2500);
             System.out.println("\nStating Make and Print Scenario\n");
             newSongScenarioCreate();
             newSongScenarioPlay();
@@ -21,39 +23,54 @@ public class ExampleUI {
         }
         
     }
+    
     private static void accountScenarioSignup() throws Exception{
         MusicFacade facade = MusicFacade.getInstance();
+
+        // Attempt to signup as ffredrickson
         try {
             facade.signup("ffredrickson", "uniquePassword", "Fred", "Fredrickson");
-            System.out.println("Signed up as ffredrickson");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-            facade.signup("ffred", "uniquePassword", "Fred", "Fredrickson");
-            System.out.println("Signed up as ffred");
-            facade.logout();
+        // Signup as ffred
+        facade.signup("ffred", "uniquePassword", "Fred", "Fredrickson");
+        facade.logout();
 
     }
 
     private static void accountScenarioLogin() throws Exception{
         MusicFacade facade = MusicFacade.getInstance();
-        try {
-            facade.login("ffred", "uniquePassword");
-            System.out.println("Signued up as ffred");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+        // Login and logout of ffred
+        facade.login("ffred", "uniquePassword");
         facade.logout();
     }
 
-    // private static void playAndPrintScenario() throws Exception{
-    //     MusicFacade facade = MusicFacade.getInstance();
+    private static void playAndPrintScenario() throws Exception{
+        MusicFacade facade = MusicFacade.getInstance();
+        ArrayList<Song> songs;
+        ArrayList<Instrument> instruments;
 
+        // Login and filter songs
+        facade.login("ffred", "uniquePassword");
+        songs = facade.filterSongs("author", "JIMorris");
+        System.out.println("Songs:");
+        for(Song song : songs){
+            System.out.println(song.getTitle());
+        }
 
+        // Open song and play song
+        instruments = facade.openSong(songs.get(0));
+        facade.playSong();
+        Thread.sleep(5000);
+        facade.stopSong();
 
-    //     facade.printSong();
-    // }
+        // Print song and logout
+        facade.printSong();
+        facade.logout();
+    }
 
     private static void newSongScenarioCreate() throws Exception{
         MusicFacade facade = MusicFacade.getInstance();
@@ -62,12 +79,19 @@ public class ExampleUI {
         ArrayList<Note> notes;
         ArrayList<Genre> genres = new ArrayList<>();
         genres.add(Genre.POP);
+
+        // Login and create new song
         facade.login("ffredrickson", "myPassword");
         facade.newSong("A Horse Journey", "An example song", genres, 2, 120, Key.A_MINOR, instruments.get(0));
+
+        // Look in ffredricksons songs, and open song
         ArrayList<Song> songs = facade.openMySongs();
         instruments = facade.openSong(songs.get(0));
         measures = facade.selectInstrument(instruments.get(0));
-        notes = facade.getNotes(measures.get(0));
+        notes = facade.selectMeasure(measures.get(0));
+
+        // Edit Music
+        facade.selectNote(notes.get(0));
         facade.insertNote();
         facade.noteUp();
         facade.noteUp();
@@ -98,16 +122,29 @@ public class ExampleUI {
         facade.splitNote(3);
         facade.selectNote(notes.get(4));
         facade.insertNote();
+        facade.selectNote(notes.get(5));
+        facade.insertNote();
+
+        // Play song and logout
+        facade.selectMeasure(measures.get(0));
         facade.playSong();
+        Thread.sleep(5000);
+        facade.stopSong();
         facade.logout();
     }
 
     public static void newSongScenarioPlay() throws Exception{
         MusicFacade facade = MusicFacade.getInstance();
+        ArrayList<Song> songs;
+
+        // Login and Filter Songs
         facade.login("ffred", "uniquePassword");
-        ArrayList<Song> songs = facade.filterSongs("title", "A Horse Journey");
+        songs = facade.filterSongs("title", "A Horse Journey");
+
+        // Open song, play it, and log out
         facade.openSong(songs.get(0));
         facade.playSong();
+        Thread.sleep(5000);
         facade.logout();
     }
 

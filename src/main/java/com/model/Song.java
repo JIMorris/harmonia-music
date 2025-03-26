@@ -275,7 +275,7 @@ public class Song {
      */
     public void insertMeasure(MeasureGroup measureGroup){
         int index = measureGroups.indexOf(measureGroup);
-        measureGroups.add(index, new MeasureGroup(timeSignatureNum, keySignature.rootChord, instruments));
+        measureGroups.add(index+1, new MeasureGroup(timeSignatureNum, keySignature.rootChord, instruments));
     }
 
     /**

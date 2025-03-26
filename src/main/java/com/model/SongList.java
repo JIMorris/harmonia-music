@@ -187,6 +187,17 @@ public class SongList {
         return filteredSongs;
     }
 
+    public ArrayList<Song> filterByAuthor(User author){
+        ArrayList<Song> filteredSongs = new ArrayList<>();
+
+        for(Song song : songs){
+            if(song.getAuthor() == author)
+                filteredSongs.add(song);
+        }
+
+        return filteredSongs;
+    }
+
     public ArrayList<Song> getPublicSongs() {
         ArrayList<Song> publicSongs = new ArrayList<>();
         for (Song song : songs) {
@@ -223,9 +234,13 @@ public class SongList {
             return filterByBPM(lowestBPM, highestBPM);
         } else if (category.equalsIgnoreCase("difficulty")) {
             return filterByDifficulty(Integer.parseInt(filter));
-        } else {
-            return new ArrayList<>();
+        } else if (category.equalsIgnoreCase("author")) {
+            for(User user : UserList.getInstance().getUsers()){
+                if(user.getUsername().equals(filter))
+                    return filterByAuthor(user);
+            }   
         }
+        return new ArrayList<>();
     }
 
     /**

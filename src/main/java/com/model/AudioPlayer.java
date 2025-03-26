@@ -34,15 +34,19 @@ public class AudioPlayer {
      * TODO
      */
     public void play() {
+        stop();
         player = new Player();
+        player.getManagedPlayer().reset();
         Pattern pattern = generatePattern();
-        player.delayPlay(500, pattern);
+        player.delayPlay(0, pattern);
     }
 
     /*
      * TODO
      */
     public void stop() {
+        if(player.getManagedPlayer().isPlaying())
+            player.getManagedPlayer().pause();
         player.getManagedPlayer().finish();
     }
 
