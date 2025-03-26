@@ -1,50 +1,58 @@
 package com.model;
 
 /**
- * The pitch enum represents all tones of notes, including natural, sharp, and flat notes.
+ * The pitch enum represents all tones of notes, including natural, sharp, and
+ * flat notes.
  * 
  * @author Simion Cartis
  */
 public enum Pitch {
-    REST("R"),
-    A_FLAT("Ab"),
-    A("A"),
-    A_SHARP("A#"),
-    B_FLAT("Bb"),
-    B("B"),
-    B_SHARP("B#"),
-    C_FLAT("Cb"),
-    C("C"),
-    C_SHARP("C#"),
-    D_FLAT("Db"),
-    D("D"),
-    D_SHARP("D#"),
-    E_FLAT("Eb"),
-    E("E"),
-    E_SHARP("E#"),
-    F_FLAT("Fb"),
-    F("F"),
-    F_SHARP("F#"),
-    G_FLAT("Gb"),
-    G("G"),
-    G_SHARP("G#");
+    CHORD("CHORD", new String[] {"x"," ","C","H","O","R","D"," ","x"}),
+    REST("R", new String[] {"x"," ","R","E","-","S","T"," ","x"}),
+    A_FLAT("Ab", new String[] {"-"," ","-"," ","-","x","-"," ","-"}),
+    A("A", new String[] {"-"," ","-"," ","-","x","-"," ","-"}),
+    A_SHARP("A#", new String[] {"-"," ","-"," ","-","x","-"," ","-"}),
+    B_FLAT("Bb", new String[] {"-"," ","-"," ","x"," ","-"," ","-"}),
+    B("B", new String[] {"-"," ","-"," ","x"," ","-"," ","-"}),
+    B_SHARP("B#", new String[] {"-"," ","-"," ","x"," ","-"," ","-"}),
+    C_FLAT("Cb", new String[] {"-"," ","-","x","-"," ","-"," ","-"}),
+    C("C", new String[] {"-"," ","-","x","-"," ","-"," ","-"}),
+    C_SHARP("C#", new String[] {"-"," ","-","x","-"," ","-"," ","-"}),
+    D_FLAT("Db", new String[] {"-"," ","x"," ","-"," ","-"," ","-"}),
+    D("D", new String[] {"-"," ","x"," ","-"," ","-"," ","-"}),
+    D_SHARP("D#", new String[] {"-"," ","x"," ","-"," ","-"," ","-"}),
+    E_FLAT("Eb", new String[] {"-","x","-"," ","-"," ","-"," ","-"}),
+    E("E", new String[] {"-","x","-"," ","-"," ","-"," ","-"}),
+    E_SHARP("E#", new String[] {"-","x","-"," ","-"," ","-"," ","-"}),
+    F_FLAT("Fb", new String[] {"-"," ","-"," ","-"," ","-","x","-"}),
+    F("F", new String[] {"-"," ","-"," ","-"," ","-","x","-"}),
+    F_SHARP("F#", new String[] {"-"," ","-"," ","-"," ","-","x","-"}),
+    G_FLAT("Gb", new String[] {"-"," ","-"," ","-"," ","x"," ","-"}),
+    G("G", new String[] {"-"," ","-"," ","-"," ","x"," ","-"}),
+    G_SHARP("G#", new String[] {"-"," ","-"," ","-"," ","x"," ","-"});
 
     public final String label;
+    public final String[] sheetMusic;
 
     /**
-     * Constructs a pitch with the specified string label.
-     * @param label The string repesentation of the pitch
+     *  constructs an instance of the Pitch enumeration
+     * 
+     * @param label takes in a label (String) for the values within the enumeration
      */
-    private Pitch(String label) {
+    private Pitch(String label, String[] sheetMusic) {
         this.label = label;
+        this.sheetMusic = sheetMusic;
     }
-    
+
     /**
-     * Converts a string representation of a pitch into its corresponding pitch enum value.
-     * @param pitch
-     * @return
+     * Converts a string representation of a Pitch into its corresponding enum value
+     * 
+     * @param pitch is a String which will be used to match the desired Pitch's
+     *              label
+     * @return returns an enumeration of type Pitch whose label matches the String
+     *         parameter
      */
-    public static Pitch fromString(String pitch){
+    public static Pitch fromString(String pitch) {
         for (Pitch p : values()) {
             if (p.label.equalsIgnoreCase(pitch))
                 return p;

@@ -46,7 +46,7 @@ public class Song {
      * @param timeSignatureNum Top number of the time signature
      * @param timeSignatureDen Bottom number of the time signature
      */
-    public Song(String title, User author, String description, ArrayList<Genre> genres, int difficulty, int tempo, Key keySignature, int timeSignatureNum, int timeSignatureDen) {
+    public Song(String title, User author, String description, ArrayList<Genre> genres, int difficulty, int tempo, Key keySignature, int timeSignatureNum, int timeSignatureDen, Instrument defaultInstrument) {
         this.songID = UUID.randomUUID();
         this.title = title;
         this.author = author;
@@ -59,8 +59,10 @@ public class Song {
         this.keySignature = keySignature;
         this.timeSignatureNum = timeSignatureNum;
         this.timeSignatureDen = timeSignatureDen;
-        this.measureGroups = new ArrayList<>();
         this.instruments = new ArrayList<>();
+        this.measureGroups = new ArrayList<>();
+        instruments.add(defaultInstrument);
+        this.measureGroups.add(new MeasureGroup(timeSignatureNum, keySignature.rootChord, instruments));
     }
 
     /**
@@ -117,93 +119,89 @@ public class Song {
         this.tempo = tempo;
         this.keySignature = keySignature;
         this.timeSignatureNum = timeSignatureNum;
-        this. timeSignatureDen = timeSignatureDen;
+        this.timeSignatureDen = timeSignatureDen;
         this.measureGroups = measures;
         this.instruments = instruments;
+    }
+
+    public UUID getSongID () {
+        return this.songID;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public ArrayList<Genre> getGenres() {
+        return genres;
+    }
+
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public ArrayList<Reaction> getReactions() {
+        return reactions;
+    }
+
+    public boolean isPublished() {
+        return published;
+    }
+
+    public int getTempo() {
+        return tempo;
+    }
+
+    public Key getKeySignature() {
+        return keySignature;
+    }
+
+    public int getTimeSignatureNum() {
+        return timeSignatureNum;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public int getTimeSignatureDen() {
+        return timeSignatureDen;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public ArrayList<MeasureGroup> getMeasureGroups() {
+        return measureGroups;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public ArrayList<Instrument> getInstruments() {
+        return instruments;
     }
 
     /**
      * 
      * @param tempo
      */
-    public boolean setTempo(int tempo){
+    public void setTempo(int tempo) throws Exception{
         if(tempo<30 || tempo>400)
-            return false;
+            throw new Exception("Tempo must be between 30 and 400");
         this.tempo = tempo;
-        return true;
     }
 
-    //TODO
-    public UUID getSongID () {
-        return this.songID;
-    }
-
-    //TODO
-    public String getTitle() {
-        return title;
-    }
-
-    //TODO
-    public User getAuthor() {
-        return author;
-    }
-
-    //TODO
-    public String getDescription() {
-        return description;
-    }
-
-    //TODO
-    public ArrayList<Genre> getGenres() {
-        return genres;
-    }
-
-    //TODO
-    public int getDifficulty() {
-        return difficulty;
-    }
-
-    //TODO
-    public ArrayList<Reaction> getReactions() {
-        return reactions;
-    }
-
-    //TODO
-    public boolean isPublished() {
-        return published;
-    }
-
-    //TODO
-    public int getTempo() {
-        return tempo;
-    }
-
-    //TODO
-    public Key getKeySignature() {
-        return keySignature;
-    }
-
-    //TODO
-    public int getTimeSignatureNum() {
-        return timeSignatureNum;
-    }
-
-    //TODO
-    public int getTimeSignatureDen() {
-        return timeSignatureDen;
-    }
-
-    //TODO
-    public ArrayList<MeasureGroup> getMeasureGroups() {
-        return measureGroups;
-    }
-
-    //TODO
-    public ArrayList<Instrument> getInstruments() {
-        return instruments;
-    }
-
-    //TODO
     public ArrayList<Measure> getMeasures(Instrument instrument){
         ArrayList<Measure> measures = new ArrayList<>();
         for(MeasureGroup measureGroup : measureGroups){
@@ -226,6 +224,7 @@ public class Song {
         }
         return null;
     }
+
     public ArrayList<UUID> getInstrumentIDs() {
         ArrayList<UUID> instrumentIDs = new ArrayList<>();
         for (Instrument instrument : instruments) {
@@ -251,7 +250,7 @@ public class Song {
      * @param rating  takes in a rating for the reaction (of type int)
      * @param comment takes in a comment for the reaction (of type String)
      * @param author  takes in an author for the reaction (of type User)
-     * @return returns the reaction that has been created
+     * @return returnsR the reaction that has been created
      */
     public Reaction addReaction(int rating, String comment, User author) {
         Reaction reaction = new Reaction(rating, comment, author);
@@ -260,24 +259,14 @@ public class Song {
     }
 
     /**
-     * removes a reaction from a song's arraylist of reactions
-     * 
-     * @param reaction takes in a reaction (of type Reaction)
-     *                 to be removed from the arraylist
+     * TODO
+     * @param reaction
+     * @throws Exception
      */
-    public void removeReaction(Reaction reaction) {
-        this.reactions.remove(reaction);
-    }
-
-    /**
-     * returns a measure that is within a song
-     * 
-     * @param number takes in a number (of type int) which will help identify which
-     *               measure to be returned
-     * @return returns the desired measure
-     */
-    public MeasureGroup getMeasure(int number) {
-        return measureGroups.get(number);
+    public void removeReaction(Reaction reaction) throws Exception {
+        if(reaction.getAuthor() == UserList.getInstance().getCurrentUser())
+            throw new Exception("You can only delete your own reaction");
+        reactions.remove(reaction);
     }
 
     /**
@@ -286,14 +275,16 @@ public class Song {
      */
     public void insertMeasure(MeasureGroup measureGroup){
         int index = measureGroups.indexOf(measureGroup);
-        measureGroups.add(index, new MeasureGroup(timeSignatureNum, instruments));
+        measureGroups.add(index, new MeasureGroup(timeSignatureNum, keySignature.rootChord, instruments));
     }
 
     /**
      * TODO
      * @param measureGroup
      */
-    public void deleteMeasure(MeasureGroup measureGroup){
+    public void removeMeasure(MeasureGroup measureGroup) throws Exception{
+        if(measureGroups.size()<=1)
+            throw new Exception("Song cannot have 0 measures");
         measureGroups.remove(measureGroup);
     }
 
@@ -302,12 +293,11 @@ public class Song {
      * @param note
      * @return
      */
-    public boolean insertNote(Note note){
+    public void insertNote(Note note){
         if(note.getPitch()!=Pitch.REST)
-            return false;
-        note.setPitch(keySignature.getRoot());
+            return;
+        note.setPitch(keySignature.getRootPitch());
         note.setOctave(4);
-        return true;
     }
 
     /**
@@ -316,8 +306,8 @@ public class Song {
      * @param note Note to move
      * @return Whether the new note is in range
      */
-    public boolean noteUp(Note note){
-        return note.up(this.keySignature);
+    public void noteUp(Note note) throws Exception{
+        note.up(this.keySignature);
     }
 
     /**
@@ -328,8 +318,8 @@ public class Song {
      * @param note Note to move
      * @return Whether the new note is in range
      */
-    public boolean noteDown(Note note){
-        return note.down(this.keySignature);
+    public void noteDown(Note note) throws Exception{
+        note.down(this.keySignature);
     }
 
     /**
@@ -338,6 +328,7 @@ public class Song {
      * @param instrument takes in an instrument of type Instrument
      */
     public void addInstrument(Instrument instrument) {
+        instruments.add(instrument);
         for(MeasureGroup measureGroup : measureGroups){
             measureGroup.addMeasure(instrument);
         }
@@ -348,7 +339,10 @@ public class Song {
      * 
      * @param instrument takes in an instrument of type instrument to be removed
      */
-    public void removeInstrument(Instrument instrument) {
+    public void removeInstrument(Instrument instrument) throws Exception {
+        if(instruments.size()<=1)
+            throw new Exception("Song must have at least 1 instrument");
+        instruments.remove(instrument);
         for(MeasureGroup measureGroup : measureGroups){
             measureGroup.removeMeasure(instrument);
         }
@@ -366,7 +360,5 @@ public class Song {
         }
         return copy;
     }
-
-    
 
 }

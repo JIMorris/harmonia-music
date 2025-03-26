@@ -1,5 +1,10 @@
 package com.model;
 
+/**
+ * Provides data constants for the data writer and loader
+ * 
+ * @author James Morris
+ */
 public class DataConstants {
     public static final String SONG_FILE_NAME = "json/song.json";
     public static final String SONG_TEMP_FILE_NAME = "json/song_temp.json";

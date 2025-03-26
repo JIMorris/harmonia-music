@@ -26,8 +26,8 @@ public class Measure {
     /**
      * Constructs a new measure with a list of notes and text.
      * 
-     * @param notes
-     * @param text
+     * @param notes The list of notes to be included in the measure
+     * @param text The text for the measure
      */
     public Measure(ArrayList<Note> notes, String text) {
         this.length = DEFAULT_LENGTH;
@@ -36,17 +36,50 @@ public class Measure {
     }
 
     /**
-     * TODO
-     * @param original
+     * Contstructs a copy of an existing measure
+     * 
+     * @param original The measure to be copied
      */
     public Measure(Measure original){
         this.length = original.getLength();
         this.text = original.getText();
-        this.notes = cloneNotes(notes);
+        this.notes = cloneNotes(original.getNotes());
+    }
+    
+    /**
+     * Returns the list of notes in the measure
+     * @return The list of notes
+     */
+    public ArrayList<Note> getNotes() {
+        return notes;
     }
 
     /**
-     * TODO
+     * Returns the length of the measure
+     * @return The length of the measure
+     */
+    public int getLength(){
+        return length;
+    }
+
+    /**
+     * Returns the associated text with the measure
+     * @return The measure's text annotation
+     */
+    public String getText(){
+        return text;
+    }
+
+    /**
+     * Sets the text annotation for the measure
+     * @param text The text to set
+     */
+    public void setText(String text){
+        this.text = text;
+    }
+
+    /**
+     * Initializes the measure with default rest notes
      */
     private void fillNotes(){
         for(int i=0; i<this.length; i++){
@@ -54,6 +87,12 @@ public class Measure {
         }
     }
 
+    /**
+     * Creates a copy of a given list of notes
+     * 
+     * @param originalNotes The original list of notes to be cloned
+     * @return A new list containing copies of the original notes
+     */
     private ArrayList<Note> cloneNotes(ArrayList<Note> originalNotes){
         ArrayList<Note> newNotes = new ArrayList<>();
         for(Note note : originalNotes){
@@ -63,61 +102,46 @@ public class Measure {
     }
 
     /**
-     * Inserts a note at the given position
+     * Splits a given note into multiple smaller notes of equal duration
      * 
-     * @param note     Note to insert
-     * @param position Where to insert the note
-     * @return Whether the provided position is valid
+     * @param note The note to be split
+     * @param division The number of parts to divide the note into (2, 3, 4)
+     * @throws Exception If the division value is invalid
      */
-    private boolean insertNote(Note note, int position) {
-        if (position < 0 || position > notes.size()) {
-            return false;
+    public void splitNote(Note note, int division) throws Exception{
+        if (division < 2 && division > 4)
+            throw new Exception("Division size must be 2, 3, or 4");
+
+        note.changeDuration(division);
+        for (int i = 1; i < division; ++i) {
+            Note noteCopy = new Note(note);
+            notes.add(notes.indexOf(note) + i, noteCopy);
         }
-        notes.add(position, note);
-        return true;
     }
 
     /**
-     * Replaces a note with a rest
+     * Combines multiple smaller notes into a single larger note if possible
      * 
-     * @param position The position to insert the rest
-     * @return Whether the given position is valid
+     * @param note The note to be combined with adjacent notes
+     * @throws Exception If the note can't be further combined
      */
-    private boolean removeNote(int position) {
-        if (position < 0 || position > notes.size()) {
-            return false;
-        }
-        notes.remove(position);
-        return true;
-    }
+    public void combineNotes(Note note) throws Exception{
+        if(note.getDuration()>= Note.QUARTER_LENGTH)
+            throw new Exception("Note cannot be further combined");
 
-    public boolean splitNote(Note note, int division) {
-        if (division < 2 && division > 4) {
-            System.out.println("invalid division size"); // temp error message
-            return false;
-        }
-        note.changeDuration(division);
-        for (int i = 1; i < division; ++i) {
-            Note NoteCopy = new Note(note);
-            insertNote(NoteCopy, notes.indexOf(note) + i);
-        }
-        return true;
-    }
-
-
-    public boolean combineNotes(Note note) {
-        if(note.getDuration()>= Note.QUARTER_LENGTH) {
-            System.out.println("note cannot be further combined"); //temp error message
-            return false;
-        }
         Note firstNote = getFirstNote(note);
         for (int i = 1; i < Note.QUARTER_LENGTH/firstNote.getDuration(); ++i) {
-            removeNote(notes.indexOf(firstNote)+i);
+            notes.remove(notes.indexOf(firstNote)+i);
         }
         firstNote.changeDuration();
-        return true;
     }
 
+    /**
+     * Retrieves the first note in a group of combined notes
+     * 
+     * @param groupNote A note belonging to a group of combined notes
+     * @return The first group, or null if not found
+     */
     private Note getFirstNote(Note groupNote){
         ArrayList<Note> noteGroup = new ArrayList<>();
         int count = 0;
@@ -134,21 +158,5 @@ public class Measure {
             }
         }
         return null;
-    }
-
-    public ArrayList<Note> getNotes() {
-        return notes;
-    }
-
-    public int getLength(){
-        return length;
-    }
-
-    public String getText(){
-        return text;
-    }
-
-    public void setText(String text){
-        this.text = text;
     }
 }

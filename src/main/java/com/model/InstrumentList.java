@@ -13,8 +13,7 @@ public class InstrumentList {
     private ArrayList<Instrument> instruments;
 
     /**
-     * private constructor that creates a single instance of the InstrumentList 
-     * object
+     * Private constructor that creates a single instance of the InstrumentList 
      */
     private InstrumentList() {
         try {
@@ -22,12 +21,12 @@ public class InstrumentList {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
 
     /**
-     * public method which calls the private InstrumentList constructor, 
-     * returns the instance of InstrumentList
+     * Public method which calls the private InstrumentList constructor
+     * 
+     * @return the instance of InstrumentList
      */
     public static InstrumentList getInstance() {
         if (instance == null) {
@@ -37,7 +36,17 @@ public class InstrumentList {
     }
 
     /**
+     * Retrieves the list of instruments
+     * 
+     * @return an ArrayList of instruments
+     */
+    public ArrayList<Instrument> getInstruments() {
+        return instruments;
+    }
+
+    /**
      * Gets the instrument that has the matching UUID
+     * 
      * @param id UUID of the instrument to get
      * @return Instrument with given UUID
      */
@@ -50,38 +59,20 @@ public class InstrumentList {
     }
 
     /**
-     * public method which adds a new instrument to the arraylist
-     */
-    public void addInstrument(Instrument instrument) {
-        instruments.add(instrument);
-    }
-    
-    /**
-     * public method which removes an instrument from the arraylist
-     */
-    public void removeInstrument(Instrument instrument) {
-        instruments.remove(instrument);
-    }
-
-    /**
      * public method which saves/updates the arraylist of instruments
+     * 
+     * @throws Exception if an error occurs during saving
      */
-    public void save() throws Exception {
+    public void logout() throws Exception {
         DataWriter.getInstance().saveInstruments();
     }
 
-     public ArrayList<Instrument> getInstruments() {
-        return instruments;
-    }
-
+    /**
+     * Sets the instrument list 
+     * 
+     * @param instruments The new list of instruments
+     */
     public void setInstruments(ArrayList<Instrument> instruments) {
         this.instruments = instruments;
-    }
-
-    @Override
-    public String toString() {
-        return "InstrumentList{" +
-                "instruments=" + instruments +
-                '}';
     }
 }
