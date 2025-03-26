@@ -82,7 +82,7 @@ public class ExampleUI {
         // Open song and play song
         instruments = facade.openSong(songs.get(0));
         facade.playSong();
-        Thread.sleep(20000);
+        Thread.sleep(17500);
         facade.stopSong();
 
         // Print song and logout
@@ -151,7 +151,7 @@ public class ExampleUI {
         // Play song and logout
         facade.selectMeasure(measures.get(0));
         facade.playSong();
-        Thread.sleep(75000);
+        Thread.sleep(7500);
         facade.stopSong();
         facade.logout();
     }
