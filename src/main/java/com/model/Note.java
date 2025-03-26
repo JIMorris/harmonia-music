@@ -98,7 +98,7 @@ public class Note {
 
     public void down(Key keySignature) throws Exception {
         if (octave <= 0)
-            throw new Exception("Lowest pitch reaches");
+            throw new Exception("Lowest pitch reached");
         ArrayList<Pitch> keyPitches = keySignature.pitches;
         Pitch currentPitch = this.pitch;
         int index = keyPitches.indexOf(currentPitch);

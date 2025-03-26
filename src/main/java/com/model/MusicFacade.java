@@ -157,8 +157,9 @@ public class MusicFacade {
 
     /**
      * Selects the current instrument
+     * 
      * @param instrument Instrument selected
-     * @return The list of measures of this song
+     * @return The list of measures for this Instrument
      */
     public ArrayList<Measure> selectInstrument(Instrument instrument){
         return audioPlayer.selectInstrument(instrument);
@@ -174,8 +175,10 @@ public class MusicFacade {
     }
 
     /**
-     * Selects a measure 
+     * Selects a Measure 
+     * 
      * @param measure Measure to select
+     * @return The Arraylist of Notes within that measure
      */
     public ArrayList<Note> selectMeasure(Measure measure){
         audioPlayer.selectMeasure(measure);
