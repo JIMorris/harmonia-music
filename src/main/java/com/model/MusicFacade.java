@@ -163,6 +163,16 @@ public class MusicFacade {
     public ArrayList<Measure> selectInstrument(Instrument instrument){
         return audioPlayer.selectInstrument(instrument);
     }
+
+
+    /**
+     * Returns the measures of the current selected instrument
+     * 
+     * @return Measures of the current selected instrument
+     */
+    public ArrayList<Measure> getMeasures(){
+        return audioPlayer.getMeasures();
+    }
     
     /**
      * Get the notes of a measure
@@ -335,5 +345,14 @@ public class MusicFacade {
 
     public void printSong() throws Exception{
         audioPlayer.printSong();
+    }
+
+    /**
+     * Returns an ArrayList of all instruments in available to use
+     * 
+     * @return All instruments
+     */
+    public ArrayList<Instrument> getAllInstruments(){
+        return instrumentList.getInstruments();
     }
 }

@@ -135,6 +135,8 @@ public class AudioPlayer {
      */
     public ArrayList<Measure> selectInstrument(Instrument instrument){
         this.currentInstrument = instrument;
+        this.currentMeasureGroup = currentSong.getMeasureGroups().get(0);
+        this.currentNote = currentMeasureGroup.getMeasure(instrument).getNotes().get(0);
         return currentSong.getMeasures(instrument);
     }
 
@@ -144,6 +146,7 @@ public class AudioPlayer {
      */
     public void selectMeasure(Measure measure){
         this.currentMeasureGroup = currentSong.getMeasureGroup(measure);
+        this.currentNote = measure.getNotes().get(0);
     }
 
     /**
@@ -202,6 +205,15 @@ public class AudioPlayer {
      */
     public void setChord(Chord chord){
         currentMeasureGroup.setChord(chord);
+    }
+
+    /**
+     * Returns the measures of the current selected instrument
+     * 
+     * @return Measures of the current instruments
+     */
+    public ArrayList<Measure> getMeasures(){
+        return currentSong.getMeasures(currentInstrument);
     }
 
     /**
