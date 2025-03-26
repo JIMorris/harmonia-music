@@ -33,9 +33,9 @@ public class MeasureGroup {
      * Constructs a new measure with a specified length, chord, and existing
      * measures.
      * 
-     * @param length
-     * @param chord
-     * @param measures
+     * @param length The length of measure
+     * @param chord The chord of the measure
+     * @param measures The existing measure
      */
     public MeasureGroup(int length, Chord chord, HashMap<Instrument, Measure> measures) {
         this.length = length;
@@ -46,7 +46,7 @@ public class MeasureGroup {
     /**
      * Copy constructor for creating a copy of existing measure
      * 
-     * @param measureGroup
+     * @param measureGroup The existing measure
      */
     public MeasureGroup(MeasureGroup measureGroup) {
         this.length = measureGroup.getLength();
@@ -57,7 +57,7 @@ public class MeasureGroup {
     /**
      * Retrieves the length of the measure
      * 
-     * @return
+     * @return The length of the measure
      */
     public int getLength() {
         return length;
@@ -66,7 +66,7 @@ public class MeasureGroup {
     /**
      * Retrieves the chord of the measure
      * 
-     * @return
+     * @return The chord of the measure
      */
     public Chord getChord() {
         return chord;
@@ -75,7 +75,7 @@ public class MeasureGroup {
     /**
      * Retrieves the map of instruments to their corresponding measure
      * 
-     * @return
+     * @return The map of instruments to their measure
      */
     public HashMap<Instrument, Measure> getMeasures() {
         return measures;
@@ -84,7 +84,7 @@ public class MeasureGroup {
     /**
      * Sets the chord for this measure
      * 
-     * @param chord
+     * @param chord The chord of the measure
      */
     public void setChord(Chord chord) {
         this.chord = chord;
@@ -102,7 +102,7 @@ public class MeasureGroup {
     /**
      * Removes measure associated with the specified instrument
      * 
-     * @param instrument
+     * @param instrument Instrument to remove
      */
     public void removeMeasure(Instrument instrument) {
         measures.remove(instrument);
@@ -121,8 +121,8 @@ public class MeasureGroup {
     /**
      * Creates a copy of the given measures map
      * 
-     * @param measures
-     * @return
+     * @param measures The original measure
+     * @return Copy of the measure
      */
     private HashMap<Instrument, Measure> copyMeasures(HashMap<Instrument, Measure> measures) {
         HashMap<Instrument, Measure> copy = new HashMap<>();

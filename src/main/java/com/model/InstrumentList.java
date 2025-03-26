@@ -13,8 +13,7 @@ public class InstrumentList {
     private ArrayList<Instrument> instruments;
 
     /**
-     * private constructor that creates a single instance of the InstrumentList 
-     * object
+     * Private constructor that creates a single instance of the InstrumentList 
      */
     private InstrumentList() {
         try {
@@ -25,8 +24,9 @@ public class InstrumentList {
     }
 
     /**
-     * public method which calls the private InstrumentList constructor, 
-     * returns the instance of InstrumentList
+     * Public method which calls the private InstrumentList constructor
+     * 
+     * @return the instance of InstrumentList
      */
     public static InstrumentList getInstance() {
         if (instance == null) {
@@ -36,8 +36,9 @@ public class InstrumentList {
     }
 
     /**
-     * TODO
-     * @return
+     * Retrieves the list of instruments
+     * 
+     * @return an ArrayList of instruments
      */
     public ArrayList<Instrument> getInstruments() {
         return instruments;
@@ -45,6 +46,7 @@ public class InstrumentList {
 
     /**
      * Gets the instrument that has the matching UUID
+     * 
      * @param id UUID of the instrument to get
      * @return Instrument with given UUID
      */
@@ -58,12 +60,18 @@ public class InstrumentList {
 
     /**
      * public method which saves/updates the arraylist of instruments
+     * 
+     * @throws Exception if an error occurs during saving
      */
     public void logout() throws Exception {
         DataWriter.getInstance().saveInstruments();
     }
 
-    // TODO Delete Method. Unused execpt temporarly in DataWriter
+    /**
+     * Sets the instrument list 
+     * 
+     * @param instruments The new list of instruments
+     */
     public void setInstruments(ArrayList<Instrument> instruments) {
         this.instruments = instruments;
     }

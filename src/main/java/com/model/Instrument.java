@@ -26,14 +26,26 @@ public class Instrument {
         this.imageFile = imageFile;
     }
 
+    /**
+     * Retrieves the UUID of the instrument
+     * @return UUID of the instrument
+     */
     public UUID getInstrumentID() {
         return instrumentID;
     }
 
+    /**
+     * Retrieves the name of the instrument
+     * @return Name of the instrument
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Retrieves the image file associated with the instrument
+     * @return The file path or name of the image file
+     */
     public String getImageFile() {
         return imageFile;
     }
