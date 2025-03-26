@@ -11,7 +11,11 @@ import org.json.simple.parser.JSONParser;
 
 
 /**
- * A file reader to load in info from json files
+ * A file reader to load and parse information from JSON files.
+ * This class provides methods to load instruments, users, and songs
+ * from JSON files and convert them into Java objects.
+ * 
+ * @author James Morris
  */
 public class DataLoader extends DataConstants {
     private static DataLoader instance;
@@ -25,6 +29,8 @@ public class DataLoader extends DataConstants {
 
     /**
      * Gets an instance of FileReader
+     * If not instance exists, a new one is created
+     * 
      * @return The instance of FileReader
      */
     public static DataLoader getInstance(){
@@ -35,8 +41,12 @@ public class DataLoader extends DataConstants {
     }
 
     /**
-     * Loads in Instruments from json
+     * Loads instrument objects from the instrument.json file.
+     * This method reads the JSON file, parses the data, and converts
+     * each instrument into a Java object.
+     * 
      * @return Whether the file reading succeeded
+     * @throws Exception If there is an error reading or parsing the file.
      */
     public ArrayList<Instrument> loadInstruments() throws Exception{
         ArrayList<Instrument> instruments = new ArrayList<>();
@@ -61,8 +71,12 @@ public class DataLoader extends DataConstants {
     }
 
     /**
-     * Loads in Users from json
-     * @return Whether the file reading succeeded
+     * Loads user objects from the user.json file.
+     * This method reads the JSON file, parses the data, and converts
+     * each user into a Java object.
+     *
+     * @return A list of users loaded from the JSON file.
+     * @throws Exception If there is an error reading or parsing the file.
      */
     public ArrayList<User> loadUsers() throws Exception{
         ArrayList<User> users = new ArrayList<>();
@@ -106,6 +120,15 @@ public class DataLoader extends DataConstants {
         }
     }
 
+    /**
+     * Retrieves a list of favorite authors for a user from a JSON array.
+     * This method matches the author IDs in the JSON array with the list of users
+     * and returns the corresponding User objects.
+     *
+     * @param favoriteAuthorsJSON The JSON array containing the IDs of favorite authors.
+     * @param users The list of all users to match the IDs against.
+     * @return A list of User objects representing the favorite authors.
+     */
     private ArrayList<User> getFavoriteAuthors(JSONArray favoriteAuthorsJSON, ArrayList<User> users){
         ArrayList<User> favoriteAuthors = new ArrayList<>();
 
@@ -125,8 +148,13 @@ public class DataLoader extends DataConstants {
 
 
     /**
-     * Loads in Songs from json
-     * @return Whether the file reading succeeded
+     * Loads song objects from the song.json file.
+     * This method reads the JSON file, parses the data, and converts
+     * each song into a Java object. It also associates favorite songs
+     * with users.
+     *
+     * @return A list of songs loaded from the JSON file.
+     * @throws Exception If there is an error reading or parsing the file.
      */
     public ArrayList<Song> loadSongs() throws Exception{
         UserList userList = UserList.getInstance();
@@ -184,6 +212,12 @@ public class DataLoader extends DataConstants {
         return songs;
     }
 
+    /**
+     * Converts a JSON array of genres into a list of Genre objects.
+     *
+     * @param genresJSON The JSON array containing genre strings.
+     * @return A list of Genre objects parsed from the JSON array.
+     */
     private ArrayList<Genre> getGenres(JSONArray genresJSON){
         ArrayList<Genre> genres = new ArrayList<>();
 
@@ -196,6 +230,13 @@ public class DataLoader extends DataConstants {
         return genres;
     }
 
+    /**
+     * Converts a JSON array of reactions into a list of Reaction objects.
+     * Each reaction includes a rating, comment, and the user who made the comment.
+     *
+     * @param reactionsJSON The JSON array containing reaction data.
+     * @return A list of Reaction objects parsed from the JSON array.
+     */
     private ArrayList<Reaction> getReactions(JSONArray reactionsJSON){
         ArrayList<Reaction> reactions = new ArrayList<>();
         UserList userList = UserList.getInstance();
@@ -215,6 +256,13 @@ public class DataLoader extends DataConstants {
         return reactions;
     }
 
+    /**
+     * Converts a JSON array of instrument IDs into a list of Instrument objects.
+     * This method retrieves the instruments from the InstrumentList singleton.
+     *
+     * @param instrumentsJSON The JSON array containing instrument IDs.
+     * @return A list of Instrument objects corresponding to the IDs in the JSON array.
+     */
     private ArrayList<Instrument> getInstruments(JSONArray instrumentsJSON){
         ArrayList<Instrument> instruments = new ArrayList<>();
         InstrumentList instrumentList = InstrumentList.getInstance();
@@ -240,6 +288,14 @@ public class DataLoader extends DataConstants {
         return instruments;
     }
 
+    /**
+     * Converts a JSON array of measure groups into a list of MeasureGroup objects.
+     * Each measure group includes a length, chord, and a map of instruments to measures.
+     *
+     * @param measureGroupsJSON The JSON array containing measure group data.
+     * @param instruments The list of instruments to associate with the measures.
+     * @return A list of MeasureGroup objects parsed from the JSON array.
+     */
     private ArrayList<MeasureGroup> getMeasures(JSONArray measureGroupsJSON, ArrayList<Instrument> instruments){
         ArrayList<MeasureGroup> measureGroups = new ArrayList<>();
 
@@ -268,6 +324,13 @@ public class DataLoader extends DataConstants {
         return measureGroups;
     }
 
+    /**
+     * Converts a JSON object representing a measure into a Measure object.
+     * A measure includes a list of notes and optional text.
+     *
+     * @param measureJSON The JSON object containing measure data.
+     * @return A Measure object parsed from the JSON object.
+     */
     private Measure getMeasure(JSONObject measureJSON){
         JSONArray notesJSON = (JSONArray)measureJSON.get(SONG_MUSIC);
         ArrayList<Note> notes = new ArrayList<>();
@@ -291,6 +354,12 @@ public class DataLoader extends DataConstants {
         return new Measure(notes, text);
     }
 
+    /**
+     * Loads favorite songs for each user from the user.json file.
+     * This method associates favorite songs with their respective users.
+     *
+     * @param songs The list of songs to associate with users.
+     */
     private void loadFavoriteSongs(ArrayList<Song> songs){
         try {
             FileReader reader = new FileReader(USER_FILE_NAME);
@@ -317,6 +386,13 @@ public class DataLoader extends DataConstants {
         }
     }
 
+    /**
+     * The main method for testing the DataLoader functionality.
+     * It loads existing data for instruments, users, and songs from their respective JSON files
+     * and prints any errors encountered during the process.
+     *
+     * @param args 
+     */
     public static void main(String[] args) {
         DataLoader dataLoader = DataLoader.getInstance();
         try {
