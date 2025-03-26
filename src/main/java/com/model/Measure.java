@@ -121,6 +121,7 @@ public class Measure {
 
     /**
      * Combines multiple smaller notes into a single larger note if possible
+     * 
      * @param note The note to be combined with adjacent notes
      * @throws Exception If the note can't be further combined
      */
