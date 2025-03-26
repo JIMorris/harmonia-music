@@ -172,7 +172,7 @@ public class ExampleUI {
         // Open song, play it, and log out
         facade.openSong(songs.get(0));
         facade.playSong();
-        Thread.sleep(75000);
+        Thread.sleep(7500);
         facade.logout();
     }
 }
