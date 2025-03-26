@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 /**
  * Represents a musical note with a duration, pitch, and octave
+ * This class provides methods to manipulate the note's properties,
+ * such as changing its duration, pitch, or octave.
  * 
- * @author
+ * @author James Morris
  */
 public class Note {
     public static final int QUARTER_LENGTH = 12;
@@ -27,9 +29,9 @@ public class Note {
     }
 
     /**
-     * TODO
-     * 
-     * @param originalNote
+     * Constructs a new Note object as a copy of an existing Note.
+     *
+     * @param originalNote The Note object to copy.
      */
     public Note(Note originalNote) {
         this.duration = originalNote.getDuration();
@@ -37,43 +39,92 @@ public class Note {
         this.octave = originalNote.getOctave();
     }
 
+    /**
+     * Retrieves the pitch of the note.
+     *
+     * @return The pitch of the note.
+     */
     public Pitch getPitch() {
         return this.pitch;
     }
 
-    // TODO Consolidate these two methods
+    /**
+     * Retrieves the duration of the note.
+     *
+     * @return The duration of the note.
+     */
     public int getDuration() {
         return this.duration;
     }
 
+    /**
+     * Retrieves the length of the note.
+     * 
+     * @return The length of the note.
+     */
     public int getLength() {
         return duration;
     }
 
+    /**
+     * Retrieves the octave of the note.
+     *
+     * @return The octave of the note.
+     */
     public int getOctave() {
         return this.octave;
     }
 
+    /**
+     * Retrieves the label of the note's pitch.
+     *
+     * @return The label of the note's pitch.
+     */
     public String getLabel() {
         return pitch.label;
     }
 
+    /**
+     * Sets the pitch of the note.
+     *
+     * @param pitch The new pitch to set for the note.
+     */
     public void setPitch(Pitch pitch) {
         this.pitch = pitch;
     }
 
+    /**
+     * Sets the octave of the note.
+     *
+     * @param octave The new octave to set for the note.
+     */
     public void setOctave(int octave) {
         this.octave = octave;
     }
 
+    /**
+     * Changes the duration of the note by dividing it by a specified value.
+     *
+     * @param change The value to divide the duration by.
+     */
     public void changeDuration(int change) {
         this.duration /= change;
     }
 
+    /**
+     * Resets the duration of the note to the default quarter length.
+     */
     public void changeDuration() {
         this.duration = QUARTER_LENGTH;
     }
 
+    /**
+     * Raises the pitch of the note by one step within the given key signature.
+     * If the pitch reaches the highest note in the key, it wraps around and increases the octave.
+     *
+     * @param keySignature The key signature to use for determining the next pitch.
+     * @throws Exception If the note is already at the highest possible pitch.
+     */
     public void up(Key keySignature) throws Exception {
         if (octave >= 7)
             throw new Exception("Highest pitch reached");
@@ -96,6 +147,13 @@ public class Note {
         this.pitch = newPitch;
     }
 
+    /**
+     * Lowers the pitch of the note by one step within the given key signature.
+     * If the pitch reaches the lowest note in the key, it wraps around and decreases the octave.
+     *
+     * @param keySignature The key signature to use for determining the previous pitch.
+     * @throws Exception If the note is already at the lowest possible pitch.
+     */
     public void down(Key keySignature) throws Exception {
         if (octave <= 0)
             throw new Exception("Lowest pitch reached");
@@ -118,6 +176,12 @@ public class Note {
         this.pitch = newPitch;
     }
 
+    /**
+     * Retrieves the sheet music representation of the note.
+     * This includes the pitch and duration of the note.
+     *
+     * @return An array of strings representing the sheet music for the note.
+     */
     public String[] getSheetMusic() {
         String[] sheetMusic = pitch.sheetMusic.clone();
         for (int i = 0; i < sheetMusic.length; i++) {
@@ -127,6 +191,13 @@ public class Note {
         return sheetMusic;
     }
 
+    /**
+     * Retrieves the JFugue representation of the note.
+     * This includes the pitch, octave, and duration of the note.
+     *
+     * @param chord The chord associated with the note.
+     * @return A string representing the note in JFugue format.
+     */
     public String getJFugue(Chord chord) {
         String jFugue = "";
         if (pitch == Pitch.CHORD) {
@@ -140,6 +211,11 @@ public class Note {
         return jFugue;
     }
 
+    /**
+     * Retrieves the sheet music duration of the note.
+     *
+     * @return A string representing the duration of the note in sheet music format.
+     */
     private String getSheetMusicDuration() {
         switch (duration) {
             case 12:
@@ -155,6 +231,11 @@ public class Note {
         }
     }
 
+    /**
+     * Retrieves the JFugue duration of the note.
+     *
+     * @return A string representing the duration of the note in JFugue format.
+     */
     private String getJFugueDuration() {
         switch (duration) {
             case 12:
