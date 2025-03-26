@@ -20,7 +20,7 @@ public class DataLoader extends DataConstants {
      * Makes a new FileReader
      */
     private DataLoader(){
-        //TODO
+        
     }
 
     /**
@@ -306,7 +306,7 @@ public class DataLoader extends DataConstants {
                     UUID songID = UUID.fromString((String)favoriteSongsJSON.get(j));
                     for(Song song : songs){
                         if(song.idMatch(songID)){
-                            currentUser.addFavoriteSong(song);
+                            currentUser.toggleFavoriteSong(song);
                             break;
                         }
                     }

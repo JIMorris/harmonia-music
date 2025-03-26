@@ -1,7 +1,8 @@
 package com.model;
 
 /**
- * Represents musical chords with their corresponding notation.
+ * Represents major and minor triads with their corresponding notation.
+ * 
  * @author Simion Cartis
  */
 public enum Chord {
@@ -51,17 +52,21 @@ public enum Chord {
     public final String label;
 
     /**
-     * Constructs a chord enum with the given label
-     * @param label
+     * constructs an instance of the Chord enumeration
+     * 
+     * @param label takes in a label (String) for the values within the enumeration
      */
-    private Chord (String label) {
+    private Chord(String label) {
         this.label = label;
     }
 
     /**
-     * Returns the corresponding chord enum
-     * @param chord
-     * @return
+     * Converts a string representation of a Chord into its corresponding enum value
+     * 
+     * @param chord is a String which will be used to match the desired Chord's
+     *              label
+     * @return returns an enumeration of type Chord whose label matches the String
+     *         parameter
      */
     public static Chord fromString(String chord) {
         for (Chord c : values()) {

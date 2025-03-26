@@ -2,11 +2,13 @@ package com.model;
 
 /**
  * an enumeration for the genre aspect of a song. has the values POP, CASSICAL,
- * JAZZ, ROCK
+ * JAZZ, ROCK, COUNTRY, FUNK, etc
+ * 
+ * @author Simion Cartis
  */
 public enum Genre {
     POP("Pop"),
-    CLASSICAL("Clasical"),
+    CLASSICAL("Classical"),
     JAZZ("Jazz"),
     ROCK("Rock"),
     METAL("Metal"),
@@ -15,7 +17,7 @@ public enum Genre {
     BLUES("Blues"),
     HIPHOP("HipHop"),
     EDM("EDM"),
-    RNB("RNB");
+    RNB("R&B");
 
     public final String label;
 
@@ -29,10 +31,12 @@ public enum Genre {
     }
 
     /**
-     * TODO
+     * Converts a string representation of a Genre into its corresponding enum value
      * 
-     * @param genre 
-     * @return
+     * @param genre is a String which will be used to match the desired Genre's
+     *              label
+     * @return returns an enumeration of type Genre whose label matches the String
+     *         parameter
      */
     public static Genre fromString(String genre) {
         for (Genre g : values()) {

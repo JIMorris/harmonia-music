@@ -35,6 +35,15 @@ public class SongList {
         return instance;
     }
 
+    public ArrayList<Song> getSongs() {
+        return songs;
+    }
+
+    // TODO Delete. Temporarly used in DataWriter
+    public void setSongs(ArrayList<Song> songs) {
+        this.songs = songs;
+    }
+
     /**
      * retrives a desired Song from the arralist of Songs
      * 
@@ -64,11 +73,11 @@ public class SongList {
      * 
      * @return The new blank song
      */
-    public Song newSong(String title, User author, String description,
+    public Song newSong(String title, String description,
             ArrayList<Genre> genres, int difficulty, int tempo,
-            Key keySignature, int timeSignatureNum, int timeSignatureDen) {
-        Song newSong = new Song(title, author, description, genres, difficulty, tempo, keySignature, timeSignatureNum,
-                timeSignatureDen);
+            Key keySignature, int[] timeSignature, Instrument defaultInstrument) {
+        Song newSong = new Song(title, UserList.getInstance().getCurrentUser(), description, genres, difficulty, tempo,
+                keySignature, timeSignature[0], timeSignature[1], defaultInstrument);
         songs.add(newSong);
         return newSong;
     }
@@ -79,8 +88,15 @@ public class SongList {
      * @param song takes in a song (of type Song) to be copied
      * @return returns the Song's copy
      */
-    public Song copySong(Song song, User author) {
-        Song copy = new Song(song, author);
+    // public Song copySong(Song song, User author) {
+    // Song copy = new Song(song, author);
+    // songs.add(copy);
+    // return copy;
+    // } // I assume this is an old method that is no longer going to be used -
+    // Simion
+
+    public Song copySong(Song song) { //this is the new copySong method
+        Song copy = new Song(song, UserList.getInstance().getCurrentUser());
         songs.add(copy);
         return copy;
     }
@@ -90,7 +106,9 @@ public class SongList {
      * 
      * @param song takes in a song (of type Song) to be removed
      */
-    public void removeSong(Song song) {
+    public void removeSong(Song song) throws Exception{
+        if(song.getAuthor() != UserList.getInstance().getCurrentUser())
+            throw new Exception("You can only delete your own songs");
         songs.remove(song);
     }
 
@@ -105,7 +123,7 @@ public class SongList {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
-            if (song.getTitle().equals(title)) // TODO Add Getter to Song
+            if (song.getTitle().equals(title))
                 filteredSongs.add(song);
         }
 
@@ -123,7 +141,7 @@ public class SongList {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
-            if (song.getGenres().contains(genre)) // TODO Add getter to Song
+            if (song.getGenres().contains(genre))
                 filteredSongs.add(song);
         }
 
@@ -143,7 +161,7 @@ public class SongList {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
-            int tempo = song.getTempo(); // TODO Add getter to Song
+            int tempo = song.getTempo();
             if (tempo >= minBPM && tempo <= maxBPM)
                 filteredSongs.add(song);
         }
@@ -162,17 +180,58 @@ public class SongList {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
-            if (song.getDifficulty() == difficulty) // TODO Add getter to Song
-                songs.add(song);
+            if (song.getDifficulty() == difficulty)
+                filteredSongs.add(song);
         }
 
         return filteredSongs;
     }
 
+    public ArrayList<Song> getPublicSongs() {
+        ArrayList<Song> publicSongs = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.isPublished()) {
+                publicSongs.add(song);
+            }
+        }
+        return publicSongs;
+    }
+
+    public ArrayList<Song> openMySongs() {
+        ArrayList<Song> mySongs = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getAuthor() == UserList.getInstance().getCurrentUser()) {
+                mySongs.add(song);
+            }
+        }
+        return mySongs;
+    }
+
+    public ArrayList<Song> openFavorites() {
+        return UserList.getInstance().getCurrentUser().getFavSongs();
+    }
+
+    public ArrayList<Song> filterSongs(String category, String filter) {
+        if (category.equalsIgnoreCase("title")) {
+            return filterByTitle(filter);
+        } else if (category.equalsIgnoreCase("genre")) {
+            return filterByGenre(Genre.fromString(filter));
+        } else if (category.equalsIgnoreCase("BPM")) {
+            String[] splitString = filter.split(" ");
+            int lowestBPM = Integer.parseInt(splitString[0]);
+            int highestBPM = Integer.parseInt(splitString[1]);
+            return filterByBPM(lowestBPM, highestBPM);
+        } else if (category.equalsIgnoreCase("difficulty")) {
+            return filterByDifficulty(Integer.parseInt(filter));
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
     /**
      * saves the chnages made to the instance of SongList
      */
-    public void save() {
+    public void logout() throws Exception{
         DataWriter.getInstance().saveSongs();
     }
 }
