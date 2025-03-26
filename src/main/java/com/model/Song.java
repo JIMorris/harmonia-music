@@ -234,6 +234,24 @@ public class Song {
     }
 
     /**
+     * Inserts a measure after the given MeasureGroup
+     * 
+     * @param measureGroup MeasureGroup to insert new MeasureGroup after
+     */
+    public void insertMeasure(MeasureGroup measureGroup){
+        int index = measureGroups.indexOf(measureGroup);
+        measureGroups.add(index+1, new MeasureGroup(timeSignatureNum, keySignature.rootChord, instruments));
+    }
+
+    /**
+     * TODO
+     * @param measureGroup
+     */
+    public MeasureGroup getMeasure(int number) {
+        return measureGroups.get(number);
+    }
+
+    /**
      * Moves a note up in pitch according to the key signature.
      *
      * @param note Note to move

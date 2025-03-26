@@ -162,8 +162,8 @@ public class Note {
         int index = keyPitches.indexOf(currentPitch);
         Pitch newPitch;
 
-        if (index == 0)
-            newPitch = keyPitches.get(keyPitches.size() - 1);
+        if(index<=0)
+            newPitch = keyPitches.get(keyPitches.size()-1);
         else
             newPitch = keyPitches.get(index - 1);
 

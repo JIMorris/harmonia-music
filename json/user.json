@@ -61,5 +61,14 @@
     "lastName": "User",
     "favSongs": [],
     "favAuthors": []
+  },
+  {
+    "uuid": "04121b91-7f99-4404-a31f-45cc4dc871a9",
+    "username": "ffredrickson",
+    "password": "myPassword",
+    "firstName": "Felicia",
+    "lastName": "Fredrickson",
+    "favSongs": [],
+    "favAuthors": []  
   }
 ]

@@ -14,10 +14,14 @@ public class MusicPrinter {
     public static void printSong(Song song, Instrument instrument) throws Exception{
         String title = song.getTitle();
         String author = song.getAuthor().getUsername();
+        String key = "Quarter Note : q\n"+
+                        "Eighth Note : e\n" +
+                        "Triplet : t\n" +
+                        "Sixteenth Note: s";
         String sheetMusic = getSheetMusic(song, instrument);
 
-        String fileName = OUTPUT_FOLDER + "output" + ".txt";
-        String printString = title + "\nby " + author + "\n\n\n\n" + sheetMusic;
+        String fileName = OUTPUT_FOLDER + title + ".txt";
+        String printString = title + "\nby " + author + "\n\n" + key + "\n\n\n\n" + sheetMusic;
 
         FileWriter sheetMusicWriter = new FileWriter(fileName);
         sheetMusicWriter.write(printString);
