@@ -58,15 +58,6 @@ public class Note {
     }
 
     /**
-     * Retrieves the length of the note.
-     * 
-     * @return The length of the note.
-     */
-    public int getLength() {
-        return duration;
-    }
-
-    /**
      * Retrieves the octave of the note.
      *
      * @return The octave of the note.
@@ -133,7 +124,7 @@ public class Note {
         int index = keyPitches.indexOf(currentPitch);
         Pitch newPitch;
 
-        if (index == keyPitches.size() - 1)
+        if (index >= keyPitches.size() - 1)
             newPitch = keyPitches.get(0);
         else
             newPitch = keyPitches.get(index + 1);

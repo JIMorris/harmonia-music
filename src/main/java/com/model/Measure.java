@@ -48,6 +48,7 @@ public class Measure {
     
     /**
      * Returns the list of notes in the measure
+     * 
      * @return The list of notes
      */
     public ArrayList<Note> getNotes() {
@@ -56,6 +57,7 @@ public class Measure {
 
     /**
      * Returns the length of the measure
+     * 
      * @return The length of the measure
      */
     public int getLength(){
@@ -64,6 +66,7 @@ public class Measure {
 
     /**
      * Returns the associated text with the measure
+     * 
      * @return The measure's text annotation
      */
     public String getText(){
@@ -72,6 +75,7 @@ public class Measure {
 
     /**
      * Sets the text annotation for the measure
+     * 
      * @param text The text to set
      */
     public void setText(String text){

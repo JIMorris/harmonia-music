@@ -5,12 +5,21 @@ import java.util.ArrayList;
 
 /**
  * Prints music to a txt file
+ * 
+ * @author James Morris
  */
 public class MusicPrinter {
     public static final String OUTPUT_FOLDER = "output/";
     public static final String[] BAR_LINE = new String[] {"|", "|", "|", "|", "|", "|", "|", "|", "|"};
     public static final String[] BLANK_SPACE = new String[] {"-", " ", "-", " ", "-", " ", "-", " ", "-"};
 
+    /**
+     * Prints the given Instruments part of the given Song to a txt file
+     * 
+     * @param song Song to print from
+     * @param instrument Instrument to get music from
+     * @throws Exception If there is a file error
+     */
     public static void printSong(Song song, Instrument instrument) throws Exception{
         String title = song.getTitle();
         String author = song.getAuthor().getUsername();
@@ -28,6 +37,13 @@ public class MusicPrinter {
         sheetMusicWriter.close();
     }
 
+    /**
+     * Generates the sheet music portion of the txt file
+     * 
+     * @param song Song to print from
+     * @param instrument Instrument to get music from
+     * @return Sheet music for the given song and instrument
+     */
     private static String getSheetMusic(Song song, Instrument instrument){
         String formattedSheetMusic = "";
         ArrayList<String[]> tempSheetMusic = new ArrayList<>();
@@ -50,6 +66,12 @@ public class MusicPrinter {
         return formattedSheetMusic;
     }
 
+    /**
+     * Generates the sheet music for the given measure
+     * 
+     * @param measure Measure to get music from
+     * @return Sheet music for given measure
+     */
     private static ArrayList<String[]> getMeasureSheetMusic(Measure measure){
         ArrayList<String[]> sheetMusic = new ArrayList<>();
         sheetMusic.add(BLANK_SPACE);
@@ -62,6 +84,13 @@ public class MusicPrinter {
         return sheetMusic;
     }
 
+    /**
+     * Formats generated sheet music from being stored horizontally (ArrayList<String[]>)
+     * to vertical (String)
+     * 
+     * @param sheetMusic Unformatted sheet music
+     * @return sheet music formatted as a String
+     */
     private static String formatSheetMusic(ArrayList<String[]> sheetMusic){
         String formattedSheetMusic = "";
         int height = sheetMusic.get(0).length;

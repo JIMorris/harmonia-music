@@ -48,7 +48,7 @@ public class DataWriter extends DataConstants {
         }
 
         //Writing user JSON file
-        try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(USER_FILE_NAME)) {
             file.write(usersJSON.toJSONString());
             file.flush();
             return users;
@@ -108,7 +108,7 @@ public class DataWriter extends DataConstants {
         }
 
         //Writing instrument JSON file
-        try (FileWriter file = new FileWriter(INSTRUMENT_TEMP_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(INSTRUMENT_FILE_NAME)) {
             file.write(instrumentsJSON.toJSONString());
             file.flush();
             return instruments;
@@ -150,7 +150,7 @@ public class DataWriter extends DataConstants {
         }
 
         //Writing song JSON file
-        try (FileWriter file = new FileWriter(SONG_TEMP_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(SONG_FILE_NAME)) {
             file.write(songsJSON.toJSONString());
             file.flush();
             return songs;
@@ -220,7 +220,7 @@ public class DataWriter extends DataConstants {
                 JSONArray musicJSON = new JSONArray();
                 for (Note note : measure.getNotes()) {
                     JSONObject noteDetails = new JSONObject();
-                    noteDetails.put("length", note.getLength());
+                    noteDetails.put("length", note.getDuration());
                     noteDetails.put("pitch", note.getLabel());
                     noteDetails.put("octave", note.getOctave());
                     musicJSON.add(noteDetails);
@@ -236,30 +236,30 @@ public class DataWriter extends DataConstants {
         return songDetails;
     }
 
-    /**
-    * The main method for testing the DataWriter functionality.
-    * It loads existing data for instruments, users, and songs from their respective JSON files,
-    * saves the data to temporary files, and prints any errors encountered during the process.
-    *
-    * @param args
-    */
-    public static void main(String[] args) {
-        DataWriter writer = DataWriter.getInstance();
-        DataLoader loader = DataLoader.getInstance();
-        try {
-            // Load existing data
-            InstrumentList instrumentList = InstrumentList.getInstance();
-            UserList userList = UserList.getInstance();
-            SongList songList = SongList.getInstance();
+    // /**
+    // * The main method for testing the DataWriter functionality.
+    // * It loads existing data for instruments, users, and songs from their respective JSON files,
+    // * saves the data to temporary files, and prints any errors encountered during the process.
+    // *
+    // * @param args
+    // */
+    // public static void main(String[] args) {
+    //     DataWriter writer = DataWriter.getInstance();
+    //     DataLoader loader = DataLoader.getInstance();
+    //     try {
+    //         // Load existing data
+    //         InstrumentList instrumentList = InstrumentList.getInstance();
+    //         UserList userList = UserList.getInstance();
+    //         SongList songList = SongList.getInstance();
 
-            instrumentList.setInstruments(loader.loadInstruments());
-            userList.setUsers(loader.loadUsers());
-            songList.setSongs(loader.loadSongs());
-            writer.saveInstruments();
-            writer.saveUsers();
-            writer.saveSongs();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    //         instrumentList.setInstruments(loader.loadInstruments());
+    //         userList.setUsers(loader.loadUsers());
+    //         songList.setSongs(loader.loadSongs());
+    //         writer.saveInstruments();
+    //         writer.saveUsers();
+    //         writer.saveSongs();
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 }

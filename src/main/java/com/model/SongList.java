@@ -39,11 +39,6 @@ public class SongList {
         return songs;
     }
 
-    // TODO Delete. Temporarly used in DataWriter
-    public void setSongs(ArrayList<Song> songs) {
-        this.songs = songs;
-    }
-
     /**
      * retrives a desired Song from the arralist of Songs
      * 
@@ -88,13 +83,6 @@ public class SongList {
      * @param song takes in a song (of type Song) to be copied
      * @return returns the Song's copy
      */
-    // public Song copySong(Song song, User author) {
-    // Song copy = new Song(song, author);
-    // songs.add(copy);
-    // return copy;
-    // } // I assume this is an old method that is no longer going to be used -
-    // Simion
-
     public Song copySong(Song song) { //this is the new copySong method
         Song copy = new Song(song, UserList.getInstance().getCurrentUser());
         songs.add(copy);
@@ -110,6 +98,72 @@ public class SongList {
         if(song.getAuthor() != UserList.getInstance().getCurrentUser())
             throw new Exception("You can only delete your own songs");
         songs.remove(song);
+    }
+
+    /**
+     * Returns a list of all songs with published=true
+     * @return ArrayList of all published songs
+     */
+    public ArrayList<Song> getPublicSongs() {
+        ArrayList<Song> publicSongs = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.isPublished()) {
+                publicSongs.add(song);
+            }
+        }
+        return publicSongs;
+    }
+
+    /**
+     * Returns a list of all songs authured by the current user
+     * 
+     * @return ArrayList of the current users songs
+     */
+    public ArrayList<Song> openMySongs() {
+        ArrayList<Song> mySongs = new ArrayList<>();
+        for (Song song : songs) {
+            if (song.getAuthor() == UserList.getInstance().getCurrentUser()) {
+                mySongs.add(song);
+            }
+        }
+        return mySongs;
+    }
+
+    /**
+     * Returns a list of all songs favorited by the current user
+     * 
+     * @return ArrayList of the current users favorite songs
+     */
+    public ArrayList<Song> openFavorites() {
+        return UserList.getInstance().getCurrentUser().getFavSongs();
+    }
+
+    /**
+     * Filters the song list by title, genre, bpm, difficulty, or author
+     * 
+     * @param category Category to filter by
+     * @param filter What to use in the filter
+     * @return Filtered ArrayList of songs
+     */
+    public ArrayList<Song> filterSongs(String category, String filter) {
+        if (category.equalsIgnoreCase("title")) {
+            return filterByTitle(filter);
+        } else if (category.equalsIgnoreCase("genre")) {
+            return filterByGenre(Genre.fromString(filter));
+        } else if (category.equalsIgnoreCase("BPM")) {
+            String[] splitString = filter.split(" ");
+            int lowestBPM = Integer.parseInt(splitString[0]);
+            int highestBPM = Integer.parseInt(splitString[1]);
+            return filterByBPM(lowestBPM, highestBPM);
+        } else if (category.equalsIgnoreCase("difficulty")) {
+            return filterByDifficulty(Integer.parseInt(filter));
+        } else if (category.equalsIgnoreCase("author")) {
+            for(User user : UserList.getInstance().getUsers()){
+                if(user.getUsername().equals(filter))
+                    return filterByAuthor(user);
+            }   
+        }
+        return new ArrayList<>();
     }
 
     /**
@@ -187,6 +241,12 @@ public class SongList {
         return filteredSongs;
     }
 
+    /**
+     * Filters the ArrayList of Songs by their author
+     * 
+     * @param author Author to filter songs by
+     * @return ArrayList of songs filtered by author
+     */
     public ArrayList<Song> filterByAuthor(User author){
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
@@ -196,51 +256,6 @@ public class SongList {
         }
 
         return filteredSongs;
-    }
-
-    public ArrayList<Song> getPublicSongs() {
-        ArrayList<Song> publicSongs = new ArrayList<>();
-        for (Song song : songs) {
-            if (song.isPublished()) {
-                publicSongs.add(song);
-            }
-        }
-        return publicSongs;
-    }
-
-    public ArrayList<Song> openMySongs() {
-        ArrayList<Song> mySongs = new ArrayList<>();
-        for (Song song : songs) {
-            if (song.getAuthor() == UserList.getInstance().getCurrentUser()) {
-                mySongs.add(song);
-            }
-        }
-        return mySongs;
-    }
-
-    public ArrayList<Song> openFavorites() {
-        return UserList.getInstance().getCurrentUser().getFavSongs();
-    }
-
-    public ArrayList<Song> filterSongs(String category, String filter) {
-        if (category.equalsIgnoreCase("title")) {
-            return filterByTitle(filter);
-        } else if (category.equalsIgnoreCase("genre")) {
-            return filterByGenre(Genre.fromString(filter));
-        } else if (category.equalsIgnoreCase("BPM")) {
-            String[] splitString = filter.split(" ");
-            int lowestBPM = Integer.parseInt(splitString[0]);
-            int highestBPM = Integer.parseInt(splitString[1]);
-            return filterByBPM(lowestBPM, highestBPM);
-        } else if (category.equalsIgnoreCase("difficulty")) {
-            return filterByDifficulty(Integer.parseInt(filter));
-        } else if (category.equalsIgnoreCase("author")) {
-            for(User user : UserList.getInstance().getUsers()){
-                if(user.getUsername().equals(filter))
-                    return filterByAuthor(user);
-            }   
-        }
-        return new ArrayList<>();
     }
 
     /**

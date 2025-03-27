@@ -42,7 +42,7 @@ public class Song {
      * @param timeSignatureDen Bottom number of the time signature
      */
     public Song(String title, User author, String description, ArrayList<Genre> genres, int difficulty,
-                int tempo, Key keySignature, int timeSignatureNum, int timeSignatureDen) {
+                int tempo, Key keySignature, int timeSignatureNum, int timeSignatureDen, Instrument defaultInstrument) {
         this.songID = UUID.randomUUID();
         this.title = title;
         this.author = author;
@@ -55,8 +55,10 @@ public class Song {
         this.keySignature = keySignature;
         this.timeSignatureNum = timeSignatureNum;
         this.timeSignatureDen = timeSignatureDen;
-        this.measureGroups = new ArrayList<>();
         this.instruments = new ArrayList<>();
+        this.measureGroups = new ArrayList<>();
+        this.instruments.add(defaultInstrument);
+        this.measureGroups.add(new MeasureGroup(timeSignatureNum, keySignature.rootChord, instruments));
     }
 
     /**
@@ -121,74 +123,185 @@ public class Song {
     }
 
     /**
+     * Returns the ID of the song
+     * 
      * @return UUID of the song
      */
-    public UUID getSongID() { return this.songID; }
+    public UUID getSongID() { 
+        return this.songID; 
+    }
 
     /**
+     * Returns the title of the song
+     * 
      * @return Title of the song
      */
-    public String getTitle() { return title; }
+    public String getTitle() { 
+        return title; 
+    }
 
     /**
+     * Returns the author of the song
+     * 
      * @return Author of the song
      */
-    public User getAuthor() { return author; }
+    public User getAuthor() { 
+        return author; 
+    }
 
     /**
+     * Returns the description of the song
+     * 
      * @return Description of the song
      */
-    public String getDescription() { return description; }
+    public String getDescription() { 
+        return description; 
+    }
 
     /**
+     * Returns the genres of the song
+     * 
      * @return List of genres
      */
-    public ArrayList<Genre> getGenres() { return genres; }
+    public ArrayList<Genre> getGenres() { 
+        return genres; 
+    }
 
     /**
+     * Returns the difficuty of the song
+     * 
      * @return Difficulty rating (1-5)
      */
-    public int getDifficulty() { return difficulty; }
+    public int getDifficulty() { 
+        return difficulty; 
+    }
 
     /**
+     * Returns the reactions to this song
+     * 
      * @return List of reactions
      */
-    public ArrayList<Reaction> getReactions() { return reactions; }
+    public ArrayList<Reaction> getReactions() { 
+        return reactions; 
+    }
 
     /**
+     * Returns whether this song is public
+     * 
      * @return True if published, false otherwise
      */
-    public boolean isPublished() { return published; }
+    public boolean isPublished() { 
+        return published; 
+    }
 
     /**
+     * Returns the tempo of this song
+     * 
      * @return Tempo in BPM
      */
-    public int getTempo() { return tempo; }
+    public int getTempo() { 
+        return tempo; 
+    }
 
     /**
+     * Returns the key of this song
+     * 
      * @return Key signature of the song
      */
-    public Key getKeySignature() { return keySignature; }
+    public Key getKeySignature() { 
+        return keySignature; 
+    }
 
     /**
+     * Returns the top number of this songs time signature
+     * 
      * @return Time signature numerator
      */
-    public int getTimeSignatureNum() { return timeSignatureNum; }
+    public int getTimeSignatureNum() { 
+        return timeSignatureNum; 
+    }
 
     /**
+     * Returns the bottom number of this songs time signature
+     * 
      * @return Time signature denominator
      */
-    public int getTimeSignatureDen() { return timeSignatureDen; }
+    public int getTimeSignatureDen() { 
+        return timeSignatureDen; 
+    }
 
     /**
+     * Returns this songs MeasureGroups
+     * 
      * @return List of measure groups
      */
-    public ArrayList<MeasureGroup> getMeasureGroups() { return measureGroups; }
+    public ArrayList<MeasureGroup> getMeasureGroups() { 
+        return measureGroups; 
+    }
 
     /**
+     * Returns this songs instruments
+     * 
      * @return List of instruments
      */
-    public ArrayList<Instrument> getInstruments() { return instruments; }
+    public ArrayList<Instrument> getInstruments() { 
+        return instruments; 
+    }
+
+    /**
+     * Sets the tempo of the song (bewtween 30 and 400 bpm)
+     * 
+     * @param tempo Tempo to set the song to
+     * @throws Exception If the tempo isn't between 30 and 400
+     */
+    public void setTempo(int tempo) throws Exception{
+        if(tempo<30 || tempo>400)
+            throw new Exception("Tempo must be between 30 and 400");
+        this.tempo = tempo;
+    }
+
+    /**
+     * Returns the measures for the given instrument
+     * 
+     * @param instrument Instrument to retrieve measures from
+     * @return Measures from the given instrument
+     */
+    public ArrayList<Measure> getMeasures(Instrument instrument){
+        ArrayList<Measure> measures = new ArrayList<>();
+        for(MeasureGroup measureGroup : measureGroups){
+            measures.add(measureGroup.getMeasure(instrument));
+        }
+        return measures;
+    }
+
+    /**
+     * Gets the MeasureGroup that the given Measure is a part of
+     * 
+     * @param measure Measure to find MeasureGroup of
+     * @return MeasureGroup that contains Measure
+     */
+    public MeasureGroup getMeasureGroup(Measure measure){
+        for(MeasureGroup measureGroup : measureGroups){
+            for(Instrument instrument : instruments){
+                if(measureGroup.getMeasure(instrument) == measure)
+                    return measureGroup;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns a list of IDs for the Instruments in this song
+     * 
+     * @return IDs of Instrumnets in this song
+     */
+    public ArrayList<UUID> getInstrumentIDs() {
+        ArrayList<UUID> instrumentIDs = new ArrayList<>();
+        for (Instrument instrument : instruments) {
+            instrumentIDs.add(instrument.getInstrumentID());
+        }
+        return instrumentIDs;
+    }
 
     /**
      * Checks if the song ID matches the given UUID.
@@ -218,19 +331,12 @@ public class Song {
      * Removes a reaction from the song.
      *
      * @param reaction Reaction to remove
+     * @throws Exception if the reaction doesn't belong to the current user
      */
-    public void removeReaction(Reaction reaction) {
-        this.reactions.remove(reaction);
-    }
-
-    /**
-     * Returns a measure by index.
-     *
-     * @param number Index of measure
-     * @return MeasureGroup object
-     */
-    public MeasureGroup getMeasure(int number) {
-        return measureGroups.get(number);
+    public void removeReaction(Reaction reaction) throws Exception {
+        if(reaction.getAuthor() == UserList.getInstance().getCurrentUser())
+            throw new Exception("You can only delete your own reaction");
+        reactions.remove(reaction);
     }
 
     /**
@@ -244,81 +350,85 @@ public class Song {
     }
 
     /**
-     * TODO
-     * @param measureGroup
+     * Removes the given measure
+     * 
+     * @param measureGroup MeasureGroup to remove
+     * @throws Exception if only one measure remains
      */
-    public MeasureGroup getMeasure(int number) {
-        return measureGroups.get(number);
+    public void removeMeasure(MeasureGroup measureGroup) throws Exception{
+        if(measureGroups.size()<=1)
+            throw new Exception("Song cannot have 0 measures");
+        measureGroups.remove(measureGroup);
+    }
+
+     /**
+     * Sets a rest to a note at root pitch
+     * 
+     * @param note Note to set to root pitch
+     */
+    public void insertNote(Note note){
+        if(note.getPitch()!=Pitch.REST)
+            return;
+        note.setPitch(keySignature.getRootPitch());
+        note.setOctave(4);
     }
 
     /**
-     * Moves a note up in pitch according to the key signature.
+     * Moves the specified note up one scale tone
      *
      * @param note Note to move
-     * @return True if successful, false otherwise
+     * @throws Exception If note is at the upper pitch boundary
      */
-    public boolean noteUp(Note note){
-        return note.up(this.keySignature);
+    public void noteUp(Note note) throws Exception{
+        note.up(this.keySignature);
     }
 
     /**
-     * Moves a note down in pitch according to the key signature.
+     * Moves the specified note down one scale tone
      *
      * @param note Note to move
-     * @return True if successful, false otherwise
+     * @throws Exception If note is at the lower pitch boundary
      */
-    public boolean noteDown(Note note){
-        return note.down(this.keySignature);
+    public void noteDown(Note note) throws Exception{
+        note.down(this.keySignature);
     }
 
     /**
-     * Adds an instrument to all measure groups.
+     * Adds an instrument to all measure groups
      *
      * @param instrument Instrument to add
      */
     public void addInstrument(Instrument instrument) {
+        instruments.add(instrument);
         for(MeasureGroup measureGroup : measureGroups){
-            measureGroup.addPart(instrument);
+            measureGroup.addMeasure(instrument);
         }
     }
 
     /**
-     * Removes an instrument from all measure groups.
+     * Removes an instrument from all measure groups
      *
      * @param instrument Instrument to remove
+     * @throws Exception If only one instrument remains
      */
-    public void removeInstrument(Instrument instrument) {
+    public void removeInstrument(Instrument instrument) throws Exception {
+        if(instruments.size()<=1)
+            throw new Exception("Song must have at least 1 instrument");
+        instruments.remove(instrument);
         for(MeasureGroup measureGroup : measureGroups){
-            measureGroup.removePart(instrument);
+            measureGroup.removeMeasure(instrument);
         }
     }
-
     /**
-     * Adds a new measure group to the song.
-     */
-    public void addMeasure() {
-        measureGroups.add(new MeasureGroup(timeSignatureNum, instruments));
-    }
-
-    /**
-     * Removes a measure group by index.
-     *
-     * @param measureNumber Index to remove
-     */
-    public void removeMeasure(int measureNumber) {
-        measureGroups.remove(measureNumber);
-    }
-
-    /**
-     * Creates a deep copy of the measure groups.
+     * Creates a clone of the measure groups
      *
      * @param measureGroups Original list of measure groups
      * @return Copied list of measure groups
      */
-    public ArrayList<MeasureGroup> copyMeasureGroups(ArrayList<MeasureGroup> measureGroups){
+    private ArrayList<MeasureGroup> copyMeasureGroups(ArrayList<MeasureGroup> measureGroups){
         ArrayList<MeasureGroup> copy = new ArrayList<>();
         for(MeasureGroup measureGroup : measureGroups){
-            copy.add((MeasureGroup) measureGroup.copy());
+            copy.add(new MeasureGroup(measureGroup));
         }
         return copy;
     }

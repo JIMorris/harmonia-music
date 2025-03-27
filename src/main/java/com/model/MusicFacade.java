@@ -26,6 +26,7 @@ public class MusicFacade {
 
     /**
      * Gets an instance of MusicFacade
+     * 
      * @return instance of MusicFacade
      */
     public static MusicFacade getInstance(){
@@ -37,6 +38,7 @@ public class MusicFacade {
 
     /**
      * Creates a new user
+     * 
      * @param username Username of new user. Must be unique
      * @param password Password of new user. Must meet requirements
      * @param firstName First name of new user
@@ -49,6 +51,7 @@ public class MusicFacade {
 
     /**
      * Logins into an existing users account. Sets the facades currentUser to 
+     * 
      * @param username Username of user
      * @param password Password of user
      * @throws Exception If username/password is incorrect
@@ -59,6 +62,7 @@ public class MusicFacade {
 
     /**
      * Logs out user and saves all data
+     * 
      * @throws Exception if there is an issue logging out
      */
     public void logout() throws Exception{
@@ -70,6 +74,7 @@ public class MusicFacade {
 
     /**
      * Opens the public song library
+     * 
      * @return List of public songs
      */
     public ArrayList<Song> openPublicSongs(){
@@ -78,6 +83,7 @@ public class MusicFacade {
 
     /**
      * Opens user created songs
+     * 
      * @return List of crteated songs
      */
     public ArrayList<Song> openMySongs(){
@@ -86,6 +92,7 @@ public class MusicFacade {
 
     /**
      * Opens favorite songs
+     * 
      * @return List of favorite songs
      */
     public ArrayList<Song> openFavorites(){
@@ -94,6 +101,7 @@ public class MusicFacade {
 
     /**
      * Filters song list
+     * 
      * @param category Type of filter to use
      * @param filter Fitler specification
      * @return Filtered song list
@@ -104,6 +112,7 @@ public class MusicFacade {
 
     /**
      * Toggles favorite on a song
+     * 
      * @param song Song to toggle favorite status of
      */
     public void toggleFavorite(Song song){
@@ -112,6 +121,7 @@ public class MusicFacade {
 
     /**
      * Opens a song
+     * 
      * @param song Song to open
      * @return a list of instruments used in the song
      */
@@ -121,6 +131,7 @@ public class MusicFacade {
 
     /**
      * Gets a list of available instruments
+     * 
      * @return the list of instruments
      */
     public ArrayList<Instrument> getInstruments(){
@@ -129,6 +140,7 @@ public class MusicFacade {
 
     /**
      * Adds an instrument to the song
+     * 
      * @param instrument the instrument to add
      */
     public void addInstrument(Instrument instrument){
@@ -136,7 +148,8 @@ public class MusicFacade {
     }
     
     /**
-     * Renives an instrument from the song
+     * Removes an instrument from the song
+     * 
      * @param instrument the instrument to remove
      * @throws Exception if the instrument cannot be removed
      */
@@ -146,6 +159,7 @@ public class MusicFacade {
 
     /**
      * Creates a copy of a song, only changing the author to the current user
+     * 
      * @param song Song to copy
      * @return the copied song
      */
@@ -155,6 +169,7 @@ public class MusicFacade {
 
     /**
      * Creates a new song
+     * 
      * @param title Title of song
      * @param description Description of song
      * @param genres Genres of song
@@ -169,6 +184,7 @@ public class MusicFacade {
 
     /**
      * Removes a song
+     * 
      * @param song the song to be removed
      * @throws Exception if the song cannot be removed
      */
@@ -198,6 +214,7 @@ public class MusicFacade {
     
     /**
      * Get the notes of a measure
+     * 
      * @param part Measure to get notes of
      * @return A list of the notes of the given measure
      */
@@ -218,6 +235,7 @@ public class MusicFacade {
 
     /**
      * Selects a note
+     * 
      * @param note Note to select
      */
     public void selectNote(Note note){
@@ -254,6 +272,7 @@ public class MusicFacade {
      
     /**
      * Moves selected note up one pitch
+     * 
      * @return Whether the note can move up
      */
     public void noteUp() throws Exception{
@@ -262,6 +281,7 @@ public class MusicFacade {
 
     /**
      * Moves selected note down one pitch
+     * 
      * @param note Note to move down
      * @return Whether the note can move down
      */
@@ -271,6 +291,7 @@ public class MusicFacade {
 
     /**
      * Splits a note into smaller divisions
+     * 
      * @param division the number of divisions to split the note into
      * @throws Exception if the operation fails
      */
@@ -280,6 +301,7 @@ public class MusicFacade {
 
     /**
      * Combines notes into a single note
+     * 
      * @throws Exception if the operation fails
      */
     public void combineNotes() throws Exception{
@@ -309,6 +331,7 @@ public class MusicFacade {
 
     /**
      * Sets the bpm of the current song
+     * 
      * @param BPM BPM to change to
      * @return Whether that BPM is allowed
      */
@@ -318,6 +341,7 @@ public class MusicFacade {
 
     /**
      * Sets chord of selected measure
+     * 
      * @param chord Chord to set measure to
      */
     public void setChord(Chord chord){
@@ -326,6 +350,7 @@ public class MusicFacade {
 
     /**
      * Checks to see if a song is a favorite
+     * 
      * @param song The song to check
      * @return True if the song is a favorite, false otherwise
      */
@@ -335,6 +360,7 @@ public class MusicFacade {
 
     /**
      * Determines if the user has permission to edit song
+     * 
      * @return True if the user has permissions, false if otherwise
      */
     public boolean editPermission(){
@@ -343,6 +369,7 @@ public class MusicFacade {
 
     /**
      * Retrieves a list of available chords
+     * 
      * @return a list of all possible chord values
      */
     public ArrayList<Chord> getChords(){
@@ -351,6 +378,7 @@ public class MusicFacade {
 
     /**
      * Adds a reaction to a song
+     * 
      * @param song the song to react to
      * @param rating the rating given to the song
      * @param comment the comment left with the reaction
@@ -361,6 +389,7 @@ public class MusicFacade {
 
     /**
      * Removes a reaction from a song
+     * 
      * @param song the song to remove reaction from
      * @param reaction the reaction to be removed
      * @throws Exception if the operation fails
@@ -371,6 +400,7 @@ public class MusicFacade {
 
     /**
      * Prints the current song details
+     * 
      * @throws Exception If an error occurs
      */
     public void printSong() throws Exception{
