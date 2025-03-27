@@ -19,6 +19,7 @@ public class UserList {
      * Private constructor to initialize the user list from stored data.
      */
     private UserList() {
+        InstrumentList.getInstance();
         try {
             users = DataLoader.getInstance().loadUsers();
         } catch (Exception e) {
