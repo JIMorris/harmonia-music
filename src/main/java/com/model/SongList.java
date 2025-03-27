@@ -167,13 +167,20 @@ public class SongList {
     }
 
     /**
+     * saves the chnages made to the instance of SongList
+     */
+    public void logout() throws Exception{
+        DataWriter.getInstance().saveSongs();
+    }
+
+    /**
      * filters the arraylist of Songs by a desired title (way in which it is sorted)
      * 
      * @param title takes in a title (String) that will be used to retrieve the
      *              desied songs
      * @return returns the newly filtered arraylist of Songs
      */
-    public ArrayList<Song> filterByTitle(String title) {
+    private ArrayList<Song> filterByTitle(String title) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
@@ -191,7 +198,7 @@ public class SongList {
      *              arrraylist
      * @return returns the newly filtered arraylist of Songs
      */
-    public ArrayList<Song> filterByGenre(Genre genre) {
+    private ArrayList<Song> filterByGenre(Genre genre) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
@@ -211,7 +218,7 @@ public class SongList {
      *               arraylist of Songs
      * @return returns the newly filtered arraylist of Songs
      */
-    public ArrayList<Song> filterByBPM(int minBPM, int maxBPM) {
+    private ArrayList<Song> filterByBPM(int minBPM, int maxBPM) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
@@ -230,7 +237,7 @@ public class SongList {
      *                   the arraylist
      * @return returns the newly filtered arraylist of Songs
      */
-    public ArrayList<Song> filterByDifficulty(int difficulty) {
+    private ArrayList<Song> filterByDifficulty(int difficulty) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
@@ -247,7 +254,7 @@ public class SongList {
      * @param author Author to filter songs by
      * @return ArrayList of songs filtered by author
      */
-    public ArrayList<Song> filterByAuthor(User author){
+    private ArrayList<Song> filterByAuthor(User author){
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for(Song song : songs){
@@ -256,12 +263,5 @@ public class SongList {
         }
 
         return filteredSongs;
-    }
-
-    /**
-     * saves the chnages made to the instance of SongList
-     */
-    public void logout() throws Exception{
-        DataWriter.getInstance().saveSongs();
     }
 }

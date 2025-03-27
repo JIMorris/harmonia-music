@@ -45,6 +45,15 @@ public class InstrumentList {
     }
 
     /**
+     * Sets the instrument list 
+     * 
+     * @param instruments The new list of instruments
+     */
+    public void setInstruments(ArrayList<Instrument> instruments) {
+        this.instruments = instruments;
+    }
+
+    /**
      * Gets the instrument that has the matching UUID
      * 
      * @param id UUID of the instrument to get
@@ -65,14 +74,5 @@ public class InstrumentList {
      */
     public void logout() throws Exception {
         DataWriter.getInstance().saveInstruments();
-    }
-
-    /**
-     * Sets the instrument list 
-     * 
-     * @param instruments The new list of instruments
-     */
-    public void setInstruments(ArrayList<Instrument> instruments) {
-        this.instruments = instruments;
     }
 }

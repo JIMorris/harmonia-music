@@ -59,85 +59,6 @@ public class AudioPlayer {
         player.getManagedPlayer().finish();
     }
 
-    /**
-     * Turns a given song into a Pattern object that JFugue can read
-     * 
-     * @return A new pattern object that is derived from the currentSong object (of
-     *         type Song)
-     */
-    private Pattern generatePattern() {
-        Pattern pattern = new Pattern();
-        pattern.add("T" + currentSong.getTempo());
-
-        ArrayList<Instrument> instruments = currentSong.getInstruments();
-        for (int i = 0; i < instruments.size(); i++) {
-            Instrument instrument = instruments.get(i);
-            pattern.add("V" + i);
-            pattern.add(generateInstrumentPattern(instrument));
-        }
-
-        return pattern;
-    }
-
-    /**
-     * Turns a currentSong's part for a spefic instrument into a Pattern object that
-     * JFugue can read from
-     * 
-     * @param instrument The instrument whose part will be translated into a Pattern
-     * @return A new pattern object derived from the "instrument" parameter's
-     *         measures
-     */
-    private Pattern generateInstrumentPattern(Instrument instrument) {
-        Pattern pattern = new Pattern();
-        pattern.add(" I[" + instrument.getName() + "] ");
-
-        ArrayList<MeasureGroup> measureGroups = currentSong.getMeasureGroups();
-        for (int i = measureGroups.indexOf(currentMeasureGroup); i < measureGroups.size(); i++) {
-            MeasureGroup measureGroup = measureGroups.get(i);
-            Chord chord = measureGroup.getChord();
-            Measure measure = measureGroup.getMeasure(instrument);
-            pattern.add(generateMeasurePattern(measure, chord) + "| ");
-        }
-
-        return pattern;
-    }
-
-    /**
-     * Turns a given measure from a given instrument (taken from the currentSong
-     * Song) into a Pattern object that JFugue can read from
-     * 
-     * @param measure The measure taken from the generateInstrumentPattern's
-     *                Instrument
-     * @param chord   The chord taken from the generateInstrumentPattern's
-     *                Instrument
-     * @return A new pattern object derived from the parameters
-     */
-    private Pattern generateMeasurePattern(Measure measure, Chord chord) {
-        Pattern pattern = new Pattern();
-        ArrayList<Note> notes = measure.getNotes();
-        for (Note note : notes) {
-            pattern.add(generateNotePattern(note, chord) + " ");
-        }
-
-        return pattern;
-    }
-
-    /**
-     * Turns a given note from a measure (taken from the generateMeasurePattern)
-     * into a Pattern object that JFugue can read from
-     * 
-     * @param note  The note taken from the generateMeasurePattern's measure
-     * @param chord The chord taken from the generateInstrumentPattern's
-     *              Instrument
-     * @return A new pattern object derived from the parameters
-     */
-    private Pattern generateNotePattern(Note note, Chord chord) {
-        Pattern pattern = new Pattern();
-        pattern.add(note.getJFugue(chord));
-
-        return pattern;
-    }
-
     // --- EDITING/SELECTING ---//
 
     /**
@@ -378,5 +299,84 @@ public class AudioPlayer {
      */
     public void printSong() throws Exception {
         MusicPrinter.printSong(currentSong, currentInstrument);
+    }
+
+    /**
+     * Turns a given song into a Pattern object that JFugue can read
+     * 
+     * @return A new pattern object that is derived from the currentSong object (of
+     *         type Song)
+     */
+    private Pattern generatePattern() {
+        Pattern pattern = new Pattern();
+        pattern.add("T" + currentSong.getTempo());
+
+        ArrayList<Instrument> instruments = currentSong.getInstruments();
+        for (int i = 0; i < instruments.size(); i++) {
+            Instrument instrument = instruments.get(i);
+            pattern.add("V" + i);
+            pattern.add(generateInstrumentPattern(instrument));
+        }
+
+        return pattern;
+    }
+
+    /**
+     * Turns a currentSong's part for a spefic instrument into a Pattern object that
+     * JFugue can read from
+     * 
+     * @param instrument The instrument whose part will be translated into a Pattern
+     * @return A new pattern object derived from the "instrument" parameter's
+     *         measures
+     */
+    private Pattern generateInstrumentPattern(Instrument instrument) {
+        Pattern pattern = new Pattern();
+        pattern.add(" I[" + instrument.getName() + "] ");
+
+        ArrayList<MeasureGroup> measureGroups = currentSong.getMeasureGroups();
+        for (int i = measureGroups.indexOf(currentMeasureGroup); i < measureGroups.size(); i++) {
+            MeasureGroup measureGroup = measureGroups.get(i);
+            Chord chord = measureGroup.getChord();
+            Measure measure = measureGroup.getMeasure(instrument);
+            pattern.add(generateMeasurePattern(measure, chord) + "| ");
+        }
+
+        return pattern;
+    }
+
+    /**
+     * Turns a given measure from a given instrument (taken from the currentSong
+     * Song) into a Pattern object that JFugue can read from
+     * 
+     * @param measure The measure taken from the generateInstrumentPattern's
+     *                Instrument
+     * @param chord   The chord taken from the generateInstrumentPattern's
+     *                Instrument
+     * @return A new pattern object derived from the parameters
+     */
+    private Pattern generateMeasurePattern(Measure measure, Chord chord) {
+        Pattern pattern = new Pattern();
+        ArrayList<Note> notes = measure.getNotes();
+        for (Note note : notes) {
+            pattern.add(generateNotePattern(note, chord) + " ");
+        }
+
+        return pattern;
+    }
+
+    /**
+     * Turns a given note from a measure (taken from the generateMeasurePattern)
+     * into a Pattern object that JFugue can read from
+     * 
+     * @param note  The note taken from the generateMeasurePattern's measure
+     * @param chord The chord taken from the generateInstrumentPattern's
+     *              Instrument
+     * @return A new pattern object derived from the parameters
+     */
+    private Pattern generateNotePattern(Note note, Chord chord) {
+        Pattern pattern = new Pattern();
+        pattern.add(note.getJFugue(chord));
+
+        return pattern;
     }
 }

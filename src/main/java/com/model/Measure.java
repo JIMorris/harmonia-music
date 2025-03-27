@@ -83,29 +83,6 @@ public class Measure {
     }
 
     /**
-     * Initializes the measure with default rest notes
-     */
-    private void fillNotes(){
-        for(int i=0; i<this.length; i++){
-            notes.add(new Note(Note.QUARTER_LENGTH, Pitch.REST, 4));
-        }
-    }
-
-    /**
-     * Creates a copy of a given list of notes
-     * 
-     * @param originalNotes The original list of notes to be cloned
-     * @return A new list containing copies of the original notes
-     */
-    private ArrayList<Note> cloneNotes(ArrayList<Note> originalNotes){
-        ArrayList<Note> newNotes = new ArrayList<>();
-        for(Note note : originalNotes){
-            newNotes.add(new Note(note));
-        }
-        return newNotes;
-    }
-
-    /**
      * Splits a given note into multiple smaller notes of equal duration
      * 
      * @param note The note to be split
@@ -162,5 +139,28 @@ public class Measure {
             }
         }
         return null;
+    }
+
+    /**
+     * Initializes the measure with default rest notes
+     */
+    private void fillNotes(){
+        for(int i=0; i<this.length; i++){
+            notes.add(new Note(Note.QUARTER_LENGTH, Pitch.REST, 4));
+        }
+    }
+
+    /**
+     * Creates a copy of a given list of notes
+     * 
+     * @param originalNotes The original list of notes to be cloned
+     * @return A new list containing copies of the original notes
+     */
+    private ArrayList<Note> cloneNotes(ArrayList<Note> originalNotes){
+        ArrayList<Note> newNotes = new ArrayList<>();
+        for(Note note : originalNotes){
+            newNotes.add(new Note(note));
+        }
+        return newNotes;
     }
 }

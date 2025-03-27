@@ -68,32 +68,6 @@ public class UserList {
     }
 
     /**
-     * Checks if a given username already exists.
-     * 
-     * @param username The username to check.
-     * @return True if the username exists, false otherwise.
-     */
-    public void usernameCheck(String username) throws Exception {
-        if (username.length() < 3)
-            throw new Exception("Username must be at least 3 characters");
-        for (User user : users) {
-            if (user.getUsername().equals(username))
-                throw new Exception("The username " + username + " is already taken");
-        }
-    }
-
-    /**
-     * Checks if a given password matches any stored password.
-     * 
-     * @param password The password to check.
-     * @return True if the password exists, false otherwise.
-     */
-    public void passwordCheck(String password) throws Exception {
-        if (password.length() < 6)
-            throw new Exception("Password must be at least 6 character");
-    }
-
-    /**
      * Retrieves a user by their unique user ID.
      * 
      * @param userID The UUID of the user.
@@ -190,5 +164,31 @@ public class UserList {
     public void logout() throws Exception {
         currentUser = null;
         DataWriter.getInstance().saveUsers();
+    }
+
+    /**
+     * Checks if a given username already exists.
+     * 
+     * @param username The username to check.
+     * @return True if the username exists, false otherwise.
+     */
+    private void usernameCheck(String username) throws Exception {
+        if (username.length() < 3)
+            throw new Exception("Username must be at least 3 characters");
+        for (User user : users) {
+            if (user.getUsername().equals(username))
+                throw new Exception("The username " + username + " is already taken");
+        }
+    }
+
+    /**
+     * Checks if a given password matches any stored password.
+     * 
+     * @param password The password to check.
+     * @return True if the password exists, false otherwise.
+     */
+    private void passwordCheck(String password) throws Exception {
+        if (password.length() < 6)
+            throw new Exception("Password must be at least 6 character");
     }
 }
