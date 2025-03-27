@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class ExampleUI {
     public static void main(String[] args) {
         try {
+
             // Account Scenario
             System.out.println("Starting Account Scenario\n");
             accountScenarioSignup();
@@ -177,6 +178,7 @@ public class ExampleUI {
         // Open song, play it, and log out
         facade.openSong(songs.get(0));
         facade.playSong();
+        Thread.sleep(7500);
         Thread.sleep(7500);
         facade.logout();
     }
