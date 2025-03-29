@@ -6,7 +6,9 @@ package com.model;
  * @author James Morris
  */
 public class DataConstants {
-    public static final String SONG_FILE_NAME = "json/song.json";
+    public static final String DATA_FOLDER = "src/main/java/data";
+
+    public static final String SONG_FILE_NAME = DATA_FOLDER + "/song.json";
     public static final String SONG_ID = "uuid";
     public static final String SONG_TITLE = "title";
     public static final String SONG_AUTHOR = "author";
@@ -32,7 +34,7 @@ public class DataConstants {
     public static final String SONG_NOTE_PITCH = "pitch";
     public static final String SONG_NOTE_OCTAVE = "octave";
 
-    public static final String USER_FILE_NAME = "json/user.json";
+    public static final String USER_FILE_NAME = DATA_FOLDER + "/user.json";
     public static final String USER_ID = "uuid";
     public static final String USER_USERNAME = "username";
     public static final String USER_PASSWORD = "password";
@@ -41,7 +43,7 @@ public class DataConstants {
     public static final String USER_FAV_SONGS = "favSongs";
     public static final String USER_FAV_AUTHS = "favAuthors";
 
-    public static final String INSTRUMENT_FILE_NAME = "json/instrument.json";
+    public static final String INSTRUMENT_FILE_NAME = DATA_FOLDER + "/instrument.json";
     public static final String INSTRUMENT_ID = "uuid";
     public static final String INSTRUMENT_NAME = "name";
     public static final String INSTRUMENT_IMAGE_FILE = "imageFile";
