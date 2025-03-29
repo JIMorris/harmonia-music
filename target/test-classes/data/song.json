@@ -1,0 +1,891 @@
+[
+  {
+    "uuid": "98a053f8-9814-41ca-941a-9f8976ea4be6",
+    "title": "Mary Had A Little Lamb",
+    "author": "dfc26caa-995e-4764-8cc1-f99bfdfdbd03",
+    "description": "Classic Tune",
+    "genres": [
+      "POP"
+    ],
+    "difficulty": 1,
+    "reactions": [
+      {
+        "rating": 4,
+        "comment": "Lovely song. Brings back nostalgia.",
+        "commentor": "293dd7e6-dab3-4b84-a1fc-2e86dbf1b75e"
+      },
+      {
+        "rating": 3,
+        "comment": "Good song",
+        "commentor": "e2bf3af0-94ff-4820-8ee9-46a3dc331ff3"
+      }
+    ],
+    "published": true,
+    "tempo": 120,
+    "keySignature": "D",
+    "timeSignatureNum": 4,
+    "timeSignatureDen": 4,
+    "measures": [
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "D",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              }
+            ],
+            "text": "Mary had a"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "R",
+                "octave": 4
+              }
+            ],
+            "text": "little lamb,"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "R",
+                "octave": 4
+              }
+            ],
+            "text": "little lamb,"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "A",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "A",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "R",
+                "octave": 4
+              }
+            ],
+            "text": "little lamb,"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "D",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              }
+            ],
+            "text": "Mary had a"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              }
+            ],
+            "text": "little lamb, its"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              }
+            ],
+            "text": "fleece was white as"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "D",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "R",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "R",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "R",
+                "octave": 4
+              }
+            ],
+            "text": "snow."
+          }
+        }
+      }
+    ],
+    "instruments": [
+      "ff79cdfd-424c-4026-9a5b-43b9a4653228"
+    ]
+  },
+  {
+    "uuid": "57e7ddb0-3224-426a-adb2-5a3db7b77ce9",
+    "title": "Monster",
+    "author": "dfc26caa-995e-4764-8cc1-f99bfdfdbd03",
+    "description": "Forlorn and Hopeful",
+    "genres": [
+      "POP"
+    ],
+    "difficulty": 4,
+    "reactions": [
+      {
+        "rating": 4,
+        "comment": "Lovely song. Brings back nostalgia.",
+        "commentor": "293dd7e6-dab3-4b84-a1fc-2e86dbf1b75e"
+      },
+      {
+        "rating": 3,
+        "comment": "Good song",
+        "commentor": "e2bf3af0-94ff-4820-8ee9-46a3dc331ff3"
+      }
+    ],
+    "published": true,
+    "tempo": 180,
+    "keySignature": "Eb",
+    "timeSignatureNum": 4,
+    "timeSignatureDen": 4,
+    "measures": [
+      {
+        "length": 4,
+        "chord": "Ebmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "Eb",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "G",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F",
+                "octave": 4
+              }
+            ],
+            "text": "La la la la"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Cmin",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "C",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "D",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "Eb",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "D",
+                "octave": 4
+              }
+            ],
+            "text": "La la la la"
+          }
+        }
+      }
+    ],
+    "instruments": [
+      "ff79cdfd-424c-4026-9a5b-43b9a4653228"
+    ]
+  },
+  {
+    "uuid": "316cd42c-834b-4e7e-8e64-1effb8226f30",
+    "title": "Bohemian Rhapsody",
+    "author": "dfc26caa-995e-4764-8cc1-f99bfdfdbd03",
+    "description": "A classic song.",
+    "genres": [
+      "ROCK",
+      "CLASSICAL"
+    ],
+    "difficulty": 5,
+    "reactions": [
+      {
+        "rating": 5,
+        "comment": "Amazing song!",
+        "commentor": "e2bf3af0-94ff-4820-8ee9-46a3dc331ff3"
+      }
+    ],
+    "published": true,
+    "tempo": 141,
+    "keySignature": "Bb",
+    "timeSignatureNum": 4,
+    "timeSignatureDen": 4,
+    "measures": [
+      {
+        "length": 4,
+        "chord": "Bbmaj",
+        "instruments": {
+          "30c429e7-0956-4930-9eeb-9562e7810636": {
+            "music": [
+              {
+                "length": 6,
+                "pitch": "R",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "Bb",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "Bb",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "Bb",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "Bb",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "Bb",
+                "octave": 4
+              }
+            ],
+            "text": "Is this the real life?"
+          },
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 48,
+                "pitch": "R",
+                "octave": 4
+              }
+            ],
+            "text": ""
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Abmin",
+        "instruments": {
+          "30c429e7-0956-4930-9eeb-9562e7810636": {
+            "music": [
+              {
+                "length": 6,
+                "pitch": "R",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "Ab",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "Ab",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "Bb",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "Ab",
+                "octave": 4
+              },
+              {
+                "length": 3,
+                "pitch": "G",
+                "octave": 4
+              },
+              {
+                "length": 15,
+                "pitch": "F",
+                "octave": 4
+              }
+            ],
+            "text": "Is this just fantasy?"
+          },
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 48,
+                "pitch": "R",
+                "octave": 4
+              }
+            ],
+            "text": ""
+          }
+        }
+      }
+    ],
+    "instruments": [
+      "30c429e7-0956-4930-9eeb-9562e7810636",
+      "ff79cdfd-424c-4026-9a5b-43b9a4653228"
+    ]
+  },
+  {
+    "uuid": "3a8ca75d-6a38-4a0f-a7bc-eb14291b4238",
+    "title": "The Lick",
+    "author": "11340d8e-7cd9-40ae-b5fb-ff2236311fa7",
+    "description": "A popular jazz phrase",
+    "genres": [
+      "Jazz"
+    ],
+    "difficulty": 2,
+    "reactions": [
+    ],
+    "published": true,
+    "tempo": 120,
+    "keySignature": "Am",
+    "timeSignatureNum": 4,
+    "timeSignatureDen": 4,
+    "measures": [
+      {
+        "length": 4,
+        "chord": "Dmin",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 6,
+                "pitch": "D",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "F",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "G",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "C",
+                "octave": 4
+              },
+              {
+                "length": 6,
+                "pitch": "D",
+                "octave": 4
+              }
+            ],
+            "text": "La la la la la la la"
+          }
+        }
+      }
+    ],
+    "instruments": [
+      "ff79cdfd-424c-4026-9a5b-43b9a4653228"
+    ]
+  },
+  {
+    "uuid": "9fed135f-f3a5-415c-a8a0-346bb6a6a08f",
+    "title": "Mary Had A Little Lamb But Wrong",
+    "author": "11340d8e-7cd9-40ae-b5fb-ff2236311fa7",
+    "description": "Classic Tune",
+    "genres": [
+      "POP"
+    ],
+    "difficulty": 1,
+    "reactions": [
+      {
+        "rating": 4,
+        "comment": "Lovely song. Brings back nostalgia.",
+        "commentor": "293dd7e6-dab3-4b84-a1fc-2e86dbf1b75e"
+      },
+      {
+        "rating": 3,
+        "comment": "Good song",
+        "commentor": "e2bf3af0-94ff-4820-8ee9-46a3dc331ff3"
+      }
+    ],
+    "published": true,
+    "tempo": 120,
+    "keySignature": "D",
+    "timeSignatureNum": 4,
+    "timeSignatureDen": 4,
+    "measures": [
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "D",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              }
+            ],
+            "text": "Mary had a"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "R",
+                "octave": 4
+              }
+            ],
+            "text": "little lamb,"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "R",
+                "octave": 4
+              }
+            ],
+            "text": "little lamb,"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "A",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "A",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "G#",
+                "octave": 4
+              }
+            ],
+            "text": "little lamb,"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "D",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              }
+            ],
+            "text": "Mary had a"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              }
+            ],
+            "text": "little lamb, its"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "D",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "F#",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "E",
+                "octave": 4
+              }
+            ],
+            "text": "fleece was white as"
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "D",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "R",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "R",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "R",
+                "octave": 4
+              }
+            ],
+            "text": "snow."
+          }
+        }
+      },
+      {
+        "length": 4,
+        "chord": "Dmaj",
+        "instruments": {
+          "ff79cdfd-424c-4026-9a5b-43b9a4653228": {
+            "music": [
+              {
+                "length": 12,
+                "pitch": "D",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "C",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "C",
+                "octave": 4
+              },
+              {
+                "length": 12,
+                "pitch": "D",
+                "octave": 4
+              }
+            ],
+            "text": "oops"
+          }
+        }
+      }
+    ],
+    "instruments": [
+      "ff79cdfd-424c-4026-9a5b-43b9a4653228"
+    ]
+  }
+]
