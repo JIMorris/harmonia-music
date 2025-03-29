@@ -40,6 +40,7 @@ public class Song {
      * @param keySignature Key signature of the song
      * @param timeSignatureNum Top number of the time signature
      * @param timeSignatureDen Bottom number of the time signature
+     * @param defaultInstrument the default instrument that this song will be created with
      */
     public Song(String title, User author, String description, ArrayList<Genre> genres, int difficulty,
                 int tempo, Key keySignature, int timeSignatureNum, int timeSignatureDen, Instrument defaultInstrument) {
