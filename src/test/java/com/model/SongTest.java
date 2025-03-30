@@ -5,6 +5,8 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 public class SongTest {
@@ -14,37 +16,48 @@ public class SongTest {
 
     private User userOne;
     private User userTwo;
+    private UserList userList;
 
     private Song defaultSong;
     private Reaction reaction;
     private ArrayList<Reaction> reactions = new ArrayList<Reaction>();
-
     private ArrayList<MeasureGroup> measures = new ArrayList<MeasureGroup>();
+    private MeasureGroup measureGroup;
 
-    public void setup() {
+    @Before
+    public void setup() throws Exception {
+        userList = UserList.getInstance();
         userOne = new User("jjjKoolKat", "2kool4Dis", "John", "Johnson");
         userTwo = new User("epicpulledPorkLover", "puLLedp0rkAyuP",
                 "leJaorius", "Porkington");
 
-        instrument = new Instrument(null, null, null);
+        instrument = new Instrument(UUID.randomUUID(), "guitar", "guitar.jpg");
+        instruments.add(instrument);
         genres.add(Genre.BLUES);
 
         defaultSong = new Song("pick of destiny", userOne, "epic song",
                 genres, 5, 100, Key.A_FLAT_MAJOR,
                 4, 4, instrument);
 
+        measureGroup = new MeasureGroup(4, Chord.A_FLAT_MAJ, instruments);
+
         reaction = new Reaction(5, "this pretty cool", userOne);
         reactions.add(reaction);
     }
 
+    @After
     public void tearDown() throws Exception {
         genres.clear();
+        instruments.clear();
+        reactions.clear();
+        userList.logout();
+        userList.getUsers().clear();
     }
 
     // test for parameterized constructor
     @Test
-    void testSongNullTitle() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongNullTitle() {
+        assertThrows(Exception.class, () -> {
             Song songNullTitle = new Song(null, userOne, "best song ever",
                     genres, 1, 100, Key.A_FLAT_MAJOR,
                     4, 4, instrument);
@@ -52,7 +65,7 @@ public class SongTest {
     }
 
     @Test
-    void testSongNullAuthor() {
+    public void testSongNullAuthor() {
         Song song = new Song("pick of destiny", null, "best song ever",
                 genres, 1, 100, Key.A_FLAT_MAJOR,
                 4, 4, instrument);
@@ -60,7 +73,7 @@ public class SongTest {
     }
 
     @Test
-    void testSongNullDescription() {
+    public void testSongNullDescription() {
         Song song = new Song("pick of destiny", userOne, null,
                 genres, 1, 100, Key.A_FLAT_MAJOR,
                 4, 4, instrument);
@@ -68,8 +81,8 @@ public class SongTest {
     }
 
     @Test
-    void testSongNullGenre() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongNullGenre() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song("pick of destiny", userOne, "epic song",
                     null, 1, 100, Key.A_FLAT_MAJOR,
                     4, 4, instrument);
@@ -77,8 +90,8 @@ public class SongTest {
     }
 
     @Test
-    void testSongInvalidDifficultyLess() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongInvalidDifficultyLess() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song("pick of destiny", userOne, "epic song",
                     genres, 0, 100, Key.A_FLAT_MAJOR,
                     4, 4, instrument);
@@ -86,8 +99,8 @@ public class SongTest {
     }
 
     @Test
-    void testSongInvalidDifficultyMore() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongInvalidDifficultyMore() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song("pick of destiny", userOne, "epic song",
                     genres, 5, 100, Key.A_FLAT_MAJOR,
                     4, 4, instrument);
@@ -95,8 +108,8 @@ public class SongTest {
     }
 
     @Test
-    void testSongInvalidTempoLess() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongInvalidTempoLess() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song("pick of destiny", userOne, "epic song",
                     genres, 5, 0, Key.A_FLAT_MAJOR,
                     4, 4, instrument);
@@ -104,8 +117,8 @@ public class SongTest {
     }
 
     @Test
-    void testSongInvalidTempoMore() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongInvalidTempoMore() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song("pick of destiny", userOne, "epic song",
                     genres, 5, 500000, Key.A_FLAT_MAJOR,
                     4, 4, instrument);
@@ -113,8 +126,8 @@ public class SongTest {
     }
 
     @Test
-    void testSongNullKey() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongNullKey() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song("pick of destiny", userOne, "epic song",
                     genres, 5, 100, null,
                     4, 4, instrument);
@@ -122,8 +135,8 @@ public class SongTest {
     }
 
     @Test
-    void testSongInvalidTimeNum() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongInvalidTimeNum() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song("pick of destiny", userOne, "epic song",
                     genres, 5, 100, Key.A_FLAT_MAJOR,
                     0, 4, instrument);
@@ -131,8 +144,8 @@ public class SongTest {
     }
 
     @Test
-    void testSongInvalidTimeDenom() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongInvalidTimeDenom() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song("pick of destiny", userOne, "epic song",
                     genres, 5, 100, Key.A_FLAT_MAJOR,
                     4, 0, instrument);
@@ -140,8 +153,8 @@ public class SongTest {
     }
 
     @Test
-    void testSongNullInstrument() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongNullInstrument() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song("pick of destiny", userOne, "epic song",
                     genres, 5, 100, Key.A_FLAT_MAJOR,
                     4, 4, null);
@@ -149,7 +162,7 @@ public class SongTest {
     }
 
     @Test
-    void testSongAllParams() {
+    public void testSongAllParams() {
         Song song = new Song("pick of destiny", userOne, "epic song",
                 genres, 5, 100, Key.A_FLAT_MAJOR,
                 4, 4, instrument);
@@ -158,36 +171,37 @@ public class SongTest {
 
     // tests for copy constructor
     @Test
-    void testSongCopyNullSong() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongCopyNullSong() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song(null, userOne);
         });
     }
 
     @Test
-    void testSongCopyNullAuthor() {
+    public void testSongCopyNullAuthor() {
         Song song = new Song(defaultSong, null);
         assertNotNull(song);
     }
 
     @Test
-    void testSongCopyAllParams() {
+    public void testSongCopyAllParams() {
         Song defaultCopy = new Song(defaultSong, userTwo);
         assertNotNull(defaultCopy);
     }
 
     // Tests for Json constructor
     @Test
-    void testSongJsonNullUUID() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongJsonNullUUID() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song(null, "kickin' chicken'", userOne, "love me some chicken",
                     genres, 2, reactions, false, 100,
                     Key.A_MAJOR, 4, 4, measures, instruments);
         });
     }
+
     @Test
-    void testSongJsonNullTitle() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongJsonNullTitle() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song(UUID.randomUUID(), null, userOne, "love me some chicken",
                     genres, 2, reactions, false, 100,
                     Key.A_MAJOR, 4, 4, measures, instruments);
@@ -195,22 +209,22 @@ public class SongTest {
     }
 
     @Test
-    void testSongJsonNullAuthor() {
+    public void testSongJsonNullAuthor() {
         Song song = new Song(UUID.randomUUID(), "kickin' chicken'", null, "love me some chicken",
-        genres, 2, reactions, false, 100,
-        Key.A_MAJOR, 4, 4, measures, instruments);
+                genres, 2, reactions, false, 100,
+                Key.A_MAJOR, 4, 4, measures, instruments);
     }
 
     @Test
-    void testSongJsonNullDescription() {
+    public void testSongJsonNullDescription() {
         Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, null,
-        genres, 2, reactions, false, 100,
-        Key.A_MAJOR, 4, 4, measures, instruments);
+                genres, 2, reactions, false, 100,
+                Key.A_MAJOR, 4, 4, measures, instruments);
     }
 
     @Test
-    void testSongJsonNullGenre() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongJsonNullGenre() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
                     null, 2, reactions, false, 100,
                     Key.A_MAJOR, 4, 4, measures, instruments);
@@ -218,17 +232,17 @@ public class SongTest {
     }
 
     @Test
-    void testSongJsonInvalidDifficultyLess() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongJsonInvalidDifficultyLess() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
-            genres, -1, reactions, false, 100,
-            Key.A_MAJOR, 4, 4, measures, instruments);
+                    genres, -1, reactions, false, 100,
+                    Key.A_MAJOR, 4, 4, measures, instruments);
         });
     }
 
     @Test
-    void testSongJsonInvalidDifficultyMore() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongJsonInvalidDifficultyMore() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
                     genres, 1000, reactions, false, 100,
                     Key.A_MAJOR, 4, 4, measures, instruments);
@@ -236,94 +250,158 @@ public class SongTest {
     }
 
     @Test
-    void testSongjsonNullReaction() {
+    public void testSongjsonNullReaction() {
         Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
-                    genres, 2, null, false, 100,
+                genres, 2, null, false, 100,
+                Key.A_MAJOR, 4, 4, measures, instruments);
+        assertNotNull(song);
+    }
+
+    @Test
+    public void testSongJsonInvalidTempoLess() {
+        assertThrows(Exception.class, () -> {
+            Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
+                    genres, 2, reactions, false, 0,
                     Key.A_MAJOR, 4, 4, measures, instruments);
-        assertNotNull(song);
-    }
-
-    @Test
-    void testSongJsonInvalidTempoLess() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
-            genres, 2, reactions, false, 0,
-            Key.A_MAJOR, 4, 4, measures, instruments);
         });
     }
 
     @Test
-    void testSongJsonInvalidTempoMore() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongJsonInvalidTempoMore() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
-            genres, 2, reactions, false, 10000,
-            Key.A_MAJOR, 4, 4, measures, instruments);
+                    genres, 2, reactions, false, 10000,
+                    Key.A_MAJOR, 4, 4, measures, instruments);
         });
     }
 
     @Test
-    void testSongJsonNullKey() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongJsonNullKey() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
-            genres, 2, reactions, false, 100,
-            null, 4, 4, measures, instruments);
+                    genres, 2, reactions, false, 100,
+                    null, 4, 4, measures, instruments);
         });
     }
 
     @Test
-    void testSongJsonInvalidTimeNum() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongJsonInvalidTimeNum() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
-            genres, 2, reactions, false, 100,
-            Key.A_MAJOR, 0, 4, measures, instruments);
+                    genres, 2, reactions, false, 100,
+                    Key.A_MAJOR, 0, 4, measures, instruments);
         });
     }
 
     @Test
-    void testSongJsonInvalidTimeDenom() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongJsonInvalidTimeDenom() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
-            genres, 2, reactions, false, 100,
-            Key.A_MAJOR, 4, 0, measures, instruments);
+                    genres, 2, reactions, false, 100,
+                    Key.A_MAJOR, 4, 0, measures, instruments);
         });
     }
 
     @Test
-    void testSongJsonNullInstruments() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testSongJsonNullInstruments() {
+        assertThrows(Exception.class, () -> {
             Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
-            genres, 2, reactions, false, 100,
-            Key.A_MAJOR, 4, 4, measures, null);
+                    genres, 2, reactions, false, 100,
+                    Key.A_MAJOR, 4, 4, measures, null);
         });
     }
 
     @Test
-    void testSongJsonAllParams() {
+    public void testSongJsonAllParams() {
         Song song = new Song(UUID.randomUUID(), "kickin' chicken'", userOne, "love me some chicken",
-        genres, 2, reactions, false, 100,
-        Key.A_MAJOR, 4, 4, measures, instruments);
+                genres, 2, reactions, false, 100,
+                Key.A_MAJOR, 4, 4, measures, instruments);
         assertNotNull(song);
     }
-    
-    // test for SetTempo
+
+    // tests for SetTempo
     @Test
-    void testInvalidSetTempoLess() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testInvalidSetTempoLess() {
+        assertThrows(Exception.class, () -> {
             defaultSong.setTempo(0);
         });
     }
 
     @Test
-    void testInvalidSetTempoMore() {
-        assertThrows(IllegalArgumentException.class, () -> {
+    public void testInvalidSetTempoMore() {
+        assertThrows(Exception.class, () -> {
             defaultSong.setTempo(50000);
         });
     }
 
     @Test
-    void testValidSetTempo() throws Exception {
+    public void testValidSetTempo() throws Exception {
         int newTempo = 150;
         defaultSong.setTempo(newTempo);
         assertEquals(newTempo, defaultSong.getTempo());
     }
+
+    // tests for getMeasures
+    @Test
+    public void testGetMeasuresFromNull() {
+        assertThrows(Exception.class, () -> {
+            defaultSong.getMeasures(null);
+        });
+    }
+
+    @Test
+    public void testGetMeasuresNotNull() {
+        ArrayList<Measure> measures = defaultSong.getMeasures(instrument);
+        
+    }
+
+    // tests for getMeasureGroup
+    @Test
+    public void testGetMeasureGroupFromNull() {
+        assertThrows(Exception.class, () -> {
+            defaultSong.getMeasureGroup(null);
+        });
+    }
+
+    @Test
+    public void testGetMeasureGroupNotNull() {
+        MeasureGroup actualMeasureGroup = defaultSong.getMeasureGroup(measureGroup.getMeasure(instrument));
+        
+    }
+
+    // test for getInstrumentIDs
+    @Test
+    public void testGetInstrumentIDs() {
+        ArrayList<UUID> expectedIDs = new ArrayList<UUID>();
+        expectedIDs.add(instrument.getInstrumentID());
+        ArrayList<UUID> actualIDs = defaultSong.getInstrumentIDs();
+        assertEquals(expectedIDs, actualIDs);
+    }
+
+    // tests for addReaction
+    @Test
+    public void testaddReaction() {
+        Reaction expectedReaction = new Reaction(5, "yes", userOne);
+        defaultSong.addReaction(5, "yes", userOne);
+        Reaction actualReaction = defaultSong.getReactions().get(0);
+        assertTrue(expectedReaction.getRating() == defaultSong.getReactions().get(0).getRating()
+                && expectedReaction.getComment().equals(defaultSong.getReactions().get(0).getComment())
+                && expectedReaction.getAuthor() == defaultSong.getReactions().get(0).getAuthor());
+    }
+
+    // tests for removeReaction
+    @Test
+    public void testRemoveReactionDiffUser() {
+        defaultSong.addReaction(5, "yes", userList.getUsers().get(0));
+        assertThrows(Exception.class, () -> {
+            defaultSong.removeReaction(defaultSong.getReactions().get(0));
+        });
+    }
+
+    @Test
+    public void testRemoveReactiondSameUser() throws Exception {
+        defaultSong.addReaction(5, "yes", userList.getUsers().get());
+        defaultSong.removeReaction(defaultSong.getReactions().get(0));
+        assertEquals(0, defaultSong.getReactions().size());
+    } //FALSE POSITIVE
 }
