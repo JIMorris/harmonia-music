@@ -52,6 +52,9 @@ public class SongTest {
         genres.clear();
         instruments.clear();
         reactions.clear();
+        userList.getUsers().clear();
+        songList.getSongs().clear();
+        instrumentList.getInstruments().clear();
         // userList.logout();
         // songList.logout();
         // instrumentList.logout();
@@ -488,5 +491,42 @@ public class SongTest {
         defaultSong.insertNote(defaultSong.getMeasures(instrument).get(0).getNotes().get(0));
         defaultSong.noteDown(defaultSong.getMeasures(instrument).get(0).getNotes().get(0));
         assertEquals(Pitch.G, defaultSong.getMeasures(instrument).get(0).getNotes().get(0).getPitch());
+    }
+
+    // tests for addInstrument
+    @Test
+    public void testAddInstrumentNull() {
+        assertThrows(Exception.class, () -> {
+            song.addInstrument(null);
+        });
+    }
+
+    @Test
+    public void testAddInstrumentValid() {
+        song.addInstrument(instrumentList.getInstruments().get(1));
+        assertEquals(2, song.getInstruments().size());
+    }
+
+    // tests for removeInstrument
+    @Test
+    public void testRemoveInstrumentNull() {
+        assertThrows(Exception.class, () -> {
+            song.removeInstrument(null);
+        });
+    }
+
+    @Test
+    public void testRemoveInstrumentOne() {
+        assertThrows(Exception.class, () -> {
+            song.removeInstrument(song.getInstruments().get(0));
+        });
+    }
+
+    @Test
+    public void testRemoveInstrumentValid() throws Exception {
+        song.addInstrument(instrumentList.getInstruments().get(1));
+        song.removeInstrument(song.getInstruments().get(1));
+        assertEquals(instrumentList.getInstruments().get(1).getInstrumentID(),
+            song.getInstrumentIDs().get(0));
     }
 }
