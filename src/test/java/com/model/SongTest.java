@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class SongTest {
+    private InstrumentList instrumentList;
     private Instrument instrument;
     private ArrayList<Instrument> instruments = new ArrayList<Instrument>();
     private ArrayList<Genre> genres = new ArrayList<Genre>();
@@ -18,11 +19,12 @@ public class SongTest {
     private User userTwo;
     private UserList userList;
 
+    private SongList songList;
+    private Song song;
     private Song defaultSong;
     private Reaction reaction;
     private ArrayList<Reaction> reactions = new ArrayList<Reaction>();
     private ArrayList<MeasureGroup> measures = new ArrayList<MeasureGroup>();
-    private MeasureGroup measureGroup;
 
     @Before
     public void setup() throws Exception {
@@ -31,15 +33,15 @@ public class SongTest {
         userTwo = new User("epicpulledPorkLover", "puLLedp0rkAyuP",
                 "leJaorius", "Porkington");
 
-        instrument = new Instrument(UUID.randomUUID(), "guitar", "guitar.jpg");
-        instruments.add(instrument);
+        instrumentList = InstrumentList.getInstance();
+        instrument = instrumentList.getInstruments().get(0);
         genres.add(Genre.BLUES);
 
+        songList = SongList.getInstance();
         defaultSong = new Song("pick of destiny", userOne, "epic song",
                 genres, 5, 100, Key.A_FLAT_MAJOR,
                 4, 4, instrument);
-
-        measureGroup = new MeasureGroup(4, Chord.A_FLAT_MAJ, instruments);
+        song = songList.getSongs().get(0);
 
         reaction = new Reaction(5, "this pretty cool", userOne);
         reactions.add(reaction);
@@ -50,8 +52,12 @@ public class SongTest {
         genres.clear();
         instruments.clear();
         reactions.clear();
-        userList.logout();
-        userList.getUsers().clear();
+        // userList.logout();
+        // songList.logout();
+        // instrumentList.logout();
+        // userList.getUsers().clear();
+        // songList.getSongs().clear();
+        // instrumentList.getInstruments().clear();
     }
 
     // test for parameterized constructor
@@ -341,7 +347,7 @@ public class SongTest {
         assertEquals(newTempo, defaultSong.getTempo());
     }
 
-    // tests for getMeasures
+    // tests for getMeasures and getMeasureGroup
     @Test
     public void testGetMeasuresFromNull() {
         assertThrows(Exception.class, () -> {
@@ -349,13 +355,6 @@ public class SongTest {
         });
     }
 
-    @Test
-    public void testGetMeasuresNotNull() {
-        ArrayList<Measure> measures = defaultSong.getMeasures(instrument);
-        
-    }
-
-    // tests for getMeasureGroup
     @Test
     public void testGetMeasureGroupFromNull() {
         assertThrows(Exception.class, () -> {
@@ -365,8 +364,9 @@ public class SongTest {
 
     @Test
     public void testGetMeasureGroupNotNull() {
-        MeasureGroup actualMeasureGroup = defaultSong.getMeasureGroup(measureGroup.getMeasure(instrument));
-        
+
+        MeasureGroup actualMeasureGroup = song.getMeasureGroup(song.getMeasures(instrument).get(0));
+        assertEquals(song.getMeasureGroups().get(0), actualMeasureGroup);
     }
 
     // test for getInstrumentIDs
@@ -391,8 +391,11 @@ public class SongTest {
 
     // tests for removeReaction
     @Test
-    public void testRemoveReactionDiffUser() {
-        defaultSong.addReaction(5, "yes", userList.getUsers().get(0));
+    public void testRemoveReactionDiffUser() throws Exception {
+        userList.signup("jjjKoolKat", "2kool4Dis", "John", "Johnson");
+        defaultSong.addReaction(0, "boo", userOne);
+        userList.signup("epicpulledPorkLover", "puLLedp0rkAyuP",
+                "leJaorius", "Porkington");
         assertThrows(Exception.class, () -> {
             defaultSong.removeReaction(defaultSong.getReactions().get(0));
         });
@@ -400,8 +403,90 @@ public class SongTest {
 
     @Test
     public void testRemoveReactiondSameUser() throws Exception {
-        defaultSong.addReaction(5, "yes", userList.getUsers().get());
+        userList.signup("jjjKoolKat", "2kool4Dis", "John", "Johnson");
+        defaultSong.addReaction(0, "boo", userOne);
         defaultSong.removeReaction(defaultSong.getReactions().get(0));
         assertEquals(0, defaultSong.getReactions().size());
-    } //FALSE POSITIVE
+    } // FLASE POSITIVE
+
+    // tests for inserMeasure
+    @Test
+    public void testInsertMeasureNull() {
+        assertThrows(Exception.class, () -> {
+            song.insertMeasure(null);
+        });
+    }
+
+    @Test
+    public void testInsertMeasureValid() {
+        int i = song.getMeasureGroups().size();
+        song.insertMeasure(song.getMeasureGroups().get(0));
+        assertEquals(i + 1, song.getMeasureGroups().size());
+    }
+
+    // tests for removeMeaure
+    @Test
+    public void testRemoveMeasureNull() {
+        assertThrows(Exception.class, () -> {
+            song.removeMeasure(null);
+        });
+    }
+
+    @Test
+    public void testRemoveMeasureOneMeasureGroup() {
+        assertThrows(Exception.class, () -> {
+            defaultSong.removeMeasure(defaultSong.getMeasureGroups().get(0));
+        });
+    }
+
+    @Test
+    public void testRemoveMeasureValid() throws Exception {
+        int i = song.getMeasureGroups().size();
+        song.removeMeasure(song.getMeasureGroups().get(0));
+        assertEquals(i - 1, song.getMeasureGroups().size());
+    }
+
+    // test for insertNote
+    @Test
+    public void testInsertNoteNull() {
+        assertThrows(Exception.class, () -> {
+            song.insertNote(null);
+        });
+    }// I literally don't know why this passed
+
+    @Test
+    public void testInsertNoteValid() {
+        defaultSong.insertNote(defaultSong.getMeasures(instrument).get(0).getNotes().get(0));
+        assertEquals(Pitch.A_FLAT, defaultSong.getMeasures(instrument).get(0).getNotes().get(0).getPitch());
+    }
+
+    // test for noteUp
+    @Test
+    public void testNoteUpNull() {
+        assertThrows(Exception.class, () -> {
+            song.noteUp(null);
+        });
+    }
+
+    @Test
+    public void testNoteUpValid() throws Exception {
+        defaultSong.insertNote(defaultSong.getMeasures(instrument).get(0).getNotes().get(0));
+        defaultSong.noteUp(defaultSong.getMeasures(instrument).get(0).getNotes().get(0));
+        assertEquals(Pitch.B_FLAT, defaultSong.getMeasures(instrument).get(0).getNotes().get(0).getPitch());
+    }
+
+    // test for noteDown
+    @Test
+    public void testNoteDownNull() {
+        assertThrows(Exception.class, () -> {
+            song.noteDown(null);
+        });
+    }
+
+    @Test
+    public void testNotedownValid() throws Exception {
+        defaultSong.insertNote(defaultSong.getMeasures(instrument).get(0).getNotes().get(0));
+        defaultSong.noteDown(defaultSong.getMeasures(instrument).get(0).getNotes().get(0));
+        assertEquals(Pitch.G, defaultSong.getMeasures(instrument).get(0).getNotes().get(0).getPitch());
+    }
 }
