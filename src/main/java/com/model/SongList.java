@@ -16,8 +16,6 @@ public class SongList {
      * private constructor that creates a single instance of the SongList object
      */
     private SongList() {
-        InstrumentList.getInstance();
-        UserList.getInstance();
         try {
             songs = DataLoader.getInstance().loadSongs();
         } catch (Exception e) {
