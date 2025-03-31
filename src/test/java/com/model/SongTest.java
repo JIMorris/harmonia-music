@@ -52,9 +52,6 @@ public class SongTest {
         genres.clear();
         instruments.clear();
         reactions.clear();
-        userList.getUsers().clear();
-        songList.getSongs().clear();
-        instrumentList.getInstruments().clear();
         // userList.logout();
         // songList.logout();
         // instrumentList.logout();
@@ -525,7 +522,7 @@ public class SongTest {
     @Test
     public void testRemoveInstrumentValid() throws Exception {
         song.addInstrument(instrumentList.getInstruments().get(1));
-        song.removeInstrument(song.getInstruments().get(1));
+        song.removeInstrument(song.getInstruments().get(0));
         assertEquals(instrumentList.getInstruments().get(1).getInstrumentID(),
             song.getInstrumentIDs().get(0));
     }
