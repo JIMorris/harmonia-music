@@ -25,7 +25,6 @@ public class UserList {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        SongList.getInstance();
     }
 
     /**
