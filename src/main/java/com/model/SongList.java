@@ -37,8 +37,22 @@ public class SongList {
         return instance;
     }
 
+    /**
+     * Gets the songs of the song list
+     * 
+     * @return ArrayList of all songs
+     */
     public ArrayList<Song> getSongs() {
         return songs;
+    }
+
+    /**
+     * Sets the songs in this song list
+     * 
+     * @param songs ArrayList to set songs to
+     */
+    public void setSongs(ArrayList<Song> songs){
+        this.songs = songs;
     }
 
     /**

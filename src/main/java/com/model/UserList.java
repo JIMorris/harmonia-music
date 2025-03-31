@@ -70,6 +70,15 @@ public class UserList {
     }
 
     /**
+     * Sets the current user of the program
+     * 
+     * @param user User to set currentUser to
+     */
+    public void setCurrentUser(User user){
+        this.currentUser = user;
+    }
+
+    /**
      * Retrieves a user by their unique user ID.
      * 
      * @param userID The UUID of the user.
