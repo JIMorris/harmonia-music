@@ -28,14 +28,14 @@ public class SongTest {
 
     @Before
     public void setup() throws Exception {
+        instrumentList = InstrumentList.getInstance();
+        instrument = instrumentList.getInstruments().get(0);
+        genres.add(Genre.BLUES);
+
         userList = UserList.getInstance();
         userOne = new User("jjjKoolKat", "2kool4Dis", "John", "Johnson");
         userTwo = new User("epicpulledPorkLover", "puLLedp0rkAyuP",
                 "leJaorius", "Porkington");
-
-        instrumentList = InstrumentList.getInstance();
-        instrument = instrumentList.getInstruments().get(0);
-        genres.add(Genre.BLUES);
 
         songList = SongList.getInstance();
         defaultSong = new Song("pick of destiny", userOne, "epic song",
@@ -108,7 +108,7 @@ public class SongTest {
     public void testSongInvalidDifficultyMore() {
         assertThrows(Exception.class, () -> {
             Song song = new Song("pick of destiny", userOne, "epic song",
-                    genres, 5, 100, Key.A_FLAT_MAJOR,
+                    genres, 50, 100, Key.A_FLAT_MAJOR,
                     4, 4, instrument);
         });
     }
