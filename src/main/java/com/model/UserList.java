@@ -19,7 +19,6 @@ public class UserList {
      * Private constructor to initialize the user list from stored data.
      */
     private UserList() {
-        InstrumentList.getInstance();
         try {
             users = DataLoader.getInstance().loadUsers();
         } catch (Exception e) {
@@ -66,6 +65,15 @@ public class UserList {
      */
     public void setUsers(ArrayList<User> users) {
         this.users = users;
+    }
+
+    /**
+     * Sets the current user of the program
+     * 
+     * @param user User to set currentUser to
+     */
+    public void setCurrentUser(User user){
+        this.currentUser = user;
     }
 
     /**
