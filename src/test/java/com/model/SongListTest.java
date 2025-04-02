@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+// Created and tested by Simion Cartis
 public class SongListTest {
     SongList songList;
     UserList userList;

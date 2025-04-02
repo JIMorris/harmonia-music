@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+// Created and tested by Simion Cartis
 public class SongTest {
     private InstrumentList instrumentList;
     private Instrument instrument;
@@ -408,12 +409,12 @@ public class SongTest {
     }
 
     @Test
-    public void testRemoveReactiondSameUser() throws Exception {
+    public void testRemoveReactionSameUser() throws Exception {
         song.getReactions().clear();
         song.addReaction(5, "epic", userList.getUsers().get(0));
         song.removeReaction(songList.getSongs().get(0).getReactions().get(0));
         assertEquals(0, song.getReactions().size());
-    } // FLASE POSITIVE
+    }
 
     // tests for insertMeasure
     @Test
