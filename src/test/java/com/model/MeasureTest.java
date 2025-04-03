@@ -14,7 +14,6 @@ public class MeasureTest {
     Note defaultNote;
     ArrayList<Note> defaultNotes;
     Measure defaultMeasure;
-   
 
     @Before
 	public void setup() {
@@ -277,6 +276,4 @@ public class MeasureTest {
         int size = defaultMeasure.getNotes().size();
         assertEquals(size, 4);
     }
-
-
 }
