@@ -1,0 +1,4 @@
+--patch-module
+com.harmoniamusic=_
+--add-reads
+com.harmoniamusic=ALL-UNNAMED

@@ -278,4 +278,10 @@ public class SongList {
 
         return filteredSongs;
     }
+    
+    public void clear() {
+        if (songs != null) {
+            songs.clear();
+        }
+    }
 }

@@ -200,4 +200,11 @@ public class UserList {
         if (password.length() < 6)
             throw new Exception("Password must be at least 6 character");
     }
+
+    public void clear() {
+        if (users != null) {
+            users.clear();
+        }
+        currentUser = null;
+    }
 }

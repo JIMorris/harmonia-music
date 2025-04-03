@@ -27,6 +27,16 @@ public class DataLoader extends DataConstants {
         
     }
 
+    private static String userFileName = DataConstants.USER_FILE_NAME;
+    private static String songFileName = DataConstants.SONG_FILE_NAME;
+    private static String instrumentFileName = DataConstants.INSTRUMENT_FILE_NAME;
+
+    public static void setFilePaths(String userFile, String songFile, String instrumentFile) {
+        userFileName = userFile;
+        songFileName = songFile;
+        instrumentFileName = instrumentFile;
+    }
+
     /**
      * Gets an instance of FileReader
      * If not instance exists, a new one is created
