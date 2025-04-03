@@ -1,13 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: com.model.AudioPlayerTest
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.369 s <<< FAILURE! -- in com.model.AudioPlayerTest
-com.model.AudioPlayerTest.removeMissingMeasure -- Time elapsed: 0.009 s <<< FAILURE!
+Tests run: 7, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.438 s <<< FAILURE! -- in com.model.AudioPlayerTest
+com.model.AudioPlayerTest.removeMissingMeasure -- Time elapsed: 0.005 s <<< FAILURE!
 java.lang.AssertionError
 	at junit@4.13.2/org.junit.Assert.fail(Assert.java:87)
 	at junit@4.13.2/org.junit.Assert.assertTrue(Assert.java:42)
 	at junit@4.13.2/org.junit.Assert.assertTrue(Assert.java:53)
-	at com.harmoniamusic/com.model.AudioPlayerTest.removeMissingMeasure(AudioPlayerTest.java:152)
+	at com.harmoniamusic/com.model.AudioPlayerTest.removeMissingMeasure(AudioPlayerTest.java:115)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at junit@4.13.2/org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -38,12 +38,12 @@ java.lang.AssertionError
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-com.model.AudioPlayerTest.removeFirstMeasure -- Time elapsed: 0.004 s <<< FAILURE!
+com.model.AudioPlayerTest.removeFirstMeasure -- Time elapsed: 0.005 s <<< FAILURE!
 java.lang.AssertionError
 	at junit@4.13.2/org.junit.Assert.fail(Assert.java:87)
 	at junit@4.13.2/org.junit.Assert.assertTrue(Assert.java:42)
 	at junit@4.13.2/org.junit.Assert.assertTrue(Assert.java:53)
-	at com.harmoniamusic/com.model.AudioPlayerTest.removeFirstMeasure(AudioPlayerTest.java:117)
+	at com.harmoniamusic/com.model.AudioPlayerTest.removeFirstMeasure(AudioPlayerTest.java:80)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at junit@4.13.2/org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
@@ -74,12 +74,12 @@ java.lang.AssertionError
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-com.model.AudioPlayerTest.removeNullMeasure -- Time elapsed: 0.003 s <<< FAILURE!
+com.model.AudioPlayerTest.removeNullMeasure -- Time elapsed: 0.004 s <<< FAILURE!
 java.lang.AssertionError
 	at junit@4.13.2/org.junit.Assert.fail(Assert.java:87)
 	at junit@4.13.2/org.junit.Assert.assertTrue(Assert.java:42)
 	at junit@4.13.2/org.junit.Assert.assertTrue(Assert.java:53)
-	at com.harmoniamusic/com.model.AudioPlayerTest.removeNullMeasure(AudioPlayerTest.java:167)
+	at com.harmoniamusic/com.model.AudioPlayerTest.removeNullMeasure(AudioPlayerTest.java:130)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at junit@4.13.2/org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
