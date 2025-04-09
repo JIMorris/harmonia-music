@@ -200,7 +200,7 @@ public class SongList {
     private ArrayList<Song> filterByTitle(String title) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for (Song song : songs) {
+        for (Song song : getPublicSongs()) {
             if (song.getTitle().equalsIgnoreCase(title))
                 filteredSongs.add(song);
         }
@@ -218,7 +218,7 @@ public class SongList {
     private ArrayList<Song> filterByGenre(ArrayList<Genre> genres) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for (Song song : songs) {
+        for (Song song : getPublicSongs()) {
             for(Genre genre : genres){
                 if (!filteredSongs.contains(song) && song.getGenres().contains(genre))
                     filteredSongs.add(song);
@@ -244,7 +244,7 @@ public class SongList {
         minBPM = Math.min(minBPM, maxBPM);
         maxBPM = Math.max(temp, maxBPM);
 
-        for (Song song : songs) {
+        for (Song song : getPublicSongs()) {
             int tempo = song.getTempo();
             if (tempo >= minBPM && tempo <= maxBPM)
                 filteredSongs.add(song);
@@ -263,7 +263,7 @@ public class SongList {
     private ArrayList<Song> filterByDifficulty(int difficulty) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for (Song song : songs) {
+        for (Song song : getPublicSongs()) {
             if (song.getDifficulty() == difficulty)
                 filteredSongs.add(song);
         }
@@ -280,7 +280,7 @@ public class SongList {
     private ArrayList<Song> filterByAuthor(User author){
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for(Song song : songs){
+        for(Song song : getPublicSongs()){
             if(song.getAuthor() == author)
                 filteredSongs.add(song);
         }
