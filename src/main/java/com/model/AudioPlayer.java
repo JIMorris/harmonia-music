@@ -193,9 +193,14 @@ public class AudioPlayer {
      */
     public void removeMeasure() throws Exception {
         ArrayList<MeasureGroup> measureGroups = currentSong.getMeasureGroups();
+        if(measureGroups.size()<=1)
+            throw new Exception("Song cannot have 0 measures");
+
         MeasureGroup deletedMeasureGroup = currentMeasureGroup;
         int index = measureGroups.indexOf(deletedMeasureGroup);
 
+        if (index <= 0)
+            currentMeasureGroup = measureGroups.get(1);
         if (index >= measureGroups.size() - 1)
             currentMeasureGroup = measureGroups.get(measureGroups.size() - 2);
         else

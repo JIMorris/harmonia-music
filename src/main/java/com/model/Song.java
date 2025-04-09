@@ -335,7 +335,7 @@ public class Song {
      * @throws Exception if the reaction doesn't belong to the current user
      */
     public void removeReaction(Reaction reaction) throws Exception {
-        if(reaction.getAuthor() == UserList.getInstance().getCurrentUser())
+        if(reaction.getAuthor() != UserList.getInstance().getCurrentUser())
             throw new Exception("You can only delete your own reaction");
         reactions.remove(reaction);
     }

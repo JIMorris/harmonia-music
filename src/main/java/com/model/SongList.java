@@ -201,7 +201,7 @@ public class SongList {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
         for (Song song : songs) {
-            if (song.getTitle().equals(title))
+            if (song.getTitle().equalsIgnoreCase(title))
                 filteredSongs.add(song);
         }
 
@@ -239,6 +239,10 @@ public class SongList {
      */
     private ArrayList<Song> filterByBPM(int minBPM, int maxBPM) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
+
+        int temp = minBPM;
+        minBPM = Math.min(minBPM, maxBPM);
+        maxBPM = Math.max(temp, maxBPM);
 
         for (Song song : songs) {
             int tempo = song.getTempo();
