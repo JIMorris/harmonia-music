@@ -12,6 +12,8 @@ import java.util.UUID;
  * @author Simion Cartis
  */
 public class Song {
+    private static final String defaultSongIconFile = "defaultSongIcon.png";
+
     private UUID songID;
     private String title;
     private User author;
@@ -20,6 +22,7 @@ public class Song {
     private int difficulty;
     private ArrayList<Reaction> reactions;
     private boolean published;
+    private String iconFile;
 
     private int tempo;
     private Key keySignature;
@@ -60,6 +63,7 @@ public class Song {
         this.measureGroups = new ArrayList<>();
         this.instruments.add(defaultInstrument);
         this.measureGroups.add(new MeasureGroup(timeSignatureNum, keySignature.rootChord, instruments));
+        this.iconFile = defaultSongIconFile;
     }
 
     /**
@@ -83,6 +87,7 @@ public class Song {
         this.timeSignatureDen = song.getTimeSignatureDen();
         this.measureGroups = copyMeasureGroups(song.getMeasureGroups());
         this.instruments = (ArrayList<Instrument>) song.getInstruments().clone();
+        this.iconFile = defaultSongIconFile;
     }
 
     /**
@@ -106,7 +111,7 @@ public class Song {
     public Song(UUID id, String title, User author, String description, ArrayList<Genre> genres,
                 int difficulty, ArrayList<Reaction> reactions, boolean published, int tempo,
                 Key keySignature, int timeSignatureNum, int timeSignatureDen,
-                ArrayList<MeasureGroup> measures, ArrayList<Instrument> instruments) {
+                ArrayList<MeasureGroup> measures, ArrayList<Instrument> instruments, String iconFile) {
         this.songID = id;
         this.title = title;
         this.author = author;
@@ -121,6 +126,7 @@ public class Song {
         this.timeSignatureDen = timeSignatureDen;
         this.measureGroups = measures;
         this.instruments = instruments;
+        this.iconFile = iconFile;
     }
 
     /**
@@ -187,6 +193,15 @@ public class Song {
     }
 
     /**
+     * Returns the icon for this song
+     * 
+     * @return File path for icon
+     */
+    public String getIconFilePath(){
+        return DataConstants.DATA_FOLDER + iconFile;
+    }
+
+    /**
      * Returns whether this song is public
      * 
      * @return True if published, false otherwise
@@ -247,6 +262,15 @@ public class Song {
      */
     public ArrayList<Instrument> getInstruments() { 
         return instruments; 
+    }
+
+    /**
+     * Sets the icon file for this song
+     * 
+     * @param iconFile File for the icon (excluding path)
+     */
+    public void setIconFile(String iconFile){
+        this.iconFile = iconFile;
     }
 
     /**

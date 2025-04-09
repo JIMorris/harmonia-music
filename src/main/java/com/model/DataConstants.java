@@ -6,12 +6,12 @@ package com.model;
  * @author James Morris
  */
 public class DataConstants {
-    public static final String DATA_FOLDER = "src/main/java/data";
-    public static final String TEST_DATA_FOLDER = "src/test/java/data";
+    public static final String DATA_FOLDER = "src/main/java/data/";
+    public static final String TEST_DATA_FOLDER = "src/test/java/data/";
 
-    public static final String SONG_FILE_NAME = isJUnitTest() ? TEST_DATA_FOLDER + "/song.json" : DATA_FOLDER + "/song.json";
-    public static final String USER_FILE_NAME = isJUnitTest() ? TEST_DATA_FOLDER + "/user.json" : DATA_FOLDER + "/user.json";
-    public static final String INSTRUMENT_FILE_NAME = isJUnitTest() ? TEST_DATA_FOLDER + "/instrument.json" : DATA_FOLDER + "/instrument.json";
+    public static final String SONG_FILE_NAME = isJUnitTest() ? TEST_DATA_FOLDER + "song.json" : DATA_FOLDER + "song.json";
+    public static final String USER_FILE_NAME = isJUnitTest() ? TEST_DATA_FOLDER + "user.json" : DATA_FOLDER + "user.json";
+    public static final String INSTRUMENT_FILE_NAME = isJUnitTest() ? TEST_DATA_FOLDER + "instrument.json" : DATA_FOLDER + "instrument.json";
 
     public static final String SONG_ID = "uuid";
     public static final String SONG_TITLE = "title";
@@ -37,6 +37,7 @@ public class DataConstants {
     public static final String SONG_NOTE_LENGTH = "length";
     public static final String SONG_NOTE_PITCH = "pitch";
     public static final String SONG_NOTE_OCTAVE = "octave";
+    public static final String SONG_ICON_FILE = "iconFile";
 
     public static final String USER_ID = "uuid";
     public static final String USER_USERNAME = "username";
@@ -45,6 +46,7 @@ public class DataConstants {
     public static final String USER_LAST_NAME = "lastName";
     public static final String USER_FAV_SONGS = "favSongs";
     public static final String USER_FAV_AUTHS = "favAuthors";
+    public static final String USER_ICON_FILE = "iconFile";
 
     public static final String INSTRUMENT_ID = "uuid";
     public static final String INSTRUMENT_NAME = "name";

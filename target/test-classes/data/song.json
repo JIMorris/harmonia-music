@@ -8,6 +8,7 @@
       "POP"
     ],
     "difficulty": 1,
+    "iconFile": "defaultSongIcon.png",
     "reactions": [
       {
         "rating": 4,
@@ -288,6 +289,7 @@
       "POP"
     ],
     "difficulty": 4,
+    "iconFile": "defaultSongIcon.png",
     "reactions": [
       {
         "rating": 4,
@@ -383,6 +385,7 @@
       "CLASSICAL"
     ],
     "difficulty": 5,
+    "iconFile": "defaultSongIcon.png",
     "reactions": [
       {
         "rating": 5,
@@ -518,6 +521,7 @@
       "Jazz"
     ],
     "difficulty": 2,
+    "iconFile": "defaultSongIcon.png",
     "reactions": [
     ],
     "published": true,
@@ -586,6 +590,7 @@
       "POP"
     ],
     "difficulty": 1,
+    "iconFile": "defaultSongIcon.png",
     "reactions": [
       {
         "rating": 4,

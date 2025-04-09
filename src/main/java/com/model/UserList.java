@@ -104,8 +104,7 @@ public class UserList {
     public void signup(String username, String password, String firstName, String lastName) throws Exception {
         usernameCheck(username);
         passwordCheck(password);
-        UUID userID = UUID.randomUUID();
-        User user = new User(username, password, firstName, lastName, userID);
+        User user = new User(username, password, firstName, lastName);
         users.add(user);
         currentUser = user;
     }

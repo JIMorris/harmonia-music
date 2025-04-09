@@ -102,8 +102,9 @@ public class DataLoader extends DataConstants {
                 String password = (String)userJSON.get(USER_PASSWORD);
                 String firstName = (String)userJSON.get(USER_FIRST_NAME);
                 String lastName = (String)userJSON.get(USER_LAST_NAME);
+                String iconFile = (String)userJSON.get(USER_ICON_FILE);
                 
-                users.add(new User(username, password, firstName, lastName, id));
+                users.add(new User(username, password, firstName, lastName, id, iconFile));
             }
 
             for(int i=0; i < usersJSON.size(); i++){
@@ -208,9 +209,9 @@ public class DataLoader extends DataConstants {
 
                 ArrayList<MeasureGroup> measures = getMeasures((JSONArray)songJSON.get(SONG_MEASURES), instruments);
 
-                
+                String iconFile = (String)songJSON.get(SONG_ICON_FILE);
 
-                Song newSong = new Song(id, title, author, description, genres, difficulty, reactions, test, tempo, key, timeSigNum, timeSigDen, measures, instruments);
+                Song newSong = new Song(id, title, author, description, genres, difficulty, reactions, test, tempo, key, timeSigNum, timeSigDen, measures, instruments, iconFile);
                 songs.add(newSong);
             }
         } catch (Exception e) {
