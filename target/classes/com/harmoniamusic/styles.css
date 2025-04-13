@@ -1,3 +1,13 @@
+.root{
+    -fx-background: #DEEFF5;
+}
 .label{
     -fx-text-fill: red;
+}
+.vbox{
+    -fx-background-color: #E8D99F;
+}
+
+.background-square {
+    -fx-background-color: #DEEFF5;
 }
