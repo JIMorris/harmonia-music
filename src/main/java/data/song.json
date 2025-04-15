@@ -8,6 +8,7 @@
       "POP"
     ],
     "difficulty": 1,
+    "iconFile": "defaultSongIcon.png",
     "reactions": [
       {
         "rating": 4,
@@ -288,6 +289,7 @@
       "POP"
     ],
     "difficulty": 4,
+    "iconFile": "defaultSongIcon.png",
     "reactions": [
       {
         "rating": 4,
@@ -383,6 +385,7 @@
       "CLASSICAL"
     ],
     "difficulty": 5,
+    "iconFile": "defaultSongIcon.png",
     "reactions": [
       {
         "rating": 5,
@@ -514,6 +517,7 @@
     "title": "The Lick",
     "author": "11340d8e-7cd9-40ae-b5fb-ff2236311fa7",
     "description": "A popular jazz phrase",
+    "iconFile": "defaultSongIcon.png",
     "genres": [
       "Jazz"
     ],
@@ -586,6 +590,7 @@
       "POP"
     ],
     "difficulty": 1,
+    "iconFile": "defaultSongIcon.png",
     "reactions": [
       {
         "rating": 4,

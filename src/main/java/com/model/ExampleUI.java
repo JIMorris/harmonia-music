@@ -76,10 +76,12 @@ public class ExampleUI {
         MusicFacade facade = MusicFacade.getInstance();
         ArrayList<Song> songs;
         ArrayList<Instrument> instruments;
+        ArrayList<String> filter= new ArrayList<>();
 
         // Login and filter songs
         facade.login("ffred", "uniquePassword");
-        songs = facade.filterSongs("author", "JIMorris");
+        filter.add("JIMorris");
+        songs = facade.filterSongs("author", filter);
         System.out.println("Songs:");
         for(Song song : songs){
             System.out.println(song.getTitle());
@@ -170,10 +172,12 @@ public class ExampleUI {
     public static void newSongScenarioPlay() throws Exception{
         MusicFacade facade = MusicFacade.getInstance();
         ArrayList<Song> songs;
+        ArrayList<String> filter = new ArrayList<>();
 
         // Login and Filter Songs
         facade.login("ffred", "uniquePassword");
-        songs = facade.filterSongs("title", "A Horse Journey");
+        filter.add("A Horse Journey");
+        songs = facade.filterSongs("title", filter);
 
         // Open song, play it, and log out
         facade.openSong(songs.get(0));

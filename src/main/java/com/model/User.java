@@ -9,10 +9,13 @@ import java.util.UUID;
  * @author Simion Cartis
  */
 public class User {
+    public static final String defaultUserIconFile = "defaultUserIcon.png";
+
     private String username;
     private String password;
     private String firstName;
     private String lastName;
+    private String iconFile;
 
     private UUID userID;
     private ArrayList<Song> favSongs;
@@ -34,6 +37,7 @@ public class User {
         this.userID = UUID.randomUUID();
         this.favSongs = new ArrayList<>();
         this.favAuthors = new ArrayList<>();
+        this.iconFile = defaultUserIconFile;
     }
 
     /**
@@ -45,7 +49,7 @@ public class User {
      * @param lastName  The last name provided by the user
      * @param userID    A unique ID code used to indentify each individual user
      */
-    public User(String username, String password, String firstName, String lastName, UUID userID) {
+    public User(String username, String password, String firstName, String lastName, UUID userID, String iconFile) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -53,6 +57,7 @@ public class User {
         this.userID = userID;
         this.favSongs = new ArrayList<>();
         this.favAuthors = new ArrayList<>();
+        this.iconFile = iconFile;
     }
 
     /**
@@ -116,6 +121,24 @@ public class User {
      */
     public String getLastName() {
         return this.lastName;
+    }
+
+    /**
+     * Returns the icon for this user
+     * 
+     * @return File path for icon
+     */
+    public String getIconFilePath(){
+        return DataConstants.DATA_FOLDER + iconFile;
+    }
+
+    /**
+     * Sets the icon file for this user
+     * 
+     * @param iconFile File for the icon (excluding path)
+     */
+    public void setIconFile(String iconFile){
+        this.iconFile = iconFile;
     }
 
     /**

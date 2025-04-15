@@ -90,7 +90,7 @@ public class Measure {
      * @throws Exception If the division value is invalid
      */
     public void splitNote(Note note, int division) throws Exception{
-        if (division < 2 && division > 4)
+        if (division < 2 || division > 4)
             throw new Exception("Division size must be 2, 3, or 4");
 
         note.changeDuration(division);
