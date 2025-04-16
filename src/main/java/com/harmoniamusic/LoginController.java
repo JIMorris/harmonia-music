@@ -29,12 +29,17 @@ public class LoginController {
         String username = username_txt.getText();
         String password = password_txt.getText();
         MusicFacade musicFacade = MusicFacade.getInstance();
-        //musicFacade.login(username, password);
+        try {
+            musicFacade.login(username, password);
+        } catch (Exception e) {
+            //DO SOMETHING 
+        }
     }
+
 
     @FXML
     void signUp(MouseEvent event) throws IOException {
-        App.setRoot("secondary");
+        
     }
 
 }
