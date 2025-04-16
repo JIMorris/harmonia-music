@@ -106,7 +106,7 @@ public class MusicFacade {
      * @param filter Fitler specification
      * @return Filtered song list
      */
-    public ArrayList<Song> filterSongs(String category, String filter){
+    public ArrayList<Song> filterSongs(String category, ArrayList<String> filter){
         return songList.filterSongs(category, filter);
     }
 

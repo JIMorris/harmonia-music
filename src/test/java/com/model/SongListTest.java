@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+// Created and tested by Simion Cartis
 public class SongListTest {
     SongList songList;
     UserList userList;
@@ -20,17 +21,22 @@ public class SongListTest {
     public void setUp() throws Exception {
         genres.add(Genre.BLUES);
         instrumentList = InstrumentList.getInstance();
+        instrumentList.setInstruments(DataLoader.getInstance().loadInstruments());
         instrument = instrumentList.getInstruments().get(0);
+
         userList = UserList.getInstance();
-        userList.login(userList.getUsers().get(5).getUsername(), userList.getUsers().get(5).getPassword());
+        userList.setUsers(DataLoader.getInstance().loadUsers());
+        userList.setCurrentUser(userList.getUsers().get(5));
+
         songList = SongList.getInstance();
+        songList.setSongs(DataLoader.getInstance().loadSongs());
     }
 
-    @After
-    public void tearDown() {
-        genres.clear();
+    // @After
+    // public void tearDown() {
+    //     genres.clear();
 
-    }
+    // }
 
     // test for getSong
     @Test

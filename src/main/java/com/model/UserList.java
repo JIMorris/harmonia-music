@@ -104,8 +104,7 @@ public class UserList {
     public void signup(String username, String password, String firstName, String lastName) throws Exception {
         usernameCheck(username);
         passwordCheck(password);
-        UUID userID = UUID.randomUUID();
-        User user = new User(username, password, firstName, lastName, userID);
+        User user = new User(username, password, firstName, lastName);
         users.add(user);
         currentUser = user;
     }
@@ -199,5 +198,12 @@ public class UserList {
     private void passwordCheck(String password) throws Exception {
         if (password.length() < 6)
             throw new Exception("Password must be at least 6 character");
+    }
+
+    public void clear() {
+        if (users != null) {
+            users.clear();
+        }
+        currentUser = null;
     }
 }

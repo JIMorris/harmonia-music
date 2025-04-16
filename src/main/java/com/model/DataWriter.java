@@ -71,6 +71,7 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_FIRST_NAME, user.getFirstName());
         userDetails.put(USER_LAST_NAME, user.getLastName());
         userDetails.put(USER_FAV_SONGS, user.getFavSongs());
+        userDetails.put(USER_ICON_FILE, user.getIconFilePath().replace(DATA_FOLDER, ""));
 
         // Convert favorite songs to a list of strings
         ArrayList<String> favSongIDs = new ArrayList<>();
@@ -177,6 +178,7 @@ public class DataWriter extends DataConstants {
         songDetails.put(SONG_KEY_SIGNATURE, song.getKeySignature().toString());
         songDetails.put(SONG_TIME_SIGNATURE_NUMERATOR, song.getTimeSignatureNum());
         songDetails.put(SONG_TIME_SIGNATURE_DENOMINATOR, song.getTimeSignatureDen());
+        songDetails.put(SONG_ICON_FILE, song.getIconFilePath().replace(DATA_FOLDER, ""));
 
         // Convert genre ENUMs to a list of strings
         ArrayList<String> genres = new ArrayList<>();

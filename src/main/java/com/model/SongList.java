@@ -159,21 +159,24 @@ public class SongList {
      * @param filter What to use in the filter
      * @return Filtered ArrayList of songs
      */
-    public ArrayList<Song> filterSongs(String category, String filter) {
+    public ArrayList<Song> filterSongs(String category, ArrayList<String> filter) {
         if (category.equalsIgnoreCase("title")) {
-            return filterByTitle(filter);
+            return filterByTitle(filter.get(0));
         } else if (category.equalsIgnoreCase("genre")) {
-            return filterByGenre(Genre.fromString(filter));
+            ArrayList<Genre> genres = new ArrayList<>();
+            for(String genreString : filter){
+                genres.add(Genre.fromString(genreString));
+            }
+            return filterByGenre(genres);
         } else if (category.equalsIgnoreCase("BPM")) {
-            String[] splitString = filter.split(" ");
-            int lowestBPM = Integer.parseInt(splitString[0]);
-            int highestBPM = Integer.parseInt(splitString[1]);
+            int lowestBPM = Integer.parseInt(filter.get(0));
+            int highestBPM = Integer.parseInt(filter.get(1));
             return filterByBPM(lowestBPM, highestBPM);
         } else if (category.equalsIgnoreCase("difficulty")) {
-            return filterByDifficulty(Integer.parseInt(filter));
+            return filterByDifficulty(Integer.parseInt(filter.get(0)));
         } else if (category.equalsIgnoreCase("author")) {
             for(User user : UserList.getInstance().getUsers()){
-                if(user.getUsername().equals(filter))
+                if(user.getUsername().equals(filter.get(0)))
                     return filterByAuthor(user);
             }   
         }
@@ -197,8 +200,8 @@ public class SongList {
     private ArrayList<Song> filterByTitle(String title) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for (Song song : songs) {
-            if (song.getTitle().equals(title))
+        for (Song song : getPublicSongs()) {
+            if (song.getTitle().equalsIgnoreCase(title))
                 filteredSongs.add(song);
         }
 
@@ -212,12 +215,14 @@ public class SongList {
      *              arrraylist
      * @return returns the newly filtered arraylist of Songs
      */
-    private ArrayList<Song> filterByGenre(Genre genre) {
+    private ArrayList<Song> filterByGenre(ArrayList<Genre> genres) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for (Song song : songs) {
-            if (song.getGenres().contains(genre))
-                filteredSongs.add(song);
+        for (Song song : getPublicSongs()) {
+            for(Genre genre : genres){
+                if (!filteredSongs.contains(song) && song.getGenres().contains(genre))
+                    filteredSongs.add(song);
+            }
         }
 
         return filteredSongs;
@@ -235,7 +240,11 @@ public class SongList {
     private ArrayList<Song> filterByBPM(int minBPM, int maxBPM) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for (Song song : songs) {
+        int temp = minBPM;
+        minBPM = Math.min(minBPM, maxBPM);
+        maxBPM = Math.max(temp, maxBPM);
+
+        for (Song song : getPublicSongs()) {
             int tempo = song.getTempo();
             if (tempo >= minBPM && tempo <= maxBPM)
                 filteredSongs.add(song);
@@ -254,7 +263,7 @@ public class SongList {
     private ArrayList<Song> filterByDifficulty(int difficulty) {
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for (Song song : songs) {
+        for (Song song : getPublicSongs()) {
             if (song.getDifficulty() == difficulty)
                 filteredSongs.add(song);
         }
@@ -271,11 +280,17 @@ public class SongList {
     private ArrayList<Song> filterByAuthor(User author){
         ArrayList<Song> filteredSongs = new ArrayList<>();
 
-        for(Song song : songs){
+        for(Song song : getPublicSongs()){
             if(song.getAuthor() == author)
                 filteredSongs.add(song);
         }
 
         return filteredSongs;
+    }
+    
+    public void clear() {
+        if (songs != null) {
+            songs.clear();
+        }
     }
 }

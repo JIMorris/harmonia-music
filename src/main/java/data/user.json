@@ -1,74 +1,12 @@
-[  
-  {
-    "uuid": "f3651e65-2cb0-4753-9e87-64ec608b46fd",
-    "username": "kcrase",
-    "password": "SillyBilly247",
-    "firstName": "Keith",
-    "lastName": "Crase",
-    "favSongs": [ "57e7ddb0-3224-426a-adb2-5a3db7b77ce9", "316cd42c-834b-4e7e-8e64-1effb8226f30" ],
-    "favAuthors": [ "4d3d7236-807b-41c3-84f1-c780c2f58b25", "3d6cd9b2-e688-4fb8-8768-dbdf2d298596" ]
-  },
-  {
-    "uuid": "3d6cd9b2-e688-4fb8-8768-dbdf2d298596",
-    "username": "QueenFan99",
-    "password": "QueenIsTheBest",
-    "firstName": "Mark",
-    "lastName": "Jones",
-    "favSongs": [ "316cd42c-834b-4e7e-8e64-1effb8226f30" ],
-    "favAuthors": [ "4d3d7236-807b-41c3-84f1-c780c2f58b25" ]
-  },
-  {
-    "uuid": "e2bf3af0-94ff-4820-8ee9-46a3dc331ff3",
-    "username": "MusicLover42",
-    "password": "SymphonyNo3aClassic",
-    "firstName": "Sarah",
-    "lastName": "Lee",
-    "favSongs": [ "57e7ddb0-3224-426a-adb2-5a3db7b77ce9" ],
-    "favAuthors": [ "3d6cd9b2-e688-4fb8-8768-dbdf2d298596" ]
-  },
-  {
-    "uuid": "4d3d7236-807b-41c3-84f1-c780c2f58b25",
-    "username": "ImagineWagons",
-    "password": "WagonWheel420_@",
-    "firstName": "John",
-    "lastName": "Doe",
-    "favSongs": [ "57e7ddb0-3224-426a-adb2-5a3db7b77ce9" ],
-    "favAuthors": [ "3d6cd9b2-e688-4fb8-8768-dbdf2d298596" ]
-  },
-  {
-    "uuid": "293dd7e6-dab3-4b84-a1fc-2e86dbf1b75e",
-    "username": "SereneEventide",
-    "password": "LightHouseAtNight",
-    "firstName": "Serene",
-    "lastName": "Eventide",
-    "favSongs": [ "316cd42c-834b-4e7e-8e64-1effb8226f30" ],
-    "favAuthors": [ "4d3d7236-807b-41c3-84f1-c780c2f58b25" ]
-  },
-  {
-    "uuid": "dfc26caa-995e-4764-8cc1-f99bfdfdbd03",
-    "username": "JIMorris",
-    "password": "Ungue55able",
-    "firstName": "Isaac",
-    "lastName": "Morris",
-    "favSongs": [ "57e7ddb0-3224-426a-adb2-5a3db7b77ce9", "316cd42c-834b-4e7e-8e64-1effb8226f30" ],
-    "favAuthors": [ "4d3d7236-807b-41c3-84f1-c780c2f58b25", "3d6cd9b2-e688-4fb8-8768-dbdf2d298596" ]
-  },
-  {
-    "uuid": "11340d8e-7cd9-40ae-b5fb-ff2236311fa7",
-    "username": "TestUser",
-    "password": "securePassword",
-    "firstName": "Test",
-    "lastName": "User",
-    "favSongs": [],
-    "favAuthors": []
-  },
-  {
-    "uuid": "04121b91-7f99-4404-a31f-45cc4dc871a9",
-    "username": "ffredrickson",
-    "password": "myPassword",
-    "firstName": "Felicia",
-    "lastName": "Fredrickson",
-    "favSongs": [],
-    "favAuthors": []  
-  }
+[
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "password": "password123",
+        "iconFile": "defaultUserIcon.png",
+        "favSongs": [],
+        "favAuthors": [],
+        "uuid": "81199497-9b7e-4d56-97fb-4ccc0d4d1a22",
+        "username": "testUser"
+    }
 ]

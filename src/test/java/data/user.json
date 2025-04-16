@@ -5,6 +5,7 @@
     "password": "SillyBilly247",
     "firstName": "Keith",
     "lastName": "Crase",
+    "iconFile": "defaultUserIcon.png",
     "favSongs": [ "57e7ddb0-3224-426a-adb2-5a3db7b77ce9", "316cd42c-834b-4e7e-8e64-1effb8226f30" ],
     "favAuthors": [ "4d3d7236-807b-41c3-84f1-c780c2f58b25", "3d6cd9b2-e688-4fb8-8768-dbdf2d298596" ]
   },
@@ -14,6 +15,7 @@
     "password": "QueenIsTheBest",
     "firstName": "Mark",
     "lastName": "Jones",
+    "iconFile": "defaultUsergIcon.png",
     "favSongs": [ "316cd42c-834b-4e7e-8e64-1effb8226f30" ],
     "favAuthors": [ "4d3d7236-807b-41c3-84f1-c780c2f58b25" ]
   },
@@ -23,6 +25,7 @@
     "password": "SymphonyNo3aClassic",
     "firstName": "Sarah",
     "lastName": "Lee",
+    "iconFile": "defaultUsergIcon.png",
     "favSongs": [ "57e7ddb0-3224-426a-adb2-5a3db7b77ce9" ],
     "favAuthors": [ "3d6cd9b2-e688-4fb8-8768-dbdf2d298596" ]
   },
@@ -32,6 +35,7 @@
     "password": "WagonWheel420_@",
     "firstName": "John",
     "lastName": "Doe",
+    "iconFile": "defaultUsergIcon.png",
     "favSongs": [ "57e7ddb0-3224-426a-adb2-5a3db7b77ce9" ],
     "favAuthors": [ "3d6cd9b2-e688-4fb8-8768-dbdf2d298596" ]
   },
@@ -41,6 +45,7 @@
     "password": "LightHouseAtNight",
     "firstName": "Serene",
     "lastName": "Eventide",
+    "iconFile": "defaultUsergIcon.png",
     "favSongs": [ "316cd42c-834b-4e7e-8e64-1effb8226f30" ],
     "favAuthors": [ "4d3d7236-807b-41c3-84f1-c780c2f58b25" ]
   },
@@ -50,6 +55,7 @@
     "password": "Ungue55able",
     "firstName": "Isaac",
     "lastName": "Morris",
+    "iconFile": "defaultUsergIcon.png",
     "favSongs": [ "57e7ddb0-3224-426a-adb2-5a3db7b77ce9", "316cd42c-834b-4e7e-8e64-1effb8226f30" ],
     "favAuthors": [ "4d3d7236-807b-41c3-84f1-c780c2f58b25", "3d6cd9b2-e688-4fb8-8768-dbdf2d298596" ]
   },
@@ -59,6 +65,7 @@
     "password": "securePassword",
     "firstName": "Test",
     "lastName": "User",
+    "iconFile": "defaultUsergIcon.png",
     "favSongs": [],
     "favAuthors": []
   },
@@ -68,6 +75,7 @@
     "password": "myPassword",
     "firstName": "Felicia",
     "lastName": "Fredrickson",
+    "iconFile": "defaultUsergIcon.png",
     "favSongs": [],
     "favAuthors": []  
   }

@@ -75,4 +75,9 @@ public class InstrumentList {
     public void logout() throws Exception {
         DataWriter.getInstance().saveInstruments();
     }
+
+    public void clear() {
+        if (instruments != null)
+            instruments.clear(); 
+    }
 }
