@@ -25,7 +25,7 @@ public class LoginController {
     private TextField username_txt;
 
     @FXML
-    void LogIn(MouseEvent event) {
+    private void LogIn(MouseEvent event) {
         String username = username_txt.getText();
         String password = password_txt.getText();
         MusicFacade musicFacade = MusicFacade.getInstance();
@@ -38,7 +38,12 @@ public class LoginController {
 
 
     @FXML
-    void signUp(MouseEvent event) throws IOException {
+    private void GoToSignUp(MouseEvent event) throws IOException {
+        //this someohow switches to the signup stuff
+    }
+
+    @FXML
+    private void SignUp(MouseEvent event) {
         
     }
 
