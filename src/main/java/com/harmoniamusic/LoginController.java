@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class LoginController {
+    private MusicFacade musicFacade = MusicFacade.getInstance();
 
     @FXML
     private Label Register;
@@ -28,23 +29,59 @@ public class LoginController {
     private void LogIn(MouseEvent event) {
         String username = username_txt.getText();
         String password = password_txt.getText();
-        MusicFacade musicFacade = MusicFacade.getInstance();
         try {
             musicFacade.login(username, password);
+            App.setRoot("homeTemplate");
         } catch (Exception e) {
-            //DO SOMETHING 
+            // DO SOMETHING
         }
     }
 
-
     @FXML
     private void GoToSignUp(MouseEvent event) throws IOException {
-        //this someohow switches to the signup stuff
+        // this somehow switches to the signup stuff
     }
 
     @FXML
+    private void GoToLogIn(MouseEvent event) throws IOException {
+        // this somehow switches to the signup stuff
+    }
+
+    @FXML
+    private TextField newUsername_txt;
+
+    @FXML
+    private TextField newPassword_txt;
+
+    @FXML
+    private TextField ConfirmPassword_txt;
+
+    @FXML
+    private TextField newFirstName_txt;
+
+    @FXML
+    private TextField newLastName_txt;
+
+    @FXML
     private void SignUp(MouseEvent event) {
-        
+        String newUsername = newUsername_txt.getText();
+        String newPassword = newPassword_txt.getText();
+        String ConfirmPassword = ConfirmPassword_txt.getText();
+        String newFirstName = newFirstName_txt.getText();
+        String newLastName = newLastName_txt.getText();
+        if (!newPassword.equals(ConfirmPassword)) {
+            newPassword_txt.clear();
+            ConfirmPassword_txt.clear();
+            // DO SOMETHING TO DISPLAY MISMATCHING PASSWORDS
+        } else {
+            try {
+                musicFacade.signup(newUsername, ConfirmPassword, newFirstName, newLastName);
+                App.setRoot("homeTemplate");
+            } catch (Exception e) {
+                // I DON'T KNOW WHAT THIS EXCEPTION SHOULD THROW
+                e.printStackTrace();
+            }
+        }
     }
 
 }
