@@ -26,7 +26,7 @@ public class LoginController {
     private TextField username_txt;
 
     @FXML
-    private void LogIn(MouseEvent event) {
+    private void LogIn() {
         String username = username_txt.getText();
         String password = password_txt.getText();
         try {
@@ -38,13 +38,13 @@ public class LoginController {
     }
 
     @FXML
-    private void GoToSignUp(MouseEvent event) throws IOException {
+    private void GoToSignUp() throws IOException {
         // this somehow switches to the signup stuff
     }
 
     @FXML
-    private void GoToLogIn(MouseEvent event) throws IOException {
-        // this somehow switches to the signup stuff
+    private void GoToLogIn() throws IOException {
+        // this somehow switches to the login stuff
     }
 
     @FXML
@@ -63,7 +63,7 @@ public class LoginController {
     private TextField newLastName_txt;
 
     @FXML
-    private void SignUp(MouseEvent event) {
+    private void SignUp() {
         String newUsername = newUsername_txt.getText();
         String newPassword = newPassword_txt.getText();
         String ConfirmPassword = ConfirmPassword_txt.getText();
