@@ -17,16 +17,19 @@ public class NavigatorController {
     private void goToMySongs() throws IOException {
         App.setBar("libraryBar");
         App.setData("mySongsData");
+        SongListController.loadsongs(1);
     }
 
     private void gotoFavoritesongs() throws IOException {
         App.setBar("libraryBar");
         App.setData("favoriteSongsData");
+        SongListController.loadsongs(2);
     }
 
     private void goToPublicSongs() throws IOException { 
         App.setBar("libraryBar");
         App.setData("publicSongsData");
+        SongListController.loadsongs(3);
     }
 
     //methods for top bar
