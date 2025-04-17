@@ -1,10 +1,14 @@
 package com.harmoniamusic;
 
-import com.model.MusicFacade;
+import java.io.IOException;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import com.model.MusicFacade;
 
 public class SettingsController {
     private MusicFacade musicFacade = MusicFacade.getInstance();
+
+    private void goToHome() throws IOException {
+        App.setBar("homeBar");
+        App.setData("homeData");
+    }
 }

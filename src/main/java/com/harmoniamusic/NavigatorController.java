@@ -9,30 +9,35 @@ public class NavigatorController {
 
     //methods for moving from home screen
 
-    private void goToFavoriteAuthor() {
-        //TODO
+    private void goToFavoriteAuthor() throws IOException {
+        App.setBar("libraryBar");
+        App.setData("favoriteAuthorsData");
     }
 
-    private void goToMySongs() {
-        //TODO
+    private void goToMySongs() throws IOException {
+        App.setBar("libraryBar");
+        App.setData("mySongsData");
     }
 
-    private void gotoFavoritesongs() {
-        //TODO
+    private void gotoFavoritesongs() throws IOException {
+        App.setBar("libraryBar");
+        App.setData("favoriteSongsData");
     }
 
-    private void goToPublicSongs() {
-        //TODO
+    private void goToPublicSongs() throws IOException { 
+        App.setBar("libraryBar");
+        App.setData("publicSongsData");
     }
 
     //methods for top bar
 
     private void goToHome() throws IOException {
-        App.setRoot("homeTemplate");
-        //TODO
+        App.setBar("homeBar");
+        App.setData("homeData");
     }
 
     private void goToSettings() throws IOException {
-        //TODO
+        App.setBar("settingsBar");
+        App.setData("settingsData");
     }
 }
