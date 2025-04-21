@@ -9,7 +9,7 @@ public class NavigatorController {
 
     //methods for moving from home screen
 
-    private void goToFavoriteAuthor() throws IOException {
+    private void goToFavoriteAuthors() throws IOException {
         App.setBar("libraryBar");
         App.setData("favoriteAuthorsData");
     }
