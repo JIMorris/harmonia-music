@@ -364,6 +364,14 @@ public class Song {
         reactions.remove(reaction);
     }
 
+    public int getAverageRating() {
+        int rating = 0;
+        for (Reaction reaction: reactions) {
+            rating += reaction.getRating();
+        }
+        return rating/reactions.size();
+    }
+
     /**
      * Inserts a measure after the given MeasureGroup
      * 

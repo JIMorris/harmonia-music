@@ -58,9 +58,16 @@ public class SongListController extends Application {
                 for (Song song : songs) {
                     VBox pane1Content = new VBox(10);
                     pane1Content.getChildren().addAll(
+                            new Label("Ratings: " +song.getAverageRating()),
+                            new Button("play song"),
+                            new Button("add to favorites"),
                             new Label("Difficulty " + song.getDifficulty()),
                             new Label("Description \n" + song.getDescription()),
-                            new Label("Genres \n" + song.getGenres()));
+                            new Label("Genres \n" + song.getGenres()), 
+                            new Button("edit song"),
+                            new Button("copy song"),
+                            new Button("delete song"),
+                            new Button ("publish song"));
                     TitledPane pane1 = new TitledPane(song.getTitle() + " - " + song.getAuthor().getUsername(),
                             pane1Content);
                     accordion.getPanes().add(pane1);
