@@ -28,7 +28,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("loginTemplate"), 640, 480);
         stage.setScene(scene);
         stage.show();
-        setData("loginData");
+       // setData("loginData");
     }
 
     static void setRoot(String fxml) throws IOException {

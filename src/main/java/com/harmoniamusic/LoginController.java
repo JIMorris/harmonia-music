@@ -33,6 +33,9 @@ public class LoginController extends Application{
     private TextField username_txt;
 
     @FXML
+private Label loginErrorLabel;
+
+    @FXML
     private void LogIn() {
         String username = username_txt.getText();
         String password = password_txt.getText();
@@ -41,7 +44,7 @@ public class LoginController extends Application{
             App.setRoot("homeTemplate");
             App.setData("homeData");
         } catch (Exception e) {
-            // DO SOMETHING
+            loginErrorLabel.setVisible(true);
         }
     }
 
