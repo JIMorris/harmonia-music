@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: #deeff6;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: #deeff6;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SignupController">
     <children>
       <Pane layoutX="493.0" layoutY="125.0" prefHeight="750.0" prefWidth="500.0" style="-fx-background-color: #E8D99F; -fx-background-radius: 18px; -fx-border-color: #4F2E0A; -fx-border-radius: 18px; -fx-border-width: 4px;" stylesheets="@styles.css">
          <children>
@@ -29,13 +29,13 @@
                </font>
             </Label>
             <TextField fx:id="username_txt" layoutX="130.0" layoutY="302.0" prefHeight="32.0" prefWidth="240.0" />
-            <TextField fx:id="password_txt" layoutX="130.0" layoutY="381.0" prefHeight="32.0" prefWidth="240.0" />
+            <TextField fx:id="first_txt" layoutX="130.0" layoutY="381.0" prefHeight="32.0" prefWidth="240.0" />
             <Label layoutX="130.0" layoutY="352.0" text="First Name">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="primaryButton" layoutX="130.0" layoutY="627.0" onAction="#LogIn" prefHeight="38.0" prefWidth="240.0" style="-fx-background-color: #14C80D;" text="Continue &gt;" textFill="WHITE">
+            <Button fx:id="primaryButton" layoutX="130.0" layoutY="627.0" onAction="#SignUp" prefHeight="38.0" prefWidth="240.0" style="-fx-background-color: #14C80D;" text="Continue &gt;" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font></Button>
@@ -49,14 +49,14 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="username_txt1" layoutX="131.0" layoutY="458.0" prefHeight="32.0" prefWidth="240.0" />
+            <TextField fx:id="last_txt" layoutX="131.0" layoutY="458.0" prefHeight="32.0" prefWidth="240.0" />
             <TextField fx:id="password_txt1" layoutX="131.0" layoutY="537.0" prefHeight="32.0" prefWidth="240.0" />
             <Label layoutX="131.0" layoutY="508.0" text="Password">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="130.0" layoutY="652.0" prefHeight="49.0" prefWidth="240.0" text="Already a member? Log in" wrapText="true">
+            <Label fx:id="logInLabel" alignment="CENTER" layoutX="130.0" layoutY="652.0" onMouseClicked="#GoToLogIn" prefHeight="49.0" prefWidth="240.0" text="Already a member? Log in" wrapText="true">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>

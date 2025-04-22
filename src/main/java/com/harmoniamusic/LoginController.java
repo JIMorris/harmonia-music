@@ -17,7 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class LoginController extends Application{
+public class LoginController extends Application {
     private MusicFacade musicFacade = MusicFacade.getInstance();
 
     @FXML
@@ -33,7 +33,7 @@ public class LoginController extends Application{
     private TextField username_txt;
 
     @FXML
-private Label loginErrorLabel;
+    private Label loginErrorLabel;
 
     @FXML
     private void LogIn() {
@@ -41,8 +41,8 @@ private Label loginErrorLabel;
         String password = password_txt.getText();
         try {
             musicFacade.login(username, password);
-            App.setRoot("homeTemplate");
-            App.setData("homeData");
+            App.setRoot("templates/homeTemplate");
+            App.setData("/datahomeData");
         } catch (Exception e) {
             loginErrorLabel.setVisible(true);
         }
@@ -50,7 +50,7 @@ private Label loginErrorLabel;
 
     @FXML
     private void GoToSignUp() throws IOException {
-        App.setData("signupData");
+        App.setRoot("templates/signinTemplate");
         // this somehow switches to the signup stuff
     }
 
@@ -60,25 +60,24 @@ private Label loginErrorLabel;
         throw new UnsupportedOperationException("Unimplemented method 'start'");
     }
 
-    //   @FXML
+    // @FXML
     // private BorderPane root;
 
-   // @Override
-//     public void initialize(URL location, ResourceBundle resources) {
-//         BorderPane root = null;
-//         try {
-//            Parent header = FXMLLoader.load(getClass().getResource("login.fxml"));
-//            // Parent sidebar = FXMLLoader.load(getClass().getResource("sidebar.fxml"));
-//             Parent content = FXMLLoader.load(getClass().getResource("log.fxml"));
-            
+    // @Override
+    // public void initialize(URL location, ResourceBundle resources) {
+    // BorderPane root = null;
+    // try {
+    // Parent header = FXMLLoader.load(getClass().getResource("login.fxml"));
+    // // Parent sidebar = FXMLLoader.load(getClass().getResource("sidebar.fxml"));
+    // Parent content = FXMLLoader.load(getClass().getResource("log.fxml"));
 
-//             root.setTop(header);
-//             //root.setLeft(sidebar);
-//             root.setCenter(content);
+    // root.setTop(header);
+    // //root.setLeft(sidebar);
+    // root.setCenter(content);
 
-//         } catch (IOException e) {
-//             e.printStackTrace();
-//         }
-// }
+    // } catch (IOException e) {
+    // e.printStackTrace();
+    // }
+    // }
 
 }

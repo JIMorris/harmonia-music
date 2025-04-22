@@ -26,7 +26,9 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("templates/loginTemplate"), 640, 480);
+       // stage.initStyle(javafx.stage.StageStyle.DECORATED); // Default behavior
         stage.setScene(scene);
+        //stage.sizeToScene();
         stage.show();
        // setData("loginData");
     }
