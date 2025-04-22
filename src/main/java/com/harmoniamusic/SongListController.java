@@ -1,18 +1,13 @@
 package com.harmoniamusic;
 
-import java.util.ArrayList;
-
 import com.model.MusicFacade;
-import com.model.SongList;
-import com.model.UserList;
+import com.model.Song;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
-
-import com.model.Song;
 
 public class SongListController {
     private static MusicFacade musicFacade = MusicFacade.getInstance();
