@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.model.MusicFacade;
 
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,8 +15,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
-public class LoginController {
+public class LoginController extends Application{
     private MusicFacade musicFacade = MusicFacade.getInstance();
 
     @FXML
@@ -47,6 +49,12 @@ public class LoginController {
     private void GoToSignUp() throws IOException {
         App.setData("signupData");
         // this somehow switches to the signup stuff
+    }
+
+    @Override
+    public void start(Stage arg0) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'start'");
     }
 
     //   @FXML

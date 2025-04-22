@@ -4,10 +4,12 @@ import java.io.IOException;
 
 import com.model.MusicFacade;
 
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class SignupController {
+public class SignupController extends Application {
     private MusicFacade musicFacade = MusicFacade.getInstance();
 
     @FXML
@@ -52,6 +54,12 @@ public class SignupController {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void start(Stage arg0) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'start'");
     }
 
 }

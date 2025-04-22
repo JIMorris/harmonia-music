@@ -21,21 +21,21 @@ public class NavigatorController {
     private void goToMySongs() throws IOException {
         App.setBar("libraryBar");
         App.setData("mySongsData");
-        SongListController.loadsongs(1);
+        SongListController.loadSongs(1);
     }
 
     @FXML
     private void gotoFavoritesongs() throws IOException {
         App.setBar("libraryBar");
         App.setData("favoriteSongsData");
-        SongListController.loadsongs(2);
+        SongListController.loadSongs(2);
     }
 
     @FXML
     private void goToPublicSongs() throws IOException { 
         App.setBar("libraryBar");
         App.setData("publicSongsData");
-        SongListController.loadsongs(3);
+        SongListController.loadSongs(3);
     }
 
     //methods for top bar
