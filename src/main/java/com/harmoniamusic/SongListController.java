@@ -36,4 +36,9 @@ public class SongListController {
          VBox root = new VBox(listView);
         Scene scene = new Scene(root, 300, 200);
     }
+
+    public void songDropdown() {
+        
+    }
+    
 }
