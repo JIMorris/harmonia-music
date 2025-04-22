@@ -1,14 +1,19 @@
 package com.harmoniamusic;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.model.MusicFacade;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 
 public class LoginController {
     private MusicFacade musicFacade = MusicFacade.getInstance();
@@ -32,6 +37,7 @@ public class LoginController {
         try {
             musicFacade.login(username, password);
             App.setRoot("homeTemplate");
+            App.setData("homeData");
         } catch (Exception e) {
             // DO SOMETHING
         }
@@ -39,49 +45,29 @@ public class LoginController {
 
     @FXML
     private void GoToSignUp() throws IOException {
+        App.setData("signupData");
         // this somehow switches to the signup stuff
     }
 
-    @FXML
-    private void GoToLogIn() throws IOException {
-        // this somehow switches to the login stuff
-    }
+    //   @FXML
+    // private BorderPane root;
 
-    @FXML
-    private TextField newUsername_txt;
+   // @Override
+//     public void initialize(URL location, ResourceBundle resources) {
+//         BorderPane root = null;
+//         try {
+//            Parent header = FXMLLoader.load(getClass().getResource("login.fxml"));
+//            // Parent sidebar = FXMLLoader.load(getClass().getResource("sidebar.fxml"));
+//             Parent content = FXMLLoader.load(getClass().getResource("log.fxml"));
+            
 
-    @FXML
-    private TextField newPassword_txt;
+//             root.setTop(header);
+//             //root.setLeft(sidebar);
+//             root.setCenter(content);
 
-    @FXML
-    private TextField ConfirmPassword_txt;
-
-    @FXML
-    private TextField newFirstName_txt;
-
-    @FXML
-    private TextField newLastName_txt;
-
-    @FXML
-    private void SignUp() {
-        String newUsername = newUsername_txt.getText();
-        String newPassword = newPassword_txt.getText();
-        String ConfirmPassword = ConfirmPassword_txt.getText();
-        String newFirstName = newFirstName_txt.getText();
-        String newLastName = newLastName_txt.getText();
-        if (!newPassword.equals(ConfirmPassword)) {
-            newPassword_txt.clear();
-            ConfirmPassword_txt.clear();
-            // DO SOMETHING TO DISPLAY MISMATCHING PASSWORDS
-        } else {
-            try {
-                musicFacade.signup(newUsername, ConfirmPassword, newFirstName, newLastName);
-                App.setRoot("homeTemplate");
-            } catch (Exception e) {
-                // I DON'T KNOW WHAT THIS EXCEPTION SHOULD THROW
-                e.printStackTrace();
-            }
-        }
-    }
+//         } catch (IOException e) {
+//             e.printStackTrace();
+//         }
+// }
 
 }
