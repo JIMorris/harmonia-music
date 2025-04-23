@@ -307,6 +307,15 @@ public class AudioPlayer {
     }
 
     /**
+     * Returns the tempo of the current song
+     * 
+     * @return int tempo of the current song
+     */
+    public int getBPM(){
+        return currentSong.getTempo();
+    }
+
+    /**
      * Turns a given song into a Pattern object that JFugue can read
      * 
      * @return A new pattern object that is derived from the currentSong object (of

@@ -415,4 +415,13 @@ public class MusicFacade {
     public ArrayList<Instrument> getAllInstruments(){
         return instrumentList.getInstruments();
     }
+
+    /**
+     * Returns the tempo of the current song
+     * 
+     * @return int tempo of the current song
+     */
+    public int getBPM(){
+        return audioPlayer.getBPM();
+    }
 }

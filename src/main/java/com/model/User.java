@@ -99,6 +99,7 @@ public class User {
     /**
      * Retrieves a users favorite authors
      * 
+     * 
      * @return The user's favorite authors (which is an ArrayList of type User)
      */
     public ArrayList<User> getFavAuthors() {
