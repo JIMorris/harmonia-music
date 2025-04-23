@@ -222,6 +222,10 @@ public class MusicFacade {
         return audioPlayer.getNotes(measure);
     }
 
+    public SongList getSongList() {
+        return songList;
+    }
+
     /**
      * Selects a Measure 
      * 

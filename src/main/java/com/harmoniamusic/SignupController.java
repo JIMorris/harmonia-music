@@ -36,7 +36,6 @@ public class SignupController extends Application {
     @FXML
     private void GoToLogIn() throws IOException {
         App.setRoot("templates/loginTemplate");
-        // this somehow switches to the login stuff
     }
 
     @FXML
