@@ -17,10 +17,10 @@ public class App extends Application {
 
     private static Scene scene;
 
-    @FXML
+    
     private static AnchorPane bar;
 
-    @FXML
+    
     private static AnchorPane data;
 
     @Override
@@ -51,6 +51,15 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
+
+    public static void setBarPane(AnchorPane barPane) {
+        bar = barPane;
+    }
+    
+    public static void setDataPane(AnchorPane dataPane) {
+        data = dataPane;
+    }
+    
 
     public static void main(String[] args) {
         launch();

@@ -13,28 +13,28 @@ public class NavigatorController {
 
     @FXML
     private void goToFavoriteAuthors() throws IOException {
-        App.setBar("libraryBar");
-        App.setData("favoriteAuthorsData");
+        App.setBar("topbar/libraryBar");
+        App.setData("data/favoriteAuthorsData");
     }
 
     @FXML
     private void goToMySongs() throws IOException {
-        App.setBar("libraryBar");
-        App.setData("mySongsData");
+        App.setBar("topbar/libraryBar");
+        App.setData("data/mySongsData");
         SongListController.loadSongs(1);
     }
 
     @FXML
     private void gotoFavoritesongs() throws IOException {
-        App.setBar("libraryBar");
-        App.setData("favoriteSongsData");
+        App.setBar("topbar/libraryBar");
+        App.setData("data/favoriteSongsData");
         SongListController.loadSongs(2);
     }
 
     @FXML
     private void goToPublicSongs() throws IOException { 
-        App.setBar("libraryBar");
-        App.setData("publicSongsData");
+        App.setBar("topbar/libraryBar");
+        App.setData("data/publicSongsData");
         SongListController.loadSongs(3);
     }
 
@@ -42,13 +42,13 @@ public class NavigatorController {
 
     @FXML
     private void goToHome() throws IOException {
-        App.setBar("homeBar");
-        App.setData("homeData");
+        App.setBar("topbar/homeBar");
+        App.setData("data/homeData");
     }
 
     @FXML
     private void goToSettings() throws IOException {
-        App.setBar("settingsBar");
-        App.setData("settingsData");
+        App.setBar("topbar/settingsBar");
+        App.setData("data/settingsData");
     }
 }
