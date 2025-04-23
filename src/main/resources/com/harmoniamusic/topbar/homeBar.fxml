@@ -4,14 +4,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="552.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="50.0" prefWidth="552.0" style="-fx-background-color: DEEFF5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="50.0" prefWidth="552.0" style="-fx-background-color: DEEFF5;">
-         <children>
-            <Button layoutX="483.0" layoutY="13.0" mnemonicParsing="false" text="Profile" />
-            <Text layoutX="232.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Harmonia Music" />
-         </children>
-      </Pane>
+      <Button layoutX="483.0" layoutY="13.0" mnemonicParsing="false" text="Profile" />
+      <Text layoutX="232.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Harmonia Music" />
    </children>
 </Pane>
