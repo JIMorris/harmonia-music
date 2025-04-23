@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -57,17 +58,68 @@ public class SongListController extends Application {
                 songs = musicFacade.openMySongs();
                 for (Song song : songs) {
                     VBox pane1Content = new VBox(10);
+                    Button playButton = new Button("play song");
+                    playButton.setOnMouseClicked(e -> {
+                        //TODO
+                    });
+                    Button addFav =  new Button("add to favorites");
+                    addFav.setOnMouseClicked(e -> {
+                        musicFacade.toggleFavorite(song);
+                    });
+                    Label Diff = new Label("Difficulty ");
+                    TextField setDiff = new TextField(String.valueOf(song.getDifficulty()));
+                    setDiff.setOnAction(e -> {
+                        int newDiff = Integer.parseInt(setDiff.getText());
+                        song.setDifficulty(newDiff);
+                        setDiff.setText(String.valueOf(song.getDifficulty()));
+                    });
+                    Label description = new Label("Description");
+                    TextField setDescription = new TextField(song.getDescription());
+                    setDescription.setOnAction(e -> {
+                        song.setDescription(setDescription.getText());
+                        setDescription.setText(song.getDescription());
+                    });
+                    // Label Genre = new Label("Genres");
+                    // TextField setGenre = new TextField(song.viewGenres());
+                    // setDescription.setOnAction(e -> {
+                    //     song.set(setDescription.getText());
+                    //     setDescription.setText(song.getDescription());
+                    // });
+                    Button editSong = new Button("edit song");
+                    editSong.setOnMouseClicked(e -> {
+                        //TODO
+                    });
+                    Button copySong = new Button("copy song");
+                    copySong.setOnMouseClicked(e -> {
+                        //TODO
+                    });
+                    Button deleteSong = new Button("delete song");
+                    deleteSong.setOnMouseClicked(e -> {
+                        musicFacade.getSongList().removeSong(song);
+                        //TODO ???
+                    });
+                    Button publishSong = new Button("publish song");
+                    deleteSong.setOnMouseClicked(e -> {
+                        song.changePublish();
+                        if (song.isPublished()) {
+                            publishSong.setText("unpublish song");
+                        } else
+                            publishSong.setText("publsh song");
+                    });
+
                     pane1Content.getChildren().addAll(
-                            new Label("Ratings: " +song.getAverageRating()),
-                            new Button("play song"),
-                            new Button("add to favorites"),
-                            new Label("Difficulty " + song.getDifficulty()),
-                            new Label("Description \n" + song.getDescription()),
-                            new Label("Genres \n" + song.getGenres()), 
-                            new Button("edit song"),
-                            new Button("copy song"),
-                            new Button("delete song"),
-                            new Button ("publish song"));
+                            new Label("Ratings: " + song.getAverageRating()),
+                            playButton,
+                            addFav,
+                            Diff,
+                            setDiff,
+                            description,
+                            setDescription,
+                            new Label("Genres \n" + song.getGenres()),
+                            editSong,
+                            copySong,
+                            deleteSong,
+                            publishSong);
                     TitledPane pane1 = new TitledPane(song.getTitle() + " - " + song.getAuthor().getUsername(),
                             pane1Content);
                     accordion.getPanes().add(pane1);
