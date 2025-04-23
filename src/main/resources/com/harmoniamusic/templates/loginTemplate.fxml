@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1000.0" prefWidth="1440.0" style="-fx-background-color: #deeff6;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.LoginController">
+<AnchorPane prefHeight="303.0" prefWidth="246.0" style="-fx-background-color: #deeff6;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.LoginController">
     <children>
       <Pane layoutX="493.0" layoutY="125.0" prefHeight="750.0" prefWidth="500.0" style="-fx-background-color: #E8D99F; -fx-background-radius: 18px; -fx-border-color: #4F2E0A; -fx-border-radius: 18px; -fx-border-width: 4px;" stylesheets="@styles.css">
          <children>

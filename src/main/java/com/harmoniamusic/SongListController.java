@@ -187,8 +187,8 @@ public class SongListController extends Application {
                         musicFacade.openSong(song);
                         try {
                             App.setRoot("templates/musicTemplate");
-                            App.setBar("topbar/newSongBar");
-                            App.setData("data/newSongData");
+                            App.setBar("topbar/songEditorBar");
+                            App.setData("data/songEditorData");
                         } catch (IOException e1) {
                             e1.printStackTrace();
                         }
