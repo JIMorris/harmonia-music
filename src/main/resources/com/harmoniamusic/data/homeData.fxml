@@ -3,12 +3,19 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+   prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.NavigatorController">
    <children>
-      <Button fx:id="MySongsDataButtons" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="580.0" text="My Songs" />
-      <Button fx:id="PublicSongsDataButton" layoutX="14.0" layoutY="104.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="580.0" text="Public Songs" />
-      <Button fx:id="FavoriteSongsDataButton" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="580.0" text="Favorite Songs" />
-      <Button fx:id="FavoriteAuthorsDataButton" layoutX="14.0" layoutY="298.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="580.0" text="Favorite Authors" />
+      <Button fx:id="MySongsDataButtons" layoutX="14.0" layoutY="14.0" mnemonicParsing="false"
+         onMouseClicked="#goToMySongs" prefHeight="80.0" prefWidth="580.0" text="My Songs" />
+      <Button fx:id="PublicSongsDataButton" layoutX="14.0" layoutY="104.0" mnemonicParsing="false"
+         onMouseClicked="#goToPublicSongs" prefHeight="80.0" prefWidth="580.0" text="Public Songs" />
+      <Button fx:id="FavoriteSongsDataButton" layoutX="14.0" layoutY="200.0" mnemonicParsing="false"
+         onMouseClicked="#gotoFavoritesongs" prefHeight="80.0" prefWidth="580.0"
+         text="Favorite Songs" />
+      <Button fx:id="FavoriteAuthorsDataButton" layoutX="14.0" layoutY="298.0"
+         mnemonicParsing="false" onMouseClicked="#goToFavoriteAuthors" prefHeight="80.0"
+         prefWidth="580.0" text="Favorite Authors" />
    </children>
 </Pane>

@@ -6,19 +6,24 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.HomeTemplateController">
    <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+      <VBox prefHeight="400.0" prefWidth="600.0">
          <children>
-            <AnchorPane prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: cyan;" />
+            <!-- TOP BAR placeholder -->
+            <AnchorPane fx:id="bar" prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: cyan;" />
+
             <StackPane prefHeight="322.0" prefWidth="600.0">
                <children>
+                  <!-- MAIN CONTENT placeholder -->
                   <ScrollPane prefHeight="111.0" prefWidth="434.0">
                      <content>
-                        <AnchorPane prefHeight="319.0" prefWidth="594.0" />
+                        <AnchorPane fx:id="data" prefHeight="319.0" prefWidth="594.0" />
                      </content>
                   </ScrollPane>
-                  <VBox managed="false" prefHeight="200.0" prefWidth="100.0" visible="false">
+
+                  <!-- Some other hidden VBox -->
+                  <VBox managed="false" visible="false" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <Button fx:id="MySongButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="116.0" text="My Songs" />
                         <Button fx:id="SearchSongButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="115.0" text="Search Songs" />
