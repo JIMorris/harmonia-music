@@ -42,7 +42,8 @@ public class LoginController extends Application {
         try {
             musicFacade.login(username, password);
             App.setRoot("templates/homeTemplate");
-            App.setData("/datahomeData");
+            App.setData("data/homeData");
+            App.setBar("topbar/homeBar");
         } catch (Exception e) {
             loginErrorLabel.setVisible(true);
         }
