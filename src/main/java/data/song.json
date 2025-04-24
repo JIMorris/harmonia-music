@@ -2,7 +2,7 @@
   {
     "uuid": "98a053f8-9814-41ca-941a-9f8976ea4be6",
     "title": "Mary Had A Little Lamb",
-    "author": "dfc26caa-995e-4764-8cc1-f99bfdfdbd03",
+    "author": "81199497-9b7e-4d56-97fb-4ccc0d4d1a22",
     "description": "Classic Tune",
     "genres": [
       "POP"
@@ -283,7 +283,7 @@
   {
     "uuid": "57e7ddb0-3224-426a-adb2-5a3db7b77ce9",
     "title": "Monster",
-    "author": "dfc26caa-995e-4764-8cc1-f99bfdfdbd03",
+    "author": "81199497-9b7e-4d56-97fb-4ccc0d4d1a22",
     "description": "Forlorn and Hopeful",
     "genres": [
       "POP"
@@ -378,7 +378,7 @@
   {
     "uuid": "316cd42c-834b-4e7e-8e64-1effb8226f30",
     "title": "Bohemian Rhapsody",
-    "author": "dfc26caa-995e-4764-8cc1-f99bfdfdbd03",
+    "author": "81199497-9b7e-4d56-97fb-4ccc0d4d1a22",
     "description": "A classic song.",
     "genres": [
       "ROCK",
@@ -515,7 +515,7 @@
   {
     "uuid": "3a8ca75d-6a38-4a0f-a7bc-eb14291b4238",
     "title": "The Lick",
-    "author": "11340d8e-7cd9-40ae-b5fb-ff2236311fa7",
+    "author": "81199497-9b7e-4d56-97fb-4ccc0d4d1a22",
     "description": "A popular jazz phrase",
     "iconFile": "defaultSongIcon.png",
     "genres": [
@@ -584,7 +584,7 @@
   {
     "uuid": "9fed135f-f3a5-415c-a8a0-346bb6a6a08f",
     "title": "Mary Had A Little Lamb But Wrong",
-    "author": "11340d8e-7cd9-40ae-b5fb-ff2236311fa7",
+    "author": "81199497-9b7e-4d56-97fb-4ccc0d4d1a22",
     "description": "Classic Tune",
     "genres": [
       "POP"
