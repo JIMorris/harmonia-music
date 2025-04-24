@@ -15,7 +15,7 @@
             <TextField alignment="TOP_CENTER" prefHeight="34.0" prefWidth="432.0" />
          </children>
       </StackPane>
-      <Accordion prefHeight="297.0" prefWidth="432.0">
+      <Accordion fx:id="songListAccordion" prefHeight="297.0" prefWidth="432.0">
         <panes>
           <TitledPane animated="false" text="untitled 1" />
           <TitledPane animated="false" prefWidth="432.0" text="untitled 2" />

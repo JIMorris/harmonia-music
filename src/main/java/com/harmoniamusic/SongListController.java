@@ -23,11 +23,10 @@ public class SongListController extends Application {
     private static MusicFacade musicFacade = MusicFacade.getInstance();
 
     @FXML
-    private static Accordion accordion;
+    private static Accordion songListAccordion;
 
     public static void loadSongs(int type) {
         ArrayList<Song> songs = null;
-        accordion = new Accordion();
         switch (type) {
             case 1:
                 songs = musicFacade.openMySongs();
@@ -112,7 +111,7 @@ public class SongListController extends Application {
                             publishSong);
                     TitledPane pane1 = new TitledPane(song.getTitle() + " - " + song.getAuthor().getUsername(),
                             pane1Content);
-                    accordion.getPanes().add(pane1);
+                    songListAccordion.getPanes().add(pane1);
                 }
                 break;
             case 2:
@@ -160,7 +159,7 @@ public class SongListController extends Application {
                             publishSong);
                     TitledPane pane1 = new TitledPane(song.getTitle() + " - " + song.getAuthor().getUsername(),
                             pane1Content);
-                    accordion.getPanes().add(pane1);
+                    songListAccordion.getPanes().add(pane1);
                 }
                 break;
             case 3:
@@ -208,7 +207,7 @@ public class SongListController extends Application {
                             publishSong);
                     TitledPane pane1 = new TitledPane(song.getTitle() + " - " + song.getAuthor().getUsername(),
                             pane1Content);
-                    accordion.getPanes().add(pane1);
+                    songListAccordion.getPanes().add(pane1);
                 }
                 break;
 

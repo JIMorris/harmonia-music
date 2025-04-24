@@ -20,21 +20,21 @@ public class NavigatorController {
     @FXML
     private void goToMySongs() throws IOException {
         App.setBar("topbar/libraryBar");
-        App.setData("data/mySongsData");
+        App.setData("data/libraryData");
         SongListController.loadSongs(1);
     }
 
     @FXML
     private void gotoFavoritesongs() throws IOException {
         App.setBar("topbar/libraryBar");
-        App.setData("data/favoriteSongsData");
+        App.setData("data/libraryData");
         SongListController.loadSongs(2);
     }
 
     @FXML
     private void goToPublicSongs() throws IOException { 
         App.setBar("topbar/libraryBar");
-        App.setData("data/publicSongsData");
+        App.setData("data/libraryData");
         SongListController.loadSongs(3);
     }
 
