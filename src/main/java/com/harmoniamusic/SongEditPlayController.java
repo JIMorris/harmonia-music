@@ -40,7 +40,7 @@ public class SongEditPlayController extends Application {
         initializeBPMText();
     }
 
-    public static void opneSong(Song song){
+    public static void openSong(Song song){
 
     }
 
