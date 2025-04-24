@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import com.model.MusicFacade;
 import com.model.Song;
 
+import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
@@ -13,14 +15,22 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-public class NavigatorController {
+public class NavigatorController extends Application{
     private MusicFacade musicFacade = MusicFacade.getInstance();
 
     // methods for moving from home screen
 
     @FXML
     private Accordion songListAccordion;
+
+
+    @FXML
+public void initialize() {
+    System.out.println("Initialized, songListAccordion: " + (songListAccordion != null)+"\n");
+}
+
 
     @FXML
     private void goToFavoriteAuthors() throws IOException {
@@ -31,11 +41,14 @@ public class NavigatorController {
     @FXML
     private void goToMySongs() throws IOException {
         System.out.println("goToMySongs called on controller instance: " + this.hashCode());
-        System.out.println("Is songListAccordion null here? " + (songListAccordion == null));
+        System.out.println("Is songListAccordion good at method call? " + (songListAccordion != null));
+        System.out.println();
 
         App.setBar("topbar/libraryBar");
         App.setData("data/libraryData");
-        loadSongs(1);
+          Platform.runLater(() -> {
+        loadSongs(1);  // Make sure to populate the accordion after the scene is fully loaded
+    });
     }
 
     @FXML
@@ -76,6 +89,7 @@ public class NavigatorController {
                     Button playButton = new Button("play song");
                     playButton.setOnMouseClicked(e -> {
                         try {
+                            System.out.println("gbjkfbglfjbgjefsgbbfdgfhgbfbfhdbgjfdgbfgbfdhewbfbgrhjbgr");
                             musicFacade.openSong(song);
                             App.setRoot("templates/musicTemplate");
                             App.setBar("topbar/songPlayerBar");
@@ -255,5 +269,11 @@ public class NavigatorController {
             default:
                 break;
         }
+    }
+    
+    @Override
+    public void start(Stage arg0) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'start'");
     }
 }
