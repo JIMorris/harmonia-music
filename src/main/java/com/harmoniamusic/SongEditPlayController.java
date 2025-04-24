@@ -5,11 +5,13 @@ import java.io.IOException;
 import com.model.Chord;
 import com.model.Instrument;
 import com.model.MusicFacade;
+import com.model.Song;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class SongEditPlayController extends Application {
@@ -27,12 +29,23 @@ public class SongEditPlayController extends Application {
     @FXML
     private TextField tempoText;
 
+    @FXML
+    private GridPane sheetMusic;
+
     @Override
     public void start(Stage stage) throws IOException {
         musicFacade = MusicFacade.getInstance();
         initializeChordDropdown();
         initializeInstrumentDropdown();
         initializeBPMText();
+    }
+
+    public static void openSong(Song song){
+
+    }
+
+    public static void editSong(Song song){
+        
     }
 
     @FXML
@@ -109,6 +122,10 @@ public class SongEditPlayController extends Application {
 
     @FXML
     private void openSongInfo() throws IOException {
+        // TODO
+    }
+
+    private void update() {
         // TODO
     }
 
