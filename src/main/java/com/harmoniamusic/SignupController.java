@@ -32,6 +32,9 @@ public class SignupController extends Application {
     
     @FXML
     private Label logInLabel;
+
+    @FXML
+    private Label signupErrorLabel;
     
     @FXML
     private void GoToLogIn() throws IOException {
@@ -50,7 +53,7 @@ public class SignupController extends Application {
             App.setData("data/homeData");
             App.setBar("topbar/homeBar");
         } catch (Exception e) {
-            e.printStackTrace();
+           signupErrorLabel.setVisible(true);
         }
     }
 

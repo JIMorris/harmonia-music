@@ -121,7 +121,7 @@ public class SongListController extends Application {
                     copySong.setOnMouseClicked(e -> {
                         SongEditPlayController.editSong(musicFacade.copySong(song));
                     });
-                    Label publishSong = new Label(song.isPublished() ? "unpublished" : "published");
+                    Label publishSong = new Label(song.isPublished() ? "published" : "unpublished");
                     pane1Content.getChildren().addAll(
                             new Label("Ratings: " + song.getAverageRating()),
                             playButton,
@@ -158,7 +158,7 @@ public class SongListController extends Application {
                     copySong.setOnMouseClicked(e -> {
                         SongEditPlayController.editSong(musicFacade.copySong(song));
                     });
-                    Label publishSong = new Label(song.isPublished() ? "unpublished" : "published");
+                    Label publishSong = new Label(song.isPublished() ? "published" : "unpublished");
                     pane1Content.getChildren().addAll(
                             new Label("Ratings: " + song.getAverageRating()),
                             playButton,
