@@ -5,19 +5,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: #deeff6;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SignupController">
-    <children>
-      <Pane layoutX="493.0" layoutY="125.0" prefHeight="750.0" prefWidth="500.0" style="-fx-background-color: #E8D99F; -fx-background-radius: 18px; -fx-border-color: #4F2E0A; -fx-border-radius: 18px; -fx-border-width: 4px;" stylesheets="@styles.css">
+<StackPane prefHeight="750.0" prefWidth="500.0" style="-fx-background-color: #deeff6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SignupController">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="500.0" style="-fx-background-color: #E8D99F; -fx-background-radius: 18px; -fx-border-color: #4F2E0A; -fx-border-radius: 18px; -fx-border-width: 4px;" stylesheets="@styles.css">
          <children>
-
+      
             <ImageView fx:id="logoImage" fitHeight="130.0" fitWidth="119.0" layoutX="191.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@harmoniaLogo.png" />
-               </image></ImageView>
+               </image>
+            </ImageView>
             <Label layoutX="116.0" layoutY="227.0" text="Sign in to Harmonia Music">
                <font>
                   <Font name="Arial Bold" size="22.0" />
@@ -38,7 +39,8 @@
             <Button fx:id="primaryButton" layoutX="130.0" layoutY="627.0" onAction="#SignUp" prefHeight="38.0" prefWidth="240.0" style="-fx-background-color: #14C80D;" text="Continue &gt;" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
-               </font></Button>
+               </font>
+            </Button>
             <Label layoutX="134.0" layoutY="569.0" prefHeight="49.0" prefWidth="240.0" text="Password recommended to be at least 15 characters including a number and special character" wrapText="true">
                <font>
                   <Font name="Arial" size="12.0" />
@@ -63,5 +65,5 @@
             </Label>
          </children>
         </Pane>
-    </children>
-</AnchorPane>
+   </children>
+</StackPane>
