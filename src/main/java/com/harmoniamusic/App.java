@@ -3,7 +3,6 @@ package com.harmoniamusic;
 import java.io.IOException;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -42,9 +41,11 @@ public class App extends Application {
         bar.getChildren().setAll(view);
     }
 
-    static void setData(String fxml) throws IOException {
-        Parent view = loadFXML(fxml);
+    static FXMLLoader setData(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        Parent view = fxmlLoader.load();
         data.getChildren().setAll(view);
+        return fxmlLoader;
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

@@ -7,6 +7,7 @@ import com.model.MusicFacade;
 import com.model.Song;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,12 +31,10 @@ public class NavigatorController {
 
     @FXML
     private void goToMySongs() throws IOException {
-        System.out.println("goToMySongs called on controller instance: " + this.hashCode());
-        System.out.println("Is songListAccordion null here? " + (songListAccordion == null));
-
         App.setBar("topbar/libraryBar");
-        App.setData("data/libraryData");
-        loadSongs(1);
+        FXMLLoader test = App.setData("data/libraryData");
+        NavigatorController controller = test.getController();
+        controller.loadSongs(1);
     }
 
     @FXML
