@@ -377,6 +377,8 @@ public class Song {
     }
 
     public int getAverageRating() {
+        if (reactions.size() == 0) 
+            return 0;
         int rating = 0;
         for (Reaction reaction: reactions) {
             rating += reaction.getRating();

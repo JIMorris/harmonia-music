@@ -84,10 +84,8 @@ public void initialize() {
                     Button playButton = new Button("play song");
                     playButton.setOnMouseClicked(e -> {
                         try {
-                            System.out.println("gbjkfbglfjbgjefsgbbfdgfhgbfbfhdbgjfdgbfgbfdhewbfbgrhjbgr");
                             musicFacade.openSong(song);
-                            App.setRoot("templates/musicTemplate");
-                            App.setBar("topbar/songPlayerBar");
+                           // App.setRoot("templates/musicTemplate");
                             App.setData("data/songPlayerData");
                         } catch (IOException e1) {
                             e1.printStackTrace();
