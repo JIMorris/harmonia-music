@@ -46,9 +46,7 @@ public void initialize() {
 
         App.setBar("topbar/libraryBar");
         App.setData("data/libraryData");
-          Platform.runLater(() -> {
-        loadSongs(1);  // Make sure to populate the accordion after the scene is fully loaded
-    });
+        loadSongs(1);
     }
 
     @FXML
@@ -270,7 +268,7 @@ public void initialize() {
                 break;
         }
     }
-    
+
     @Override
     public void start(Stage arg0) throws Exception {
         // TODO Auto-generated method stub
