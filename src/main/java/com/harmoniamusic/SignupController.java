@@ -16,10 +16,10 @@ public class SignupController extends Application {
 
     
     @FXML
-    private TextField username_txt1;
+    private TextField username_txt;
     
     @FXML
-    private TextField password_txt1;
+    private TextField password_txt;
     
     @FXML
     private TextField first_txt;
@@ -40,14 +40,15 @@ public class SignupController extends Application {
 
     @FXML
     private void SignUp() {
-        String newUsername = username_txt1.getText();
-        String newPassword = password_txt1.getText();
+        String newUsername = username_txt.getText();
+        String newPassword = password_txt.getText();
         String newFirstName = first_txt.getText();
         String newLastName = last_txt.getText();
         try {
             musicFacade.signup(newUsername, newPassword, newFirstName, newLastName);
-            App.setRoot("homeTemplate");
-            App.setData("homeData");
+            App.setRoot("templates/homeTemplate");
+            App.setData("data/homeData");
+            App.setBar("topbar/homeBar");
         } catch (Exception e) {
             e.printStackTrace();
         }

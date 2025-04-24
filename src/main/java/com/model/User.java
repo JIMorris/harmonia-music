@@ -209,4 +209,12 @@ public class User {
         else
             favAuthors.add(author);
     }
+
+    public boolean isFavoriteSong(Song song) {
+        for (Song aSong: favSongs) {
+            if (aSong == song) 
+                return true;
+        }
+    return false;
+    }
 }

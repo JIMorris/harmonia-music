@@ -226,6 +226,10 @@ public class MusicFacade {
         return songList;
     }
 
+    public UserList getUserList() {
+        return userList;
+    }
+
     /**
      * Selects a Measure 
      * 

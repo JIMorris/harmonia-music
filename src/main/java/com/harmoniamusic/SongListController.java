@@ -23,9 +23,9 @@ public class SongListController extends Application {
     private static MusicFacade musicFacade = MusicFacade.getInstance();
 
     @FXML
-    private static Accordion songListAccordion;
+    private Accordion songListAccordion;
 
-    public static void loadSongs(int type) {
+    public void loadSongs(int type) {
         ArrayList<Song> songs = null;
         switch (type) {
             case 1:
@@ -34,18 +34,17 @@ public class SongListController extends Application {
                     VBox pane1Content = new VBox(10);
                     Button playButton = new Button("play song");
                     playButton.setOnMouseClicked(e -> {
-                        try {
-                            musicFacade.openSong(song);
-                            App.setRoot("templates/musicTemplate");
-                            App.setBar("topbar/songPlayerBar");
-                            App.setData("data/songPlayerData");
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        }
+                        SongEditPlayController.openSong(song);
                     });
-                    Button addFav = new Button("add to favorites");
+                    Button addFav = new Button(
+                            musicFacade.getUserList().getCurrentUser().isFavoriteSong(song) ? "remove from favorite"
+                                    : "add to favorites");
                     addFav.setOnMouseClicked(e -> {
                         musicFacade.toggleFavorite(song);
+                        if (musicFacade.getUserList().getCurrentUser().isFavoriteSong(song))
+                            addFav.setText("remove from favorite");
+                         else
+                            addFav.setText("add to favorites");
                     });
                     Label Diff = new Label("Difficulty ");
                     TextField setDiff = new TextField(String.valueOf(song.getDifficulty()));
@@ -57,43 +56,29 @@ public class SongListController extends Application {
                     Label description = new Label("Description");
                     TextField setDescription = new TextField(song.getDescription());
                     setDescription.setOnAction(e -> {
-                        song.setDescription(setDescription.getText());
                         setDescription.setText(song.getDescription());
+                        song.setDescription(setDescription.getText());
                     });
                     Button editSong = new Button("edit song");
                     editSong.setOnMouseClicked(e -> {
-                        try {
-                            musicFacade.openSong(song);
-                            App.setRoot("templates/musicTemplate");
-                            App.setBar("topbar/songEditorBar");
-                            App.setData("data/songEditorData");
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        }
+                        SongEditPlayController.editSong(song);
                     });
                     Button copySong = new Button("copy song");
                     copySong.setOnMouseClicked(e -> {
-                        musicFacade.openSong(song);
-                        try {
-                            App.setRoot("templates/musicTemplate");
-                            App.setBar("topbar/newSongBar");
-                            App.setData("data/newSongData");
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        }
+                        SongEditPlayController.editSong(musicFacade.copySong(song));
                     });
                     Button deleteSong = new Button("delete song");
                     deleteSong.setOnMouseClicked(e -> {
                         musicFacade.getSongList().removeSong(song);
                         // TODO will this work for the accordion?
                     });
-                    Button publishSong = new Button("publish song");
-                    deleteSong.setOnMouseClicked(e -> {
+                    Button publishSong = new Button(song.isPublished() ? "unpublish song" : "publish song");
+                    publishSong.setOnMouseClicked(e -> {
                         song.changePublish();
                         if (song.isPublished()) {
                             publishSong.setText("unpublish song");
                         } else
-                            publishSong.setText("publsh song");
+                            publishSong.setText("publish song");
                     });
 
                     pane1Content.getChildren().addAll(
@@ -120,34 +105,23 @@ public class SongListController extends Application {
                     VBox pane1Content = new VBox(10);
                     Button playButton = new Button("play song");
                     playButton.setOnMouseClicked(e -> {
-                        try {
-                            musicFacade.openSong(song);
-                            App.setRoot("templates/musicTemplate");
-                            App.setBar("topbar/songEditorBar");
-                            App.setData("data/songEditorData");
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        }
+                        SongEditPlayController.openSong(song);
                     });
-                    Button addFav = new Button("add to favorites");
+                    Button addFav = new Button(
+                            musicFacade.getUserList().getCurrentUser().isFavoriteSong(song) ? "remove from favorite"
+                                    : "add to favorites");
                     addFav.setOnMouseClicked(e -> {
                         musicFacade.toggleFavorite(song);
+                        if (musicFacade.getUserList().getCurrentUser().isFavoriteSong(song))
+                            addFav.setText("remove from favorite");
+                         else
+                            addFav.setText("add to favorites");
                     });
                     Button copySong = new Button("copy song");
                     copySong.setOnMouseClicked(e -> {
-                        musicFacade.openSong(song);
-                        try {
-                            App.setRoot("templates/musicTemplate");
-                            App.setBar("topbar/newSongBar");
-                            App.setData("data/newSongData");
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        }
+                        SongEditPlayController.editSong(musicFacade.copySong(song));
                     });
-                    Label publishSong = new Label("published");
-                    if (!song.isPublished()) {
-                        publishSong.setText("unpublished");
-                    }
+                    Label publishSong = new Label(song.isPublished() ? "unpublished" : "published");
                     pane1Content.getChildren().addAll(
                             new Label("Ratings: " + song.getAverageRating()),
                             playButton,
@@ -168,34 +142,23 @@ public class SongListController extends Application {
                     VBox pane1Content = new VBox(10);
                     Button playButton = new Button("play song");
                     playButton.setOnMouseClicked(e -> {
-                        try {
-                            musicFacade.openSong(song);
-                            App.setRoot("templates/musicTemplate");
-                            App.setBar("topbar/songEditorBar");
-                            App.setData("data/songEditorData");
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        }
+                        SongEditPlayController.openSong(song);
                     });
-                    Button addFav = new Button("add to favorites");
+                    Button addFav = new Button(
+                            musicFacade.getUserList().getCurrentUser().isFavoriteSong(song) ? "remove from favorite"
+                                    : "add to favorites");
                     addFav.setOnMouseClicked(e -> {
                         musicFacade.toggleFavorite(song);
+                        if (musicFacade.getUserList().getCurrentUser().isFavoriteSong(song))
+                            addFav.setText("remove from favorite");
+                         else
+                            addFav.setText("add to favorites");
                     });
                     Button copySong = new Button("copy song");
                     copySong.setOnMouseClicked(e -> {
-                        musicFacade.openSong(song);
-                        try {
-                            App.setRoot("templates/musicTemplate");
-                            App.setBar("topbar/songEditorBar");
-                            App.setData("data/songEditorData");
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        }
+                        SongEditPlayController.editSong(musicFacade.copySong(song));
                     });
-                    Label publishSong = new Label("published");
-                    if (!song.isPublished()) {
-                        publishSong.setText("unpublished");
-                    }
+                    Label publishSong = new Label(song.isPublished() ? "unpublished" : "published");
                     pane1Content.getChildren().addAll(
                             new Label("Ratings: " + song.getAverageRating()),
                             playButton,
