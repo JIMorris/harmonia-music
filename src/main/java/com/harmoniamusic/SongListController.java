@@ -24,6 +24,25 @@ public class SongListController extends Application {
 
     @FXML
     private Accordion songListAccordion;
+   
+    @FXML
+    private TextField libraryTitle;
+
+    public void changeTitle(int type) {
+        switch (type) {
+            case 1:
+                libraryTitle.setText("Your Songs");
+                break;
+            case 2:
+                libraryTitle.setText("Your Favorites");
+                break;
+            case 3:
+                libraryTitle.setText("Public Songs");
+                break;
+            default:
+                break;
+        }
+    }
 
     public void loadSongs(int type) {
         ArrayList<Song> songs = null;
@@ -43,7 +62,7 @@ public class SongListController extends Application {
                         musicFacade.toggleFavorite(song);
                         if (musicFacade.getUserList().getCurrentUser().isFavoriteSong(song))
                             addFav.setText("remove from favorite");
-                         else
+                        else
                             addFav.setText("add to favorites");
                     });
                     Label Diff = new Label("Difficulty ");
@@ -56,7 +75,6 @@ public class SongListController extends Application {
                     Label description = new Label("Description");
                     TextField setDescription = new TextField(song.getDescription());
                     setDescription.setOnAction(e -> {
-                        setDescription.setText(song.getDescription());
                         song.setDescription(setDescription.getText());
                     });
                     Button editSong = new Button("edit song");
@@ -114,7 +132,7 @@ public class SongListController extends Application {
                         musicFacade.toggleFavorite(song);
                         if (musicFacade.getUserList().getCurrentUser().isFavoriteSong(song))
                             addFav.setText("remove from favorite");
-                         else
+                        else
                             addFav.setText("add to favorites");
                     });
                     Button copySong = new Button("copy song");
@@ -151,7 +169,7 @@ public class SongListController extends Application {
                         musicFacade.toggleFavorite(song);
                         if (musicFacade.getUserList().getCurrentUser().isFavoriteSong(song))
                             addFav.setText("remove from favorite");
-                         else
+                        else
                             addFav.setText("add to favorites");
                     });
                     Button copySong = new Button("copy song");

@@ -41,7 +41,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Label fx:id="signupErrorLabel" layoutX="134.0" layoutY="569.0" prefHeight="49.0" prefWidth="240.0" text="you are missing one or more pieces of information to create an account" visible = "false" wrapText="true">
+            <Label fx:id="signupErrorLabel" layoutX="134.0" layoutY="569.0" prefHeight="49.0" prefWidth="240.0" text="you are missing one or more pieces of information to create an account" visible="false" wrapText="true">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>

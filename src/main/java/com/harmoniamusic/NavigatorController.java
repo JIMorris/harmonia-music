@@ -17,7 +17,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class NavigatorController extends Application{
+public class NavigatorController extends Application {
     private MusicFacade musicFacade = MusicFacade.getInstance();
 
     // methods for moving from home screen
@@ -26,10 +26,9 @@ public class NavigatorController extends Application{
     private Accordion songListAccordion;
 
     @FXML
-public void initialize() {
-    System.out.println("Initialized, songListAccordion: " + (songListAccordion != null)+"\n");
-}
-
+    public void initialize() {
+        System.out.println("Initialized, songListAccordion: " + (songListAccordion != null) + "\n");
+    }
 
     @FXML
     private void goToFavoriteAuthors() throws IOException {
@@ -43,6 +42,7 @@ public void initialize() {
         FXMLLoader test = App.setData("data/libraryData");
         SongListController controller = test.getController();
         controller.loadSongs(1);
+        controller.changeTitle(1);
     }
 
     @FXML
@@ -51,6 +51,7 @@ public void initialize() {
         FXMLLoader test = App.setData("data/libraryData");
         SongListController controller = test.getController();
         controller.loadSongs(2);
+        controller.changeTitle(2);
     }
 
     @FXML
@@ -60,9 +61,23 @@ public void initialize() {
         FXMLLoader test = App.setData("data/libraryData");
         SongListController controller = test.getController();
         controller.loadSongs(3);
+        controller.changeTitle(3);
     }
 
     // methods for top bar
+
+    @FXML
+    private void logout() throws IOException {
+        App.setRoot("templates/loginTemplate");
+        App.setData(null);
+        App.setBar(null);
+        try {
+            musicFacade.logout();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
 
     @FXML
     private void goToHome() throws IOException {

@@ -3,17 +3,15 @@
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="328.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/23.0.1"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongListController">
+<VBox prefHeight="328.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongListController">
    <children>
       <StackPane prefHeight="33.0" prefWidth="432.0">
          <children>
             <Button fx:id="LibraryNewSongButton" mnemonicParsing="false" text="Add" />
-            <TextField alignment="TOP_CENTER" prefHeight="34.0" prefWidth="432.0" />
+            <TextField fx:id="libraryTitle" alignment="TOP_CENTER" prefHeight="34.0" prefWidth="432.0" />
          </children>
       </StackPane>
       <Accordion fx:id="songListAccordion" prefHeight="297.0" prefWidth="432.0">
