@@ -37,11 +37,19 @@ public class App extends Application {
     }
 
     static void setBar(String fxml) throws IOException {
+        if (fxml == null) {
+            bar.getChildren().clear();
+            return;
+        }
         Parent view = loadFXML(fxml);
         bar.getChildren().setAll(view);
     }
 
     static FXMLLoader setData(String fxml) throws IOException {
+        if (fxml == null) {
+            data.getChildren().clear();
+            return null;
+        }
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         Parent view = fxmlLoader.load();
         data.getChildren().setAll(view);
