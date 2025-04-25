@@ -51,6 +51,9 @@ public class SongListController extends Application {
                 songs = musicFacade.openMySongs();
                 for (Song song : songs) {
                     VBox pane1Content = new VBox(10);
+                    TitledPane pane1 = new TitledPane(song.getTitle() + " - " + song.getAuthor().getUsername(),
+                    pane1Content);
+
                     Button playButton = new Button("play song");
                     playButton.setOnMouseClicked(e -> {
                         SongEditPlayController.openSong(song);
@@ -88,6 +91,7 @@ public class SongListController extends Application {
                     Button deleteSong = new Button("delete song");
                     deleteSong.setOnMouseClicked(e -> {
                         musicFacade.getSongList().removeSong(song);
+                        songListAccordion.getPanes().remove(pane1);
                         // TODO will this work for the accordion?
                     });
                     Button publishSong = new Button(song.isPublished() ? "unpublish song" : "publish song");
@@ -112,8 +116,6 @@ public class SongListController extends Application {
                             copySong,
                             deleteSong,
                             publishSong);
-                    TitledPane pane1 = new TitledPane(song.getTitle() + " - " + song.getAuthor().getUsername(),
-                            pane1Content);
                     songListAccordion.getPanes().add(pane1);
                 }
                 break;
