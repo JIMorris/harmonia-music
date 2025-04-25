@@ -74,8 +74,8 @@ public class SongListController extends Application {
                     });
                     Label description = new Label("Description");
                     TextField setDescription = new TextField(song.getDescription());
-                    setDescription.setOnAction(e -> {
-                        song.setDescription(setDescription.getText());
+                    setDescription.textProperty().addListener((observable, oldValue, newValue) -> {
+                        song.setDescription(newValue);
                     });
                     Button editSong = new Button("edit song");
                     editSong.setOnMouseClicked(e -> {
