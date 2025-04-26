@@ -142,6 +142,14 @@ public class User {
         this.iconFile = iconFile;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     /**
      * Set favAuthors to the parameter provided
      * 
@@ -174,7 +182,7 @@ public class User {
     }
 
     /**
-     * Checks if the password provided by the user matches the user's username
+     * Checks if the username provided by the user matches the user's username
      * 
      * @param username The username that needs to be checked
      * @return True if the usernames are a match, otherwise it is false
@@ -208,5 +216,13 @@ public class User {
             favAuthors.remove(author);
         else
             favAuthors.add(author);
+    }
+
+    public boolean isFavoriteSong(Song song) {
+        for (Song aSong: favSongs) {
+            if (aSong == song) 
+                return true;
+        }
+    return false;
     }
 }

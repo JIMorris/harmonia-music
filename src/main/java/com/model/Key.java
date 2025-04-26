@@ -151,6 +151,11 @@ public enum Key {
                         if (k.label.equalsIgnoreCase(key))
                                 return k;
                 }
+                System.out.println("\n SOMETHING IS NULL \n");
                 return null;
+        }
+
+        public String toString() {
+                return label;
         }
 }

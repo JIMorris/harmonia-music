@@ -174,6 +174,14 @@ public class Song {
         return genres; 
     }
 
+    public String viewGenres() {
+        String toReturn = null;
+        for (Genre genre: genres) {
+            toReturn += genre.label + " ";
+        }
+        return toReturn;
+    }
+
     /**
      * Returns the difficuty of the song
      * 
@@ -208,6 +216,10 @@ public class Song {
      */
     public boolean isPublished() { 
         return published; 
+    }
+
+    public void changePublish() {
+        published = !published;
     }
 
     /**
@@ -364,6 +376,16 @@ public class Song {
         reactions.remove(reaction);
     }
 
+    public int getAverageRating() {
+        if (reactions.size() == 0) 
+            return 0;
+        int rating = 0;
+        for (Reaction reaction: reactions) {
+            rating += reaction.getRating();
+        }
+        return rating/reactions.size();
+    }
+
     /**
      * Inserts a measure after the given MeasureGroup
      * 
@@ -456,5 +478,14 @@ public class Song {
             copy.add(new MeasureGroup(measureGroup));
         }
         return copy;
+    }
+
+    public void setDifficulty(int difficulty) {
+        if (difficulty >= 1 && difficulty <= 5) {
+            this.difficulty = difficulty;
+        }
+    }
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
