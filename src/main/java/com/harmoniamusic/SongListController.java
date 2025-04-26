@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -24,7 +25,7 @@ public class SongListController extends Application {
 
     @FXML
     private Accordion songListAccordion;
-   
+
     @FXML
     private TextField libraryTitle;
 
@@ -52,7 +53,31 @@ public class SongListController extends Application {
                 for (Song song : songs) {
                     VBox pane1Content = new VBox(10);
                     TitledPane pane1 = new TitledPane(song.getTitle() + " - " + song.getAuthor().getUsername(),
-                    pane1Content);
+                            pane1Content);
+
+                    Label ratings = new Label ("Ratings " + song.getAverageRating());
+                    Label ratingLabel = new Label ("add rating");
+                    TextField addRating = new TextField();
+                    Label invalid = new Label("ratings must be between 1-5");
+                    invalid.setVisible(false);
+                    addRating.setPromptText("1-5");
+                    addRating.textProperty().addListener((observable, oldValue, newValue) -> {
+                        try {
+                            int rating = Integer.parseInt(newValue);
+                            if (rating >= 1 && rating <= 5) {
+                                song.addReaction(rating, null, musicFacade.getUserList().getCurrentUser());
+                                ratings.setText("Ratings " + song.getAverageRating());
+                                addRating.setText("");
+                                invalid.setVisible(false);
+                            } else {
+                                invalid.setVisible(true);
+                            }
+                            addRating.setText("");
+                        } catch (NumberFormatException e) {
+                        }
+                    });
+                    HBox ratingInputRow = new HBox(10);
+                    ratingInputRow.getChildren().addAll(ratingLabel, addRating, invalid);
 
                     Button playButton = new Button("play song");
                     playButton.setOnMouseClicked(e -> {
@@ -104,7 +129,8 @@ public class SongListController extends Application {
                     });
 
                     pane1Content.getChildren().addAll(
-                            new Label("Ratings: " + song.getAverageRating()),
+                            ratings,
+                            ratingInputRow,
                             playButton,
                             addFav,
                             Diff,
@@ -123,6 +149,31 @@ public class SongListController extends Application {
                 songs = musicFacade.openFavorites();
                 for (Song song : songs) {
                     VBox pane1Content = new VBox(10);
+
+                    Label ratings = new Label ("Ratings " + song.getAverageRating());
+                    Label ratingLabel = new Label ("add rating");
+                    TextField addRating = new TextField();
+                    Label invalid = new Label("ratings must be between 1-5");
+                    invalid.setVisible(false);
+                    addRating.setPromptText("1-5");
+                    addRating.textProperty().addListener((observable, oldValue, newValue) -> {
+                        try {
+                            int rating = Integer.parseInt(newValue);
+                            if (rating >= 1 && rating <= 5) {
+                                song.addReaction(rating, null, musicFacade.getUserList().getCurrentUser());
+                                ratings.setText("Ratings " + song.getAverageRating());
+                                addRating.setText("");
+                                invalid.setVisible(false);
+                            } else {
+                                invalid.setVisible(true);
+                            }
+                            addRating.setText("");
+                        } catch (NumberFormatException e) {
+                        }
+                    });
+                    HBox ratingInputRow = new HBox(10);
+                    ratingInputRow.getChildren().addAll(ratingLabel, addRating, invalid);
+
                     Button playButton = new Button("play song");
                     playButton.setOnMouseClicked(e -> {
                         SongEditPlayController.openSong(song);
@@ -143,7 +194,8 @@ public class SongListController extends Application {
                     });
                     Label publishSong = new Label(song.isPublished() ? "published" : "unpublished");
                     pane1Content.getChildren().addAll(
-                            new Label("Ratings: " + song.getAverageRating()),
+                            ratings,
+                            ratingInputRow,
                             playButton,
                             addFav,
                             new Label("Difficulty: " + song.getDifficulty()),
@@ -160,6 +212,31 @@ public class SongListController extends Application {
                 songs = musicFacade.openPublicSongs();
                 for (Song song : songs) {
                     VBox pane1Content = new VBox(10);
+
+                    Label ratings = new Label ("Ratings " + song.getAverageRating());
+                    Label ratingLabel = new Label ("add rating");
+                    TextField addRating = new TextField();
+                    Label invalid = new Label("ratings must be between 1-5");
+                    invalid.setVisible(false);
+                    addRating.setPromptText("1-5");
+                    addRating.textProperty().addListener((observable, oldValue, newValue) -> {
+                        try {
+                            int rating = Integer.parseInt(newValue);
+                            if (rating >= 1 && rating <= 5) {
+                                song.addReaction(rating, null, musicFacade.getUserList().getCurrentUser());
+                                ratings.setText("Ratings " + song.getAverageRating());
+                                addRating.setText("");
+                                invalid.setVisible(false);
+                            } else {
+                                invalid.setVisible(true);
+                            }
+                            addRating.setText("");
+                        } catch (NumberFormatException e) {
+                        }
+                    });
+                    HBox ratingInputRow = new HBox(10);
+                    ratingInputRow.getChildren().addAll(ratingLabel, addRating, invalid);
+
                     Button playButton = new Button("play song");
                     playButton.setOnMouseClicked(e -> {
                         SongEditPlayController.openSong(song);
@@ -180,7 +257,8 @@ public class SongListController extends Application {
                     });
                     Label publishSong = new Label(song.isPublished() ? "published" : "unpublished");
                     pane1Content.getChildren().addAll(
-                            new Label("Ratings: " + song.getAverageRating()),
+                            ratings,
+                            ratingInputRow,
                             playButton,
                             addFav,
                             new Label("Difficulty: " + song.getDifficulty()),
