@@ -43,17 +43,11 @@ public class NewSongController extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        musicFacade = MusicFacade.getInstance();
-        titleText.setPromptText("Enter title here...");
-        descriptionText.setPromptText("Enter description here...");
-        initializeGenreDropdown();
-        initializeKeyDropdown();
-        initializeInstrumentDropdown();
-        initializeDifficultyDropdown();
     }
 
     @FXML
     public void initialize() {
+        System.out.println("\nTHIS METHOD EXISTS AND IS HEREE \n");
         musicFacade = MusicFacade.getInstance();
         titleText.setPromptText("Enter title here...");
         descriptionText.setPromptText("Enter description here...");

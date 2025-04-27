@@ -38,6 +38,13 @@ public class App extends Application {
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
+    
+    static void setRootAndInitialize(String fxml) throws IOException {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        Parent view = loader.load();  // This will also initialize the controller
+        scene.setRoot(view);  // Set the scene root
+    }
+    
 
     static FXMLLoader setBar(String fxml) throws IOException {
         if (fxml == null) {
