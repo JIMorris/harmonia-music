@@ -435,4 +435,13 @@ public class MusicFacade {
     public int getBPM(){
         return audioPlayer.getBPM();
     }
+
+    /**
+     * Returns the audio player
+     * 
+     * @return This audio player
+     */
+    public AudioPlayer getAudioPlayer(){
+        return this.audioPlayer;
+    }
 }
