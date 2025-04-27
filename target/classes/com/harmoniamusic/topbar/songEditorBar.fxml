@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongEditPlayController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="103.0" prefWidth="805.0" style="-fx-background-color: DEEFF5;">
          <children>
@@ -16,7 +15,7 @@
             <Button layoutX="110.0" layoutY="52.0" mnemonicParsing="false" text="Play" />
             <Button layoutX="162.0" layoutY="52.0" mnemonicParsing="false" text="Pause" />
             <Line endX="604.0" layoutX="201.0" layoutY="26.0" startX="-100.0" />
-            <Line endX="-123.5" endY="51.29289245605469" layoutX="352.0" layoutY="52.0" startX="-123.5" startY="-52.0" />
+            <Line endX="-123.5" endY="-26.707107543945312" layoutX="352.0" layoutY="52.0" startX="-123.5" startY="-52.0" />
             <TextField alignment="CENTER" layoutX="271.0" prefHeight="25.0" prefWidth="51.0" text="Note" />
             <Button layoutX="234.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0" text="1" />
             <Button layoutX="234.0" layoutY="52.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="1.0" text="2" />
@@ -25,19 +24,19 @@
             <Button layoutX="271.0" layoutY="65.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="-" />
             <Button layoutX="308.0" layoutY="27.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" text="▲" />
             <Button layoutX="308.0" layoutY="65.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" text="▼" />
-            <Line endX="-195.5" endY="51.29289245605469" layoutX="561.0" layoutY="52.0" startX="-195.5" startY="-52.0" />
+            <Line endX="-195.5" endY="-25.5" layoutX="561.0" layoutY="52.0" startX="-195.5" startY="-52.0" />
             <TextField alignment="CENTER" layoutX="410.0" prefHeight="25.0" prefWidth="52.0" text="Chord" />
             <Button layoutX="377.0" layoutY="27.0" mnemonicParsing="false" text="+" />
             <Button layoutX="377.0" layoutY="65.0" mnemonicParsing="false" text="-" />
             <ComboBox layoutX="427.0" layoutY="40.0" prefHeight="25.0" prefWidth="52.0" />
-            <Line endX="-100.5" endY="50.29289245605469" layoutX="602.0" layoutY="53.0" startX="-100.5" startY="-53.0" />
+            <Line endX="-100.5" endY="-26.5" layoutX="602.0" layoutY="53.0" startX="-100.5" startY="-53.0" />
             <TextField alignment="CENTER" layoutX="510.0" prefHeight="25.0" prefWidth="67.0" text="Measure" />
             <Button layoutX="530.0" layoutY="27.0" mnemonicParsing="false" text="+" />
             <Button layoutX="530.0" layoutY="65.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0" text="-" />
-            <Line endX="-158.5" endY="50.29289245605469" layoutX="747.0" layoutY="52.0" startX="-158.5" startY="-52.0" />
+            <Line endX="-158.5" endY="-25.5" layoutX="747.0" layoutY="52.0" startX="-158.5" startY="-52.0" />
             <TextField alignment="CENTER" layoutX="595.0" prefHeight="25.0" prefWidth="76.0" text="Instrument" />
             <ComboBox layoutX="607.0" layoutY="40.0" prefHeight="25.0" prefWidth="52.0" />
-            <Line endX="-111.50006103515625" endY="50.29289245605469" layoutX="791.0" layoutY="53.0" startX="-111.5" startY="-53.0" />
+            <Line endX="-111.5" endY="-26.5" layoutX="791.0" layoutY="53.0" startX="-111.5" startY="-53.0" />
             <TextField alignment="CENTER" layoutX="707.0" prefHeight="12.0" prefWidth="76.0" text="Tempo" />
             <ComboBox layoutX="704.0" layoutY="40.0" prefHeight="14.0" prefWidth="83.0" />
          </children>
