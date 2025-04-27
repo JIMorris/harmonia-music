@@ -137,7 +137,7 @@ public class SongListController extends Application {
                             setDiff,
                             description,
                             setDescription,
-                            new Label("Genres \n" + song.getGenres()),
+                            new Label("Genres: " + song.getGenreLabels()),
                             editSong,
                             copySong,
                             deleteSong,
@@ -200,7 +200,7 @@ public class SongListController extends Application {
                             addFav,
                             new Label("Difficulty: " + song.getDifficulty()),
                             new Label("Description \n" + song.getDescription()),
-                            new Label("Genres \n" + song.getGenres()),
+                            new Label("Genres: " + song.getGenreLabels()),
                             copySong,
                             publishSong);
                     TitledPane pane1 = new TitledPane(song.getTitle() + " - " + song.getAuthor().getUsername(),
@@ -263,7 +263,7 @@ public class SongListController extends Application {
                             addFav,
                             new Label("Difficulty: " + song.getDifficulty()),
                             new Label("Description \n" + song.getDescription()),
-                            new Label("Genres \n" + song.getGenres()),
+                            new Label("Genres: " + song.getGenreLabels()),
                             copySong,
                             publishSong);
                     TitledPane pane1 = new TitledPane(song.getTitle() + " - " + song.getAuthor().getUsername(),
