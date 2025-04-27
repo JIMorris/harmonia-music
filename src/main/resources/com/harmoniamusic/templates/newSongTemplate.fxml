@@ -24,7 +24,7 @@
                            <children>
                               <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="555.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../../../Pictures/profile.png" />
+                                    <Image url="@profile.png" />
                                  </image>
                               </ImageView>
                               <Label alignment="CENTER" layoutX="167.0" layoutY="1.0" prefHeight="30.0" prefWidth="265.0" text="Harmonia Music" textAlignment="RIGHT">
@@ -34,7 +34,7 @@
                               </Label>
                               <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../../../../../../Pictures/back.png" />
+                                    <Image url="@back.png" />
                                  </image>
                               </ImageView>
                            </children>
