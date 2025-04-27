@@ -4,15 +4,15 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongEditPlayController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongEditPlayController">
    <children>
-      <Pane prefHeight="102.0" prefWidth="600.0" style="-fx-background-color: DEEFF5;">
+      <Pane prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: DEEFF5;">
          <children>
-            <Button id="playButton" accessibleRole="COMBO_BOX" layoutX="130.0" layoutY="38.0" mnemonicParsing="false" onAction="#play" text="Play" />
-            <Button layoutX="210.0" layoutY="38.0" mnemonicParsing="false" onAction="#pause" text="Pause" />
-            <ComboBox fx:id="instrumentSelect" layoutX="335.0" layoutY="40.0" prefWidth="150.0" />
+            <Button id="playButton" accessibleRole="COMBO_BOX" layoutX="129.0" layoutY="38.0" mnemonicParsing="false" onAction="#play" text="Play" />
+            <Button layoutX="244.0" layoutY="38.0" mnemonicParsing="false" onAction="#pause" text="Pause" />
+            <ComboBox fx:id="instrumentSelect" layoutX="392.0" layoutY="38.0" prefHeight="25.0" prefWidth="202.0" />
             <Button fx:id="homeButton" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: #f4f4f4; -fx-text-fill: black;" text="Home" />
-            <Button fx:id="homeButton1" layoutX="514.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: #f4f4f4; -fx-text-fill: black;" text="Settings" />
+            <Button fx:id="homeButton1" layoutX="720.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: #f4f4f4; -fx-text-fill: black;" text="Settings" />
          </children>
       </Pane>
    </children>

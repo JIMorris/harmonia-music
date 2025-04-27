@@ -2,19 +2,24 @@
 
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="328.0" prefWidth="432.0" style="-fx-background-color: #E8D99F;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongListController">
+<VBox prefWidth="602.0" style="-fx-background-color: #E8D99F;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongListController">
    <children>
-      <StackPane prefHeight="33.0" prefWidth="432.0">
+      <StackPane>
          <children>
-            <Button fx:id="LibraryNewSongButton" mnemonicParsing="false" text="Add" />
             <TextField fx:id="libraryTitle" alignment="TOP_CENTER" prefHeight="34.0" prefWidth="432.0" />
+            <Button fx:id="LibraryNewSongButton" mnemonicParsing="false" text="Add" />
          </children>
       </StackPane>
-      <Accordion fx:id="songListAccordion" prefHeight="297.0" prefWidth="432.0">
+      <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: #E8D99F;">
+         <content>
+            <Accordion fx:id="songListAccordion" prefHeight="525.0" prefWidth="600.0" style="-fx-background-color: #E8D99F;">
       </Accordion>
+         </content>
+      </ScrollPane>
    </children>
 </VBox>
