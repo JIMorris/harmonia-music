@@ -48,7 +48,6 @@ public class NewSongController extends Application {
 
     @FXML
     public void initialize() {
-        System.out.println("\nTHIS METHOD EXISTS AND IS HEREE \n");
         musicFacade = MusicFacade.getInstance();
         titleText.setPromptText("Enter title here...");
         descriptionText.setPromptText("Enter description here...");
@@ -64,9 +63,7 @@ public class NewSongController extends Application {
         genres.add(selectedGenre);
         Song newSong = musicFacade.newSong(titleText.getText(), descriptionText.getText(), genres, selectedDifficulty, 120, selectedKey, selectedInstrument);
         musicFacade.openSong(newSong);
-        App.setRoot("templates/musicTemplate");
-        App.setBar("topbar/songEditorBar");
-        App.setData("data/songEditorData");
+        SongEditPlayController.editSong(newSong);
     }
 
     @FXML
@@ -94,8 +91,9 @@ public class NewSongController extends Application {
             keySelect.getItems().add(key);
         }
 
-        keySelect.setValue(Key.A_FLAT_MAJOR);
-        keySelect.setOnAction(e -> {
+        selectedKey = Key.A_FLAT_MAJOR;
+        keySelect.setValue(selectedKey);
+        keySelect.setOnHidden(e -> {
             selectedKey = keySelect.getValue();
         });
     }
@@ -106,8 +104,9 @@ public class NewSongController extends Application {
             instrumentSelect.getItems().add(instrument);
         }
 
-        instrumentSelect.setValue(musicFacade.getAllInstruments().get(0));
-        instrumentSelect.setOnAction(e -> {
+        selectedInstrument = musicFacade.getAllInstruments().get(0);
+        instrumentSelect.setValue(selectedInstrument);
+        instrumentSelect.setOnHidden(e -> {
             selectedInstrument = instrumentSelect.getValue();
         });
 
@@ -133,8 +132,9 @@ public class NewSongController extends Application {
             difficultySelect.getItems().add(i);
         }
 
-        difficultySelect.setValue(1);
-        instrumentSelect.setOnAction(e -> {
+        selectedDifficulty = 1;
+        difficultySelect.setValue(selectedDifficulty);
+        difficultySelect.setOnHidden(e -> {
             selectedDifficulty = difficultySelect.getValue();
         });
     }
