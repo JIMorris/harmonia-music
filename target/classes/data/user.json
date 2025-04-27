@@ -1,1 +1,14 @@
-[{"firstName":"John","lastName":"Doe","password":"password123","favSongs":["98a053f8-9814-41ca-941a-9f8976ea4be6"],"favAuthors":[],"iconFile":"defaultUserIcon.png","uuid":"81199497-9b7e-4d56-97fb-4ccc0d4d1a22","username":"testUser"}]
+[
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "password": "password123",
+        "favSongs": [
+            "98a053f8-9814-41ca-941a-9f8976ea4be6"
+        ],
+        "favAuthors": [],
+        "iconFile": "defaultUserIcon.png",
+        "uuid": "81199497-9b7e-4d56-97fb-4ccc0d4d1a22",
+        "username": "testUser"
+    }
+]

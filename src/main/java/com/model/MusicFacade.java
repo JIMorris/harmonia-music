@@ -129,6 +129,9 @@ public class MusicFacade {
         return audioPlayer.openSong(song);
     }
 
+    public User getCurrentUser () {
+        return userList.getCurrentUser();
+    }
     /**
      * Gets a list of available instruments
      * 

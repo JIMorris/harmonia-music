@@ -75,20 +75,22 @@ public class NavigatorController extends Application {
             musicFacade.logout();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        
+        } 
     }
 
     @FXML
     private void goToHome() throws IOException {
+        App.setRoot("templates/homeTemplate");
         App.setBar("topbar/homeBar");
         App.setData("data/homeData");
     }
 
     @FXML
     private void goToSettings() throws IOException {
+        App.setRoot("templates/settingsTemplate");
         App.setBar("topbar/settingsBar");
         App.setData("data/settingsData");
+      //  App.setBar(null);
     }
 
     @Override
