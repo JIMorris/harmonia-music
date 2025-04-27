@@ -17,19 +17,19 @@
             <Button layoutX="162.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#pause" text="Pause" />
             <Line endX="604.0" layoutX="201.0" layoutY="26.0" startX="-100.0" />
             <Line endX="-123.5" endY="-26.707107543945312" layoutX="352.0" layoutY="52.0" startX="-123.5" startY="-52.0" />
-            <Button layoutX="234.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#combineNotes" prefHeight="25.0" prefWidth="26.0" text="1" />
+            <Button layoutX="235.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#combineNotes" prefHeight="25.0" prefWidth="10.0" text="1" />
             <Button layoutX="235.0" layoutY="52.0" mnemonicParsing="false" onMouseClicked="#splitNotes2" prefHeight="25.0" prefWidth="1.0" text="2" />
-            <Button layoutX="235.0" layoutY="78.0" mnemonicParsing="false" onMouseClicked="#splitNotes4" prefHeight="25.0" prefWidth="10.0" text="4" />
+            <Button layoutX="235.0" layoutY="77.0" mnemonicParsing="false" onMouseClicked="#splitNotes4" prefHeight="25.0" prefWidth="10.0" text="4" />
             <Button layoutX="271.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#insertNote" prefHeight="25.0" prefWidth="25.0" text="+" />
             <Button layoutX="271.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#removeNote" prefHeight="25.0" prefWidth="25.0" text="-" />
             <Button layoutX="308.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#noteUp" prefHeight="25.0" prefWidth="33.0" text="▲" />
             <Button layoutX="308.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#noteDown" prefHeight="25.0" prefWidth="33.0" text="▼" />
             <Line endX="-195.5" endY="-25.5" layoutX="561.0" layoutY="52.0" startX="-195.5" startY="-52.0" />
-            <Button layoutX="377.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#insertChord" text="+" />
-            <Button layoutX="377.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#removeChord" text="-" />
+            <Button layoutX="377.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#insertChord" prefHeight="25.0" prefWidth="26.0" text="+" />
+            <Button layoutX="377.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#removeChord" prefHeight="25.0" prefWidth="26.0" text="-" />
             <ComboBox fx:id="chordSelect" layoutX="412.0" layoutY="40.0" prefHeight="25.0" prefWidth="83.0" />
             <Line endX="-100.5" endY="-26.5" layoutX="602.0" layoutY="53.0" startX="-100.5" startY="-53.0" />
-            <Button layoutX="530.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#insertMeasure" text="+" />
+            <Button layoutX="530.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#insertMeasure" prefHeight="25.0" prefWidth="26.0" text="+" />
             <Button layoutX="530.0" layoutY="65.0" mnemonicParsing="false" onMouseClicked="#removeMeasure" prefHeight="25.0" prefWidth="26.0" text="-" />
             <Line endX="-158.5" endY="-25.5" layoutX="747.0" layoutY="52.0" startX="-158.5" startY="-52.0" />
             <ComboBox fx:id="instrumentSelect" layoutX="592.0" layoutY="40.0" prefHeight="25.0" prefWidth="83.0" />
