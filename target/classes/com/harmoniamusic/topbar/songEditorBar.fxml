@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="104.0" prefWidth="805.0" style="-fx-background-color: DEEFF5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="103.0" prefWidth="805.0" style="-fx-background-color: DEEFF5;">
+      <Pane prefHeight="100.0" prefWidth="800.0" style="-fx-background-color: DEEFF5;">
          <children>
             <Line endX="-90.0" endY="51.0" layoutX="189.0" layoutY="52.0" startX="-90.0" startY="-52.0" />
             <Button layoutX="26.0" layoutY="39.0" mnemonicParsing="false" text="Home" />

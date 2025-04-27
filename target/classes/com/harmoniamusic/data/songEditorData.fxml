@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="328.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongEditPlayController">
+<VBox maxHeight="525.0" maxWidth="800.0" minHeight="525.0" minWidth="800.0" prefHeight="525.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongEditPlayController">
    <children>
-      <GridPane prefHeight="330.0" prefWidth="432.0">
+      <GridPane prefHeight="524.0" prefWidth="800.0">
          <columnConstraints>
             <ColumnConstraints />
          </columnConstraints>
@@ -16,9 +16,9 @@
             <RowConstraints />
          </rowConstraints>
          <children>
-            <Pane prefHeight="331.0" prefWidth="432.0" style="-fx-background-color: ECE8D9;">
+            <Pane prefHeight="525.0" prefWidth="801.0" style="-fx-background-color: ECE8D9;">
                <children>
-                  <Pane layoutX="43.0" layoutY="40.0" prefHeight="288.0" prefWidth="349.0" style="-fx-background-color: FFFFFF;" />
+                  <Pane layoutX="50.0" layoutY="50.0" prefHeight="475.0" prefWidth="700.0" style="-fx-background-color: FFFFFF;" />
                </children>
             </Pane>
          </children></GridPane>

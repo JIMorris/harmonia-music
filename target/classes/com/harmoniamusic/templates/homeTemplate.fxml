@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-width: 4px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.HomeTemplateController">
+<BorderPane maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.HomeTemplateController">
    <center>
-      <StackPane maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0">
+      <StackPane maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-width: 4px;">
          <children>
             <VBox maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0">
                <children>
                   <!-- TOP BAR placeholder -->
-                  <AnchorPane fx:id="bar" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #deeff6;">
+                  <AnchorPane fx:id="bar" prefHeight="100.0" prefWidth="600.0" style="-fx-border-width: 2px; -fx-background-color: #deeff6;">
                      <rotationAxis>
                         <Point3D />
                      </rotationAxis></AnchorPane>
@@ -36,7 +36,7 @@
                            </rotationAxis>
                         </VBox>
                         <!-- MAIN CONTENT placeholder -->
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="516.0" prefWidth="600.0" vbarPolicy="NEVER">
+                        <ScrollPane hbarPolicy="NEVER" maxHeight="1000.0" prefHeight="516.0" prefWidth="600.0" vbarPolicy="NEVER">
                            <content>
                               <AnchorPane fx:id="data" maxHeight="528.0" maxWidth="600.0" minHeight="500.0" minWidth="600.0" prefHeight="528.0" prefWidth="600.0" style="-fx-background-color: #E8D99F;">
                                  <rotationAxis>
