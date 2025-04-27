@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" prefWidth="900" prefHeight="150" style="-fx-background-color: #e3f2f9;">
+    <left>
+        <VBox alignment="CENTER" spacing="10" prefWidth="80" style="-fx-border-color: black;">
+            <ImageView fx:id="homeIcon" fitHeight="40" fitWidth="40"/>
+        </VBox>
+    </left>
+
+    <center>
+        <HBox spacing="20" alignment="CENTER" style="-fx-border-color: black;">
+            
+            <!-- Play and Pause Buttons -->
+            <Button text="▶" prefWidth="40" prefHeight="40"/>
+            <Button text="⏸" prefWidth="40" prefHeight="40"/>
+
+            <!-- Note Section -->
+            <VBox alignment="CENTER" spacing="5" style="-fx-border-color: black;">
+                <TextField text="Note" prefWidth="80" alignment="CENTER"/>
+                <Button text="+" />
+                <Button text="-" />
+                <Button text="▲" />
+                <Button text="▼" />
+            </VBox>
+
+            <!-- Chord Section -->
+            <VBox alignment="CENTER" spacing="5" style="-fx-border-color: black;">
+                <TextField text="Chord" prefWidth="80" alignment="CENTER"/>
+                <Button text="+" />
+                <ComboBox prefWidth="80">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Am"/>
+                            <String fx:value="C"/>
+                            <String fx:value="G"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Button text="-" />
+            </VBox>
+
+            <!-- Measure Section -->
+            <VBox alignment="CENTER" spacing="5" style="-fx-border-color: black;">
+                <TextField text="Measure" prefWidth="80" alignment="CENTER"/>
+                <Button text="+" />
+                <Button text="-" />
+            </VBox>
+
+            <!-- Instrument Section -->
+            <VBox alignment="CENTER" spacing="5" style="-fx-border-color: black;">
+                <TextField text="Instrument" prefWidth="80" alignment="CENTER"/>
+                <ComboBox prefWidth="80">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Piano"/>
+                            <String fx:value="Guitar"/>
+                            <String fx:value="Drums"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </VBox>
+
+            <!-- Tempo Section -->
+            <VBox alignment="CENTER" spacing="5" style="-fx-border-color: black;">
+                <TextField text="Tempo" prefWidth="80" alignment="CENTER"/>
+                <TextField text="120" prefWidth="60" alignment="CENTER"/>
+            </VBox>
+
+        </HBox>
+    </center>
+</BorderPane>
