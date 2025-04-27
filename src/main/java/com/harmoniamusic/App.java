@@ -1,10 +1,6 @@
 package com.harmoniamusic;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
-import com.model.MusicFacade;
-import com.model.Song;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -35,8 +31,8 @@ public class App extends Application {
         stage.show();
        // setData("loginData");
 
-       ArrayList<Song> songs = MusicFacade.getInstance().openPublicSongs();
-       SongEditPlayController.openSong(songs.get(2));
+        //  ArrayList<Song> songs = MusicFacade.getInstance().openPublicSongs();
+        //  SongEditPlayController.openSong(songs.get(2));
     }
 
     static void setRoot(String fxml) throws IOException {
