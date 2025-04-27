@@ -328,6 +328,24 @@ public class Song {
     }
 
     /**
+     * Gets the MeasureGroup that the given Note is a part of
+     * 
+     * @param measure Note to find MeasureGroup of
+     * @return MeasureGroup that contains Note
+     */
+    public MeasureGroup getMeasureGroup(Note note){
+        for(MeasureGroup measureGroup : measureGroups){
+            for(Instrument instrument : instruments){
+                for(Note checkNote : measureGroup.getMeasure(instrument).getNotes()){
+                    if(checkNote == note)
+                        return measureGroup;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
      * Returns a list of IDs for the Instruments in this song
      * 
      * @return IDs of Instrumnets in this song

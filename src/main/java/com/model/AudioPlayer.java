@@ -62,6 +62,34 @@ public class AudioPlayer {
     // --- EDITING/SELECTING ---//
 
     /**
+     * Gets the instrument currently selected
+     * 
+     * @return current instrument
+     */
+    public Instrument getCurrentInstrument(){
+        return this.currentInstrument;
+    }
+
+    /**
+     * Gets the chord of the current measure
+     * 
+     * @return current chord
+     */
+    public Chord getCurrentChord(){
+        return this.currentMeasureGroup.getChord();
+    }
+
+    /**
+     * Gives a boolean of whether the current note is the same as the note provided
+     * 
+     * @param note Note to check against
+     * @return Boolean of whether the note is equal to currentNote
+     */
+    public boolean isCurrentNote(Note note){
+        return this.currentNote == note;
+    }
+
+    /**
      * Opens a song which will be played
      * 
      * @param song The Song object that will be played

@@ -202,6 +202,14 @@ public class Note {
         return jFugue;
     }
 
+    public int getMusicPosition(){
+        return this.pitch.position + octave - 4;
+    }
+
+    public String getMusicIcon(){
+        return "testNote";
+    }
+
     /**
      * Retrieves the sheet music duration of the note.
      *
