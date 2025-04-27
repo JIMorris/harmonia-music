@@ -44,6 +44,7 @@
                   </AnchorPane>
                </children>
             </StackPane>
+            <Label fx:id="changeSuccess" layoutX="273.0" layoutY="400.0" text="Changes saved" visible="false"/>
          </children>
       </Pane>
    </children>
