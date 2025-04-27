@@ -47,6 +47,10 @@ public class SignupController extends Application {
         String newPassword = password_txt.getText();
         String newFirstName = first_txt.getText();
         String newLastName = last_txt.getText();
+        if (newUsername.isBlank() || newPassword.isBlank() || newFirstName.isBlank() || newLastName.isBlank()) {
+            signupErrorLabel.setVisible(true);
+            return;
+        }
         try {
             musicFacade.signup(newUsername, newPassword, newFirstName, newLastName);
             App.setRoot("templates/homeTemplate");
