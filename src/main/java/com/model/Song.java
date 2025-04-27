@@ -12,7 +12,7 @@ import java.util.UUID;
  * @author Simion Cartis
  */
 public class Song {
-    private static final String defaultSongIconFile = "defaultSongIcon.png";
+    private static final String DEFAULT_SONG_ICON_FILE = "defaultSongIcon.png";
 
     private UUID songID;
     private String title;
@@ -63,7 +63,7 @@ public class Song {
         this.measureGroups = new ArrayList<>();
         this.instruments.add(defaultInstrument);
         this.measureGroups.add(new MeasureGroup(timeSignatureNum, keySignature.rootChord, instruments));
-        this.iconFile = defaultSongIconFile;
+        this.iconFile = DEFAULT_SONG_ICON_FILE;
     }
 
     /**
@@ -87,7 +87,7 @@ public class Song {
         this.timeSignatureDen = song.getTimeSignatureDen();
         this.measureGroups = copyMeasureGroups(song.getMeasureGroups());
         this.instruments = (ArrayList<Instrument>) song.getInstruments().clone();
-        this.iconFile = defaultSongIconFile;
+        this.iconFile = DEFAULT_SONG_ICON_FILE;
     }
 
     /**
