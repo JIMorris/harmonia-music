@@ -22,7 +22,7 @@
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="555.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="555.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@profile.png" />
                                  </image>
@@ -32,9 +32,9 @@
                                     <Font name="Bodoni Bd BT Bold" size="36.0" />
                                  </font>
                               </Label>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="8.0" onMouseClicked="#goToHome" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@back.png" />
+                                    <Image url="@home.png" />
                                  </image>
                               </ImageView>
                            </children>

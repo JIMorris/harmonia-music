@@ -73,17 +73,17 @@ public class NavigatorController extends Application {
 
     // methods for top bar
 
-    @FXML
-    private void logout() throws IOException {
-        App.setRoot("templates/loginTemplate");
-        App.setData(null);
-        App.setBar(null);
-        try {
-            musicFacade.logout();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } 
-    }
+    // @FXML
+    // private void logout() throws IOException {
+    //     App.setRoot("templates/loginTemplate");
+    //     App.setData(null);
+    //     App.setBar(null);
+    //     try {
+    //         musicFacade.logout();
+    //     } catch (Exception e) {
+    //         e.printStackTrace();
+    //     } 
+    // }
 
     @FXML
     private void goToHome() throws IOException {
@@ -97,7 +97,6 @@ public class NavigatorController extends Application {
         App.setRoot("data/settingsData");
         App.setBar(null);
         App.setData(null);
-      //  App.setBar(null);
     }
 
     @Override

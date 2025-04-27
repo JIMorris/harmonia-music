@@ -11,6 +11,7 @@ import com.model.Song;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
@@ -137,5 +138,19 @@ public class NewSongController extends Application {
         difficultySelect.setOnHidden(e -> {
             selectedDifficulty = difficultySelect.getValue();
         });
+    }
+
+    @FXML
+    private void goToSettings() throws IOException {
+        App.setRoot("data/settingsData");
+        App.setBar(null);
+        App.setData(null);
+    }
+
+    @FXML
+    private void goToHome() throws IOException {
+        App.setRoot("templates/homeTemplate");
+        App.setBar("topbar/homeBar");
+        App.setData("data/homeData");
     }
 }
