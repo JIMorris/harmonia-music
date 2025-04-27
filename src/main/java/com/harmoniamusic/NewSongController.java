@@ -12,6 +12,7 @@ import com.model.Song;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -63,9 +64,9 @@ public class NewSongController extends Application {
         genres.add(selectedGenre);
         Song newSong = musicFacade.newSong(titleText.getText(), descriptionText.getText(), genres, selectedDifficulty, 120, selectedKey, selectedInstrument);
         musicFacade.openSong(newSong);
-        App.setRoot("musicTemplate");
-        App.setBar("songEditorBar");
-        App.setData("songEditorData");
+        App.setRoot("templates/musicTemplate");
+        App.setBar("topbar/songEditorBar");
+        App.setData("data/songEditorData");
     }
 
     @FXML
@@ -76,7 +77,7 @@ public class NewSongController extends Application {
     }
 
     private void initializeGenreDropdown(){
-        genreSelect = new ComboBox<>();
+        genreSelect.getItems().clear();
         for(Genre genre : Genre.values()){
             genreSelect.getItems().add(genre);
         }
@@ -88,7 +89,7 @@ public class NewSongController extends Application {
     }
 
     private void initializeKeyDropdown(){
-        keySelect = new ComboBox<>();
+        keySelect.getItems().clear();
         for(Key key : Key.values()){
             keySelect.getItems().add(key);
         }
@@ -100,7 +101,7 @@ public class NewSongController extends Application {
     }
 
     private void initializeInstrumentDropdown(){
-        instrumentSelect = new ComboBox<>();
+        instrumentSelect.getItems().clear();
         for(Instrument instrument : musicFacade.getAllInstruments()){
             instrumentSelect.getItems().add(instrument);
         }
@@ -109,10 +110,25 @@ public class NewSongController extends Application {
         instrumentSelect.setOnAction(e -> {
             selectedInstrument = instrumentSelect.getValue();
         });
+
+        instrumentSelect.setCellFactory(lv -> new ListCell<>() {
+            @Override
+            protected void updateItem(Instrument instrument, boolean empty) {
+                super.updateItem(instrument, empty);
+                setText(empty || instrument == null ? null : instrument.getName());
+            }
+        });
+        instrumentSelect.setButtonCell(new ListCell<>() {
+            @Override
+            protected void updateItem(Instrument instrument, boolean empty) {
+                super.updateItem(instrument, empty);
+                setText(empty || instrument == null ? null : instrument.getName());
+            }
+        });
     }
 
     private void initializeDifficultyDropdown(){
-        difficultySelect = new ComboBox<>();
+        difficultySelect.getItems().clear();
         for(int i=1; i<6; i++){
             difficultySelect.getItems().add(i);
         }
