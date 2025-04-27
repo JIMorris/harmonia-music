@@ -2,11 +2,25 @@
 
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="328.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongEditPlayController">
    <children>
-      <GridPane prefHeight="330.0" prefWidth="432.0" />
+      <GridPane prefHeight="330.0" prefWidth="432.0">
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+         <children>
+            <Pane prefHeight="331.0" prefWidth="432.0" style="-fx-background-color: ECE8D9;">
+               <children>
+                  <Pane layoutX="43.0" layoutY="40.0" prefHeight="288.0" prefWidth="349.0" style="-fx-background-color: FFFFFF;" />
+               </children>
+            </Pane>
+         </children></GridPane>
    </children>
 </VBox>

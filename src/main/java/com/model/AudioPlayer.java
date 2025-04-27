@@ -134,6 +134,7 @@ public class AudioPlayer {
      */
     public void selectNote(Note note) {
         this.currentNote = note;
+        this.currentMeasureGroup = currentSong.getMeasureGroup(note);
     }
 
     /**

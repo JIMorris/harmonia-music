@@ -11,7 +11,7 @@
 
 <StackPane prefHeight="750.0" prefWidth="500.0" style="-fx-background-color: #deeff6;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.LoginController">
    <children>
-      <Pane maxHeight="750.0" maxWidth="500.0" prefHeight="750.0" prefWidth="500.0" style="-fx-background-color: #E8D99F; -fx-background-radius: 18px; -fx-border-color: #4F2E0A; -fx-border-radius: 18px; -fx-border-width: 4px;" stylesheets="@styles.css">
+      <Pane maxHeight="700.0" maxWidth="500.0" prefHeight="700.0" prefWidth="500.0" style="-fx-background-color: #E8D99F; -fx-background-radius: 18px; -fx-border-color: #4F2E0A; -fx-border-radius: 18px; -fx-border-width: 4px;" stylesheets="@styles.css">
          <children>
             <ImageView fx:id="logoImage" fitHeight="130.0" fitWidth="119.0" layoutX="191.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
                <image>

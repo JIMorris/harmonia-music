@@ -1,39 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.HomeTemplateController">
-   <children>
-      <VBox prefHeight="400.0" prefWidth="600.0">
+<BorderPane maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" style="-fx-border-color: black; -fx-border-width: 4px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.HomeTemplateController">
+   <center>
+      <StackPane maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0">
          <children>
-            <!-- TOP BAR placeholder -->
-            <AnchorPane fx:id="bar" prefHeight="73.0" prefWidth="600.0" style="-fx-background-color: cyan;" />
-
-            <StackPane prefHeight="322.0" prefWidth="600.0">
+            <VBox maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0">
                <children>
-                  <!-- MAIN CONTENT placeholder -->
-                  <ScrollPane prefHeight="111.0" prefWidth="434.0">
-                     <content>
-                        <AnchorPane fx:id="data" prefHeight="319.0" prefWidth="594.0" />
-                     </content>
-                  </ScrollPane>
-
-                  <!-- Some other hidden VBox -->
-                  <VBox managed="false" visible="false" prefHeight="200.0" prefWidth="100.0">
+                  <!-- TOP BAR placeholder -->
+                  <AnchorPane fx:id="bar" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #deeff6;">
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis></AnchorPane>
+      
+                                    <StackPane prefHeight="553.0" prefWidth="600.0">
                      <children>
-                        <Button fx:id="MySongButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="116.0" text="My Songs" />
-                        <Button fx:id="SearchSongButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="115.0" text="Search Songs" />
-                        <Button fx:id="FavoriteSongButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="114.0" text="Favorite Songs" />
-                        <Button fx:id="FavoriteAuthorButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="116.0" text="Favorite Authors" />
+      
+                                          <!-- Some other hidden VBox -->
+                        <VBox managed="false" prefHeight="28.0" prefWidth="0.0" visible="false">
+                           <children>
+                              <Button fx:id="MySongButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="116.0" text="My Songs" />
+                              <Button fx:id="SearchSongButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="115.0" text="Search Songs" />
+                              <Button fx:id="FavoriteSongButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="114.0" text="Favorite Songs" />
+                              <Button fx:id="FavoriteAuthorButton" mnemonicParsing="false" prefHeight="54.0" prefWidth="116.0" text="Favorite Authors" />
+                           </children>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </VBox>
+                        <!-- MAIN CONTENT placeholder -->
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="516.0" prefWidth="600.0" vbarPolicy="NEVER">
+                           <content>
+                              <AnchorPane fx:id="data" maxHeight="528.0" maxWidth="600.0" minHeight="500.0" minWidth="600.0" prefHeight="528.0" prefWidth="600.0" style="-fx-background-color: #E8D99F;">
+                                 <rotationAxis>
+                                    <Point3D />
+                                 </rotationAxis></AnchorPane>
+                           </content>
+                           <rotationAxis>
+                              <Point3D />
+                           </rotationAxis>
+                        </ScrollPane>
                      </children>
-                  </VBox>
+                     <rotationAxis>
+                        <Point3D />
+                     </rotationAxis>
+                  </StackPane>
                </children>
-            </StackPane>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </VBox>
          </children>
-      </VBox>
-   </children>
-</StackPane>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </StackPane>
+   </center>
+   <rotationAxis>
+      <Point3D />
+   </rotationAxis>
+</BorderPane>
