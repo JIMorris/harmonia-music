@@ -36,6 +36,7 @@ public class SettingsController {
     @FXML
     private Button deleteAccount;
 
+    @FXML
     private void goToHome() throws IOException {
         App.setRoot("templates/homeTemplate");
         App.setData("data/homeData");
