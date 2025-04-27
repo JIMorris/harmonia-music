@@ -1,34 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.DropdownButton?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="102.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongEditPlayController">
    <children>
       <Pane prefHeight="102.0" prefWidth="600.0" style="-fx-background-color: DEEFF5;">
          <children>
-            <Button id="playButton" accessibleRole="COMBO_BOX" layoutX="131.0" layoutY="38.0" mnemonicParsing="false" text="Play" />
-            <Button layoutX="216.0" layoutY="38.0" mnemonicParsing="false" text="Pause" />
-            <DropdownButton layoutX="388.0" layoutY="40.0">
-                <items>
-                    <MenuItem text="Choice 1" />
-                    <MenuItem text="Choice 2" />
-                    <MenuItem text="Choice 3" />
-                </items>
-            </DropdownButton>
-            <MenuButton layoutX="539.0" layoutY="38.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="34.0" text="MenuButton">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-            </MenuButton>
-            <Button id="playButton" accessibleRole="COMBO_BOX" layoutX="27.0" layoutY="38.0" mnemonicParsing="false" text="Exit" />
+            <Button id="playButton" accessibleRole="COMBO_BOX" layoutX="130.0" layoutY="38.0" mnemonicParsing="false" onAction="#play" text="Play" />
+            <Button layoutX="210.0" layoutY="38.0" mnemonicParsing="false" onAction="#pause" text="Pause" />
+            <ComboBox fx:id="instrumentSelect" layoutX="335.0" layoutY="40.0" prefWidth="150.0" />
+            <Button fx:id="homeButton" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: #f4f4f4; -fx-text-fill: black;" text="Home" />
+            <Button fx:id="homeButton1" layoutX="514.0" layoutY="38.0" mnemonicParsing="false" style="-fx-background-color: #f4f4f4; -fx-text-fill: black;" text="Settings" />
          </children>
       </Pane>
-      <Pane layoutY="102.0" prefHeight="520.0" prefWidth="600.0" style="-fx-background-color: ECE8D9;" />
    </children>
 </Pane>

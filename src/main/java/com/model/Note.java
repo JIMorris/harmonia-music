@@ -117,7 +117,7 @@ public class Note {
      * @throws Exception If the note is already at the highest possible pitch.
      */
     public void up(Key keySignature) throws Exception {
-        if (octave >= 7)
+        if (octave >= 6)
             throw new Exception("Highest pitch reached");
         ArrayList<Pitch> keyPitches = keySignature.pitches;
         Pitch currentPitch = this.pitch;
@@ -146,7 +146,7 @@ public class Note {
      * @throws Exception If the note is already at the lowest possible pitch.
      */
     public void down(Key keySignature) throws Exception {
-        if (octave <= 0)
+        if (octave <= 3)
             throw new Exception("Lowest pitch reached");
         ArrayList<Pitch> keyPitches = keySignature.pitches;
         Pitch currentPitch = this.pitch;
@@ -200,6 +200,47 @@ public class Note {
         jFugue += getJFugueDuration();
 
         return jFugue;
+    }
+
+    public int getMusicPosition(){
+        if(getMusicIcon().equals("error"))
+            return 5;
+        else if(this.pitch==Pitch.REST || this.pitch==Pitch.CHORD)
+            return 8;
+        return this.pitch.position + 36 - octave*7;
+    }
+
+    public String getMusicIcon(){
+        String length;
+        String type;
+
+        switch (this.duration) {
+            case 12:
+                length = "quarter";
+                break;
+            case 6:
+                length = "eighth";
+                break;
+            case 3:
+                length = "sixteenth";
+                break;
+            default:
+                return "error";
+        }
+
+        switch (this.pitch) {
+            case REST:
+                type = "Rest";
+                break;
+            case CHORD:
+                type = "Chord";
+                break;
+            default:
+                type = "Note";
+        }
+
+        return length + type;
+        
     }
 
     /**

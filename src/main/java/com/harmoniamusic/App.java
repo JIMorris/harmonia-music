@@ -1,6 +1,10 @@
 package com.harmoniamusic;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import com.model.MusicFacade;
+import com.model.Song;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -30,19 +34,24 @@ public class App extends Application {
         //stage.sizeToScene();
         stage.show();
        // setData("loginData");
+
+       ArrayList<Song> songs = MusicFacade.getInstance().openPublicSongs();
+       SongEditPlayController.openSong(songs.get(2));
     }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
-    static void setBar(String fxml) throws IOException {
+    static FXMLLoader setBar(String fxml) throws IOException {
         if (fxml == null) {
             bar.getChildren().clear();
-            return;
+            return null;
         }
-        Parent view = loadFXML(fxml);
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        Parent view = fxmlLoader.load();
         bar.getChildren().setAll(view);
+        return fxmlLoader;
     }
 
     static FXMLLoader setData(String fxml) throws IOException {
