@@ -64,6 +64,17 @@ public class NavigatorController extends Application {
         controller.changeTitle(3);
     }
 
+    @FXML
+    private void createSong() throws IOException {
+        App.setBar(null);
+        App.setData(null);
+        App.setRoot("templates/newSongTemplate");
+        FXMLLoader test2 = App.setData("templates/newSongTemplate");
+        NewSongController controller = test2.getController();
+        //controller.start(null);
+        App.setData(null);
+    }
+
     // methods for top bar
 
     @FXML

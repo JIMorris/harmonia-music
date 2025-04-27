@@ -8,5 +8,7 @@
    <children>
       <Button fx:id="settings" layoutX="530.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#goToSettings" text="Profile" />
       <Text layoutX="255.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Harmonia Music" />
+      <Button fx:id="settings1" layoutX="76.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#createSong" text="add" />
+      <Button fx:id="back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#goToHome" text="back" />
    </children>
 </Pane>

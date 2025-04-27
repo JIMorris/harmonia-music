@@ -32,10 +32,10 @@ public class SongListController extends Application {
     public void changeTitle(int type) {
         switch (type) {
             case 1:
-                libraryTitle.setText("Your Songs");
+                libraryTitle.setText("My Songs");
                 break;
             case 2:
-                libraryTitle.setText("Your Favorites");
+                libraryTitle.setText("My Favorites");
                 break;
             case 3:
                 libraryTitle.setText("Public Songs");

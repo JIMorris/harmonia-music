@@ -53,6 +53,17 @@ public class NewSongController extends Application {
     }
 
     @FXML
+    public void initialize() {
+        musicFacade = MusicFacade.getInstance();
+        titleText.setPromptText("Enter title here...");
+        descriptionText.setPromptText("Enter description here...");
+        initializeGenreDropdown();
+        initializeKeyDropdown();
+        initializeInstrumentDropdown();
+        initializeDifficultyDropdown();
+    }
+
+    @FXML
     private void createNewSong() throws IOException {
         ArrayList<Genre> genres = new ArrayList<>();
         genres.add(selectedGenre);
@@ -65,9 +76,9 @@ public class NewSongController extends Application {
 
     @FXML
     private void goBack() throws IOException {
-        App.setRoot("homeTemplate");
-        App.setBar("libraryBar");
-        App.setData("mySongsData");
+        App.setRoot("templates/homeTemplate");
+        App.setBar("topbar/homeBar");
+        App.setData("data/homeData");
     }
 
     private void initializeGenreDropdown(){
