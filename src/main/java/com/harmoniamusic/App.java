@@ -35,8 +35,11 @@ public class App extends Application {
         //  SongEditPlayController.openSong(songs.get(2));
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    static FXMLLoader setRoot(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        Parent view = fxmlLoader.load();
+        scene.setRoot(view);
+        return fxmlLoader;
     }
     
     static void setRootAndInitialize(String fxml) throws IOException {
