@@ -349,7 +349,7 @@ public class SongEditPlayController extends Application {
         int tempo = musicFacade.getBPM();
         tempoText.setText(Integer.toString(tempo));
 
-        tempoText.setOnInputMethodTextChanged(e -> {
+        tempoText.setOnAction(e -> {
             try {
                 int newTempo = Integer.parseInt(tempoText.getText());
                 musicFacade.setBPM(newTempo);
