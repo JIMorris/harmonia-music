@@ -9,7 +9,7 @@ import java.util.UUID;
  * @author Simion Cartis
  */
 public class User {
-    public static final String defaultUserIconFile = "defaultUserIcon.png";
+    public static final String DEFAULT_USER_ICON_FILE = "defaultUserIcon.png";
 
     private String username;
     private String password;
@@ -37,7 +37,7 @@ public class User {
         this.userID = UUID.randomUUID();
         this.favSongs = new ArrayList<>();
         this.favAuthors = new ArrayList<>();
-        this.iconFile = defaultUserIconFile;
+        this.iconFile = DEFAULT_USER_ICON_FILE;
     }
 
     /**
