@@ -19,21 +19,59 @@ public class SettingsController {
     private MusicFacade musicFacade = MusicFacade.getInstance();
 
     @FXML
-    private Button LogoutButton;
-    // Need to implement logic here
+    private TextField firstName;
 
-
-    private TextField password;
+    @FXML
+    private TextField lastName;
 
     @FXML
     private TextField username;
+    
+    @FXML
+    private TextField password;
+    
+    @FXML
+    private Button LogoutButton;
 
     @FXML
+    private Button deleteAccount;
 
     private void goToHome() throws IOException {
         App.setRoot("templates/homeTemplate");
         App.setData("data/homeData");
         App.setBar("topbar/homeBar");
+    }
+
+    @FXML
+    private void saveChanges() {
+        if (!firstName.getText().equals("")) {
+            String newFirst = firstName.getText();
+            musicFacade.getCurrentUser().setFirstName(newFirst);
+        }
+        if (!lastName.getText().equals("")) {
+            String newLast = lastName.getText();
+            musicFacade.getCurrentUser().setLastName(newLast);
+        }
+        if (!username.getText().equals("")) {
+            String newUsername = username.getText();
+            musicFacade.getCurrentUser().setUsername(newUsername);
+        }
+        if (!password.getText().equals("")) {
+            String newPassword = password.getText();
+            musicFacade.getCurrentUser().setPassword(newPassword);
+        }
+    }
+
+    @FXML
+    private void logout() throws IOException {
+        App.setRoot("templates/loginTemplate");
+        App.setData(null);
+        App.setBar(null);
+        try {
+            musicFacade.logout();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -49,14 +87,4 @@ public class SettingsController {
         }
     }
 
-    @FXML
-    private void changePassword() {
-        String newPassword = password.getText();
-        musicFacade.getUserList().getCurrentUser().setPassword(newPassword);
-    }
-
-    private void changeUserName() {
-        String newUsername = username.getText();
-        musicFacade.getUserList().getCurrentUser().setUsername(newUsername);
-    }
-} 
+}

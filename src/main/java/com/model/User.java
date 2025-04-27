@@ -150,6 +150,14 @@ public class User {
         this.username = username;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     /**
      * Set favAuthors to the parameter provided
      * 
