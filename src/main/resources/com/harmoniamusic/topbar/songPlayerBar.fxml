@@ -8,10 +8,11 @@
    <children>
       <Pane prefHeight="102.0" prefWidth="600.0" style="-fx-background-color: DEEFF5;">
          <children>
-            <Button id="playButton" accessibleRole="COMBO_BOX" layoutX="131.0" layoutY="38.0" mnemonicParsing="false" onAction="#play" text="Play" />
-            <Button layoutX="216.0" layoutY="38.0" mnemonicParsing="false" onAction="#pause" text="Pause" />
-            <Button id="playButton" accessibleRole="COMBO_BOX" layoutX="27.0" layoutY="38.0" mnemonicParsing="false" onAction="#goToHome" text="Exit" />
+            <Button id="playButton" accessibleRole="COMBO_BOX" layoutX="187.0" layoutY="38.0" mnemonicParsing="false" onAction="#play" text="Play" />
+            <Button layoutX="267.0" layoutY="38.0" mnemonicParsing="false" onAction="#pause" text="Pause" />
+            <Button id="playButton" accessibleRole="COMBO_BOX" layoutX="107.0" layoutY="38.0" mnemonicParsing="false" onAction="#goToHome" text="Exit" />
             <ComboBox fx:id="instrumentSelect" layoutX="373.0" layoutY="39.0" prefWidth="150.0" />
+            <Button fx:id="homeButton" layoutX="14.0" layoutY="38.0" mnemonicParsing="false" text="Home" style="-fx-background-color: #f4f4f4; -fx-text-fill: black;" />
          </children>
       </Pane>
    </children>
