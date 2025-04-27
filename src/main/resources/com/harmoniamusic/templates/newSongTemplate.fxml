@@ -82,9 +82,9 @@
                   <Line endX="217.0" endY="-43.40000534057617" layoutX="383.0" layoutY="89.0" startX="-383.0" startY="-43.40000534057617" strokeWidth="3.0" />
                   <Line endX="26.999984741210938" endY="-24.0" layoutX="173.0" layoutY="351.0" startX="-173.0" startY="-24.0" />
                   <Line endX="-138.00001525878906" endY="-259.0" layoutX="338.0" layoutY="305.0" startX="-138.00001525878906" startY="21.0" />
-                  <TextField fx:id="titleText" layoutX="201.0" layoutY="47.0" prefHeight="46.0" prefWidth="400.0" style="-fx-border-color: gray; -fx-background-color: rgba(214, 238, 245, 1);" text="Please Enter" />
-                  <TextField fx:id="descriptionText" layoutX="201.0" layoutY="94.0" prefHeight="46.0" prefWidth="400.0" style="-fx-border-color: gray; -fx-background-color: rgba(214, 238, 245, 1);" text="Please Enter" />
-                  <Button layoutX="238.0" layoutY="339.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="126.0" style="-fx-background-color: rgba(232, 217, 159, 0.61); -fx-border-color: gray; -fx-border-radius: 10px;" text="Create">
+                  <TextField fx:id="titleText" layoutX="201.0" layoutY="47.0" prefHeight="46.0" prefWidth="400.0" promptText="Please Enter" style="-fx-border-color: gray; -fx-background-color: rgba(214, 238, 245, 1);" />
+                  <TextField fx:id="descriptionText" layoutX="201.0" layoutY="94.0" prefHeight="46.0" prefWidth="400.0" promptText="Please Enter" style="-fx-border-color: gray; -fx-background-color: rgba(214, 238, 245, 1);" />
+                  <Button layoutX="238.0" layoutY="339.0" mnemonicParsing="false" onMouseClicked="#createNewSong" prefHeight="46.0" prefWidth="126.0" style="-fx-background-color: rgba(232, 217, 159, 0.61); -fx-border-color: gray; -fx-border-radius: 10px;" text="Create">
                      <font>
                         <Font size="20.0" />
                      </font>
