@@ -27,7 +27,7 @@ public class SongListController extends Application {
     private Accordion songListAccordion;
 
     @FXML
-    private TextField libraryTitle;
+    private Label libraryTitle;
 
     public void changeTitle(int type) {
         switch (type) {
