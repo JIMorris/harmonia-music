@@ -87,9 +87,10 @@ public class NavigatorController extends Application {
 
     @FXML
     private void goToSettings() throws IOException {
-        App.setRoot("topbar/settingsBar");
+        App.setRoot("templates/settingsTemplate");
+        App.setBar("topbar/settingsBar");
         App.setData("data/settingsData");
-        App.setBar(null);
+      //  App.setBar(null);
     }
 
     @Override
