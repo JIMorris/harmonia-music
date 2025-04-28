@@ -40,7 +40,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Label fx:id="loginErrorLabel" layoutX="130.0" layoutY="490.0" text="Incorrect username or password" visible="false">
+            <Label fx:id="loginErrorLabel" layoutX="150.0" layoutY="488.0" text="Incorrect username or password" visible="false">
                <font>
                   <Font name="Arial" size="14.0" />
                </font>
