@@ -45,7 +45,7 @@
                   <Font name="Arial" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="Register" layoutX="133.0" layoutY="510.0" onMouseClicked="#GoToSignUp" text="Not a member yet? Register here">
+            <Label fx:id="Register" layoutX="160.0" layoutY="510.0" onMouseClicked="#GoToSignUp" text="Not a member yet? Register here">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
