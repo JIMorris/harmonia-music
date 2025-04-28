@@ -14,7 +14,7 @@
          <font>
             <Font size="36.0" />
          </font></Text>
-      <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="555.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="68.0" fitWidth="64.0" layoutX="522.0" layoutY="10.0" onMouseClicked="#goToSettings" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@profile.png" />
          </image>
