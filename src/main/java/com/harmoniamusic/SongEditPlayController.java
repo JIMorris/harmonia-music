@@ -369,6 +369,13 @@ public class SongEditPlayController extends Application {
     }
 
     @FXML
+    private void goToSettings() throws IOException {
+        App.setRoot("data/settingsData");
+        App.setBar(null);
+        App.setData(null);
+    }
+
+    @FXML
     private void play(){
         musicFacade.playSong();
     }

@@ -12,65 +12,89 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.NewSongController">
+<BorderPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0"
+   xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="com.harmoniamusic.NewSongController">
    <center>
-      <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: rgba(232, 217, 159, 0.61);">
+      <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+         minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+         style="-fx-background-color: rgba(232, 217, 159, 0.61);">
          <children>
             <AnchorPane prefHeight="400.0" prefWidth="391.0">
                <children>
-                  <StackPane prefHeight="45.0" prefWidth="600.0" style="-fx-background-color: rgba(214, 238, 245, 1);">
+                  <StackPane prefHeight="45.0" prefWidth="600.0"
+                     style="-fx-background-color: rgba(214, 238, 245, 1);">
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="555.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="555.0"
+                                 onMouseClicked="#goToSettings" pickOnBounds="true"
+                                 preserveRatio="true">
                                  <image>
                                     <Image url="@profile.png" />
                                  </image>
                               </ImageView>
-                              <Label alignment="CENTER" layoutX="167.0" layoutY="1.0" prefHeight="30.0" prefWidth="265.0" text="Harmonia Music" textAlignment="RIGHT">
+                              <Label alignment="CENTER" layoutX="167.0" layoutY="1.0"
+                                 prefHeight="30.0" prefWidth="265.0" text="Harmonia Music"
+                                 textAlignment="RIGHT">
                                  <font>
                                     <Font name="Bodoni Bd BT Bold" size="36.0" />
                                  </font>
                               </Label>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0"
+                                 layoutY="8.0" onMouseClicked="#goToHome" pickOnBounds="true"
+                                 preserveRatio="true">
                                  <image>
-                                    <Image url="@back.png" />
+                                    <Image url="@home.png" />
                                  </image>
                               </ImageView>
                            </children>
                         </AnchorPane>
                      </children>
                   </StackPane>
-                  <StackPane layoutY="46.0" prefHeight="281.0" prefWidth="200.0" style="-fx-background-color: rgba(232, 217, 159, 0.61);">
+                  <StackPane layoutY="46.0" prefHeight="281.0" prefWidth="200.0"
+                     style="-fx-background-color: rgba(232, 217, 159, 0.61);">
                      <children>
                         <AnchorPane prefHeight="290.0" prefWidth="200.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" layoutX="36.0" layoutY="11.0" prefHeight="26.0" prefWidth="157.0" text="Title:" textAlignment="RIGHT">
+                              <Label alignment="CENTER_RIGHT" layoutX="36.0" layoutY="11.0"
+                                 prefHeight="26.0" prefWidth="157.0" text="Title:"
+                                 textAlignment="RIGHT">
                                  <font>
                                     <Font name="NSimSun" size="28.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="11.0" layoutY="55.0" prefHeight="30.0" prefWidth="182.0" text="Description:" textAlignment="RIGHT">
+                              <Label alignment="CENTER_RIGHT" layoutX="11.0" layoutY="55.0"
+                                 prefHeight="30.0" prefWidth="182.0" text="Description:"
+                                 textAlignment="RIGHT">
                                  <font>
                                     <Font name="NSimSun" size="28.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="35.0" layoutY="102.0" prefHeight="26.0" prefWidth="157.0" text="Genre:" textAlignment="RIGHT">
+                              <Label alignment="CENTER_RIGHT" layoutX="35.0" layoutY="102.0"
+                                 prefHeight="26.0" prefWidth="157.0" text="Genre:"
+                                 textAlignment="RIGHT">
                                  <font>
                                     <Font name="NSimSun" size="28.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="35.0" layoutY="148.0" prefHeight="26.0" prefWidth="157.0" text="Key:" textAlignment="RIGHT">
+                              <Label alignment="CENTER_RIGHT" layoutX="35.0" layoutY="148.0"
+                                 prefHeight="26.0" prefWidth="157.0" text="Key:"
+                                 textAlignment="RIGHT">
                                  <font>
                                     <Font name="NSimSun" size="28.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="35.0" layoutY="235.0" prefHeight="26.0" prefWidth="157.0" text="Difficulty:" textAlignment="RIGHT">
+                              <Label alignment="CENTER_RIGHT" layoutX="35.0" layoutY="235.0"
+                                 prefHeight="26.0" prefWidth="157.0" text="Difficulty:"
+                                 textAlignment="RIGHT">
                                  <font>
                                     <Font name="NSimSun" size="28.0" />
                                  </font>
                               </Label>
-                              <Label alignment="CENTER_RIGHT" layoutX="35.0" layoutY="193.0" prefHeight="26.0" prefWidth="157.0" text="Instrument:" textAlignment="RIGHT">
+                              <Label alignment="CENTER_RIGHT" layoutX="35.0" layoutY="193.0"
+                                 prefHeight="26.0" prefWidth="157.0" text="Instrument:"
+                                 textAlignment="RIGHT">
                                  <font>
                                     <Font name="NSimSun" size="28.0" />
                                  </font>
@@ -79,20 +103,38 @@
                         </AnchorPane>
                      </children>
                   </StackPane>
-                  <Line endX="217.0" endY="-43.40000534057617" layoutX="383.0" layoutY="89.0" startX="-383.0" startY="-43.40000534057617" strokeWidth="3.0" />
-                  <Line endX="26.999984741210938" endY="-24.0" layoutX="173.0" layoutY="351.0" startX="-173.0" startY="-24.0" />
-                  <Line endX="-138.00001525878906" endY="-259.0" layoutX="338.0" layoutY="305.0" startX="-138.00001525878906" startY="21.0" />
-                  <TextField fx:id="titleText" layoutX="201.0" layoutY="47.0" prefHeight="46.0" prefWidth="400.0" promptText="Please Enter" style="-fx-border-color: gray; -fx-background-color: rgba(214, 238, 245, 1);" />
-                  <TextField fx:id="descriptionText" layoutX="201.0" layoutY="94.0" prefHeight="46.0" prefWidth="400.0" promptText="Please Enter" style="-fx-border-color: gray; -fx-background-color: rgba(214, 238, 245, 1);" />
-                  <Button layoutX="238.0" layoutY="339.0" mnemonicParsing="false" onMouseClicked="#createNewSong" prefHeight="46.0" prefWidth="126.0" style="-fx-background-color: rgba(232, 217, 159, 0.61); -fx-border-color: gray; -fx-border-radius: 10px;" text="Create">
+                  <Line endX="217.0" endY="-43.40000534057617" layoutX="383.0" layoutY="89.0"
+                     startX="-383.0" startY="-43.40000534057617" strokeWidth="3.0" />
+                  <Line endX="26.999984741210938" endY="-24.0" layoutX="173.0" layoutY="351.0"
+                     startX="-173.0" startY="-24.0" />
+                  <Line endX="-138.00001525878906" endY="-259.0" layoutX="338.0" layoutY="305.0"
+                     startX="-138.00001525878906" startY="21.0" />
+                  <TextField fx:id="titleText" layoutX="201.0" layoutY="47.0" prefHeight="46.0"
+                     prefWidth="400.0" promptText="Please Enter"
+                     style="-fx-border-color: gray; -fx-background-color: rgba(214, 238, 245, 1);" />
+                  <TextField fx:id="descriptionText" layoutX="201.0" layoutY="94.0"
+                     prefHeight="46.0" prefWidth="400.0" promptText="Please Enter"
+                     style="-fx-border-color: gray; -fx-background-color: rgba(214, 238, 245, 1);" />
+                  <Button layoutX="238.0" layoutY="339.0" mnemonicParsing="false"
+                     onMouseClicked="#createNewSong" prefHeight="46.0" prefWidth="126.0"
+                     style="-fx-background-color: rgba(232, 217, 159, 0.61); -fx-border-color: gray; -fx-border-radius: 10px;"
+                     text="Create">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <ComboBox id="instrumentSelect" fx:id="instrumentSelect" layoutX="201.0" layoutY="234.0" prefHeight="46.0" prefWidth="400.0" promptText="Piano" style="-fx-background-color: rgba(214, 238, 245, 1); -fx-border-color: gray;" />
-                  <ComboBox id="difficultySelect" fx:id="difficultySelect" layoutX="201.0" layoutY="280.0" prefHeight="46.0" prefWidth="400.0" promptText="1" style="-fx-background-color: rgba(214, 238, 245, 1); -fx-border-color: gray;" />
-                  <ComboBox id="keySelect" fx:id="keySelect" layoutX="201.0" layoutY="187.0" prefHeight="46.0" prefWidth="400.0" promptText="C Major" style="-fx-background-color: rgba(214, 238, 245, 1); -fx-border-color: gray;" />
-                  <ComboBox id="genreSelect" fx:id="genreSelect" layoutX="201.0" layoutY="140.0" prefHeight="46.0" prefWidth="400.0" promptText="Pop" style="-fx-background-color: rgba(214, 238, 245, 1); -fx-border-color: gray;" />
+                  <ComboBox id="instrumentSelect" fx:id="instrumentSelect" layoutX="201.0"
+                     layoutY="234.0" prefHeight="46.0" prefWidth="400.0" promptText="Piano"
+                     style="-fx-background-color: rgba(214, 238, 245, 1); -fx-border-color: gray;" />
+                  <ComboBox id="difficultySelect" fx:id="difficultySelect" layoutX="201.0"
+                     layoutY="280.0" prefHeight="46.0" prefWidth="400.0" promptText="1"
+                     style="-fx-background-color: rgba(214, 238, 245, 1); -fx-border-color: gray;" />
+                  <ComboBox id="keySelect" fx:id="keySelect" layoutX="201.0" layoutY="187.0"
+                     prefHeight="46.0" prefWidth="400.0" promptText="C Major"
+                     style="-fx-background-color: rgba(214, 238, 245, 1); -fx-border-color: gray;" />
+                  <ComboBox id="genreSelect" fx:id="genreSelect" layoutX="201.0" layoutY="140.0"
+                     prefHeight="46.0" prefWidth="400.0" promptText="Pop"
+                     style="-fx-background-color: rgba(214, 238, 245, 1); -fx-border-color: gray;" />
                </children>
             </AnchorPane>
          </children>

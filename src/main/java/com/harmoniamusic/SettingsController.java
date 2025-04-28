@@ -37,6 +37,9 @@ public class SettingsController {
     private Button deleteAccount;
 
     @FXML
+    private Label changeSuccess;
+
+    @FXML
     private void goToHome() throws IOException {
         App.setRoot("templates/homeTemplate");
         App.setData("data/homeData");
@@ -45,21 +48,25 @@ public class SettingsController {
 
     @FXML
     private void saveChanges() {
-        if (!firstName.getText().equals("")) {
+        if (!firstName.getText().isBlank()) {
             String newFirst = firstName.getText();
             musicFacade.getCurrentUser().setFirstName(newFirst);
+            changeSuccess.setVisible(true);
         }
-        if (!lastName.getText().equals("")) {
+        if (!lastName.getText().isBlank()) {
             String newLast = lastName.getText();
             musicFacade.getCurrentUser().setLastName(newLast);
+            changeSuccess.setVisible(true);
         }
-        if (!username.getText().equals("")) {
+        if (!username.getText().isBlank()) {
             String newUsername = username.getText();
             musicFacade.getCurrentUser().setUsername(newUsername);
+            changeSuccess.setVisible(true);
         }
-        if (!password.getText().equals("")) {
+        if (!password.getText().isBlank()) {
             String newPassword = password.getText();
             musicFacade.getCurrentUser().setPassword(newPassword);
+            changeSuccess.setVisible(true);
         }
     }
 

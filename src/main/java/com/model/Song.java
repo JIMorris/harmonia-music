@@ -174,6 +174,14 @@ public class Song {
         return genres; 
     }
 
+    public ArrayList<String> getGenreLabels() {
+        ArrayList<String> labels = new ArrayList<String>();
+        for (Genre genre: genres) {
+            labels.add(genre.toString());
+        }
+        return labels;
+    }
+
     public String viewGenres() {
         String toReturn = null;
         for (Genre genre: genres) {

@@ -45,4 +45,8 @@ public enum Genre {
         }
         return null;
     }
+
+    public String toString() {
+        return label;
+    }
 }
