@@ -79,7 +79,8 @@ public class NewSongController extends Application {
             genreSelect.getItems().add(genre);
         }
 
-        genreSelect.setValue(Genre.CLASSICAL);
+        selectedGenre = Genre.CLASSICAL;
+        genreSelect.setValue(selectedGenre);
         genreSelect.setOnAction(e -> {
             selectedGenre = genreSelect.getValue();
         });
