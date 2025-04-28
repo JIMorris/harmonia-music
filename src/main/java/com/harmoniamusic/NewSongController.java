@@ -11,7 +11,9 @@ import com.model.Song;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -43,6 +45,10 @@ public class NewSongController extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+    }
+
+    @FXML
+    public void initialize() {
         musicFacade = MusicFacade.getInstance();
         titleText.setPromptText("Enter title here...");
         descriptionText.setPromptText("Enter description here...");
@@ -58,63 +64,94 @@ public class NewSongController extends Application {
         genres.add(selectedGenre);
         Song newSong = musicFacade.newSong(titleText.getText(), descriptionText.getText(), genres, selectedDifficulty, 120, selectedKey, selectedInstrument);
         musicFacade.openSong(newSong);
-        App.setRoot("musicTemplate");
-        App.setBar("songEditorBar");
-        App.setData("songEditorData");
+        SongEditPlayController.editSong(newSong);
     }
 
     @FXML
     private void goBack() throws IOException {
-        App.setRoot("homeTemplate");
-        App.setBar("libraryBar");
-        App.setData("mySongsData");
+        App.setRoot("templates/homeTemplate");
+        App.setBar("topbar/homeBar");
+        App.setData("data/homeData");
     }
 
     private void initializeGenreDropdown(){
-        genreSelect = new ComboBox<>();
+        genreSelect.getItems().clear();
         for(Genre genre : Genre.values()){
             genreSelect.getItems().add(genre);
         }
 
-        genreSelect.setValue(Genre.CLASSICAL);
+        selectedGenre = Genre.CLASSICAL;
+        genreSelect.setValue(selectedGenre);
         genreSelect.setOnAction(e -> {
             selectedGenre = genreSelect.getValue();
         });
     }
 
     private void initializeKeyDropdown(){
-        keySelect = new ComboBox<>();
+        keySelect.getItems().clear();
         for(Key key : Key.values()){
             keySelect.getItems().add(key);
         }
 
-        keySelect.setValue(Key.A_FLAT_MAJOR);
-        keySelect.setOnAction(e -> {
+        selectedKey = Key.A_FLAT_MAJOR;
+        keySelect.setValue(selectedKey);
+        keySelect.setOnHidden(e -> {
             selectedKey = keySelect.getValue();
         });
     }
 
     private void initializeInstrumentDropdown(){
-        instrumentSelect = new ComboBox<>();
+        instrumentSelect.getItems().clear();
         for(Instrument instrument : musicFacade.getAllInstruments()){
             instrumentSelect.getItems().add(instrument);
         }
 
-        instrumentSelect.setValue(musicFacade.getAllInstruments().get(0));
-        instrumentSelect.setOnAction(e -> {
+        selectedInstrument = musicFacade.getAllInstruments().get(0);
+        instrumentSelect.setValue(selectedInstrument);
+        instrumentSelect.setOnHidden(e -> {
             selectedInstrument = instrumentSelect.getValue();
+        });
+
+        instrumentSelect.setCellFactory(lv -> new ListCell<>() {
+            @Override
+            protected void updateItem(Instrument instrument, boolean empty) {
+                super.updateItem(instrument, empty);
+                setText(empty || instrument == null ? null : instrument.getName());
+            }
+        });
+        instrumentSelect.setButtonCell(new ListCell<>() {
+            @Override
+            protected void updateItem(Instrument instrument, boolean empty) {
+                super.updateItem(instrument, empty);
+                setText(empty || instrument == null ? null : instrument.getName());
+            }
         });
     }
 
     private void initializeDifficultyDropdown(){
-        difficultySelect = new ComboBox<>();
+        difficultySelect.getItems().clear();
         for(int i=1; i<6; i++){
             difficultySelect.getItems().add(i);
         }
 
-        difficultySelect.setValue(1);
-        instrumentSelect.setOnAction(e -> {
+        selectedDifficulty = 1;
+        difficultySelect.setValue(selectedDifficulty);
+        difficultySelect.setOnHidden(e -> {
             selectedDifficulty = difficultySelect.getValue();
         });
+    }
+
+    @FXML
+    private void goToSettings() throws IOException {
+        App.setRoot("data/settingsData");
+        App.setBar(null);
+        App.setData(null);
+    }
+
+    @FXML
+    private void goToHome() throws IOException {
+        App.setRoot("templates/homeTemplate");
+        App.setBar("topbar/homeBar");
+        App.setData("data/homeData");
     }
 }

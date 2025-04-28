@@ -9,7 +9,7 @@ import java.util.UUID;
  * @author Simion Cartis
  */
 public class User {
-    public static final String defaultUserIconFile = "defaultUserIcon.png";
+    public static final String DEFAULT_USER_ICON_FILE = "defaultUserIcon.png";
 
     private String username;
     private String password;
@@ -37,7 +37,7 @@ public class User {
         this.userID = UUID.randomUUID();
         this.favSongs = new ArrayList<>();
         this.favAuthors = new ArrayList<>();
-        this.iconFile = defaultUserIconFile;
+        this.iconFile = DEFAULT_USER_ICON_FILE;
     }
 
     /**
@@ -99,6 +99,7 @@ public class User {
     /**
      * Retrieves a users favorite authors
      * 
+     * 
      * @return The user's favorite authors (which is an ArrayList of type User)
      */
     public ArrayList<User> getFavAuthors() {
@@ -141,6 +142,22 @@ public class User {
         this.iconFile = iconFile;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     /**
      * Set favAuthors to the parameter provided
      * 
@@ -173,7 +190,7 @@ public class User {
     }
 
     /**
-     * Checks if the password provided by the user matches the user's username
+     * Checks if the username provided by the user matches the user's username
      * 
      * @param username The username that needs to be checked
      * @return True if the usernames are a match, otherwise it is false
@@ -207,5 +224,13 @@ public class User {
             favAuthors.remove(author);
         else
             favAuthors.add(author);
+    }
+
+    public boolean isFavoriteSong(Song song) {
+        for (Song aSong: favSongs) {
+            if (aSong == song) 
+                return true;
+        }
+    return false;
     }
 }

@@ -12,7 +12,7 @@ import java.util.UUID;
  * @author Simion Cartis
  */
 public class Song {
-    private static final String defaultSongIconFile = "defaultSongIcon.png";
+    private static final String DEFAULT_SONG_ICON_FILE = "defaultSongIcon.png";
 
     private UUID songID;
     private String title;
@@ -63,7 +63,7 @@ public class Song {
         this.measureGroups = new ArrayList<>();
         this.instruments.add(defaultInstrument);
         this.measureGroups.add(new MeasureGroup(timeSignatureNum, keySignature.rootChord, instruments));
-        this.iconFile = defaultSongIconFile;
+        this.iconFile = DEFAULT_SONG_ICON_FILE;
     }
 
     /**
@@ -74,7 +74,7 @@ public class Song {
      */
     public Song(Song song, User author) {
         this.songID = UUID.randomUUID();
-        this.title = song.getTitle();
+        this.title = "copy of " +song.getTitle();
         this.author = author;
         this.description = song.getDescription();
         this.genres = (ArrayList<Genre>) song.getGenres().clone();
@@ -87,7 +87,7 @@ public class Song {
         this.timeSignatureDen = song.getTimeSignatureDen();
         this.measureGroups = copyMeasureGroups(song.getMeasureGroups());
         this.instruments = (ArrayList<Instrument>) song.getInstruments().clone();
-        this.iconFile = defaultSongIconFile;
+        this.iconFile = DEFAULT_SONG_ICON_FILE;
     }
 
     /**
@@ -174,6 +174,22 @@ public class Song {
         return genres; 
     }
 
+    public ArrayList<String> getGenreLabels() {
+        ArrayList<String> labels = new ArrayList<String>();
+        for (Genre genre: genres) {
+            labels.add(genre.toString());
+        }
+        return labels;
+    }
+
+    public String viewGenres() {
+        String toReturn = null;
+        for (Genre genre: genres) {
+            toReturn += genre.label + " ";
+        }
+        return toReturn;
+    }
+
     /**
      * Returns the difficuty of the song
      * 
@@ -208,6 +224,10 @@ public class Song {
      */
     public boolean isPublished() { 
         return published; 
+    }
+
+    public void changePublish() {
+        published = !published;
     }
 
     /**
@@ -316,6 +336,24 @@ public class Song {
     }
 
     /**
+     * Gets the MeasureGroup that the given Note is a part of
+     * 
+     * @param measure Note to find MeasureGroup of
+     * @return MeasureGroup that contains Note
+     */
+    public MeasureGroup getMeasureGroup(Note note){
+        for(MeasureGroup measureGroup : measureGroups){
+            for(Instrument instrument : instruments){
+                for(Note checkNote : measureGroup.getMeasure(instrument).getNotes()){
+                    if(checkNote == note)
+                        return measureGroup;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
      * Returns a list of IDs for the Instruments in this song
      * 
      * @return IDs of Instrumnets in this song
@@ -362,6 +400,16 @@ public class Song {
         if(reaction.getAuthor() != UserList.getInstance().getCurrentUser())
             throw new Exception("You can only delete your own reaction");
         reactions.remove(reaction);
+    }
+
+    public int getAverageRating() {
+        if (reactions.size() == 0) 
+            return 0;
+        int rating = 0;
+        for (Reaction reaction: reactions) {
+            rating += reaction.getRating();
+        }
+        return rating/reactions.size();
     }
 
     /**
@@ -456,5 +504,14 @@ public class Song {
             copy.add(new MeasureGroup(measureGroup));
         }
         return copy;
+    }
+
+    public void setDifficulty(int difficulty) {
+        if (difficulty >= 1 && difficulty <= 5) {
+            this.difficulty = difficulty;
+        }
+    }
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

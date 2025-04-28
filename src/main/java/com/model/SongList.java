@@ -108,9 +108,8 @@ public class SongList {
      * 
      * @param song takes in a song (of type Song) to be removed
      */
-    public void removeSong(Song song) throws Exception{
-        if(song.getAuthor() != UserList.getInstance().getCurrentUser())
-            throw new Exception("You can only delete your own songs");
+    public void removeSong(Song song) {
+        if(song.getAuthor() == UserList.getInstance().getCurrentUser())
         songs.remove(song);
     }
 

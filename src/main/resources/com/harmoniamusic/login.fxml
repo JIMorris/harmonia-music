@@ -15,8 +15,8 @@
             <TextField fx:id="username_txt" />
             <Label text="Password" />
             <TextField fx:id="password_txt" />
-            <Button fx:id="primaryButton" onAction="#LogIn" prefHeight="25.0" prefWidth="112.0" text="Sign in" />
-            <Label fx:id="Register" onMouseClicked="#signUp" text="not a member yet? Register here " />
+            <Label fx:id="Register" onMouseClicked="#signUp" text="not a member yet? Register" textFill="#2b608e" />
+            <Button fx:id="primaryButton" onAction="#LogIn" prefHeight="23.0" prefWidth="163.0" text="Sign in" />
             </children>
         </VBox>
     </children>

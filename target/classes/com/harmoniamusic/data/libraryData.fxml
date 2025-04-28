@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefWidth="602.0" style="-fx-background-color: #E8D99F;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.harmoniamusic.SongListController">
+   <children>
+      <StackPane>
+         <children>
+            <Label fx:id="libraryTitle" alignment="TOP_CENTER" prefHeight="34.0" prefWidth="432.0">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+         </children>
+      </StackPane>
+      <ScrollPane hbarPolicy="NEVER" style="-fx-background-color: #E8D99F;">
+         <content>
+            <Accordion fx:id="songListAccordion" prefHeight="525.0" prefWidth="600.0" style="-fx-background-color: #E8D99F;">
+      </Accordion>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

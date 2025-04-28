@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="450.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0"
+   xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+   fx:controller="com.harmoniamusic.SettingsController">
+   <center>
+      <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+         minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+         style="-fx-background-color: rgba(232, 217, 159, 0.61);">
+         <children>
+            <AnchorPane prefHeight="450.0" prefWidth="391.0" style="-fx-background-color: ECE8D9; -fx-padding: 0 0 20 0;">
+               <children>
+                  <TextField fx:id="firstName" layoutX="240.0" layoutY="110.0" />
+                  <TextField fx:id="username" layoutX="240.0" layoutY="250.0" />
+                  <TextField fx:id="password" layoutX="240.0" layoutY="320.0" />
+                  <Text layoutX="241.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                     text="First Name" />
+                  <Text layoutX="243.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                     text="User Name" wrappingWidth="70.14697265625" />
+                  <Text layoutX="243.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                     text="Password" />
+                  <Button fx:id="LogoutButton" layoutX="264.0" layoutY="420.0"
+                     mnemonicParsing="false"
+                     onMouseClicked="#logout" prefHeight="26.0" prefWidth="101.0"
+                     style="-fx-background-color: #0195F9;" text="Logout" />
+                  <Button fx:id="deleteAccount" layoutX="264.0" layoutY="470.0"
+                     mnemonicParsing="false"
+                     onMouseClicked="#deleteAccount" prefHeight="25.0" prefWidth="101.0"
+                     style="-fx-background-color: red;" text="Delete Account" />
+                  <TextField fx:id="lastName" layoutX="240.0" layoutY="180.0" />
+                  <Text layoutX="241.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                     text="Last Name" />
+                  <Button fx:id="saveChanges" layoutX="263.0" layoutY="370.0"
+                     mnemonicParsing="false"
+                     onMouseClicked="#saveChanges" prefHeight="26.0" prefWidth="101.0"
+                     style="-fx-background-color: lime;" text="Save Changes" />
+                  <StackPane prefHeight="50.0" prefWidth="646.0"
+                     style="-fx-background-color: rgba(214, 238, 245, 1);">
+                     <children>
+                        <AnchorPane prefHeight="47.0" prefWidth="635.0">
+                           <children>
+                              <Label alignment="CENTER" layoutX="190.0" layoutY="1.0"
+                                 prefHeight="30.0"
+                                 prefWidth="265.0" text="Settings" textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Bodoni Bd BT Bold" size="36.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0"
+                                 layoutY="10.0"
+                                 onMouseClicked="#goToHome" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@home.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+                  <Label fx:id="changeSuccess" layoutX="273.0" layoutY="400.0" text="Changes saved"
+                     visible="false" />
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

@@ -4,54 +4,67 @@ import java.io.IOException;
 
 import com.model.MusicFacade;
 
+import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class SignupController {
+public class SignupController extends Application {
     private MusicFacade musicFacade = MusicFacade.getInstance();
 
+    
+    @FXML
+    private TextField username_txt;
+    
+    @FXML
+    private TextField password_txt;
+    
+    @FXML
+    private TextField first_txt;
+    
+    @FXML
+    private TextField last_txt;
+    
+    @FXML
+    private Button primaryButton;
+    
+    @FXML
+    private Label logInLabel;
+
+    @FXML
+    private Label signupErrorLabel;
+    
     @FXML
     private void GoToLogIn() throws IOException {
-        App.setData("loginData");
-        // this somehow switches to the login stuff
+        App.setRoot("templates/loginTemplate");
     }
 
     @FXML
-    private TextField newUsername_txt;
-
-    @FXML
-    private TextField newPassword_txt;
-
-    @FXML
-    private TextField ConfirmPassword_txt;
-
-    @FXML
-    private TextField newFirstName_txt;
-
-    @FXML
-    private TextField newLastName_txt;
-
-    @FXML
     private void SignUp() {
-        String newUsername = newUsername_txt.getText();
-        String newPassword = newPassword_txt.getText();
-        String ConfirmPassword = ConfirmPassword_txt.getText();
-        String newFirstName = newFirstName_txt.getText();
-        String newLastName = newLastName_txt.getText();
-        if (!newPassword.equals(ConfirmPassword)) {
-            newPassword_txt.clear();
-            ConfirmPassword_txt.clear();
-            // DO SOMETHING TO DISPLAY MISMATCHING PASSWORDS
-        } else {
-            try {
-                musicFacade.signup(newUsername, ConfirmPassword, newFirstName, newLastName);
-                App.setRoot("homeTemplate");
-                App.setData("homeData");
-            } catch (Exception e) {
-                // I DON'T KNOW WHAT THIS EXCEPTION SHOULD THROW
-                e.printStackTrace();
-            }
+        String newUsername = username_txt.getText();
+        String newPassword = password_txt.getText();
+        String newFirstName = first_txt.getText();
+        String newLastName = last_txt.getText();
+        if (newUsername.isBlank() || newPassword.isBlank() || newFirstName.isBlank() || newLastName.isBlank()) {
+            signupErrorLabel.setVisible(true);
+            return;
         }
+        try {
+            musicFacade.signup(newUsername, newPassword, newFirstName, newLastName);
+            App.setRoot("templates/homeTemplate");
+            App.setData("data/homeData");
+            App.setBar("topbar/homeBar");
+        } catch (Exception e) {
+           signupErrorLabel.setVisible(true);
+        }
+    }
+
+    @Override
+    public void start(Stage arg0) throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'start'");
     }
 
 }

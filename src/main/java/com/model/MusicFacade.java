@@ -129,6 +129,9 @@ public class MusicFacade {
         return audioPlayer.openSong(song);
     }
 
+    public User getCurrentUser () {
+        return userList.getCurrentUser();
+    }
     /**
      * Gets a list of available instruments
      * 
@@ -220,6 +223,14 @@ public class MusicFacade {
      */
     public ArrayList<Note> getNotes(Measure measure){
         return audioPlayer.getNotes(measure);
+    }
+
+    public SongList getSongList() {
+        return songList;
+    }
+
+    public UserList getUserList() {
+        return userList;
     }
 
     /**
@@ -423,5 +434,14 @@ public class MusicFacade {
      */
     public int getBPM(){
         return audioPlayer.getBPM();
+    }
+
+    /**
+     * Returns the audio player
+     * 
+     * @return This audio player
+     */
+    public AudioPlayer getAudioPlayer(){
+        return this.audioPlayer;
     }
 }
