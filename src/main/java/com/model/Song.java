@@ -74,7 +74,7 @@ public class Song {
      */
     public Song(Song song, User author) {
         this.songID = UUID.randomUUID();
-        this.title = song.getTitle();
+        this.title = "copy of " +song.getTitle();
         this.author = author;
         this.description = song.getDescription();
         this.genres = (ArrayList<Genre>) song.getGenres().clone();
